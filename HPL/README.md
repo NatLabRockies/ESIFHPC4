@@ -33,7 +33,7 @@ The offeror should reveal any potential for performance optimization on the targ
 
 ## How to validate
 
-The run output should show that tests sucessfully passed, finished and ended, as in:
+The run output should show that tests successfully passed, finished and ended, as in:
 ```
 ================================================================================
 ...
