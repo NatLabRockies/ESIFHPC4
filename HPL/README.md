@@ -1,7 +1,7 @@
 # HPL
 
 ## Purpose and Description
-HPL solves a random dense linear system in double precision arithmetic on distributed-memory. It depends on the Message Passing Interface, Basic Linear Algebra Subprograms, or the Vector Signal Image Processing Library. The software is available at the [Netlib HPL benchmark](https://www.netlib.org/benchmark/hpl/) and most vendors including ([Nvidia](https://docs.nvidia.com/nvidia-hpc-benchmarks/HPL_benchmark.html), [AMD](https://www.amd.com/en/developer/zen-software-studio/applications/pre-built-applications.html), and [Intel](https://www.intel.com/content/www/us/en/docs/onemkl/developer-guide-linux/2024-1/overview-intel-distribution-for-linpack-benchmark.html) offer hardware-optimized versions of it. The HPL benchmark assesses the floating-point performance by stressing cores and memory of the target system.
+HPL solves a random dense linear system in double precision arithmetic on distributed memory. It depends on the Message Passing Interface, Basic Linear Algebra Subprograms, or the Vector Signal Image Processing Library. The software is available at the [Netlib HPL benchmark](https://www.netlib.org/benchmark/hpl/) and most vendors including ([Nvidia](https://docs.nvidia.com/nvidia-hpc-benchmarks/HPL_benchmark.html), [AMD](https://www.amd.com/en/developer/zen-software-studio/applications/pre-built-applications.html), and [Intel](https://www.intel.com/content/www/us/en/docs/onemkl/developer-guide-linux/2024-1/overview-intel-distribution-for-linpack-benchmark.html) offer hardware-optimized versions of it. The HPL benchmark assesses the floating-point performance by stressing cores and memory of the target system.
 
 ## Licensing Requirements
 
