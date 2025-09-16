@@ -62,5 +62,5 @@ End of Tests.
 ## Benchmark test results to report and files to return
 
 * File response should include Make.myarch files or script, job submission scripts, stdout and stderr files, an environment dump, and HPL.dat files for each run.
-* The Text response should include high-level descriptions of any optimizations and justification if the obtained performance vary from theoretical performance by less than 80%.
+* The Text response should include high-level descriptions of any optimizations and justification if the obtained performance varies from theoretical performance by less than 80%.
 * For performance reporting, the performance reported in the output files and the theoretical performance should be entered into the Spreadsheet (`report/HPL_benchmark.csv`) response.
