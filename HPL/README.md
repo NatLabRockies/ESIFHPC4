@@ -21,7 +21,7 @@ Optimized binaries of HPL can be obtained from [Intel-HPL](https://www.intel.com
 
 ## Tests
 
-Testing will include single-node and multi-node configurations. The single-node test exposes the compute capability of the unit by reducing the effect interconnect at a node level, while the multi-node test measures the overall system performance and exposes scaling and interconnect bottlenecks at the system level. In general, the problem size (`N`) should be tuned to saturate at least 80% of available system memory so that maximum peak performance would be acheived.
+Testing will include single-node and multi-node configurations. The single-node test exposes the compute capability of the unit by reducing the effect interconnect at a node level, while the multi-node test measures the overall system performance and exposes scaling and interconnect bottlenecks at the system level. In general, the problem size (`N`) should be tuned to saturate at least 80% of available system memory so that maximum peak performance would be achieved.
 
 ## How to run
 
