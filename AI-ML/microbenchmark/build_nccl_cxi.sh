@@ -10,7 +10,7 @@
 
 set -e
 
-ml PrgEnv-nvhpc cuda/12.3
+ml PrgEnv-nvhpc cuda/12.4
 
 export INSTALL_DIR=${INSTALL_DIR:-`pwd`/install}
 export PLUGIN_DIR=$INSTALL_DIR/plugin

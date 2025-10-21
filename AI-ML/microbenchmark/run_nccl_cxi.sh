@@ -9,7 +9,7 @@
 #SBATCH --job-name=nccl_cxi_baremetal
 #SBATCH -o %j-%x.out
 
-module load cuda/12.3
+module load cuda/12.4
 
 export NCCL_HOME=`pwd`/install
 export MPICH_GPU_SUPPORT_ENABLED=0
@@ -26,4 +26,4 @@ export NCCL_NET_GDR_LEVEL=PHB
 
 echo "NCCL_HOME is set to $NCCL_HOME"
 echo ========== RUNNING NCCL TESTS ==========
-srun $PWD/nccl-tests/build/all_reduce_perf -b 8 -e 4G -f 2
+srun $PWD/nccl-tests/build/all_reduce_perf -b 256 -e 4G -f 2
