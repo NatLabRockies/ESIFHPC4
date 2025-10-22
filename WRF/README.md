@@ -47,11 +47,11 @@ The [Conus2.5km](https://www2.mmm.ucar.edu/wrf/users/benchmark/v44/v4.4_bench_co
 
 ### Tests
 
-Strong scaling and throughput tests will be performed using the CONUS benchmarks on single and multiple CPU and GPU nodes. CONUS-12km will be used on the single-node while CONUS-2.5km will be used on multi-node runs. The Offeror should run 4-6 concurent jobs instances of the benchmark on the target system. The harmonic-mean of the runtime from the cuncurrent jobs will be used for reporting strong-scaling results. This repository includes a script (`script/wrf_stats.py`) to obtain runtimes from individual output files. The application throughput can be computed as following: `throughput = allocation factor * node-class count) / (number of nodes * runtime)`.
+Strong scaling and throughput tests will be performed using the CONUS benchmarks on single and multiple CPU and GPU nodes. CONUS-12km will be used on the single-node while CONUS-2.5km will be used on multi-node runs. The Offeror should run 4-6 concurent jobs instances of the benchmark on the target system. The harmonic-mean of the runtime from the cuncurrent jobs will be used for reporting strong-scaling results. This repository includes a script (`script/wrf_stats.py`) to obtain runtimes from individual output files. The application throughput can be computed as following: `throughput = allocation factor * node-class count) / (number of nodes * runtime)`. EKY: Make this a single instance, no mean, define summation of time, do we need 12km? maybe not, keep in as debugging aid but not requirement for performance report
 
 ## Run Rules
 
-* The Offeror can use any WRFv4.6.x and WPSv4.6.x version, with later gnu or intel compilers and libraries, and change the provided configure scripts as needed.
+* The Offeror can use any WRFv4.6.x and WPSv4.6.x version, with later gnu or intel compilers and libraries, and change the provided configure scripts as needed. EKY: don't restrict compilers
 * The Offeror must detail any optimizations used in building and running these benchmarks.
 
 ## Benchmark test results to report and files to return
