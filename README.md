@@ -21,15 +21,13 @@ Important Notes:
 | Application | Standard | Accelerated | Optimized | Baseline |
 |:-----------:|:--------:|:-----------:|:---------:|:-----:|
 | [VASP](https://github.com/NREL/ESIFHPC4/tree/main/VASP)        | Yes      | Yes         | Optional  | Yes   |
-| [WRF](https://github.com/NREL/ESIFHPC4/tree/main/WRF)         | Yes      | Yes*        | Optional  | Yes   |
-| [MLPerf-3DUnet**](https://github.com/NREL/ESIFHPC4/tree/main/AI-ML/app-level-benchmark)| Yes      | Yes         | Optional  | Yes   |
+| [WRF](https://github.com/NREL/ESIFHPC4/tree/main/WRF)         | Yes      | No        | Optional  | Yes   |
+| [MLPerf-DeepCAM*](https://github.com/NREL/ESIFHPC4/tree/main/AI-ML/app-level-benchmark)| Yes      | Yes         | Optional  | Yes   |
 | [AMR-Wind](https://github.com/NREL/ESIFHPC4/tree/main/AMR-Wind)    | Yes      | Yes         | Optional  | Yes   |
 | [LAMMPS](https://github.com/NREL/ESIFHPC4/tree/main/LAMMPS)      | Yes      | Yes         | Optional  | Yes   |
 | [BerkeleyGW](https://github.com/NREL/ESIFHPC4/tree/main/BerkeleyGW)  | Yes      | Yes         | Optional        | Yes   |
 
-\* WRF acceleration via AceCAST
-
-\** MLPerf-3DUnet can be chosen to run *either* standard or accelerated, though accelerated is preferred.
+\* MLPerf-DeepCAM can be chosen to run *either* standard or accelerated, though accelerated is strongly preferred.
 
 **"Class B" Applications - functionality only**
 | Application | Standard | Accelerated | Optimized | Baseline |
@@ -39,7 +37,7 @@ Important Notes:
 **Microbenchmarks:**
 | Application | Standard | Accelerated | Optimized | Baseline |
 |:-----------:|:--------:|:-----------:|:---------:|:-----:|
-| [OSU](https://github.com/NREL/ESIFHPC4/tree/main/OSU)         | Yes      | No          | Optional  | Yes   |
+| [OSU](https://github.com/NREL/ESIFHPC4/tree/main/OSU)         | Yes      | Yes          | Optional  | Yes   |
 | [HPL](https://github.com/NREL/ESIFHPC4/tree/main/HPL)         | Yes      | Yes         | Optional  | Yes   |
 | [Stream](https://github.com/NREL/ESIFHPC4/tree/main/stream)      | Yes      | Yes         | Optional  | Yes   |
 | [IOR](https://github.com/NREL/ESIFHPC4/tree/main/IOR)         | Yes      | No          | Optional  | Yes   |
