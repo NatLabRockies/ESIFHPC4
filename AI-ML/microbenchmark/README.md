@@ -2,7 +2,7 @@
 
 ## Purpose and Description
 
-This benchmark is intended to stress *GPU-GPU* (or more generally, *accelerator-accelerator*) network communication relevant to AI training through the use of an appropriate collective communication library (CCL). The exact implementation of this benchmark depends on the target's hardware architecture. For example, because Kestrel (NREL's current flagship system) hosts NVIDIA H100 GPUs, we implement AllReduce tests using [NCCL](https://developer.nvidia.com/nccl). Running AllReduce on any equivalent CCL for other hardware is satisfactory for this benchmark.
+This benchmark is intended to stress *GPU-GPU* (or more generally, *accelerator-accelerator*) network communication relevant to AI training through the use of an appropriate collective communication library (CCL). The exact implementation of this benchmark depends on the target's hardware architecture. For example, because Kestrel (NREL's current flagship system) hosts NVIDIA H100 GPUs, our AllReduce tests utilize [NCCL](https://developer.nvidia.com/nccl). Running AllReduce utilizing any equivalent, readily available, and actively maintained CCL is satisfactory for this benchmark (e.g., NCCL, RCCL, or OneCCL). For guidelines on specific benchmark test implementations, please see [How to run](#how-to-run).
 
 ## Licensing Requirements
 
@@ -14,7 +14,7 @@ None.
 
 ## How to build
 
-See the Slurm script [`build_nccl_cxi.sh`](./build_nccl_cxi.sh) for reference instructions on how we built NCCL with CXI-enabled libfabric on Kestrel. Note the use of a custom Open Fabrics Initiative (OFI) plugin to enable the use of HPE Slingshot communication protocols, which is needed because NCCL assumes an InfiniBand interconnect by default. This step may not be necessary depending on your hardware and network configuration.
+Exact build instructions will depend on the chosen CCL implementation and hardware. For a specific example, please see the Slurm script [`build_nccl_cxi.sh`](./build_nccl_cxi.sh) for reference instructions on how we built NCCL with CXI-enabled libfabric on Kestrel. Note the use of a custom Open Fabrics Initiative (OFI) plugin to enable the use of HPE Slingshot communication protocols, which is needed because NCCL assumes an InfiniBand interconnect by default. This step may not be necessary depending on your hardware and network configuration. 
 
 ## Run Definitions and Requirements
 
@@ -24,13 +24,12 @@ On Kestrel, the maximum out-of-place bus bandwidth is ~45.7 GB/s as measured by 
 
 See [`run_nccl_cxi.sh`](./run_nccl_cxi.sh) for an example submission script of running `all_reduce_perf` on Kestrel from the official [nccl-tests](https://github.com/NVIDIA/nccl-tests/tree/master) repository.
 
-The specific implementation of the CCL benchmark depends on the proposed hardware. Some non-exhaustive examples are below:
+The specific implementation of the CCL benchmark depends on the proposed hardware. If the vendor has published an open-source implementation of tests that utilize their corresponding CCL, this implementation should be used in the baseline response. For example:
 
 * NCCL tests: https://github.com/NVIDIA/nccl-tests 
 * RCCL tests: https://github.com/ROCm/rccl-tests
-* Intel OneCCL tests: https://www.intel.com/content/www/us/en/docs/oneccl/benchmark-user-guide/2021-14/benchmark.html 
 
-Offerors may choose another implementation, but must report exactly how it was built & run, including relevant scripts.
+If an open-source implementation of CCL tests is not available, then the offeror may provide another implementation, but must report exactly how it was built & run, including the source code and any relevant scripts. The implementation must follow the rules outlined in the "baseline/ported/optimized" definitions in the technical specifications. Specifically, the implementation cannot use unknown or unpublished libraries, and any language interface or architecture-specific language constructs used must be well-documented and publically available at the time of machine arrival.
 
 ### Tests
 
@@ -56,7 +55,7 @@ To demonstrate inter-node CCL performance, each collective should be run in two 
 
 ## Run Rules
 
-For all configurations described above, the collective test should scan message sizes between 256B to 4GB, increasing by a factor of 2. For example (launched via Slurm):
+Any run must utilize all available accelerators on each node. For all configurations described above, the collective test should scan message sizes between 256B to 4GB, increasing by a factor of 2. For example (launched via Slurm):
 
 ```
 srun all_reduce_perf -b 256 -e 4G -f 2
@@ -74,7 +73,7 @@ srun all_reduce_perf -b 256 -e 4G -f 2
 
 **Spreadsheet response:** We request the out-of-place and in-place bandwidth and latency to be reported in a spreadsheet format for representative message sizes* (template below). *A small Python script will be provided in this repository at a later date to summarize the CCL results for ease of formatting for this response.*
 
-\* Represenative message sizes (bytes): `524288`, `33554432`, `4294967296`
+\* Representative message sizes (bytes): `524288`, `33554432`, `4294967296`
 
 ### AllReduce reference
 
@@ -122,4 +121,5 @@ Below are AllReduce results from Kestrel when running [`all_reduce_perf`](https:
   1073741824     268435456     float     sum      -1    49081   21.88   43.07      0    46386   23.15   45.57      0
   2147483648     536870912     float     sum      -1    92587   23.19   45.66      0    92579   23.20   45.67      0
   4294967296    1073741824     float     sum      -1   184959   23.22   45.72      0   185005   23.22   45.71      0
+
 ```
