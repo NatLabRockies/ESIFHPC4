@@ -1,4 +1,6 @@
-Below is a more descriptive rewrite of the instructions:
+# WRF Benchmarking
+
+Weather Research and Forecasting (WRF) benchmarking and building instructions.
 
 ---
 
@@ -12,7 +14,7 @@ salloc -A <allocation_name> -t 60
 ```
 
 ### Step 1: Download WRF and WPS Source Code
-Start by downloading the source code for the Weather Research and Forecasting (WRF) Model and its companion, the WRF Preprocessing System (WPS). Use the provided links to download the specific versions of WRF (v4.7.1) and WPS (v4.6.0). The commands below will fetch compressed `.tar.gz` archives from the official WRF GitHub repository.
+Start by downloading the source code for the WRF model and its companion, the WRF Preprocessing System (WPS). Use the provided links to download the specific versions of WRF (v4.7.1) and WPS (v4.6.0). The commands below will fetch compressed `.tar.gz` archives from the official WRF GitHub repository.
 
 ```bash
 wget https://github.com/wrf-model/WRF/releases/download/v4.7.1/v4.7.1.tar.gz
