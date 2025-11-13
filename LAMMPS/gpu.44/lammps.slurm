@@ -11,7 +11,7 @@
 #Sample run on NREL's Kestrel
 #Requesting 4 nodes with 4 GPUs per node and 32 tasks per node.  
 #Load modules
-module load lammps/082924-gpu 
+module load lammps/072225-gpu
 #Required for baseline
 export OMP_NUM_THREADS=1
 
@@ -21,7 +21,7 @@ run_cmd="srun --ntasks $ntasks --tasks-per-node=$taskpernode"
 
 lmp_path=lmp
 input_path=../input
-run_name=(small medium large)
+run_name=(small medium large xlarge)
 
 ngpus=$((SLURM_GPUS_ON_NODE))
 

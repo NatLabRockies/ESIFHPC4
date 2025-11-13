@@ -11,7 +11,7 @@
 #Sample run on NREL's Kestrel
 #Requesting 4 nodes with 96 tasks per node.  
 #Load modules
-module load lammps/082924-intel-mpich 
+module load lammps/072225-intel-mpich
 #Required for baseline
 export OMP_NUM_THREADS=1
 
@@ -20,7 +20,7 @@ run_cmd="srun -n $ntasks"
 
 lmp_path=lmp
 input_path=../input
-run_name=(small medium large)
+run_name=(small medium large xlarge)
 
 #This parameter makes job longer to have >300s wall time
 #Adjust it if necessary

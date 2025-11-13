@@ -1,9 +1,8 @@
 CFLAGS = -O2 -qopenmp -mcmodel=medium
 
-#  -fdefault-integer-8 required to handle associated array sizes for large memory.
-FFLAGS = -O2 -qopenmp -fdefault-integer-8
-FFLAGS = -O2 -qopenmp -i8
-FFLAGS = -O2 -qopenmp 
+#  Fortran code is modified so all integers are 8 bytes
+#  We may still need to add options to compile for large memory as shown below
+FFLAGS = -O2 -qopenmp -mcmodel=large
 
 
 all: stream_f.exe stream_c.exe

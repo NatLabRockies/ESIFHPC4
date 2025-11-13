@@ -13,7 +13,7 @@
 source ../site_path_config.sh
 
 mkdir BGW_EPSILON_$SLURM_JOBID
-../stripe_large BGW_EPSILON_$SLURM_JOBID
+#../stripe_large BGW_EPSILON_$SLURM_JOBID
 cd    BGW_EPSILON_$SLURM_JOBID
 ln -s $BGW_DIR/epsilon.cplx.x .
 ln -s  ../epsilon.inp .

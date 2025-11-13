@@ -97,6 +97,7 @@
       PROGRAM stream
       use numz
       IMPLICIT NONE
+      integer command_argument_count
 C     .. Parameters ..
       INTEGER(int8) n,offset,ndim,ntimes
       INTEGER(int8) NUM_ARGS
@@ -147,7 +148,7 @@ C     ..
               read(sizestr,*)n
               ndim=n
       endif
-      if (command_argument_count() > 1)then
+      if (command_argument_count() > 2)then
               call get_command_argument(2,sizestr)
               read(sizestr,*)ntimes
       endif
@@ -181,7 +182,7 @@ C     ..
 
       PRINT *,'----------------------------------------------'
 !$OMP PARALLEL
-      PRINT *,'Printing one line per active thread....'
+!      PRINT *,'Printing one line per active thread....'
 !$OMP END PARALLEL
 
 !$OMP PARALLEL DO
@@ -267,7 +268,7 @@ C     ..
       PRINT *,'----------------------------------------------------'
 
  9000 FORMAT (1x,a,i6,a)
- 9010 FORMAT (1x,a,i10)
+ 9010 FORMAT (1x,a,i15)
  9020 FORMAT (1x,a,i10,a)
  9030 FORMAT (1x,a,i3,a,a)
  9040 FORMAT ('Function',5x,'Rate (MB/s)  Avg time   Min time  Max time'
@@ -425,7 +426,7 @@ C     ..
 
       SUBROUTINE checksums(a,b,c,n,ntimes)
               use numz
-*     IMPLICIT NONE
+      IMPLICIT NONE
 C     ..
 C     .. Arguments ..
       DOUBLE PRECISION a(*),b(*),c(*)
@@ -433,7 +434,7 @@ C     .. Arguments ..
 C     ..
 C     .. Local Scalars ..
       DOUBLE PRECISION aa,bb,cc,scalar,suma,sumb,sumc,epsilon
-      INTEGER(int8) k
+      INTEGER(int8) k,j
 C     ..
 
 C     Repeat the main loop, but with scalars only.

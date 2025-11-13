@@ -1,4 +1,4 @@
- STREAM Benchmark implementation in CUDA on device 0 of x3114c0s21b0n0
+ STREAM Benchmark implementation in CUDA on device 0 of x3104c0s21b0n0
  Device name: NVIDIA H100 80GB HBM3
  Array elements 5000 Array size (double precision) =    0.040000 MB
  Total memory for 3 arrays =    0.000120 GB
@@ -8,8 +8,8 @@
 
 Function      Rate (GiB/s)  Avg time(s)  Min time(s)  Max time(s)
 -----------------------------------------------------------------
-Copy:          10.7759      0.00000741   0.00000691   0.00001287
-Scale:         10.7759      0.00000744   0.00000691   0.00003004
-Add:           16.1638      0.00000738   0.00000691   0.00001502
-Triad:         16.1638      0.00000738   0.00000691   0.00001597
- Total time       0.04 seconds
+Copy:          10.7759      0.00000732   0.00000691   0.00001097
+Scale:         10.7759      0.00000734   0.00000691   0.00001192
+Add:           16.1638      0.00000730   0.00000691   0.00001407
+Triad:         16.1638      0.00000726   0.00000691   0.00001192
+ Total time       0.03 seconds

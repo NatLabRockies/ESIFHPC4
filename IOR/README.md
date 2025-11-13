@@ -20,7 +20,7 @@ Documentation on installation [here](https://ior.readthedocs.io/en/latest/userDo
 
 See example build script used to build IOR on Kestrel, `kestrel-example-build-script.sh`
 
-These tests require MPI and parallel HDF5.
+These tests require MPI and HDF5.
 
 ## Run Definitions and Requirements
 

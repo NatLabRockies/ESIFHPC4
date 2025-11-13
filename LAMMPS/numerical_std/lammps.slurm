@@ -10,7 +10,7 @@
 #Sample run on NREL's Kestrel
 #Requesting 1 nodes with 64 tasks per node.  
 #Load modules
-module load lammps/082924-intel-mpich 
+module load lammps/072225-intel-mpich 
 #Required for baseline
 export OMP_NUM_THREADS=1
 

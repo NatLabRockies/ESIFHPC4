@@ -32,10 +32,7 @@ As a high level overview, building VASP typically involves:
 
 2. Making any necessary system-specific modifications.
 
-3. Compiling with make.
-
-## Run Definitions and Requirements
-
+3. Compile with make.
 
 ## How to run
 
@@ -49,20 +46,52 @@ The benchmark results must be validated against the results supplied in the NREL
 
 More detailed instructions for each benchmark can be found in the `README.md` within each folder. 
 
-### Tests
+## Run Definitions and Requirements
 
-- Bench 1 on 1 CPU node
-- Bench 1 on 2 CPU nodes
-- Bench 1 on 1 accelerated node
-- Bench 2 on 1 CPU node
-- Bench 2 on 2 CPU nodes
-- Bench 2 on 1 accelerated node
+1. Tests
 
-## Run Rules
+Required: Results must be reported for both bench1 and bench2.
 
-Benchmarks should be run on the Standard and Accelerated node offerings. For the best performance, the number of MPI ranks per node may not equal the number of cores per node. In addition, KPAR and NPAR (or NCORE = the number of MPI ranks/NPAR) also have great impact on the performance. The Offeror is permitted to vary these parameters to identify the best performance. The Offeror is also permitted to map ranks within a NUMA domain as desired, subject to limitations given in the General Benchmark Instructions.
+2. Code optimization
+
+Required: Run the benchmark with code as-is or ported (as needed) following the definitions of `as is` and `ported` in the General Benchmark Instructions.
+
+Optional: Results with optimized code may aditionally be reported.
+
+3. Node classes
+
+Required: Results must be reported for both standard nodes and accelerated nodes.
+
+4. Node counts
+
+Required: For each of the above, report results on 1 and 2 nodes/accelerators.
+
+5. OpenMP usage
+
+Required: For each of the above, always report performance without OpenMP (pure MPI). 
+
+Optional: Runs using OpenMP may also be reported.
+
+6. Process/thread placement
+
+Standard runs: Use MPI ranks and threads (where applicable for optional openMP runs) such that the total number of cores used (ranks × threads) is at least 90% of the physical cores per node.
+
+Accelerated runs: Use at least one MPI rank per accelerator. The Offeror is permitted to map ranks within a NUMA domain as desired, subject to limitations given in the General Benchmark Instructions.
+
+For optimized runs, the Offeror is permitted to deviate from the above and instead use whatever core, device, or node count is considered optimal, under any placement scheme.
+
+
+7. Reporting
+
+For every run, the spreadsheet response should include run times from the Linux "time" command as illustrated in the provided example run script, converted to seconds. The "mpi-ranks" reported should reflect the number of physical cores hosting independent threads of execution, and the "threads" reported should be equal to the number of execution threads, where applicable.
+
+In addition to content enumerated in the General Instructions, please return files OUTCAR and vasprun.xml for every run, as well as all validation output, as part of the File response.
+
+## Additional Run Rules
+
+KPAR and NCORE have great impact on the performance. The Offeror is permitted to vary these parameters to identify the best performance. 
    
-Validation
+## Validation
 
     a. Validation is achieved via scripts written in Python, version 3 (reference runs were validated with Python 3.7, but the Offeror may use other versions that support these scripts). This lends the validation process a certain degree of platform independence, and validation should be able to pass on any platform with a Python3 implementation, assuming this implementation is done to standard. Aside from the standard libraries alone, the validation process will require the `numpy` module.  
     
@@ -71,9 +100,3 @@ Validation
     c. Neither the validation python scripts nor the reference data may be modified in any way by the Offeror, without prior written permission.   
 
     d. The directory containing reference data (*i.e.*, the OUTCAR* files) may be transferred to another machine if needed. For example, if the machine used for job execution did not have Python3 installed, the respondent may find it convenient to perform the validation elsewhere.
-
-## Benchmark test results to report and files to return
-
-The Spreadsheet response should include output times from the "time" Linux command as illustrated in the provided example run scripts, converted to seconds. The "# cores" reported should reflect the number of _physical_ cores hosting independent threads of execution, and the "# workers" reported should be equal to the number of execution threads.
-
-In addition to content enumerated in the General Instructions, please return files OUTCAR and vasprun.xml for every run, as well as all validation output, as part of the File response.

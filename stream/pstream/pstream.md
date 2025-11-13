@@ -143,6 +143,19 @@ The primary output from the code is stdout.  This gives the mapping of tasks/thr
 cores.  As we note above the results of the stream test itself is sent to stderr.  This
 is a secondary output.  
 
+The examples in test_run, runcpu and runit, produces afile unique.  Unique is a parse of 
+the summary output showing the number of cores occupied by the tasks.  This is the 
+"spreadsheet" output.  It lists the node names alone with the nubmer of cores.  In a 
+successful run the number of cores occupied should be the (ntasks/node * OMP_NUM_THREADS).
+We note in this case the run actually failed.  The nodes on which the test were run have
+128 cores and less than that number of cores ocuppied indicating that some cores were
+over subscribed.  The "fix" is compiler,scheduler,and processor dependent and is normally
+specified via command line arguments and environmental variables.  Vendors will supply 
+a "working" unique and the settings required to achieve it.
+
+
+
+
 In addition to output from the program it is required to report any command line settings
 and/or environmental variables required to get the shown mapping to cores.
 

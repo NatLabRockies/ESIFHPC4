@@ -16,7 +16,8 @@ mstream.cu and stream.cu require GPUs
 
 ## How to build
 
-Build procedures are described in the source directories.
+Build procedures are described in the source directories. Complete examples can be found
+in the test-run directories
 
 ## Run Definitions and Requirements
 

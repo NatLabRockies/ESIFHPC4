@@ -127,6 +127,22 @@ Triad:         16.1638      0.00000730   0.00000691   0.00001383
 
 ```
 
+If the vendor runs the GPU/MPI enabled version of stream a file similar to
+test-run/cpu.out should be provided.  This is a report of the rates for the
+various tests on each node and GPU on the node. This is a summary of the strm.\*
+files.
+
+NODE,GPU,Copy,Scale,Add,Triad
+x3104c0s17b0n0,0,10.7759,10.7759,16.1638,16.1638
+x3104c0s17b0n0,1,10.7759,10.7759,16.1638,16.1638
+x3104c0s17b0n0,2,10.7759,10.7759,16.1638,16.1638
+x3104c0s17b0n0,3,12.5000,12.5000,18.7500,18.7500
+x3104c0s21b0n0,0,10.7759,10.7759,16.1638,16.1638
+x3104c0s21b0n0,1,10.7759,10.7759,16.1638,16.1638
+x3104c0s21b0n0,2,10.7759,10.7759,16.1638,16.1638
+x3104c0s21b0n0,3,10.7759,10.7759,16.1638,16.1638
+
+
 
 # AMD programs
 

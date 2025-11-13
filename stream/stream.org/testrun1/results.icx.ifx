@@ -1,0 +1,1155 @@
+STREAM test run..
+Checking Compilers..
+  C compiler used icx ..
+  Fortran compiler used ifx ..
+Running make clean ..
+Building the default executable ..
+HYDRA_LAUNCHER_EXTRA_ARGS=--external-launcher
+__LMOD_REF_COUNT_PE_LIBSCI_REQUIRED_PRODUCTS=PE_MPICH:1
+CRAY_LMOD_MPI=cray-mpich/8.0
+LMOD_FAMILY_CRAYPE_NETWORK_VERSION=false
+LC_ALL=en_US.UTF-8
+LS_COLORS=rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:
+LD_LIBRARY_PATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/opt/oclfpga/host/linux64/lib:/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/opt/compiler/lib:/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/lib:/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/binutils-2.41-453zfqlwuuxu54ixelenvz6pfqucznyn/lib:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/python-3.11.4-ynsdda7xpqgkyqbmriytqunnakdoym2i/lib:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/gettext-0.22.5-rwgcm2z73stbnyuquuaomoesa5nuypdp/lib:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/libxml2-2.10.3-hfnww2rbzlaalsrwtxxzgclvwip7xcm5/lib:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/bzip2-1.0.8-6uvgwyw6lngn3v7wlrx5ssnfi7v57674/lib:/opt/cray/libfabric/1.15.2.0/lib64:/nopt/slurm/current/lib::
+CRAY_DSMML_ROOTDIR=/opt/cray/pe/dsmml/0.2.2
+SLURM_NODEID=0
+CRAY_DSMML_DIR=/opt/cray/pe/dsmml/0.2.2/dsmml
+SLURM_TASK_PID=3133668
+__LMOD_REF_COUNT_PATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/opt/oclfpga/bin:1;/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/bin:1;/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/binutils-2.41-453zfqlwuuxu54ixelenvz6pfqucznyn/bin:2;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/python-3.11.4-ynsdda7xpqgkyqbmriytqunnakdoym2i/bin:2;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/gettext-0.22.5-rwgcm2z73stbnyuquuaomoesa5nuypdp/bin:2;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/tar-1.34-3rhsd4lanozmn3ui25looft6bo7w27rn/bin:2;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/libxml2-2.10.3-hfnww2rbzlaalsrwtxxzgclvwip7xcm5/bin:2;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/bzip2-1.0.8-6uvgwyw6lngn3v7wlrx5ssnfi7v57674/bin:2;/nopt/nrel/apps/software/starccm/test/20.02.007-R8/STAR-View+20.02.007/bin:2;/nopt/nrel/apps/software/starccm/test/20.02.007-R8/STAR-CCM+20.02.007-R8/star/bin:2;/home/tkaiser2/.local/bin:1;/home/tkaiser2/bin:1;/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/bin:1;/opt/cray/pe/mpich/8.1.28/bin:1;/opt/cray/libfabric/1.15.2.0/bin:1;/opt/cray/pe/craype/2.7.30/bin:1;/opt/rh/gcc-toolset-12/root/usr/bin:1;/opt/clmgr/sbin:1;/opt/clmgr/bin:1;/opt/sgi/sbin:1;/opt/sgi/bin:1;/nopt/nrel/utils/bin:1;/nopt/slurm/current/bin:1;/usr/share/Modules/bin:1;/usr/local/bin:1;/usr/bin:1;/usr/local/sbin:1;/usr/sbin:1;/opt/c3/bin:1;/sbin:1;/bin:1;/opt/cray/pe/bin:1
+_ModuleTable002_=RW52LWdudS84LjUuMC5sdWEiLApmdWxsTmFtZSA9ICJQcmdFbnYtZ251LzguNS4wIiwKbG9hZE9yZGVyID0gOSwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDAsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJQcmdFbnYtZ251LzguNS4wIiwKd1YgPSAiXjAwMDAwMDA4LjAwMDAwMDAwNS4qemZpbmFsIiwKfSwKYmludXRpbHMgPSB7CmZuID0gIi9ub3B0L25yZWwvYXBwcy9jcHVfc3RhY2svbW9kdWxlcy9kZWZhdWx0L2NvbXBpbGVyc19tcGkvYmludXRpbHMvMi40MSIsCmZ1bGxOYW1lID0gImJpbnV0aWxzLzIuNDEiLApsb2FkT3JkZXIgPSAxNSwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDEsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJiaW51dGls
+FPGA_VARS_ARGS=
+PE_LIBSCI_OMP_REQUIRES= 
+PE_MPICH_GTL_DIR_amd_gfx90a=-L/opt/cray/pe/mpich/8.1.28/gtl/lib
+SSH_CONNECTION=10.15.0.243 57190 10.60.1.200 22
+CRAY_LD_LIBRARY_PATH=/opt/cray/pe/libsci/23.12.5/GNU/12.1/x86_64/lib:/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/lib:/opt/cray/pe/mpich/8.1.28/gtl/lib:/opt/cray/pe/dsmml/0.2.2/dsmml/lib
+SLURM_PRIO_PROCESS=0
+PE_ENV=GNU
+__LMOD_REF_COUNT_PE_DSMML_PKGCONFIG_LIBS=dsmml:1
+__LMOD_REF_COUNT_PE_FORTRAN_PKGCONFIG_LIBS=mpichf90:1
+LMOD_FAMILY_CRAYPE_CPU=craype-x86-spr
+OCL_ICD_FILENAMES=libintelocl_emu.so:libalteracl.so:/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/lib/libintelocl.so
+CRAY_LMOD_COMPILER=gnu/10.0
+GCC_PREFIX=/opt/rh/gcc-toolset-12/root/usr
+CRAY_DSMML_PREFIX=/opt/cray/pe/dsmml/0.2.2/dsmml
+PE_PRODUCT_LIST=CRAYPE:CRAYPE_X86_SPR
+LMOD_IGNORE_CACHE=1
+LMOD_FAMILY_MPI_VERSION=8.1.28
+MODULES_RUN_QUARANTINE=LD_LIBRARY_PATH LD_PRELOAD
+PE_PERFTOOLS_MPICH_LIBDIR=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/lib
+I_MPI_HYDRA_BOOTSTRAP_EXEC_EXTRA_ARGS=--external-launcher
+PE_LIBSCI_MODULE_NAME=cray-libsci/23.12.5
+PE_MPICH_GTL_DIR_amd_gfx906=-L/opt/cray/pe/mpich/8.1.28/gtl/lib
+LANG=en_US.UTF-8
+SLURM_SUBMIT_DIR=/kfs2/projects/hpcapps/tkaiser/ESIFHPC4/stream/stream.org/testrun1
+HISTCONTROL=ignoredups
+PE_MPICH_GTL_DIR_amd_gfx908=-L/opt/cray/pe/mpich/8.1.28/gtl/lib
+PE_DSMML_MODULE_NAME=cray-dsmml
+_ModuleTable008_=LjEubHVhIiwKZnVsbE5hbWUgPSAiZ2NjLW5hdGl2ZS8xMi4xIiwKbG9hZE9yZGVyID0gMiwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDEsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJnY2MtbmF0aXZlIiwKd1YgPSAiXjAwMDAwMDEyLjAwMDAwMDAwMS4qemZpbmFsIiwKfSwKZ2V0dGV4dCA9IHsKZm4gPSAiL25vcHQvbnJlbC9hcHBzL2NwdV9zdGFjay9tb2R1bGVzL2RlZmF1bHQvdXRpbGl0aWVzX2xpYnJhcmllcy9nZXR0ZXh0LzAuMjIuNSIsCmZ1bGxOYW1lID0gImdldHRleHQvMC4yMi41IiwKbG9hZE9yZGVyID0gMTMsCnByb3BUID0ge30sCnJlZl9jb3VudCA9IDEsCnN0YWNrRGVwdGggPSAxLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNlck5hbWUgPSAiZ2V0
+OMPI_MCA_plm_slurm_args=--external-launcher
+PE_MPICH_GTL_LIBS_nvidia70=-lmpi_gtl_cuda
+step=20
+DISPLAY=localhost:11.0
+GUESTFISH_RESTORE=\e[0m
+LMOD_FAMILY_COMPILER_VERSION=12.1
+HOSTNAME=x1008c5s6b1n0
+LMOD_SYSTEM_DEFAULT_MODULES=libfabric/1.15.2.0:craype-x86-spr:PrgEnv-gnu/8.5.0
+OLDPWD=/kfs2/projects/hpcapps/tkaiser/ESIFHPC4/stream/stream.org
+__LMOD_REF_COUNT_ACL_BOARD_VENDOR_PATH=/opt/Intel/OpenCLFPGA/oneAPI/Boards:1
+ENVIRONMENT=BATCH
+ACL_BOARD_VENDOR_PATH=/opt/Intel/OpenCLFPGA/oneAPI/Boards
+__LMOD_REF_COUNT_PE_MPICH_GENCOMPILERS_GNU=10.3:1
+GUESTFISH_INIT=\e[1;34m
+_ModuleTable007_=ID0gImFjdGl2ZSIsCnVzZXJOYW1lID0gImNyYXlwZS1uZXR3b3JrLW9maSIsCndWID0gIk0uKnpmaW5hbCIsCn0sClsiY3JheXBlLXg4Ni1zcHIiXSA9IHsKZm4gPSAiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdC9jcmF5cGUteDg2LXNwci5sdWEiLApmdWxsTmFtZSA9ICJjcmF5cGUteDg2LXNwciIsCmxvYWRPcmRlciA9IDEsCnByb3BUID0ge30sCnN0YWNrRGVwdGggPSAwLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNlck5hbWUgPSAiY3JheXBlLXg4Ni1zcHIiLAp3ViA9ICJNLip6ZmluYWwiLAp9LApbImdjYy1uYXRpdmUiXSA9IHsKZm4gPSAiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZS9nY2MtbmF0aXZlLzEy
+__LMOD_REF_COUNT_NLSPATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/lib/compiler/locale/%l_%t/%N:1
+LMOD_FAMILY_CRAYPE_NETWORK=craype-network-ofi
+LMOD_FAMILY_CRAYPE_VERSION=2.7.30
+SLURM_PROCID=0
+LMOD_FAMILY_GCC_COMPILER=gcc-native
+SLURM_JOB_GID=131364
+I_MPI_HYDRA_BOOTSTRAP=slurm
+__LMOD_REF_COUNT_LD_LIBRARY_PATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/opt/oclfpga/host/linux64/lib:1;/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/opt/compiler/lib:1;/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/lib:1;/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/binutils-2.41-453zfqlwuuxu54ixelenvz6pfqucznyn/lib:1;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/python-3.11.4-ynsdda7xpqgkyqbmriytqunnakdoym2i/lib:1;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/gettext-0.22.5-rwgcm2z73stbnyuquuaomoesa5nuypdp/lib:1;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/libxml2-2.10.3-hfnww2rbzlaalsrwtxxzgclvwip7xcm5/lib:1;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/bzip2-1.0.8-6uvgwyw6lngn3v7wlrx5ssnfi7v57674/lib:1;/opt/cray/libfabric/1.15.2.0/lib64:1;/nopt/slurm/current/lib:1;:1
+__LMOD_REF_COUNT_PKG_CONFIG_PATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/lib/pkgconfig:1;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/python-3.11.4-ynsdda7xpqgkyqbmriytqunnakdoym2i/lib/pkgconfig:2;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/libxml2-2.10.3-hfnww2rbzlaalsrwtxxzgclvwip7xcm5/lib/pkgconfig:2;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/bzip2-1.0.8-6uvgwyw6lngn3v7wlrx5ssnfi7v57674/lib/pkgconfig:2;/opt/cray/libfabric/1.15.2.0/lib64/pkgconfig:1;/opt/cray/pe/dsmml/0.2.2/dsmml/lib/pkgconfig:1;/opt/cray/pe/craype/2.7.30/pkg-config:1
+GNU_VERSION=12.1
+SLURM_ACCOUNT=hpcapps
+SLURMD_NODENAME=x1008c5s6b1n0
+PE_PKGCONFIG_PRODUCTS=PE_LIBSCI:PE_MPICH:PE_DSMML
+_ModuleTable015_=L2FwcGxpY2F0aW9uIiwKfSwKc3lzdGVtQmFzZU1QQVRIID0gIi9ldGMvc2NsL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvTW9kdWxlcy9tb2R1bGVmaWxlczovZXRjL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXM6L29wdC9jcmF5L3BlL21vZHVsZWZpbGVzL0xpbnV4Oi9vcHQvY3JheS9wZS9tb2R1bGVmaWxlcy9Db3JlOi9vcHQvY3JheS9wZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZTovb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb3JlOi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NyYXlwZS10YXJnZXRzL2RlZmF1bHQ6L25vcHQvbG1vZC9tb2R1bGVmaWxlcy9jb3JlOi9ub3B0L2xtb2QvbW9kdWxlZmlsZXMvbWl4X2NvbXBpbGVyczov
+SLURM_JOB_END_TIME=1757517756
+CRAY_MPICH_BASEDIR=/opt/cray/pe/mpich/8.1.28/ofi
+__LMOD_REF_COUNT_OCL_ICD_FILENAMES=libintelocl_emu.so:1;libalteracl.so:1;/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/lib/libintelocl.so:1
+PE_MPICH_GTL_DIR_nvidia80=-L/opt/cray/pe/mpich/8.1.28/gtl/lib
+SSH_AUTH_SOCK=/tmp/ssh-7VrhOd5eY7/agent.1403620
+_ModuleTable004_=ZHNtbWwvMC4yLjIubHVhIiwKZnVsbE5hbWUgPSAiY3JheS1kc21tbC8wLjIuMiIsCmxvYWRPcmRlciA9IDQsCnByb3BUID0ge30sCnN0YWNrRGVwdGggPSAxLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNlck5hbWUgPSAiY3JheS1kc21tbCIsCndWID0gIl4wMDAwMDAwMC4wMDAwMDAwMDIuMDAwMDAwMDAyLip6ZmluYWwiLAp9LApbImNyYXktbGlic2NpIl0gPSB7CmZuID0gIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvbXBpbGVyL2dudS8xMC4wL2NyYXktbGlic2NpLzIzLjEyLjUubHVhIiwKZnVsbE5hbWUgPSAiY3JheS1saWJzY2kvMjMuMTIuNSIsCmxvYWRPcmRlciA9IDgsCnByb3BUID0ge30sCnN0YWNrRGVwdGggPSAxLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNl
+PE_LIBSCI_GENCOMPILERS_GNU_x86_64=12.1
+SLURM_TASKS_PER_NODE=104
+S_COLORS=auto
+C3_RSH=ssh -oConnectTimeout=10 -oForwardX11=no
+PRTE_MCA_plm_slurm_args=--external-launcher
+PE_MPICH_PKGCONFIG_VARIABLES=PE_MPICH_GTL_DIR_@accelerator@:PE_MPICH_GTL_LIBS_@accelerator@
+PE_MPICH_PKGCONFIG_LIBS=mpich
+__LMOD_REF_COUNT_DIAGUTIL_PATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/etc/compiler/sys_check/sys_check.sh:1
+which_declare=declare -f
+CRAY_PE_LIBSCI_VERSION=23.12.5
+CC=icx
+XDG_SESSION_ID=4343
+CRAY_DSMML_VER=0.2.2
+MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl
+dec=0.3
+SLURM_NNODES=1
+USER=tkaiser2
+FPGA_VARS_DIR=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/opt/oclfpga
+CMPLR_ROOT=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1
+GUESTFISH_PS1=\[\e[1;32m\]><fs>\[\e[0;31m\] 
+LMOD_FAMILY_PRGENV_VERSION=8.5.0
+LMOD_FAMILY_LIBSCI=cray-libsci
+_ModuleTable012_=Zm4gPSAiL25vcHQvbnJlbC9hcHBzL2NwdV9zdGFjay9tb2R1bGVzL2RlZmF1bHQvdXRpbGl0aWVzX2xpYnJhcmllcy90YXIvMS4zNCIsCmZ1bGxOYW1lID0gInRhci8xLjM0IiwKbG9hZE9yZGVyID0gMTIsCnByb3BUID0ge30sCnJlZl9jb3VudCA9IDEsCnN0YWNrRGVwdGggPSAyLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNlck5hbWUgPSAidGFyLzEuMzQiLAp3ViA9ICIwMDAwMDAwMDEuMDAwMDAwMDM0Lip6ZmluYWwiLAp9LAp9LAptcGF0aEEgPSB7CiIvaG9tZS90a2Fpc2VyMi9FTlYvTU9EVUxFUyIKLCAiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvbXBpL2dudS8xMC4wL29maS8xLjAvY3JheS1tcGljaC84LjAiCiwgIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZp
+PE_MPICH_GTL_LIBS_ponteVecchio=-lmpi_gtl_ze
+CRAY_CPU_TARGET=x86-spr
+num_64bfloats=3287419100
+SLURM_JOB_START_TIME=1757514156
+PE_LIBSCI_VOLATILE_PRGENV=GNU
+__LMOD_REF_COUNT_MODULEPATH=/home/tkaiser2/ENV/MODULES:1;/opt/cray/pe/lmod/modulefiles/mpi/gnu/10.0/ofi/1.0/cray-mpich/8.0:1;/opt/cray/pe/lmod/modulefiles/comnet/gnu/10.0/ofi/1.0:1;/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:2;/opt/cray/pe/lmod/modulefiles/mix_compilers:2;/opt/cray/pe/lmod/modulefiles/compiler/gnu/10.0:1;/opt/cray/pe/lmod/modulefiles/cpu/x86-spr/1.0:2;/etc/scl/modulefiles:1;/opt/cray/pe/lmod/modulefiles/comnet/crayclang/16.0/ofi/1.0:1;/opt/cray/pe/lmod/modulefiles/perftools/23.12.0:1;/opt/cray/pe/modulefiles/Linux:1;/opt/cray/pe/modulefiles/Core:1;/opt/cray/pe/lmod/lmod/modulefiles/Core:1;/opt/cray/pe/lmod/modulefiles/core:1;/opt/cray/pe/lmod/modulefiles/craype-targets/default:1;/opt/cray/modulefiles:1;/nopt/nrel/apps/cpu_stack/modules/default/compilers_mpi:1;/nopt/nrel/apps/cpu_stack/modules/default/utilities_libraries:1;/nopt/nrel/apps/cpu_stack/modules/default/application:1
+PKGCONFIG_ENABLED=1
+PE_FORTRAN_PKGCONFIG_LIBS=mpichf90
+__LMOD_REF_COUNT_CRAY_LD_LIBRARY_PATH=/opt/cray/pe/libsci/23.12.5/GNU/12.1/x86_64/lib:1;/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/lib:1;/opt/cray/pe/mpich/8.1.28/gtl/lib:1;/opt/cray/pe/dsmml/0.2.2/dsmml/lib:1
+GCC_VERSION=12.1
+APPROOT=/nopt/nrel/apps/software/apptainer/1.1.9/022924_c/opt/linux-rhel8-zen3/gcc-12.2.0/apptainer-1.1.9-syf6qairtaeksksby4t6zdsdjeee3n52
+PWD=/kfs2/projects/hpcapps/tkaiser/ESIFHPC4/stream/stream.org/testrun1
+PE_MPICH_GTL_DIR_ponteVecchio=-L/opt/cray/pe/mpich/8.1.28/gtl/lib
+PE_MPICH_GTL_DIR_nvidia70=-L/opt/cray/pe/mpich/8.1.28/gtl/lib
+SLURM_JOB_NODELIST=x1008c5s6b1n0
+HOME=/home/tkaiser2
+SLURM_CLUSTER_NAME=kestrel
+PELOCAL_PRGENV=true
+max_threads=104
+CMAKE_PREFIX_PATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1:/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k:/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/binutils-2.41-453zfqlwuuxu54ixelenvz6pfqucznyn:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/python-3.11.4-ynsdda7xpqgkyqbmriytqunnakdoym2i:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/gettext-0.22.5-rwgcm2z73stbnyuquuaomoesa5nuypdp:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/tar-1.34-3rhsd4lanozmn3ui25looft6bo7w27rn:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/libxml2-2.10.3-hfnww2rbzlaalsrwtxxzgclvwip7xcm5:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/bzip2-1.0.8-6uvgwyw6lngn3v7wlrx5ssnfi7v57674
+CRAY_PE_LIBSCI_PREFIX_DIR=/opt/cray/pe/libsci/23.12.5/GNU/12.1/x86_64
+PE_LIBSCI_REQUIRED_PRODUCTS=PE_MPICH
+SLURM_NODELIST=x1008c5s6b1n0
+PE_MPICH_GTL_LIBS_amd_gfx942=-lmpi_gtl_hsa
+PE_MPICH_GTL_LIBS_amd_gfx940=-lmpi_gtl_hsa
+SSH_CLIENT=10.15.0.243 57190 22
+__LMOD_REF_COUNT_PE_GNU_FIXED_PKGCONFIG_PATH=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/lib/pkgconfig:1
+LMOD_VERSION=8.7.31
+CPATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/opt/oclfpga/include
+PE_MPICH_FORTRAN_PKGCONFIG_LIBS=mpichf90
+INTELFPGAOCLSDKROOT=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/opt/oclfpga
+PE_LIBSCI_PKGCONFIG_LIBS=libsci_mpi:libsci
+BINUTILS_ROOT_DIR=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/binutils-2.41-453zfqlwuuxu54ixelenvz6pfqucznyn
+__LMOD_REF_COUNT_INFOPATH=/opt/rh/gcc-toolset-12/root/usr/share/info:1
+CRAY_LMOD_CPU=x86-spr/1.0
+F77=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/bin/ifx
+PE_LIBSCI_OMP_REQUIRES_openmp=_mp
+PE_MPICH_GTL_LIBS_nvidia80=-lmpi_gtl_cuda
+LMOD_FAMILY_CRAYPE_CPU_VERSION=false
+SLURM_JOB_CPUS_PER_NODE=104
+GCC_PATH=/opt/rh/gcc-toolset-12/root/usr
+BASH_ENV=/opt/cray/pe/lmod/lmod/init/bash
+__LMOD_REF_COUNT_PE_MPICH_FORTRAN_PKGCONFIG_LIBS=mpichf90:1
+SLURM_TOPOLOGY_ADDR=global.group11.x1008c5s6b1n0
+CDLMD_LICENSE_FILE=
+PYTHON_ROOT_DIR=/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/python-3.11.4-ynsdda7xpqgkyqbmriytqunnakdoym2i
+CRAY_LMOD_NET=ofi/1.0
+LMOD_FAMILY_GCC_COMPILER_VERSION=12.1
+__LMOD_REF_COUNT_PE_PKGCONFIG_PRODUCTS=PE_LIBSCI:1;PE_MPICH:1;PE_DSMML:1
+GETTEXT_ROOT_DIR=/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/gettext-0.22.5-rwgcm2z73stbnyuquuaomoesa5nuypdp
+PE_MPICH_MODULE_NAME=cray-mpich
+NLSPATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/lib/compiler/locale/%l_%t/%N
+LIBXML2_ROOT_DIR=/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/libxml2-2.10.3-hfnww2rbzlaalsrwtxxzgclvwip7xcm5
+PE_LIBSCI_VOLATILE_PKGCONFIG_PATH=/opt/cray/pe/libsci/23.12.5/@PRGENV@/@PE_LIBSCI_GENCOMPS@/@PE_LIBSCI_TARGET@/lib/pkgconfig
+__LMOD_REF_COUNT_PE_MPICH_FIXED_PRGENV=GNU:1
+__LMOD_REF_COUNT_LIBRARY_PATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/lib:1
+PE_MPICH_GTL_DIR_amd_gfx940=-L/opt/cray/pe/mpich/8.1.28/gtl/lib
+PE_MPICH_GTL_DIR_amd_gfx942=-L/opt/cray/pe/mpich/8.1.28/gtl/lib
+SALLOC_ACCOUNT=hpcapps
+SLURM_JOB_NAME=hybrid
+TMPDIR=/tmp/scratch/10622430
+LIBRARY_PATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/lib
+BZIP2_ROOT_DIR=/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/bzip2-1.0.8-6uvgwyw6lngn3v7wlrx5ssnfi7v57674
+__LMOD_REF_COUNT_CMAKE_PREFIX_PATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1:1;/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k:1;/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/binutils-2.41-453zfqlwuuxu54ixelenvz6pfqucznyn:1;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/python-3.11.4-ynsdda7xpqgkyqbmriytqunnakdoym2i:1;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/gettext-0.22.5-rwgcm2z73stbnyuquuaomoesa5nuypdp:1;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/tar-1.34-3rhsd4lanozmn3ui25looft6bo7w27rn:1;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/libxml2-2.10.3-hfnww2rbzlaalsrwtxxzgclvwip7xcm5:1;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/bzip2-1.0.8-6uvgwyw6lngn3v7wlrx5ssnfi7v57674:1
+LMOD_sys=Linux
+PE_PKGCONFIG_LIBS=libsci_mpi:libsci:mpich:dsmml
+_ModuleTable010_=ID0gewpmbiA9ICIvb3B0L2NyYXkvbW9kdWxlZmlsZXMvbGliZmFicmljLzEuMTUuMi4wIiwKZnVsbE5hbWUgPSAibGliZmFicmljLzEuMTUuMi4wIiwKbG9hZE9yZGVyID0gNSwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDIsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJsaWJmYWJyaWMiLAp3ViA9ICJeMDAwMDAwMDEuMDAwMDAwMDE1LjAwMDAwMDAwMi4qemZpbmFsIiwKfSwKbGlieG1sMiA9IHsKZm4gPSAiL25vcHQvbnJlbC9hcHBzL2NwdV9zdGFjay9tb2R1bGVzL2RlZmF1bHQvdXRpbGl0aWVzX2xpYnJhcmllcy9saWJ4bWwyLzIuMTAuMyIsCmZ1bGxOYW1lID0gImxpYnhtbDIvMi4xMC4zIiwKbG9hZE9yZGVyID0gMTEsCnByb3BUID0ge30sCnJlZl9jb3Vu
+SBATCH_ACCOUNT=hpcapps
+SLURM_JOBID=10622430
+CRAY_PE_LIBSCI_PREFIX=/opt/cray/pe/libsci/23.12.5/GNU/12.1/x86_64
+_ModuleTable001_=X01vZHVsZVRhYmxlXyA9IHsKTVR2ZXJzaW9uID0gMywKY19yZWJ1aWxkVGltZSA9IGZhbHNlLApjX3Nob3J0VGltZSA9IGZhbHNlLApkZXB0aFQgPSB7fSwKZmFtaWx5ID0gewpQcmdFbnYgPSAiUHJnRW52LWdudSIsCmNvbXBpbGVyID0gImdjYy1uYXRpdmUiLApjcmF5cGUgPSAiY3JheXBlIiwKY3JheXBlX2NwdSA9ICJjcmF5cGUteDg2LXNwciIsCmNyYXlwZV9uZXR3b3JrID0gImNyYXlwZS1uZXR3b3JrLW9maSIsCmdjY19jb21waWxlciA9ICJnY2MtbmF0aXZlIiwKbGlic2NpID0gImNyYXktbGlic2NpIiwKbXBpID0gImNyYXktbXBpY2giLAp9LAptVCA9IHsKWyJQcmdFbnYtZ251Il0gPSB7CmZuID0gIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvcmUvUHJn
+SLURM_CONF=/var/spool/slurmd/conf-cache/slurm.conf
+LOADEDMODULES=craype-x86-spr:gcc-native/12.1:craype/2.7.30:cray-dsmml/0.2.2:libfabric/1.15.2.0:craype-network-ofi:cray-mpich/8.1.28:cray-libsci/23.12.5:PrgEnv-gnu/8.5.0:bzip2/1.0.8:libxml2/2.10.3:tar/1.34:gettext/0.22.5:python/3.11.4:binutils/2.41:intel-oneapi-compilers/2024.1.0
+FC=ifx
+DIAGUTIL_PATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/etc/compiler/sys_check/sys_check.sh
+CRAYPE_NETWORK_TARGET=ofi
+__LMOD_REF_COUNT_ACLOCAL_PATH=/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/gettext-0.22.5-rwgcm2z73stbnyuquuaomoesa5nuypdp/share/aclocal:2;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/libxml2-2.10.3-hfnww2rbzlaalsrwtxxzgclvwip7xcm5/share/aclocal:2
+__LMOD_REF_COUNT_MANPATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/share/man:1;/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/binutils-2.41-453zfqlwuuxu54ixelenvz6pfqucznyn/share/man:2;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/python-3.11.4-ynsdda7xpqgkyqbmriytqunnakdoym2i/share/man:2;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/gettext-0.22.5-rwgcm2z73stbnyuquuaomoesa5nuypdp/share/man:2;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/tar-1.34-3rhsd4lanozmn3ui25looft6bo7w27rn/share/man:2;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/libxml2-2.10.3-hfnww2rbzlaalsrwtxxzgclvwip7xcm5/share/man:2;/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/bzip2-1.0.8-6uvgwyw6lngn3v7wlrx5ssnfi7v57674/man:2;/usr/share/man:2;/opt/cray/pe/libsci/23.12.5/share/man:1;/opt/cray/pe/mpich/8.1.28/ofi/man:1;/opt/cray/pe/mpich/8.1.28/man/mpich:1;/opt/cray/libfabric/1.15.2.0/share/man:1;/opt/cray/pe/dsmml/0.2.2/dsmml/man:1;/opt/cray/pe/craype/2.7.30/man:1;/opt/rh/gcc-toolset-12/root/usr/share/man:1;/opt/cray/pe/lmod/lmod/share/man:1;/nopt/slurm/current/share/man:1;/opt/c3/man:1;/opt/clmgr/man:1;/opt/sgi/share/man:1;/opt/clmgr/share/man:1;/opt/clmgr/lib/cm-cli/man:1;:7
+_ModuleTable006_=ZmlsZXMvY29yZS9jcmF5cGUvMi43LjMwLmx1YSIsCmZ1bGxOYW1lID0gImNyYXlwZS8yLjcuMzAiLApsb2FkT3JkZXIgPSAzLApwcm9wVCA9IHt9LApzdGFja0RlcHRoID0gMSwKc3RhdHVzID0gImFjdGl2ZSIsCnVzZXJOYW1lID0gImNyYXlwZSIsCndWID0gIl4wMDAwMDAwMi4wMDAwMDAwMDcuMDAwMDAwMDMwLip6ZmluYWwiLAp9LApbImNyYXlwZS1uZXR3b3JrLW9maSJdID0gewpmbiA9ICIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0L2NyYXlwZS1uZXR3b3JrLW9maS5sdWEiLApmdWxsTmFtZSA9ICJjcmF5cGUtbmV0d29yay1vZmkiLApsb2FkT3JkZXIgPSA2LApwcm9wVCA9IHt9LApzdGFja0RlcHRoID0gMSwKc3RhdHVz
+num_physical_cores=104
+_ModuleTable003_=cy8yLjQxIiwKd1YgPSAiMDAwMDAwMDAyLjAwMDAwMDA0MS4qemZpbmFsIiwKfSwKYnppcDIgPSB7CmZuID0gIi9ub3B0L25yZWwvYXBwcy9jcHVfc3RhY2svbW9kdWxlcy9kZWZhdWx0L3V0aWxpdGllc19saWJyYXJpZXMvYnppcDIvMS4wLjgiLApmdWxsTmFtZSA9ICJiemlwMi8xLjAuOCIsCmxvYWRPcmRlciA9IDEwLApwcm9wVCA9IHt9LApyZWZfY291bnQgPSAzLApzdGFja0RlcHRoID0gMSwKc3RhdHVzID0gImFjdGl2ZSIsCnVzZXJOYW1lID0gImJ6aXAyLzEuMC44IiwKd1YgPSAiMDAwMDAwMDAxLjAwMDAwMDAwMC4wMDAwMDAwMDguKnpmaW5hbCIsCn0sClsiY3JheS1kc21tbCJdID0gewpmbiA9ICIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb3JlL2NyYXkt
+SLURM_JOB_QOS=normal
+LMOD_ROOT=/opt/cray/pe/lmod
+SLURM_TOPOLOGY_ADDR_PATTERN=switch.switch.node
+SSH_TTY=/dev/pts/28
+CRAY_MPICH_ROOTDIR=/opt/cray/pe/mpich/8.1.28
+_ModuleTable013_=bGVzL2NvbW5ldC9nbnUvMTAuMC9vZmkvMS4wIgosICIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9uZXQvb2ZpLzEuMCIKLCAiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvbWl4X2NvbXBpbGVycyIKLCAiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29tcGlsZXIvZ251LzEwLjAiCiwgIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NwdS94ODYtc3ByLzEuMCIsICIvZXRjL3NjbC9tb2R1bGVmaWxlcyIKLCAiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29tbmV0L2NyYXljbGFuZy8xNi4wL29maS8xLjAiCiwgIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL3BlcmZ0b29scy8yMy4xMi4wIgosICIvb3B0L2NyYXkvcGUvbW9k
+MAIL=/var/spool/mail/tkaiser2
+SLURM_CPUS_ON_NODE=104
+CXX=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/bin/icpx
+SLURM_JOB_NUM_NODES=1
+_ModuleTable016_=b3B0L2NyYXkvbW9kdWxlZmlsZXMiLAp9Cg==
+INTEL_ONEAPI_COMPILERS_ROOT_DIR=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k
+_ModuleTable009_=dGV4dC8wLjIyLjUiLAp3ViA9ICIwMDAwMDAwMDAuMDAwMDAwMDIyLjAwMDAwMDAwNS4qemZpbmFsIiwKfSwKWyJpbnRlbC1vbmVhcGktY29tcGlsZXJzIl0gPSB7CmZuID0gIi9ub3B0L25yZWwvYXBwcy9jcHVfc3RhY2svbW9kdWxlcy9kZWZhdWx0L2NvbXBpbGVyc19tcGkvaW50ZWwtb25lYXBpLWNvbXBpbGVycy8yMDI0LjEuMCIsCmZ1bGxOYW1lID0gImludGVsLW9uZWFwaS1jb21waWxlcnMvMjAyNC4xLjAiLApsb2FkT3JkZXIgPSAxNiwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDAsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJpbnRlbC1vbmVhcGktY29tcGlsZXJzIiwKd1YgPSAiMDAwMDAyMDI0LjAwMDAwMDAwMS4qemZpbmFsIiwKfSwKbGliZmFicmlj
+SHELL=/bin/bash
+TERM=xterm-256color
+CRAY_MPICH_VER=8.1.28
+PE_MPICH_FIXED_PRGENV=GNU
+LMOD_FAMILY_PRGENV=PrgEnv-gnu
+CRAY_PE_LIBSCI_BASE_DIR=/opt/cray/pe/libsci/23.12.5
+SLURM_JOB_UID=131364
+_ModuleTable_Sz_=16
+__LMOD_REF_COUNT_CPATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/opt/oclfpga/include:1
+SLURM_JOB_PARTITION=debug
+MYACC=hpcapps
+SLURM_SCRIPT_CONTEXT=prolog_task
+USE_PCM_DB=2
+LMOD_FAMILY_COMPILER=gcc-native
+CRAY_DSMML_BASEDIR=/opt/cray/pe/dsmml/0.2.2
+NREL_CLUSTER=kestrel
+PE_MPICH_GENCOMPILERS_GNU=10.3
+SLURM_JOB_USER=tkaiser2
+TAR_ROOT_DIR=/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/tar-1.34-3rhsd4lanozmn3ui25looft6bo7w27rn
+SHLVL=2
+LANGUAGE=en_US.UTF-8
+KMP_AFFINITY=compact
+SLURM_SUBMIT_HOST=kl1
+SLURM_JOB_ACCOUNT=hpcapps
+ACLOCAL_PATH=/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/gettext-0.22.5-rwgcm2z73stbnyuquuaomoesa5nuypdp/share/aclocal:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/libxml2-2.10.3-hfnww2rbzlaalsrwtxxzgclvwip7xcm5/share/aclocal
+MANPATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/share/man:/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/binutils-2.41-453zfqlwuuxu54ixelenvz6pfqucznyn/share/man:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/python-3.11.4-ynsdda7xpqgkyqbmriytqunnakdoym2i/share/man:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/gettext-0.22.5-rwgcm2z73stbnyuquuaomoesa5nuypdp/share/man:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/tar-1.34-3rhsd4lanozmn3ui25looft6bo7w27rn/share/man:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/libxml2-2.10.3-hfnww2rbzlaalsrwtxxzgclvwip7xcm5/share/man:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/bzip2-1.0.8-6uvgwyw6lngn3v7wlrx5ssnfi7v57674/man:/usr/share/man:/opt/cray/pe/libsci/23.12.5/share/man:/opt/cray/pe/mpich/8.1.28/ofi/man:/opt/cray/pe/mpich/8.1.28/man/mpich:/opt/cray/libfabric/1.15.2.0/share/man:/opt/cray/pe/dsmml/0.2.2/dsmml/man:/opt/cray/pe/craype/2.7.30/man:/opt/rh/gcc-toolset-12/root/usr/share/man:/opt/cray/pe/lmod/lmod/share/man:/nopt/slurm/current/share/man:/opt/c3/man:/opt/clmgr/man:/opt/sgi/share/man:/opt/clmgr/share/man:/opt/clmgr/lib/cm-cli/man::
+CRAY_DSMML_VERSION=0.2.2
+MPICH_DIR=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3
+OSCAR_HOME=/opt/oscar
+HYDRA_BOOTSTRAP=slurm
+PE_MPICH_GTL_LIBS_nvidia90=-lmpi_gtl_cuda
+MODULEPATH=/home/tkaiser2/ENV/MODULES:/opt/cray/pe/lmod/modulefiles/mpi/gnu/10.0/ofi/1.0/cray-mpich/8.0:/opt/cray/pe/lmod/modulefiles/comnet/gnu/10.0/ofi/1.0:/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:/opt/cray/pe/lmod/modulefiles/mix_compilers:/opt/cray/pe/lmod/modulefiles/compiler/gnu/10.0:/opt/cray/pe/lmod/modulefiles/cpu/x86-spr/1.0:/etc/scl/modulefiles:/opt/cray/pe/lmod/modulefiles/comnet/crayclang/16.0/ofi/1.0:/opt/cray/pe/lmod/modulefiles/perftools/23.12.0:/opt/cray/pe/modulefiles/Linux:/opt/cray/pe/modulefiles/Core:/opt/cray/pe/lmod/lmod/modulefiles/Core:/opt/cray/pe/lmod/modulefiles/core:/opt/cray/pe/lmod/modulefiles/craype-targets/default:/opt/cray/modulefiles:/nopt/nrel/apps/cpu_stack/modules/default/compilers_mpi:/nopt/nrel/apps/cpu_stack/modules/default/utilities_libraries:/nopt/nrel/apps/cpu_stack/modules/default/application
+CRAY_MPICH_DIR=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3
+SLURM_GTIDS=0
+LMOD_FAMILY_CRAYPE=craype
+LOGNAME=tkaiser2
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/131364/bus
+CRAY_MPICH_VERSION=8.1.28
+precent=30
+XDG_RUNTIME_DIR=/run/user/131364
+MODULEPATH_modshare=/usr/share/Modules/modulefiles:2:/etc/modulefiles:2:/usr/share/modulefiles:2
+MODULEPATH_ROOT=/opt/cray/pe/modulefiles
+PE_MPICH_GTL_LIBS_amd_gfx906=-lmpi_gtl_hsa
+PE_DSMML_PKGCONFIG_LIBS=dsmml
+PE_LIBSCI_PKGCONFIG_VARIABLES=PE_LIBSCI_OMP_REQUIRES_@openmp@:PE_SCI_EXT_LIBPATH:PE_SCI_EXT_LIBNAME
+PATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/opt/oclfpga/bin:/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/bin:/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/binutils-2.41-453zfqlwuuxu54ixelenvz6pfqucznyn/bin:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/python-3.11.4-ynsdda7xpqgkyqbmriytqunnakdoym2i/bin:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/gettext-0.22.5-rwgcm2z73stbnyuquuaomoesa5nuypdp/bin:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/tar-1.34-3rhsd4lanozmn3ui25looft6bo7w27rn/bin:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/libxml2-2.10.3-hfnww2rbzlaalsrwtxxzgclvwip7xcm5/bin:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/bzip2-1.0.8-6uvgwyw6lngn3v7wlrx5ssnfi7v57674/bin:/nopt/nrel/apps/software/starccm/test/20.02.007-R8/STAR-View+20.02.007/bin:/nopt/nrel/apps/software/starccm/test/20.02.007-R8/STAR-CCM+20.02.007-R8/star/bin:/home/tkaiser2/.local/bin:/home/tkaiser2/bin:/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/bin:/opt/cray/pe/mpich/8.1.28/bin:/opt/cray/libfabric/1.15.2.0/bin:/opt/cray/pe/craype/2.7.30/bin:/opt/rh/gcc-toolset-12/root/usr/bin:/opt/clmgr/sbin:/opt/clmgr/bin:/opt/sgi/sbin:/opt/sgi/bin:/nopt/nrel/utils/bin:/nopt/slurm/current/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/c3/bin:/sbin:/bin:/opt/cray/pe/bin
+PE_MPICH_GTL_LIBS_amd_gfx908=-lmpi_gtl_hsa
+SLURM_JOB_ID=10622430
+_ModuleTable014_=dWxlZmlsZXMvTGludXgiLCAiL29wdC9jcmF5L3BlL21vZHVsZWZpbGVzL0NvcmUiCiwgIi9vcHQvY3JheS9wZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIKLCAiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZSIKLCAiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdCIKLCAiL29wdC9jcmF5L21vZHVsZWZpbGVzIgosICIvbm9wdC9ucmVsL2FwcHMvY3B1X3N0YWNrL21vZHVsZXMvZGVmYXVsdC9jb21waWxlcnNfbXBpIgosICIvbm9wdC9ucmVsL2FwcHMvY3B1X3N0YWNrL21vZHVsZXMvZGVmYXVsdC91dGlsaXRpZXNfbGlicmFyaWVzIiwgIi9ub3B0L25yZWwvYXBwcy9jcHVfc3RhY2svbW9kdWxlcy9kZWZhdWx0
+PE_MPICH_GTL_DIR_nvidia90=-L/opt/cray/pe/mpich/8.1.28/gtl/lib
+__LMOD_REF_COUNT_PE_PRODUCT_LIST=CRAYPE:1;CRAYPE_X86_SPR:1
+_LMFILES_=/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-x86-spr.lua:/opt/cray/pe/lmod/modulefiles/core/gcc-native/12.1.lua:/opt/cray/pe/lmod/modulefiles/core/craype/2.7.30.lua:/opt/cray/pe/lmod/modulefiles/core/cray-dsmml/0.2.2.lua:/opt/cray/modulefiles/libfabric/1.15.2.0:/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-network-ofi.lua:/opt/cray/pe/lmod/modulefiles/comnet/gnu/10.0/ofi/1.0/cray-mpich/8.1.28.lua:/opt/cray/pe/lmod/modulefiles/compiler/gnu/10.0/cray-libsci/23.12.5.lua:/opt/cray/pe/lmod/modulefiles/core/PrgEnv-gnu/8.5.0.lua:/nopt/nrel/apps/cpu_stack/modules/default/utilities_libraries/bzip2/1.0.8:/nopt/nrel/apps/cpu_stack/modules/default/utilities_libraries/libxml2/2.10.3:/nopt/nrel/apps/cpu_stack/modules/default/utilities_libraries/tar/1.34:/nopt/nrel/apps/cpu_stack/modules/default/utilities_libraries/gettext/0.22.5:/nopt/nrel/apps/cpu_stack/modules/default/utilities_libraries/python/3.11.4:/nopt/nrel/apps/cpu_stack/modules/default/compilers_mpi/binutils/2.41:/nopt/nrel/apps/cpu_stack/modules/default/compilers_mpi/intel-oneapi-compilers/2024.1.0
+LMOD_FAMILY_LIBSCI_VERSION=23.12.5
+GUESTFISH_OUTPUT=\e[0m
+MODULESHOME=/opt/cray/pe/lmod/lmod
+LMOD_SETTARG_FULL_SUPPORT=no
+PKG_CONFIG_PATH=/nopt/nrel/apps/cpu_stack/compilers/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/intel-oneapi-compilers-2024.1.0-5v67gnwkitbsbovcjxwtr6kqayggji5k/compiler/2024.1/lib/pkgconfig:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/python-3.11.4-ynsdda7xpqgkyqbmriytqunnakdoym2i/lib/pkgconfig:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/libxml2-2.10.3-hfnww2rbzlaalsrwtxxzgclvwip7xcm5/lib/pkgconfig:/nopt/nrel/apps/cpu_stack/utilities/06-24/linux-rhel8-sapphirerapids/gcc-12.3.0/bzip2-1.0.8-6uvgwyw6lngn3v7wlrx5ssnfi7v57674/lib/pkgconfig:/opt/cray/libfabric/1.15.2.0/lib64/pkgconfig:/opt/cray/pe/dsmml/0.2.2/dsmml/lib/pkgconfig:/opt/cray/pe/craype/2.7.30/pkg-config
+INFOPATH=/opt/rh/gcc-toolset-12/root/usr/share/info
+min_threads=24
+PE_GNU_FIXED_PKGCONFIG_PATH=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/lib/pkgconfig
+_ModuleTable011_=dCA9IDEsCnN0YWNrRGVwdGggPSAyLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNlck5hbWUgPSAibGlieG1sMi8yLjEwLjMiLAp3ViA9ICIwMDAwMDAwMDIuMDAwMDAwMDEwLjAwMDAwMDAwMy4qemZpbmFsIiwKfSwKcHl0aG9uID0gewpmbiA9ICIvbm9wdC9ucmVsL2FwcHMvY3B1X3N0YWNrL21vZHVsZXMvZGVmYXVsdC91dGlsaXRpZXNfbGlicmFyaWVzL3B5dGhvbi8zLjExLjQiLApmdWxsTmFtZSA9ICJweXRob24vMy4xMS40IiwKbG9hZE9yZGVyID0gMTQsCnByb3BUID0ge30sCnN0YWNrRGVwdGggPSAwLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNlck5hbWUgPSAicHl0aG9uIiwKd1YgPSAiMDAwMDAwMDAzLjAwMDAwMDAxMS4wMDAwMDAwMDQuKnpmaW5hbCIsCn0sCnRhciA9IHsK
+HISTSIZE=1000
+PE_MPICH_GTL_LIBS_amd_gfx90a=-lmpi_gtl_hsa
+CRAYPE_DIR=/opt/cray/pe/craype/2.7.30
+LMOD_PKG=/opt/cray/pe/lmod/lmod
+__LMOD_REF_COUNT_PE_MPICH_PKGCONFIG_LIBS=mpich:1
+__LMOD_REF_COUNT_PE_PKGCONFIG_LIBS=libsci_mpi:1;libsci:1;mpich:1;dsmml:1
+SLURM_OOM_KILL_STEP=0
+CRAYPE_VERSION=2.7.30
+LMOD_CMD=/opt/cray/pe/lmod/lmod/libexec/lmod
+_ModuleTable005_=ck5hbWUgPSAiY3JheS1saWJzY2kiLAp3ViA9ICJeMDAwMDAwMjMuMDAwMDAwMDEyLjAwMDAwMDAwNS4qemZpbmFsIiwKfSwKWyJjcmF5LW1waWNoIl0gPSB7CmZuID0gIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvbW5ldC9nbnUvMTAuMC9vZmkvMS4wL2NyYXktbXBpY2gvOC4xLjI4Lmx1YSIsCmZ1bGxOYW1lID0gImNyYXktbXBpY2gvOC4xLjI4IiwKbG9hZE9yZGVyID0gNywKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDEsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJjcmF5LW1waWNoIiwKd1YgPSAiXjAwMDAwMDA4LjAwMDAwMDAwMS4wMDAwMDAwMjguKnpmaW5hbCIsCn0sCmNyYXlwZSA9IHsKZm4gPSAiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxl
+SLURM_LOCALID=0
+CRAY_MPICH_PREFIX=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3
+CONT=/nopt/nrel/apps/software/apptainer/1.1.9/examples/
+PE_GCC_EXTERNAL=native
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LMOD_DIR=/opt/cray/pe/lmod/lmod/libexec
+PE_LIBSCI_GENCOMPS_GNU_x86_64=121
+LMOD_FAMILY_MPI=cray-mpich
+BASH_FUNC_which%%=() {  ( alias;
+ eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot $@
+}
+BASH_FUNC_module%%=() {  if [ -z "${LMOD_SH_DBG_ON+x}" ]; then
+ case "$-" in 
+ *v*x*)
+ __lmod_sh_dbg='vx'
+ ;;
+ *v*)
+ __lmod_sh_dbg='v'
+ ;;
+ *x*)
+ __lmod_sh_dbg='x'
+ ;;
+ esac;
+ fi;
+ if [ -n "${__lmod_sh_dbg:-}" ]; then
+ set +$__lmod_sh_dbg;
+ echo "Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod's output" 1>&2;
+ fi;
+ eval "$($LMOD_CMD shell "$@")" && eval "$(${LMOD_SETTARG_CMD:-:} -s sh)";
+ __lmod_my_status=$?;
+ if [ -n "${__lmod_sh_dbg:-}" ]; then
+ echo "Shell debugging restarted" 1>&2;
+ set -$__lmod_sh_dbg;
+ fi;
+ unset __lmod_sh_dbg;
+ return $__lmod_my_status
+}
+BASH_FUNC__module_raw%%=() {  unset _mlshdbg;
+ if [ "${MODULES_SILENT_SHELL_DEBUG:-0}" = '1' ]; then
+ case "$-" in 
+ *v*x*)
+ set +vx;
+ _mlshdbg='vx'
+ ;;
+ *v*)
+ set +v;
+ _mlshdbg='v'
+ ;;
+ *x*)
+ set +x;
+ _mlshdbg='x'
+ ;;
+ *)
+ _mlshdbg=''
+ ;;
+ esac;
+ fi;
+ unset _mlre _mlIFS;
+ if [ -n "${IFS+x}" ]; then
+ _mlIFS=$IFS;
+ fi;
+ IFS=' ';
+ for _mlv in ${MODULES_RUN_QUARANTINE:-};
+ do
+ if [ "${_mlv}" = "${_mlv##*[!A-Za-z0-9_]}" -a "${_mlv}" = "${_mlv#[0-9]}" ]; then
+ if [ -n "`eval 'echo ${'$_mlv'+x}'`" ]; then
+ _mlre="${_mlre:-}${_mlv}_modquar='`eval 'echo ${'$_mlv'}'`' ";
+ fi;
+ _mlrv="MODULES_RUNENV_${_mlv}";
+ _mlre="${_mlre:-}${_mlv}='`eval 'echo ${'$_mlrv':-}'`' ";
+ fi;
+ done;
+ if [ -n "${_mlre:-}" ]; then
+ eval `eval ${_mlre} /usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash '"$@"'`;
+ else
+ eval `/usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash "$@"`;
+ fi;
+ _mlstatus=$?;
+ if [ -n "${_mlIFS+x}" ]; then
+ IFS=$_mlIFS;
+ else
+ unset IFS;
+ fi;
+ unset _mlre _mlv _mlrv _mlIFS;
+ if [ -n "${_mlshdbg:-}" ]; then
+ set -$_mlshdbg;
+ fi;
+ unset _mlshdbg;
+ return $_mlstatus
+}
+BASH_FUNC_switchml%%=() {  typeset swfound=1;
+ if [ "${MODULES_USE_COMPAT_VERSION:-0}" = '1' ]; then
+ typeset swname='main';
+ if [ -e /usr/share/Modules/libexec/modulecmd.tcl ]; then
+ typeset swfound=0;
+ unset MODULES_USE_COMPAT_VERSION;
+ fi;
+ else
+ typeset swname='compatibility';
+ if [ -e /usr/share/Modules/libexec/modulecmd-compat ]; then
+ typeset swfound=0;
+ MODULES_USE_COMPAT_VERSION=1;
+ export MODULES_USE_COMPAT_VERSION;
+ fi;
+ fi;
+ if [ $swfound -eq 0 ]; then
+ echo "Switching to Modules $swname version";
+ source /usr/share/Modules/init/bash;
+ else
+ echo "Cannot switch to Modules $swname version, command not found";
+ return 1;
+ fi
+}
+BASH_FUNC_scl%%=() {  if [ "$1" = "load" -o "$1" = "unload" ]; then
+ eval "module $@";
+ else
+ /usr/bin/scl "$@";
+ fi
+}
+BASH_FUNC_ml%%=() {  eval "$($LMOD_DIR/ml_cmd "$@")"
+}
+_=/usr/bin/printenv
+running the C executable scaling study with default memory, 1 to 104 OpenMP threads..
+OMP_NUM_THREADS=1
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 10000000 (elements), Offset = 0 (elements)
+Memory per array = 76.3 MiB (= 0.1 GiB).
+Total memory required = 228.9 MiB (= 0.2 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Number of Threads requested = 1
+Number of Threads counted = 1
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 6031 microseconds.
+   (= 6031 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:           25055.1     0.006458     0.006386     0.006499
+Scale:          12691.4     0.012646     0.012607     0.012713
+Add:            14841.4     0.016224     0.016171     0.016323
+Triad:          15336.5     0.015729     0.015649     0.016010
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+OMP_NUM_THREADS=24
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 10000000 (elements), Offset = 0 (elements)
+Memory per array = 76.3 MiB (= 0.1 GiB).
+Total memory required = 228.9 MiB (= 0.2 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Number of Threads requested = 24
+Number of Threads counted = 24
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 1174 microseconds.
+   (= 1174 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:          129863.7     0.001306     0.001232     0.001346
+Scale:          86257.3     0.001936     0.001855     0.002154
+Add:           100585.9     0.002420     0.002386     0.002462
+Triad:         100801.8     0.002408     0.002381     0.002422
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+OMP_NUM_THREADS=44
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 10000000 (elements), Offset = 0 (elements)
+Memory per array = 76.3 MiB (= 0.1 GiB).
+Total memory required = 228.9 MiB (= 0.2 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Number of Threads requested = 44
+Number of Threads counted = 44
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 308 microseconds.
+   (= 308 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:          285168.8     0.000631     0.000561     0.000650
+Scale:         213614.0     0.000768     0.000749     0.000863
+Add:           190039.3     0.001282     0.001263     0.001307
+Triad:         222219.6     0.001086     0.001080     0.001092
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+OMP_NUM_THREADS=64
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 10000000 (elements), Offset = 0 (elements)
+Memory per array = 76.3 MiB (= 0.1 GiB).
+Total memory required = 228.9 MiB (= 0.2 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Number of Threads requested = 64
+Number of Threads counted = 64
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 139 microseconds.
+   (= 139 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:          575350.2     0.000291     0.000278     0.000308
+Scale:         666989.2     0.000247     0.000240     0.000257
+Add:           882425.5     0.000298     0.000272     0.000370
+Triad:         922779.1     0.000286     0.000260     0.000395
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+OMP_NUM_THREADS=84
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 10000000 (elements), Offset = 0 (elements)
+Memory per array = 76.3 MiB (= 0.1 GiB).
+Total memory required = 228.9 MiB (= 0.2 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Number of Threads requested = 84
+Number of Threads counted = 84
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 59 microseconds.
+   (= 59 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:         2420362.9     0.000074     0.000066     0.000077
+Scale:        2103496.1     0.000084     0.000076     0.000088
+Add:          2242829.8     0.000132     0.000107     0.000209
+Triad:        1859832.0     0.000153     0.000129     0.000229
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+OMP_NUM_THREADS=104
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 10000000 (elements), Offset = 0 (elements)
+Memory per array = 76.3 MiB (= 0.1 GiB).
+Total memory required = 228.9 MiB (= 0.2 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Number of Threads requested = 104
+Number of Threads counted = 104
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 2346 microseconds.
+   (= 2346 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:          650579.9     0.001366     0.000246     0.003431
+Scale:         737704.2     0.001236     0.000217     0.003382
+Add:          3640324.3     0.001012     0.000066     0.003417
+Triad:         995804.4     0.001290     0.000241     0.003550
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+running the Fortran executable scaling study with default memory, 1 to 104 OpenMP threads..
+OMP_NUM_THREADS=1
+----------------------------------------------
+ Double precision appears to have 16 digits of accuracy
+ Assuming 8 bytes per DOUBLE PRECISION word
+----------------------------------------------
+ ----------------------------------------------
+ STREAM Version $Revision: 5.6 $
+ ----------------------------------------------
+ Array size =        20000000
+ Offset     =               0
+ The total memory requirement is        457 MB
+ You are running each test  10 times
+ --
+ The *best* time for each test is used
+ *EXCLUDING* the first and last iterations
+ ----------------------------------------------
+ Number of Threads =                      1
+ ----------------------------------------------
+ ----------------------------------------------------
+ Your clock granularity/precision appears to be      1 microseconds
+ ----------------------------------------------------
+Function     Rate (MB/s)  Avg time   Min time  Max time
+Copy:         24435.2    0.0131      0.0131      0.0132
+Scale:        14646.7    0.0219      0.0218      0.0219
+Add:          14246.7    0.0338      0.0337      0.0341
+Triad:        14479.2    0.0332      0.0332      0.0332
+ ----------------------------------------------------
+ Solution Validates!
+ ----------------------------------------------------
+OMP_NUM_THREADS=24
+----------------------------------------------
+ Double precision appears to have 16 digits of accuracy
+ Assuming 8 bytes per DOUBLE PRECISION word
+----------------------------------------------
+ ----------------------------------------------
+ STREAM Version $Revision: 5.6 $
+ ----------------------------------------------
+ Array size =        20000000
+ Offset     =               0
+ The total memory requirement is        457 MB
+ You are running each test  10 times
+ --
+ The *best* time for each test is used
+ *EXCLUDING* the first and last iterations
+ ----------------------------------------------
+ Number of Threads =                     24
+ ----------------------------------------------
+ ----------------------------------------------------
+ Your clock granularity/precision appears to be      1 microseconds
+ ----------------------------------------------------
+Function     Rate (MB/s)  Avg time   Min time  Max time
+Copy:        104133.5    0.0031      0.0031      0.0031
+Scale:        73243.0    0.0044      0.0044      0.0045
+Add:          95429.0    0.0051      0.0050      0.0052
+Triad:        92970.0    0.0052      0.0052      0.0052
+ ----------------------------------------------------
+ Solution Validates!
+ ----------------------------------------------------
+OMP_NUM_THREADS=44
+----------------------------------------------
+ Double precision appears to have 16 digits of accuracy
+ Assuming 8 bytes per DOUBLE PRECISION word
+----------------------------------------------
+ ----------------------------------------------
+ STREAM Version $Revision: 5.6 $
+ ----------------------------------------------
+ Array size =        20000000
+ Offset     =               0
+ The total memory requirement is        457 MB
+ You are running each test  10 times
+ --
+ The *best* time for each test is used
+ *EXCLUDING* the first and last iterations
+ ----------------------------------------------
+ Number of Threads =                     44
+ ----------------------------------------------
+ ----------------------------------------------------
+ Your clock granularity/precision appears to be      1 microseconds
+ ----------------------------------------------------
+Function     Rate (MB/s)  Avg time   Min time  Max time
+Copy:        225651.9    0.0015      0.0014      0.0016
+Scale:       145320.2    0.0023      0.0022      0.0025
+Add:         178639.4    0.0027      0.0027      0.0028
+Triad:       177317.8    0.0027      0.0027      0.0028
+ ----------------------------------------------------
+ Solution Validates!
+ ----------------------------------------------------
+OMP_NUM_THREADS=64
+----------------------------------------------
+ Double precision appears to have 16 digits of accuracy
+ Assuming 8 bytes per DOUBLE PRECISION word
+----------------------------------------------
+ ----------------------------------------------
+ STREAM Version $Revision: 5.6 $
+ ----------------------------------------------
+ Array size =        20000000
+ Offset     =               0
+ The total memory requirement is        457 MB
+ You are running each test  10 times
+ --
+ The *best* time for each test is used
+ *EXCLUDING* the first and last iterations
+ ----------------------------------------------
+ Number of Threads =                     64
+ ----------------------------------------------
+ ----------------------------------------------------
+ Your clock granularity/precision appears to be      1 microseconds
+ ----------------------------------------------------
+Function     Rate (MB/s)  Avg time   Min time  Max time
+Copy:        410703.0    0.0010      0.0008      0.0011
+Scale:       237763.9    0.0014      0.0013      0.0017
+Add:         266375.5    0.0018      0.0018      0.0019
+Triad:       268758.0    0.0018      0.0018      0.0018
+ ----------------------------------------------------
+ Solution Validates!
+ ----------------------------------------------------
+OMP_NUM_THREADS=84
+----------------------------------------------
+ Double precision appears to have 16 digits of accuracy
+ Assuming 8 bytes per DOUBLE PRECISION word
+----------------------------------------------
+ ----------------------------------------------
+ STREAM Version $Revision: 5.6 $
+ ----------------------------------------------
+ Array size =        20000000
+ Offset     =               0
+ The total memory requirement is        457 MB
+ You are running each test  10 times
+ --
+ The *best* time for each test is used
+ *EXCLUDING* the first and last iterations
+ ----------------------------------------------
+ Number of Threads =                     84
+ ----------------------------------------------
+ ----------------------------------------------------
+ Your clock granularity/precision appears to be      1 microseconds
+ ----------------------------------------------------
+Function     Rate (MB/s)  Avg time   Min time  Max time
+Copy:        488597.5    0.0007      0.0007      0.0008
+Scale:       404026.9    0.0008      0.0008      0.0010
+Add:         349586.0    0.0014      0.0014      0.0014
+Triad:       390546.3    0.0012      0.0012      0.0013
+ ----------------------------------------------------
+ Solution Validates!
+ ----------------------------------------------------
+OMP_NUM_THREADS=104
+----------------------------------------------
+ Double precision appears to have 16 digits of accuracy
+ Assuming 8 bytes per DOUBLE PRECISION word
+----------------------------------------------
+ ----------------------------------------------
+ STREAM Version $Revision: 5.6 $
+ ----------------------------------------------
+ Array size =        20000000
+ Offset     =               0
+ The total memory requirement is        457 MB
+ You are running each test  10 times
+ --
+ The *best* time for each test is used
+ *EXCLUDING* the first and last iterations
+ ----------------------------------------------
+ Number of Threads =                    104
+ ----------------------------------------------
+ ----------------------------------------------------
+ Your clock granularity/precision appears to be      1 microseconds
+ ----------------------------------------------------
+Function     Rate (MB/s)  Avg time   Min time  Max time
+Copy:        718895.2    0.0005      0.0004      0.0005
+Scale:       672096.8    0.0005      0.0005      0.0005
+Add:         547976.6    0.0009      0.0009      0.0009
+Triad:       615489.4    0.0008      0.0008      0.0008
+ ----------------------------------------------------
+ Solution Validates!
+ ----------------------------------------------------
+Running make clean ..
+Building STREAM executable to use 30 % of memory..
+running the C executable scaling study with 30 % of memory, 1 to 104 OpenMP threads..
+OMP_NUM_THREADS=1
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 3287419100 (elements), Offset = 0 (elements)
+Memory per array = 25081.0 MiB (= 24.5 GiB).
+Total memory required = 75243.1 MiB (= 73.5 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Number of Threads requested = 1
+Number of Threads counted = 1
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 2337820 microseconds.
+   (= 2337820 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:           23438.9     2.245666     2.244076     2.246790
+Scale:          12010.5     4.380290     4.379403     4.381210
+Add:            13830.8     5.706267     5.704511     5.708266
+Triad:          13663.7     5.776781     5.774271     5.782823
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+OMP_NUM_THREADS=24
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 3287419100 (elements), Offset = 0 (elements)
+Memory per array = 25081.0 MiB (= 24.5 GiB).
+Total memory required = 75243.1 MiB (= 73.5 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Number of Threads requested = 24
+Number of Threads counted = 24
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 698064 microseconds.
+   (= 698064 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:          107023.9     0.491967     0.491467     0.492171
+Scale:          64996.0     0.809680     0.809260     0.810636
+Add:            90965.6     0.868083     0.867340     0.870865
+Triad:          75413.9     1.046943     1.046201     1.048185
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+OMP_NUM_THREADS=44
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 3287419100 (elements), Offset = 0 (elements)
+Memory per array = 25081.0 MiB (= 24.5 GiB).
+Total memory required = 75243.1 MiB (= 73.5 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Number of Threads requested = 44
+Number of Threads counted = 44
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 308556 microseconds.
+   (= 308556 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:          171497.2     0.306957     0.306703     0.307487
+Scale:         126297.7     0.416698     0.416466     0.416900
+Add:           160478.3     0.491941     0.491643     0.492352
+Triad:         159027.6     0.496882     0.496128     0.497946
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+OMP_NUM_THREADS=64
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 3287419100 (elements), Offset = 0 (elements)
+Memory per array = 25081.0 MiB (= 24.5 GiB).
+Total memory required = 75243.1 MiB (= 73.5 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Number of Threads requested = 64
+Number of Threads counted = 64
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 211355 microseconds.
+   (= 211355 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:          248845.4     0.211505     0.211371     0.211863
+Scale:         183611.1     0.286777     0.286468     0.287090
+Add:           232908.7     0.339285     0.338751     0.340001
+Triad:         231025.8     0.341935     0.341512     0.342564
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+OMP_NUM_THREADS=84
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 3287419100 (elements), Offset = 0 (elements)
+Memory per array = 25081.0 MiB (= 24.5 GiB).
+Total memory required = 75243.1 MiB (= 73.5 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Number of Threads requested = 84
+Number of Threads counted = 84
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 160885 microseconds.
+   (= 160885 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:          326054.0     0.161422     0.161319     0.161649
+Scale:         241014.3     0.218460     0.218239     0.219204
+Add:           305191.3     0.259120     0.258520     0.261369
+Triad:         303317.6     0.260835     0.260117     0.262645
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+OMP_NUM_THREADS=104
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 3287419100 (elements), Offset = 0 (elements)
+Memory per array = 25081.0 MiB (= 24.5 GiB).
+Total memory required = 75243.1 MiB (= 73.5 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Number of Threads requested = 104
+Number of Threads counted = 104
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 130582 microseconds.
+   (= 130582 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:          402595.6     0.131491     0.130649     0.134654
+Scale:         298754.5     0.177042     0.176060     0.178433
+Add:           381019.3     0.208670     0.207071     0.210589
+Triad:         377006.8     0.212000     0.209275     0.219791
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+running the Fortran executable scaling study with 30 % of  memory, 1 to 104 OpenMP threads..
+OMP_NUM_THREADS=1
+----------------------------------------------
+ Double precision appears to have 16 digits of accuracy
+ Assuming 8 bytes per DOUBLE PRECISION word
+----------------------------------------------
+ ----------------------------------------------
+ STREAM Version $Revision: 5.6 $
+ ----------------------------------------------
+ Array size =      3287419100
+ Offset     =               0
+ The total memory requirement is      75243 MB
+ You are running each test  10 times
+ --
+ The *best* time for each test is used
+ *EXCLUDING* the first and last iterations
+ ----------------------------------------------
+ Number of Threads =                      1
+ ----------------------------------------------
+ ----------------------------------------------------
+ Your clock granularity/precision appears to be      1 microseconds
+ ----------------------------------------------------
+Function     Rate (MB/s)  Avg time   Min time  Max time
+Copy:         23560.9    2.2336      2.2325      2.2354
+Scale:        13828.6    3.8054      3.8036      3.8068
+Add:          13696.8    5.7629      5.7603      5.7661
+Triad:        13538.6    5.8297      5.8276      5.8319
+ ----------------------------------------------------
+ Solution Validates!
+ ----------------------------------------------------
+OMP_NUM_THREADS=24
+----------------------------------------------
+ Double precision appears to have 16 digits of accuracy
+ Assuming 8 bytes per DOUBLE PRECISION word
+----------------------------------------------
+ ----------------------------------------------
+ STREAM Version $Revision: 5.6 $
+ ----------------------------------------------
+ Array size =      3287419100
+ Offset     =               0
+ The total memory requirement is      75243 MB
+ You are running each test  10 times
+ --
+ The *best* time for each test is used
+ *EXCLUDING* the first and last iterations
+ ----------------------------------------------
+ Number of Threads =                     24
+ ----------------------------------------------
+ ----------------------------------------------------
+ Your clock granularity/precision appears to be      1 microseconds
+ ----------------------------------------------------
+Function     Rate (MB/s)  Avg time   Min time  Max time
+Copy:        105416.9    0.4996      0.4990      0.5004
+Scale:        62799.5    0.8381      0.8376      0.8391
+Add:          90352.6    0.8736      0.8732      0.8746
+Triad:        73303.7    1.0770      1.0763      1.0783
+ ----------------------------------------------------
+ Solution Validates!
+ ----------------------------------------------------
+OMP_NUM_THREADS=44
+----------------------------------------------
+ Double precision appears to have 16 digits of accuracy
+ Assuming 8 bytes per DOUBLE PRECISION word
+----------------------------------------------
+ ----------------------------------------------
+ STREAM Version $Revision: 5.6 $
+ ----------------------------------------------
+ Array size =      3287419100
+ Offset     =               0
+ The total memory requirement is      75243 MB
+ You are running each test  10 times
+ --
+ The *best* time for each test is used
+ *EXCLUDING* the first and last iterations
+ ----------------------------------------------
+ Number of Threads =                     44
+ ----------------------------------------------
+ ----------------------------------------------------
+ Your clock granularity/precision appears to be      1 microseconds
+ ----------------------------------------------------
+Function     Rate (MB/s)  Avg time   Min time  Max time
+Copy:        171383.8    0.3072      0.3069      0.3077
+Scale:       125691.4    0.4190      0.4185      0.4199
+Add:         165842.8    0.4763      0.4757      0.4769
+Triad:       163139.3    0.4838      0.4836      0.4841
+ ----------------------------------------------------
+ Solution Validates!
+ ----------------------------------------------------
+OMP_NUM_THREADS=64
+----------------------------------------------
+ Double precision appears to have 16 digits of accuracy
+ Assuming 8 bytes per DOUBLE PRECISION word
+----------------------------------------------
+ ----------------------------------------------
+ STREAM Version $Revision: 5.6 $
+ ----------------------------------------------
+ Array size =      3287419100
+ Offset     =               0
+ The total memory requirement is      75243 MB
+ You are running each test  10 times
+ --
+ The *best* time for each test is used
+ *EXCLUDING* the first and last iterations
+ ----------------------------------------------
+ Number of Threads =                     64
+ ----------------------------------------------
+ ----------------------------------------------------
+ Your clock granularity/precision appears to be      1 microseconds
+ ----------------------------------------------------
+Function     Rate (MB/s)  Avg time   Min time  Max time
+Copy:        248797.2    0.2116      0.2114      0.2117
+Scale:       182716.3    0.2880      0.2879      0.2886
+Add:         240556.1    0.3285      0.3280      0.3296
+Triad:       237451.5    0.3328      0.3323      0.3338
+ ----------------------------------------------------
+ Solution Validates!
+ ----------------------------------------------------
+OMP_NUM_THREADS=84
+----------------------------------------------
+ Double precision appears to have 16 digits of accuracy
+ Assuming 8 bytes per DOUBLE PRECISION word
+----------------------------------------------
+ ----------------------------------------------
+ STREAM Version $Revision: 5.6 $
+ ----------------------------------------------
+ Array size =      3287419100
+ Offset     =               0
+ The total memory requirement is      75243 MB
+ You are running each test  10 times
+ --
+ The *best* time for each test is used
+ *EXCLUDING* the first and last iterations
+ ----------------------------------------------
+ Number of Threads =                     84
+ ----------------------------------------------
+ ----------------------------------------------------
+ Your clock granularity/precision appears to be      1 microseconds
+ ----------------------------------------------------
+Function     Rate (MB/s)  Avg time   Min time  Max time
+Copy:        326011.6    0.1615      0.1613      0.1617
+Scale:       239854.7    0.2195      0.2193      0.2202
+Add:         316018.4    0.2503      0.2497      0.2520
+Triad:       311726.6    0.2537      0.2531      0.2548
+ ----------------------------------------------------
+ Solution Validates!
+ ----------------------------------------------------
+OMP_NUM_THREADS=104
+----------------------------------------------
+ Double precision appears to have 16 digits of accuracy
+ Assuming 8 bytes per DOUBLE PRECISION word
+----------------------------------------------
+ ----------------------------------------------
+ STREAM Version $Revision: 5.6 $
+ ----------------------------------------------
+ Array size =      3287419100
+ Offset     =               0
+ The total memory requirement is      75243 MB
+ You are running each test  10 times
+ --
+ The *best* time for each test is used
+ *EXCLUDING* the first and last iterations
+ ----------------------------------------------
+ Number of Threads =                    104
+ ----------------------------------------------
+ ----------------------------------------------------
+ Your clock granularity/precision appears to be      1 microseconds
+ ----------------------------------------------------
+Function     Rate (MB/s)  Avg time   Min time  Max time
+Copy:        402749.6    0.1320      0.1306      0.1400
+Scale:       297285.5    0.1778      0.1769      0.1798
+Add:         390913.6    0.2033      0.2018      0.2067
+Triad:       386105.8    0.2060      0.2043      0.2103
+ ----------------------------------------------------
+ Solution Validates!
+ ----------------------------------------------------
+STREAM test complete!

@@ -3,27 +3,27 @@ LAMMPS is open-source software licensed under the GPLv3.
 
 Description
 -----------
-Source code of LAMMPS version 29-Aug-2024 is available from [https://github.com/lammps/lammps/releases/tag/stable_29Aug2024](https://github.com/lammps/lammps/releases/tag/stable_29Aug2024). Benchmark results must be produced with this version.
+Source code of LAMMPS version 22-Jul-2025 is available from [https://github.com/lammps/lammps/releases/tag/stable_22Jul2025](https://github.com/lammps/lammps/releases/tag/stable_22Jul2025). Benchmark results must be produced with this version.
 
 Directory `input` has LAMMPS inputs. Sample Slurm scripts have been provided for reference. 
 
 We supply a LAMMPS parameter file `data.begin.bz2`. This compressed file must be uncompressed before any test runs. It contains coordinates and velocities of ~0.75 million atoms in a cubic unit cell, ~20 nm on a side, representing a 35% LiCl solution pre-equlibrated to 300K and 1 atm. Larger unit cells for "medium" and "large" systems are generated programmatically from this file.
 
-Three LAMMPS benchmarks are required, and input files `small.in`, `medium.in`, and `large.in` are provided. For `medium.in` and `large.in`, the unit cell decribed above is replicated to create larger cubic cells (via LAMMPS `replicate` commands).  
+Three LAMMPS benchmarks are required, and input files `small.in`, `medium.in`, `large.in`, and `xlarge.in` are provided. For `medium.in`, `large.in`, and `xlarge.in`, the unit cell decribed above is replicated to create larger cubic cells (via LAMMPS `replicate` commands).  
 
 Directory `NREL_results` has reference results for validation. 
 
 How to Build
 ------------
-The benchmark results for "As-is" tests must be generated from LAMMPS version 29-Aug-2024. Optional libraries or packages included in the LAMMPS distribution (*e.g.*, OpenMP or Intel) may be used and reported as the "optimized code" in the reporting spreadsheet.
+The benchmark results for "As-is" tests must be generated from LAMMPS version 22-Jul-2025. Optional libraries or packages included in the LAMMPS distribution (*e.g.*, OpenMP or Intel) may be used and reported as the "optimized code" in the reporting spreadsheet.
 
-LAMMPS can be built by following the instructions at [https://lammps.sandia.gov/doc/Install.html](https://docs.lammps.org/Build.html). For systems with GPUs, a version should be built with the LAMMPS GPU package, and double precision MUST be used. If the Offeror's chip doesn't support this package, please contact NREL as soon as possible for possiblilty of using other package such as Kokkos.  
+LAMMPS can be built by following the instructions at [https://lammps.sandia.gov/doc/Install.html](https://docs.lammps.org/Build.html). For systems with GPUs, a version should be built with the LAMMPS GPU or KOKKOS package with the default precision. If the Offeror's chip doesn't support these packages, please contact NREL as soon as possible for possiblilty of using other package.  
 
 How to Run  
 ----------
 The "As-is" benchmark must be run on Standard and Accelerated nodes with no OpenMP parallization, that is, OMP_NUM_THREADS should be set to 1. Two sample Slurm scripts can be found in `std.4` and `gpu.44` directories for a 4-standard-node run and a 4-GPU-node run with 4 GPUs per node, respectively.
   
-Each benchmark case should be run on 1, 2, 4, 8... nodes. For `medium` and `large` jobs, especially running on a small number of Accelerated nodes, it is possible that jobs won't run due to the limitation of memory. In this case, `Out of Memory` should be reported in the Spreadsheet response. It is possible that the optimal speed is achieved when number of MPI ranks per node is smaller than the number of CPU cores per node and in this case, the Offeror needs to vary the number of MPI ranks per node to find the optimal value. The "# cores" reported should reflect the number of `physical` CPU cores hosting independent threads of execution.
+Each benchmark case should be run on 1, 2, 4, 8... nodes. For `large` and `xlarge` jobs, especially running on a small number of Accelerated nodes, it is possible that jobs won't run due to the limitation of memory. In this case, `Out of Memory` should be reported in the Spreadsheet response. It is possible that the optimal speed is achieved when number of MPI ranks per node is smaller than the number of CPU cores per node and in this case, the Offeror needs to vary the number of MPI ranks per node to find the optimal value. The "# cores" reported should reflect the number of `physical` CPU cores hosting independent threads of execution.
 
 For each benchmark system size, the total simulation time is controlled via the input parameter `thermo` in the LAMMPS input scripts. As MPI rank counts are increased, `thermo` should be increased in order to maintain a simulation wall time ("Loop time") of 300 seconds or greater, and to keep the total number of simulation steps ("total-running-steps") equal to 10 times `thermo`. 
 

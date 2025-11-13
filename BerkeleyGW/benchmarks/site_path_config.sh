@@ -29,6 +29,7 @@ BGW_DIR=$E4_BGW/BerkeleyGW/bin
 Si_WFN_folder=$E4_BGW/Si_WFN_folder
 Si214_WFN_folder=$Si_WFN_folder/Si214/WFN_file/
 Si510_WFN_folder=$Si_WFN_folder/Si510/WFN_file/
+Si998_WFN_folder=$Si_WFN_folder/Si998/WFN_file/
 
 #any modules that should be loaded at runtime
 #module swap PrgEnv-gnu PrgEnv-nvhpc

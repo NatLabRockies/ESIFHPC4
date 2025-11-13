@@ -1,0 +1,17 @@
+% 30
+num_floats 3287419100
+262993528000
+rm: cannot remove 'results.icx.ifx': No such file or directory
+rm -f  *.exe  *.o numz.*
+icx -O2 -qopenmp -mcmodel=medium   -c -o mysecond.o mysecond.c
+icx -O2 -qopenmp -mcmodel=medium  -c mysecond.c
+ifx -O2 -qopenmp -mcmodel=large  -c stream.f
+ifx -O2 -qopenmp -mcmodel=large stream.o mysecond.o -o stream_f.ifx.exe
+icx -O2 -qopenmp -mcmodel=medium  stream.c -o stream_c.icx.exe
+rm -f  *.exe  *.o numz.*
+icx -O2 -qopenmp -mcmodel=medium -DSTREAM_ARRAY_SIZE=3287419100  -c -o mysecond.o mysecond.c
+icx -O2 -qopenmp -mcmodel=medium -DSTREAM_ARRAY_SIZE=3287419100 -c mysecond.c
+ifx -O2 -qopenmp -mcmodel=large -DSTREAM_ARRAY_SIZE=3287419100 -c stream.f
+ifx -O2 -qopenmp -mcmodel=large stream.o mysecond.o -o stream_f.ifx.exe
+icx -O2 -qopenmp -mcmodel=medium -DSTREAM_ARRAY_SIZE=3287419100 stream.c -o stream_c.icx.exe
+rm -f  *.exe  *.o numz.*

@@ -18,6 +18,10 @@ benchmark_output_dir = joinpath(@__DIR__, "benchmark_results")
 mkpath(benchmark_output_dir)
 benchmark_name = "activsg200_acopf"
 
+# # Output simulation directory
+sim_name = "ill"
+sim_folder = mkpath(joinpath(sim_name * "-sim"))
+
 function configure_ED_template(sys, horizon, interval)
     PSY.transform_single_time_series!(sys, horizon, interval)
 
@@ -151,9 +155,6 @@ function generate_benchmark_report(
 end
 
 function run_simulation()
-    # Output simulation directory
-    sim_name = "ill"
-    sim_folder = mkpath(joinpath(sim_name * "-sim"))
 
     usts_system_path_RT = joinpath(@__DIR__, "input_data", "ACTIVSg200", "sys.json")
 
