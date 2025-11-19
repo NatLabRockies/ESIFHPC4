@@ -2,7 +2,7 @@
 
 ## Description
 
-AMR-Wind is a massively parallel, block-structured adaptive-mesh, incompressible flow solver for wind turbine and wind farm simulations. It depends on the AMReX library that provides mesh data structures, mesh adaptivity, and linear solvers to handle its governing equations. This software is part the exawind ecosystem, is available [here](https://github.com/exawind/AMR-Wind). The AMR-Wind benchmark is very sensitive to MPI performance.
+AMR-Wind is a massively parallel, block-structured adaptive-mesh, incompressible flow solver for wind turbine and wind farm simulations. It depends on the AMReX library that provides mesh data structures, mesh adaptivity, and linear solvers to handle its governing equations. This software is part the exawind ecosystem, is available [here](https://github.com/exawind/AMR-Wind). The AMR-Wind benchmark is very sensitive to MPI performance due to all-reduce and all-to-all type MPI operations within AMReX's builtin MLMG solvers in which AMR-Wind utilizes.
 
 ## Licensing
 
@@ -72,11 +72,17 @@ done
 
 AMR-Wind is able to run on different GPUs using the CMake configuration parameters: `AMR_WIND_ENABLE_CUDA`, `AMR_WIND_ENABLE_ROCM`, or `AMR_WIND_ENABLE_SYCL`, for NVIDIA, AMD, or Intel GPUs, respectively. GPU-aware MPI is also available in AMReX, and therefore AMR-Wind, which can benefit performance. The GPU-aware MPI library can be injected and linked during the CMake build however one sees fit. During runtime AMReX provides a `amrex.use_gpu_aware_mpi` parameter which can be set to 1 (`amrex.use_gpu_aware_mpi=1`) on the command line as shown in our example script.
 
-The offeror should reveal any potential for performance optimization on the target system that provides an optimal task configuration by running As-is and Optimized cases. On CPU nodes, the As-is case will saturate all available cores per node to establish baseline performance and expose potential computational bottlenecks and memory-related latency issues. The Optimized case will saturate at least 70% of cores per node and will include configurations exploring strategies to identify opportunities for reducing latency. On GPU nodes, the As-is case will saturate all GPUs per node to evaluate GPU compute and memory bandwidth performance. The Optimized case will saturate all GPUs per node, along with optimizations focusing on minimizing data transfers and leveraging GPU-specific memory features, aiming to reveal opportunities for reducing end-to-end latency.
+### Verification
 
-### Validation
+To verify that the results are close to expected, we compare the physical quantities of the plots output from AMR-Wind at time step 20 from our reference case running on 4 nodes. The AMReX tool is the `amrex_fcompare` executable which is built automatically in the verify scripts. The location of `amrex_fcompare` is in `amr-wind-build/submods/amrex/Tools/Plotfile/amrex_fcompare`. The input for this program is two plotfiles and the output is the differences between all the AMR levels and variables in the simulation. Note the output from AMR-Wind on the CPUs is generally deterministic between runs. However, when running AMR-Wind on GPUs, output is generally nondeterministic, making it more difficult to understand if the results are sufficiently within bounds.
 
-Will write this next.
+We provide a reference plot file from both our CPU case and GPU case, to compare against. To use fcompare, it can be done as such:
+
+```
+/path/to/amr-wind-build/submods/amrex/Tools/Plotfile/amrex_fcompare cpu_reference_plot000020 <plt000020>
+```
+
+We expect differences due to different machines and compilers, etc. We expect the differences to be small for CPUs, but larger for GPUs. Although tolerances can be provided to fcompare to make it a boolean operation, rather, we request that the output of fcompare is provided so we can interpret the output. The same can be done for the GPU case.
 
 ## Rules
 
@@ -87,4 +93,4 @@ Will write this next.
 
 The following AMR-Wind-specific information should be provided:
 
-Will also write this next.
+Will write this next.
