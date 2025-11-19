@@ -40,17 +40,20 @@ The offeror will build at least cases (1) and (2) of the benchmark. The third ru
      the Fortran source code has had a preprocessor definition added that sets the default array size
      to be consistent with the C version); and,
 
-2.  a case which uses 60% of the total DRAM available to a single compute unit.
+2.  a case which uses 85% of the total DRAM available to a single compute unit.
 
-3.  a vendor-optimized version of the code which uses 60% of the total DRAM available to a single compute unit. 
+3.  a vendor-optimized version of the code which uses 85% of the total DRAM available to a single compute unit. 
 
 
 ## How to Run
 
 The STREAM benchmark results must be returned for the following cases: 
 
- 1. Fortran version: Number of threads in the range 1 to the number of cores on a compute unit.
- 2. C version: Number of threads in the range 1 to the number of cores on a compute unit.
+ 1. Fortran version: Number of threads in the range 1 to a large fraction of the cores on a compute unit.
+ 2. C version: Number of threads in the range 1 to a large fraction of the cores on a compute unit.
+
+Vendors need not run for every possible setting for the number of threads but should cover various numa 
+regions.
 
 ## Benchmark test results to report and files to return
 

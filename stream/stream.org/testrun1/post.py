@@ -5,10 +5,12 @@ fort="ifc"
 c="icc"
 # Memory on a node
 mem=262993528000
+#mem=1055716516000
 # Results file with a collection of streams runs
 infile="results.icx.ifx"
 # Output summary file
 outfile="STREAM.tab"
+#outfile="BIGMEM.tab"
 # Notes can contain info about the nodes
 notes="kestrel nodes"
 import sys
