@@ -1,10 +1,8 @@
 #!/bin/bash -l
 
-BENCHMARKS_DIR=/scratch/${USER}/amr-wind-benchmark
+BENCHMARKS_DIR=/scratch/${USER}/amr-wind-benchmark/amr-wind-benchmark-cpu-verify
 mkdir -p ${BENCHMARKS_DIR}
 cd ${BENCHMARKS_DIR}
-mkdir amr-wind-benchmark-cpu-verify
-cd amr-wind-benchmark-cpu-verify
 
 # Generate average script
 cat >amr-wind-average.py <<'EOL'

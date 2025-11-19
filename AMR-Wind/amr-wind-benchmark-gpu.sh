@@ -2,11 +2,9 @@
 
 set -ex
 
-BENCHMARKS_DIR=/scratch/${USER}/amr-wind-benchmark
+BENCHMARKS_DIR=/scratch/${USER}/amr-wind-benchmark/amr-wind-benchmark-gpu
 mkdir -p ${BENCHMARKS_DIR}
 cd ${BENCHMARKS_DIR}
-mkdir amr-wind-benchmark-gpu
-cd amr-wind-benchmark-gpu
 
 # Generate average script
 cat >amr-wind-average.py <<'EOL'
