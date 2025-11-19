@@ -62,6 +62,7 @@ cmake -B amr-wind-build \
 	-DCMAKE_CUDA_ARCHITECTURES:STRING=90 \
 	-DAMR_WIND_ENABLE_TESTS:BOOL=ON \
 	-DAMR_WIND_ENABLE_TINY_PROFILE:BOOL=ON \
+        -DAMR_WIND_ENABLE_FCOMPARE:BOOL=ON \
 	-DMPI_HOME:STRING=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3 \
 	-DMPI_CXX_COMPILER:STRING=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/bin/mpicxx \
 	-DMPI_C_COMPILER:STRING=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/bin/mpicc \
