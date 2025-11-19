@@ -3,8 +3,8 @@
 set -ex
 
 BENCHMARK_DIR=/scratch/${USER}/amr-wind-benchmark/amr-wind-benchmark-cpu
-mkdir -p ${BENCHMARKS_DIR}
-cd ${BENCHMARKS_DIR}
+mkdir -p ${BENCHMARK_DIR}
+cd ${BENCHMARK_DIR}
 
 # Generate average script
 cat >amr-wind-average.py <<'EOL'
