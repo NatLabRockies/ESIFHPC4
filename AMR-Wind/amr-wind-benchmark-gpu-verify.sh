@@ -49,7 +49,7 @@ done
 EOL
 
 # Generate build script
-cat >build-amr-wind-benchmark-gpu.sh <<'EOL'
+cat >build-amr-wind-benchmark-gpu-verify.sh <<'EOL'
 #!/bin/bash -l
 set -ex
 module load cuda
