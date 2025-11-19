@@ -66,7 +66,7 @@ cmake -B amr-wind-build \
 	-DMPI_CXX_COMPILER:STRING=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/bin/mpicxx \
 	-DMPI_C_COMPILER:STRING=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/bin/mpicc \
 	amr-wind
-cmake --build amr-wind-build --parallel 8
+nice cmake --build amr-wind-build --parallel 8
 EOL
 
 cat >run-amr-wind-benchmark-gpu.sh <<'EOL'

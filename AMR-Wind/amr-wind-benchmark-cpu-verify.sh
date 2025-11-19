@@ -58,7 +58,7 @@ cmake -B amr-wind-build \
 	-DAMR_WIND_ENABLE_TINY_PROFILE:BOOL=ON \
 	-DAMR_WIND_ENABLE_TESTS:BOOL=ON \
 	amr-wind
-cmake --build amr-wind-build --parallel
+nice cmake --build amr-wind-build --parallel
 EOL
 
 # Generate run script

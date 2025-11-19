@@ -69,7 +69,7 @@ cmake -B amr-wind-build \
 	-DCMAKE_CXX_COMPILER:STRING=CC \
 	-DCMAKE_C_COMPILER:STRING=cc \
 	amr-wind
-cmake --build amr-wind-build --parallel 8
+nice cmake --build amr-wind-build --parallel 8
 EOL
 
 cat >run-amr-wind-benchmark-gpu-aware.sh <<'EOL'
