@@ -94,3 +94,5 @@ We expect differences due to different machines and compilers, etc. We expect th
 The following AMR-Wind-specific information should be provided:
 
 Will write this next.
+
+![AMR-Wind Strong Scaling](https://github.com/NREL/ESIFHPC4/blob/main/AMR-Wind/amr-wind-strong-scaling-abl.tex.png?raw=true)
