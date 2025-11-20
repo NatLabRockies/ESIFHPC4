@@ -2,7 +2,7 @@
 
 ## Description
 
-AMR-Wind is a massively parallel, block-structured adaptive-mesh, incompressible flow solver for wind turbine and wind farm simulations. It depends on the AMReX library that provides mesh data structures, mesh adaptivity, and linear solvers to handle its governing equations. This software is part the exawind ecosystem, is available [here](https://github.com/exawind/AMR-Wind). The AMR-Wind benchmark is very sensitive to MPI performance due to all-reduce and all-to-all type MPI operations within AMReX's builtin MLMG solvers in which AMR-Wind utilizes.
+AMR-Wind is a massively parallel, block-structured adaptive-mesh, incompressible flow solver for wind turbine and wind farm simulations. It depends on the AMReX library that provides mesh data structures, mesh adaptivity, and linear solvers to handle its governing equations. This software is part of the ExaWind ecosystem, and is available [here](https://github.com/exawind/AMR-Wind). The AMR-Wind benchmark is very sensitive to MPI performance due to all-reduce and all-to-all type MPI operations within AMReX's builtin MLMG solvers in which AMR-Wind utilizes.
 
 ## Licensing
 
@@ -13,9 +13,13 @@ AMR-Wind is licensed under BSD 3-clause license. The license is included in the 
 AMR-Wind utilizes the AMReX library and therefore runs on CPUs, or NVIDIA, AMD, or Intel GPUs. AMR-Wind uses CMake. General instructions for building AMR-Wind are provided in this repo through the scripts used to run the benchmark at NREL, and also found [here](https://exawind.github.io/amr-wind/user/build.html). In this repo we provide the build scripts that were used to run the benchmarks shown in the plot for CPUs, GPUs, as well as GPU-aware MPI. These scripts also show how the benchmarks were run, which will be discussed in the next section.
 
 [amr-wind-benchmark-cpu.sh](amr-wind-benchmark-cpu.sh)
+
 [amr-wind-benchmark-cpu-verify.sh](amr-wind-benchmark-cpu-verify.sh)
+
 [amr-wind-benchmark-gpu.sh](amr-wind-benchmark-gpu.sh)
+
 [amr-wind-benchmark-gpu-aware.sh](amr-wind-benchmark-gpu-aware.sh)
+
 [amr-wind-benchmark-gpu-verify.sh](amr-wind-benchmark-gpu-verify.sh)
 
 ## Run Definitions and Requirements
@@ -26,7 +30,7 @@ We create a benchmark case on top of our standard `abl_godunov` regression test 
 
 ## Running
 
-The [run-all.sh](run-all.sh) script shows the nodes on the NREL Kestrel machine in which each script of the specific benchmark was run. After building with the steps shown in the provided scripts. The scripts also show how the strong scaling was run. To get the average of the time per timestep for our strong scaling plot, we used two scripts. One bash script to extract the AMR-Wind wallclock times for all cases run and one python script to find the mean. These are also generated from the scripts provided in this repo. Once the cases are run, one can use `bash amr-wind-average.sh` in each directory to generate an `amr-wind-avg.txt` file with the average time per timestep of each case. The number of cells in the AMR-Wind simulations is reported at the start of the simulation with the number of cells for each level. These numbers can be added together and divided by the number of CPU cores or GPUs in which the case was using to get the cells per CPU core or GPU. The LaTeX plot code is also provided as a reference of how the results were plotted using the results from the Kestrel benchmark runs, showing the time per timestep and number of cells per core or GPU.
+The [run-all.sh](run-all.sh) script shows the nodes on the NREL Kestrel machine in which each script of the specific benchmark was run. After building with the steps shown in the provided scripts. The scripts also show how the strong scaling was run. To get the average of the time per timestep for our strong scaling plot, we used two scripts. One bash script to extract the AMR-Wind wallclock times for all cases run and one python script to find the mean. These are also generated from the scripts provided in this repo. Once the cases are run, one can use `bash amr-wind-average.sh` in each directory to generate an `amr-wind-avg.txt` file with the average time per timestep of each case. The number of cells in the AMR-Wind simulations is reported at the start of the simulation with the number of cells for each level. These numbers can be added together and divided by the number of CPU cores or GPUs in which the case was using to get the cells per CPU core or GPU. The [LaTeX plot code](amr-wind-strong-scaling-abl.tex) is also provided as a reference of how the results were plotted using the results from the Kestrel benchmark runs, showing the time per timestep and number of cells per core or GPU.
 
 amr-wind-average.py:
 ```
@@ -64,7 +68,7 @@ i=1
 for file in $(ls -d1 amr-wind-benchmark* | sort -V); do
     echo "$file"
     grep ^WallClockTime "$file" | awk '{print $NF}' > amr-wind-time-$i.txt
-    ./amr-wind-average.py -f amr-wind-time-$i.txt >> amr-wind-avg.txt
+    bash amr-wind-average.py -f amr-wind-time-$i.txt >> amr-wind-avg.txt
     rm amr-wind-time-$i.txt
     ((i=i+1))
 done
