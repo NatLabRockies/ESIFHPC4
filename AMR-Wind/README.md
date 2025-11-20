@@ -79,10 +79,10 @@ To verify that the results are close to expected, we compare the physical quanti
 We provide a reference plot file from both our CPU case and GPU case, to compare against. To use fcompare, it can be done as such:
 
 ```
-/path/to/amr-wind-build/submods/amrex/Tools/Plotfile/amrex_fcompare cpu_reference_plot000020 <plt000020>
+/path/to/amr-wind-benchmark-cpu-verify/amr-wind-build/submods/amrex/Tools/Plotfile/amrex_fcompare amr_wind_cpu_reference_plt00020 /other/path/to/amr-wind-benchmark-cpu-verify/amr-wind-build/test/test_files/abl_godunov/plt00020
 ```
 
-We expect differences due to different machines and compilers, etc. We expect the differences to be small for CPUs, but larger for GPUs. Although tolerances can be provided to fcompare to make it a boolean operation, rather, we request that the output of fcompare is provided so we can interpret the output. The same can be done for the GPU case.
+We expect differences due to different machines and compilers, etc. We expect the differences to be small for CPUs, but larger for GPUs. Although tolerances can be provided to fcompare to make it a boolean check, rather, we request that the output of fcompare is provided so we can interpret the output. The same can be done for the GPU case using the provided GPU reference plot file.
 
 ## Rules
 
