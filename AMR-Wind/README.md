@@ -2,7 +2,7 @@
 
 ## Description
 
-AMR-Wind is a massively parallel, block-structured adaptive-mesh, incompressible flow solver for wind turbine and wind farm simulations. It depends on the AMReX library that provides mesh data structures, mesh adaptivity, and linear solvers to handle its governing equations. This software is part the exawind ecosystem, is available [here](https://github.com/exawind/AMR-Wind). The AMR-Wind benchmark is very sensitive to MPI performance.
+AMR-Wind is a massively parallel, block-structured adaptive-mesh, incompressible flow solver for wind turbine and wind farm simulations. It depends on the AMReX library that provides mesh data structures, mesh adaptivity, and linear solvers to handle its governing equations. This software is part the exawind ecosystem, is available [here](https://github.com/exawind/AMR-Wind). The AMR-Wind benchmark is very sensitive to MPI performance due to all-reduce and all-to-all type MPI operations within AMReX's builtin MLMG solvers in which AMR-Wind utilizes.
 
 ## Licensing
 
@@ -10,15 +10,13 @@ AMR-Wind is licensed under BSD 3-clause license. The license is included in the 
 
 ## Building
 
-AMR-Wind utilizes the AMReX library and therefore runs on CPUs, or NVIDIA, AMD, or Intel GPUs. AMR-Wind uses CMake. General instructions for building AMR-Wind are provided below and also found [here](https://exawind.github.io/amr-wind/user/build.html). Below we demonstrate building for CPUs:
+AMR-Wind utilizes the AMReX library and therefore runs on CPUs, or NVIDIA, AMD, or Intel GPUs. AMR-Wind uses CMake. General instructions for building AMR-Wind are provided in this repo through the scripts used to run the benchmark at NREL, and also found [here](https://exawind.github.io/amr-wind/user/build.html). In this repo we provide the build scripts that were used to run the benchmarks shown in the plot for CPUs, GPUs, as well as GPU-aware MPI. These scripts also show how the benchmarks were run, which will be discussed in the next section.
 
-```
-set -e
-set -x
-git clone --depth=1 --shallow-submodules --branch v3.7.0 --recursive https://github.com/Exawind/amr-wind.git
-cmake -B amr-wind-build -DAMR_WIND_ENABLE_MPI:BOOL=ON -DAMR_WIND_ENABLE_TINY_PROFILE:BOOL=ON -DAMR_WIND_ENABLE_TESTS:BOOL=ON amr-wind
-cmake --build amr-wind-build --parallel
-```
+[amr-wind-benchmark-cpu.sh](amr-wind-benchmark-cpu.sh)
+[amr-wind-benchmark-cpu-verify.sh](amr-wind-benchmark-cpu-verify.sh)
+[amr-wind-benchmark-gpu.sh](amr-wind-benchmark-gpu.sh)
+[amr-wind-benchmark-gpu-aware.sh](amr-wind-benchmark-gpu-aware.sh)
+[amr-wind-benchmark-gpu-verify.sh](amr-wind-benchmark-gpu-verify.sh)
 
 ## Run Definitions and Requirements
 
@@ -28,25 +26,63 @@ We create a benchmark case on top of our standard `abl_godunov` regression test 
 
 ## Running
 
-After building with the steps above. Here we demonstrate a weak scaling on CPUs with a generic MPI implementation:
+The [run-all.sh](run-all.sh) script shows the nodes on the NREL Kestrel machine in which each script of the specific benchmark was run. After building with the steps shown in the provided scripts. The scripts also show how the strong scaling was run. To get the average of the time per timestep for our strong scaling plot, we used two scripts. One bash script to extract the AMR-Wind wallclock times for all cases run and one python script to find the mean. These are also generated from the scripts provided in this repo. Once the cases are run, one can use `bash amr-wind-average.sh` in each directory to generate an `amr-wind-avg.txt` file with the average time per timestep of each case. The number of cells in the AMR-Wind simulations is reported at the start of the simulation with the number of cells for each level. These numbers can be added together and divided by the number of CPU cores or GPUs in which the case was using to get the cells per CPU core or GPU. The LaTeX plot code is also provided as a reference of how the results were plotted using the results from the Kestrel benchmark runs, showing the time per timestep and number of cells per core or GPU.
+
+amr-wind-average.py:
 ```
+#!/usr/bin/env python3
+
+import argparse
+import pandas as pd
+import numpy as np
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="A simple averaging tool")
+    parser.add_argument(
+        "-f",
+        "--fnames",
+        help="Files to average",
+        required=True,
+        nargs="+",
+        type=str,
+    )
+    args = parser.parse_args()
+
+    for fname in args.fnames:
+        data = pd.read_csv(fname, sep="\\s+", skiprows=0, header=None)
+        array = data.to_numpy()
+        print(np.mean(array[:]))
+```
+
+amr-wind-average.sh:
+```
+#!/bin/bash
+
 set -e
-set -x
-FIXED_ARGS="time.fixed_dt=0.5 time.max_step=20 ABL.stats_output_frequency=-1 time.plot_interval=5 time.checkpoint_interval=-1 amrex.abort_on_out_of_gpu_memory=1 amrex.the_arena_is_managed=0 amr.blocking_factor=16 amr.max_grid_size=128 amrex.use_profiler_syncs=0 amrex.async_out=0 amr.max_level=1 tagging.labels=g1 tagging.g1.type=GeometryRefinement tagging.g1.shapes=b1 tagging.g1.b1.type=box tagging.g1.b1.origin=0.0 0.0 384.0 tagging.g1.b1.xaxis=1.0e8 0.0 384.0 tagging.g1.b1.yaxis=0.0 1.0e8 384.0 tagging.g1.b1.zaxis=0.0 0.0 256.0"
-cd amr-wind-build/test/test_files/abl_godunov
-mpirun -np <np> ../../../amr_wind abl_godunov.inp ${FIXED_ARGS} amr.n_cell=32 32 64 geometry.prob_hi=512.0 512.0 1024.0
-mpirun -np <np> ../../../amr_wind abl_godunov.inp ${FIXED_ARGS} amr.n_cell=64 64 64 geometry.prob_hi=1024.0 1024.0 1024.0
-mpirun -np <np> ../../../amr_wind abl_godunov.inp ${FIXED_ARGS} amr.n_cell=128 128 64 geometry.prob_hi=2048.0 2048.0 1024.0
-...
+
+i=1
+for file in $(ls -d1 amr-wind-benchmark* | sort -V); do
+    echo "$file"
+    grep ^WallClockTime "$file" | awk '{print $NF}' > amr-wind-time-$i.txt
+    ./amr-wind-average.py -f amr-wind-time-$i.txt >> amr-wind-avg.txt
+    rm amr-wind-time-$i.txt
+    ((i=i+1))
+done
 ```
 
-AMR-Wind is also able to run on GPUs using the CMake configuration parameters: `AMR_WIND_ENABLE_CUDA`, `AMR_WIND_ENABLE_ROCM`, or `AMR_WIND_ENABLE_SYCL`, for NVIDIA, AMD, or Intel GPUs, respectively. GPU-aware MPI is also available in AMReX, and therefore AMR-Wind, which can benefit performance. The GPU-aware MPI library can be injected and linked during the CMake build however one sees fit. During runtime AMReX provides a `amrex.use_gpu_aware_mpi` parameter which can be set to 1 (`amrex.use_gpu_aware_mpi=1`) on the command line.
+AMR-Wind is able to run on different GPUs using the CMake configuration parameters: `AMR_WIND_ENABLE_CUDA`, `AMR_WIND_ENABLE_ROCM`, or `AMR_WIND_ENABLE_SYCL`, for NVIDIA, AMD, or Intel GPUs, respectively. GPU-aware MPI is also available in AMReX, and therefore AMR-Wind, which can benefit performance. The GPU-aware MPI library can be injected and linked during the CMake build however one sees fit. During runtime AMReX provides a `amrex.use_gpu_aware_mpi` parameter which can be set to 1 (`amrex.use_gpu_aware_mpi=1`) on the command line as shown in our example script.
 
-The offeror should reveal any potential for performance optimization on the target system that provides an optimal task configuration by running As-is and Optimized cases. On CPU nodes, the As-is case will saturate all available cores per node to establish baseline performance and expose potential computational bottlenecks and memory-related latency issues. The Optimized case will saturate at least 70% of cores per node and will include configurations exploring strategies to identify opportunities for reducing latency. On GPU nodes, the As-is case will saturate all GPUs per node to evaluate GPU compute and memory bandwidth performance. The Optimized case will saturate all GPUs per node, along with optimizations focusing on minimizing data transfers and leveraging GPU-specific memory features, aiming to reveal opportunities for reducing end-to-end latency.
+### Verification
 
-### Validation
+To verify that the results are close to expected, we compare the physical quantities of the plots output from AMR-Wind at time step 20 from our reference case running on 4 nodes. The AMReX tool is the `amrex_fcompare` executable which is built automatically in the verify scripts. The location of `amrex_fcompare` is in `amr-wind-build/submods/amrex/Tools/Plotfile/amrex_fcompare`. The input for this program is two plotfiles and the output is the differences between all the AMR levels and variables in the simulation. Note the output from AMR-Wind on the CPUs is generally deterministic between runs. However, when running AMR-Wind on GPUs, output is generally nondeterministic, making it more difficult to understand if the results are sufficiently within bounds.
 
-Need to think about this, but I'm not really concerned about validation.
+We provide a reference plot file from both our CPU case and GPU case, to compare against. To use fcompare, it can be done as such:
+
+```
+/path/to/amr-wind-benchmark-cpu-verify/amr-wind-build/submods/amrex/Tools/Plotfile/amrex_fcompare amr_wind_cpu_reference_plt00020 /other/path/to/amr-wind-benchmark-cpu-verify/amr-wind-build/test/test_files/abl_godunov/plt00020
+```
+
+We expect differences due to different machines and compilers, etc. We expect the differences to be small for CPUs, but larger for GPUs. Although tolerances can be provided to fcompare to make it a boolean check, rather, we request that the output of fcompare is provided so we can interpret the output. The same can be done for the GPU case using the provided GPU reference plot file.
 
 ## Rules
 
@@ -57,6 +93,6 @@ Need to think about this, but I'm not really concerned about validation.
 
 The following AMR-Wind-specific information should be provided:
 
-* For reporting scaling and throughput studies, use the harmonic mean of the `Time spent in Evolve` wall-clock times from output logs in the Spreadsheet (`report/amr-wind-benchmark.csv`).
-* As part of the File response, please return job-scripts and their outputs, and log files from each run.
-* Include in the Text response a description of any optimization done.
+Will write this next.
+
+![AMR-Wind Strong Scaling](https://github.com/NREL/ESIFHPC4/blob/main/AMR-Wind/amr-wind-strong-scaling-abl.tex.png?raw=true)
