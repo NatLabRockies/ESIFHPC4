@@ -1,0 +1,67 @@
+$ srun -n 8 ./amr-wind-benchmark/amr-wind-benchmark-cpu-verify/amr-wind-build/submods/amrex/Tools/Plotfile/amrex_fcompare amr_wind_cpu_reference_plt00020 ./amr-wind-benchmark/amr-wind-benchmark-cpu-verify/amr-wind-build/test/test_files/abl_godunov/plt00020
+
+            variable name            absolute error            relative error
+                                        (||A - B||)         (||A - B||/||A||)
+ ----------------------------------------------------------------------------
+ level = 0
+ density                                          0                         0
+ gpx                                              0                         0
+ gpy                                              0                         0
+ gpz                                              0                         0
+ mu_turb                                          0                         0
+ p                                                0                         0
+ temperature                                      0                         0
+ temperature_mueff                                0                         0
+ velocityx                                        0                         0
+ velocityy                                        0                         0
+ velocityz                                        0                         0
+ velocity_mueff                                   0                         0
+ level = 1
+ density                                          0                         0
+ gpx                                              0                         0
+ gpy                                              0                         0
+ gpz                                              0                         0
+ mu_turb                                          0                         0
+ p                                                0                         0
+ temperature                                      0                         0
+ temperature_mueff                                0                         0
+ velocityx                                        0                         0
+ velocityy                                        0                         0
+ velocityz                                        0                         0
+ velocity_mueff                                   0                         0
+ PLOTFILE AGREE
+
+
+TinyProfiler total time across processes [min...avg...max]: 8.524 ... 8.525 ... 8.526
+
+-------------------------------------------------------------------------------------------
+Name                                        NCalls  Excl. Min  Excl. Avg  Excl. Max   Max %
+-------------------------------------------------------------------------------------------
+MultiFab::contains_nan()                        48     0.7714      1.564      2.831  33.20%
+FabArray::norminf()                             48        0.3     0.3045     0.3119   3.66%
+MultiFab::Subtract()                            24     0.1165      0.124     0.1285   1.51%
+Other                                           12  0.0001833  0.0009541   0.001598   0.02%
+-------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------
+Name                                        NCalls  Incl. Min  Incl. Avg  Incl. Max   Max %
+-------------------------------------------------------------------------------------------
+MultiFab::contains_nan()                        48     0.7714      1.564      2.831  33.20%
+FabArray::norminf()                             48        0.3     0.3045     0.3119   3.66%
+MultiFab::Subtract()                            24     0.1165      0.124     0.1285   1.51%
+Other                                           12  0.0002846   0.001802   0.003059   0.04%
+-------------------------------------------------------------------------------------------
+
+Pinned Memory Usage:
+---------------------------------------------------------------------------------------------------------------------
+Name                            Nalloc  Nfree  AvgMem min  AvgMem avg  AvgMem max  MaxMem min  MaxMem avg  MaxMem max
+---------------------------------------------------------------------------------------------------------------------
+The_Pinned_Arena::Initialize()       8      8    1030   B    1092   B    1153   B    8192 KiB    8192 KiB    8192 KiB
+---------------------------------------------------------------------------------------------------------------------
+
+Cpu Memory Usage:
+-------------------------------------------------------------------------------------------------
+Name        Nalloc  Nfree  AvgMem min  AvgMem avg  AvgMem max  MaxMem min  MaxMem avg  MaxMem max
+-------------------------------------------------------------------------------------------------
+Unprofiled   49152  49152      86 MiB      90 MiB      93 MiB     129 MiB     129 MiB     129 MiB
+-------------------------------------------------------------------------------------------------
