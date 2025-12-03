@@ -82,17 +82,19 @@ AMR-Wind is able to run on different GPUs using the CMake configuration paramete
 
 To verify that the results are close to expected, we compare the physical quantities of the plots output from AMR-Wind at time step 20 from our reference case running on 4 nodes in both cases. The AMReX tool is the `amrex_fcompare` executable which is built automatically in the verify scripts. The location of `amrex_fcompare` is in `amr-wind-build/submods/amrex/Tools/Plotfile/amrex_fcompare`. The input for this program is two plotfiles and the output is a norm of the differences between all the variables in each AMR level in the simulation. Note the output from AMR-Wind on the CPUs is generally deterministic between runs. However, when running AMR-Wind on GPUs, output is nondeterministic, making it more difficult to understand if the results are sufficiently within bounds.
 
-We provide a reference plot file from both our CPU case and GPU case, in which to compare. To use fcompare, it can be done as such:
+We provide a reference plot file from both our CPU case and GPU case, in which to compare. To use `fcompare`, it can run in serial as such:
 
 ```
 /path/to/amr-wind-benchmark-cpu-verify/amr-wind-build/submods/amrex/Tools/Plotfile/amrex_fcompare amr_wind_cpu_reference_plt00020 /other/path/to/amr-wind-benchmark-cpu-verify/amr-wind-build/test/test_files/abl_godunov/plt00020
 ```
 
-We expect differences due to different machines and compilers, etc. We expect the differences to be small for CPUs, but larger for GPUs. Although tolerances can be provided to fcompare to make it a boolean check, rather, we request that the output of fcompare is provided so it can be intepreted by a human. The same can be done for the GPU case using the provided GPU reference plot file.
+Note `fcompare` is an MPI application so it can be run with multiple ranks when the plot files are large. We expect differences due to different machines and compilers, etc. We expect the differences to be small for CPUs, but larger for GPUs. Although tolerances can be provided to fcompare to make it a boolean check, rather, we request that the output of fcompare is provided so it can be intepreted by a human. The same can be done for the GPU case using the provided GPU reference plot file.
 
-Output from fcompare when running the CPU case on the reference machine and comparing it to the CPU reference plot can be seen [here](amr-wind-benchmark-kestrel-results/amr-wind-benchmark-cpu-fcompare-results.txt). Note it's deterministic between runs.
+Output from fcompare when running the CPU case on the reference machine and comparing it to the CPU reference plot can be seen [here](amr-wind-benchmark-kestrel-results/amr-wind-benchmark-cpu-fcompare-results.txt). Note it's deterministic between runs and it was run with multiple MPI ranks.
 
-Output from fcompare when running the GPU case on the reference machine and comparing it to the GPU reference plot can be seen [here](amr-wind-benchmark-kestrel-results/amr-wind-benchmark-gpu-fcompare-results.txt). Note it's nondeterministic between runs.
+Output from fcompare when running the GPU case on the reference machine and comparing it to the GPU reference plot can be seen [here](amr-wind-benchmark-kestrel-results/amr-wind-benchmark-gpu-fcompare-results.txt). Note it's nondeterministic between runs, but close to machine precision when run on the same machine.
+
+Also of note, when AMR-Wind is built for the GPU, `fcompare` from that build will run on the GPU as well. We used the CPU `fcompare` executable for comparing our both our CPU and GPU plot files in these benchmarks to be consistent.
 
 ## Rules
 
