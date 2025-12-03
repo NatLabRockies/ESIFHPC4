@@ -2,7 +2,7 @@
 
 ## Purpose and Description
 
-The purpose of this benchmark is to capture a 'typical scientific AI' workload performed by researchers at NREL, in which image segmentation tasks are common for various scientific purposes. As such, we employ a [DeepCAM model training implementation from MLCommons](https://github.com/mlcommons/hpc/tree/main/deepcam) to segment climate data from HDF5-formatted files. 
+The purpose of this benchmark is to capture a 'typical scientific AI' workload performed by researchers at NLR, in which image segmentation tasks are common for various scientific purposes. As such, we employ a [DeepCAM model training implementation from MLCommons](https://github.com/mlcommons/hpc/tree/main/deepcam) to segment climate data from HDF5-formatted files. 
 
 ## How to build
 
