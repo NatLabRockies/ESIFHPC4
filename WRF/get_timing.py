@@ -1,4 +1,5 @@
 import argparse
+import glob
 
 from tabulate import tabulate
 
@@ -11,7 +12,7 @@ def get_command_line_args():
         dest="rsl_filenames",
         action="append",
         required=True,
-        help="The path to one or more rsl.error.0000 files, multiple entries can be specified with repeated '--rsl_file' flags. At least one file is required to run this script.",
+        help="The path to one or more individual rsl.error.0000 files, or a pattern to match multiple rsl.error.0000 files. Multiple entries can be specified with repeated '--rsl_file' flags. At least one file is required to run this script.",
     )
 
     return parser.parse_args()
@@ -94,7 +95,12 @@ if __name__ == "__main__":
     input_args = get_command_line_args()
 
     rsl_filenames = input_args.rsl_filenames
+    rsl_filenames_expanded = []
 
-    all_benchmark_metrics = process_rsl_error_files(rsl_filenames)
+    for filename in rsl_filenames:
+        # If wildcards are present, find and expand those matching files
+        rsl_filenames_expanded.extend(sorted(glob.glob(filename)))
+
+    all_benchmark_metrics = process_rsl_error_files(rsl_filenames_expanded)
 
     print_table(all_benchmark_metrics)
