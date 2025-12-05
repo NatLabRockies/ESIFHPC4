@@ -12,7 +12,7 @@ Weather Research and Forecasting (WRF) benchmarking and building instructions. T
 ## Step 1: Building WRF
 
 > [!NOTE]  
-> The steps described in this section (particuarly Step 1.3 and the `PNETCDF` and `HDF5` environment variables in Step 1.4) are specific to building WRF on the Kestrel HPC and current for December 2025. It is expected that minor modifications *will be required* on other systems and/or as the WRF dependencies are updated/available. Using modified versions of these supporting modules and setting the required environment variables appropriately is both acceptable and expected within the context of an "Baseline (as-is)" benchmark.
+> The steps described in this section (particularly Step 1.3 and the `PNETCDF` and `HDF5` environment variables in Step 1.4) are specific to building WRF on the Kestrel HPC and current for December 2025. It is expected that minor modifications *will be required* on other systems and/or as the WRF dependencies are updated/available. Using modified versions of these supporting modules and setting the required environment variables appropriately is both acceptable and expected within the context of an "Baseline (as-is)" benchmark.
 
 ### 1.0. Request an Interactive Node
 Before starting the build process, you may wish to request an interactive node to parallelize the compilation process, significantly reducing build time. If you don't have access to such resources, proceed immediately to Step 1.1. As a guideline, the entire workflow described in these instructions can be completed within approximately 15 minutes, so requesting a 60-minute session is a safe estimate. Replace `<allocation_name>` with your appropriate allocation name to initiate the session. As an example:
