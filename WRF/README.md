@@ -209,7 +209,7 @@ Once benchmarking jobs finish successfully, the configured run directories will 
 
 ### 3.1: Run the Timing Script
 
-For each of the run directories created above, we will examine the timings reported in the `rsl.error.0000` file. This human-readable file contains lots of valuable information, but we will focus primarily on the execution time. A parsing script, `get_timing.py`, is supplied here and can be executed like:
+For each of the run directories created above, we will examine the timings reported in the `rsl.error.0000` file. This human-readable file contains lots of valuable information, but we will focus primarily on the execution time. A parsing script, [`get_timing.py`](get_timing.py), is supplied here and can be executed like:
 
 ```bash
 python get_timing.py --rsl_file=${WRF_DIR}/conus2.5km-mpi-02/rsl.error.0000 --rsl_file=${WRF_DIR}/conus2.5km-mpi-04/rsl.error.0000
