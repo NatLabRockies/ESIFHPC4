@@ -1,64 +1,229 @@
-# WRF
-## Purpose and Description
+# WRF Benchmarking
 
-The Weather Research and Forecasting model (WRF) from [NCAR](https://www.mmm.ucar.edu/weather-research-and-forecasting-model) is a mesoscale numerical system used in atmospheric research and operational forecasting. [AceCAST] (https://tempoquest.com/acecast/), a commercially available version of WRF, runs on high-performance GPUs. This benchmark stresses the target system cores and memory bandwidth through data movement and IO operations, and measures its effect on application performance and throughput.
+Weather Research and Forecasting (WRF) benchmarking and building instructions.
 
-## Licensing Requirements
+---
 
-The WRF Model is open-source code in the public domain, and its use is unrestricted. The WRF public domain notice and related information may be found [here](https://www2.mmm.ucar.edu/wrf/users/public.html).
+## Step 1: Building WRF
 
-## How to build
+> [!NOTE]  
+> The steps described in this section (particuarly Step 1.3 and the `PNETCDF` and `HDF5` environment variables in Step 1.4) are specific to building WRF on the Kestrel HPC and current for December 2025. It is expected that minor modifications *will be required* on other systems and/or as the supporting modules supporting WRF are updated. Using modified versions of these supporting modules and setting the required environment variables appropriately is both acceptable and expected within the context of an "Baseline (as-is)" benchmark.
 
-Build instructions for any `WRF` and `WPS` can be found [here](https://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php). Additionally, build instruction for AceCAST can be found [here](https://acecast-docs.readthedocs.io/en/latest/InstallationGuide.html#). For building [WRFv4.6.1 and WPSv4.6.0](https://nrel.github.io/HPC/Documentation/Applications/wrf/) on the reference system, the following programming environment and library modules were loaded. The configuration files for WRF (`script/configure.wrf`) and WPS (`script/configure.wps`) are provided in this repository.
+### 1.0. Request an Interactive Node
+Before starting the build process, you may wish to request an interactive node to parallelize the compilation process, significantly reducing build time. If you don't have access to such resources, proceed immediately to Step 1.1. As a guideline, the entire workflow described in these instructions can be completed within approximately 15 minutes, so requesting a 60-minute session is a safe estimate. Replace `<allocation_name>` with your appropriate allocation name to initiate the session. As an example:
 
-```
-1) PrgEnv-gnu/8.5.0    2) cray-mpich/8.1.28  3) cray-libsci/23.12.5
-4) zlib/1.3.1	       5) hdf5/1.14.6	     6)  pnetcdf/1.14.0
-7) netcdf-c/4.9.3      8) netcdf-fortran/4.6.1
-9) libpng/1.6.47       10) jasper/1.900.1
-
+```bash
+salloc -A <allocation_name> -t 60
 ```
 
-## Run Definitions and Requirements
+### 1.1: Download WRF and WPS Source Code
+Start by downloading the source code for the WRF model and its companion, the WRF Preprocessing System (WPS). Use the provided links to download the specific versions of WRF (v4.7.1) and WPS (v4.6.0). The commands below will fetch compressed `.tar.gz` archives from the official WRF GitHub repository.
 
-### Tests
-
-The CONUS benchmarks (`CONUS-12km` and `CONUS-2.5km`) will be provided in this repository for testing the performance and throughput of the target system. CONUS-12km will be fitting within a single node’s CPUs or GPUs capacity and exposes processing speed and floating-point capabilities of the compute unit at a node level, while CONUS-2.5km spans multiple nodes and exposes system throughput and performance bottlenecks at a system level. In addition, reference WRF output files (`conus_2.5km/rsl.out.0000.*` and `conus_12km/rsl.out.0000.*`) will be provided for validating your run outputs using the `diffwrf` program. The program will compare your output with the reference output file and generate difference statistics for each field that is not bit-for-bit identical to the reference output. The following command can be issued to obtain differences between the outputs (diffout_tag), where tag is name of a run.
-
-```
-$ ${WRF_DIR}/external/io_netcdf/diffwrf wrfout_d01_2019-11-27_00:00:00 wrfout_reference > diffout_tag
-
+```bash
+wget https://github.com/wrf-model/WRF/releases/download/v4.7.1/v4.7.1.tar.gz
+wget https://github.com/wrf-model/WPS/archive/refs/tags/v4.6.0.tar.gz
 ```
 
-## How to run
-The [Conus2.5km](https://www2.mmm.ucar.edu/wrf/users/benchmark/v44/v4.4_bench_conus2.5km.tar.gz) and [Conus12km](https://www2.mmm.ucar.edu/wrf/users/benchmark/v44/v4.4_bench_conus12km.tar.gz) WRFV4.4 benchmarks will be used for measuring throughput and scaling of WRF on the target system.
+### 1.2: Extract the Source Code
+Once you've downloaded the archives, unpack them to access the source code. The `tar` command extracts the contents of the `.tar.gz` files and creates directories corresponding to the source files. This step produces directories containing WRF (WRFV4.7.1) and WPS (WPS-4.6.0).
 
-* To run WRF on CPUs, copy wrfinput_d01, wrfbdy_d01, namelist.input, and *.dat from the benchmark directory and copy runtime files from `${WRF_DIR}/run/*` in the run directory. The benchmark results can be obtained using `srun` as following:
-  
-  ```
-  $ srun -N <total number of nodes> -n <total number of MPI ranks per node> --ntasks-per-node=<number of MPI ranks per node> ${WRF_DIR}/main/wrf.exe
+```bash
+tar -xvzf v4.6.0.tar.gz 
+tar -xvzf v4.7.1.tar.gz 
+```
 
-  ```
+### 1.3: Load Necessary Modules
+The next step is loading the required software modules. By purging existing modules and loading specific versions of compilers and libraries, you ensure a clean environment and avoid compatibility issues during compilation. The commands below load GNU compilers (`PrgEnv-gnu/8.5.0`), NetCDF libraries (which automatically loads pnetcdf libraries and hdf5 libraries on the reference system) (`netcdf/4.9.3-cray-mpich-gcc`), and Jasper libraries (`jasper/1.900.1-cray-mpich-gcc`) that support WRF.
 
-* To run AceCAST on GPUs, copy runtime files from `acecast-v4.0.2/acecast/run/*`, and copy wrfinput_d01, wrfbdy_d01, namelist.input, and *.dat files from benchmark directory in the run directory. The benchmark results can be obtained using `mpirun` as following:
+```bash
+module purge
+module load PrgEnv-gnu/8.5.0 
+module load netcdf/4.9.3-cray-mpich-gcc
+module load jasper/1.900.1-cray-mpich-gcc
+```
 
-  ```
-  $ mpirun -n <total number of MPI ranks> -N < Number of MPI ranks per node> --hostfile hostfile ./gpu-launch.sh ./acecast.exe
+### 1.4: Set Environment Variables
+Define environment variables to facilitate the compilation process. These variables specify file paths, library locations, and directory structures required by the build system. Update the paths of `WRF_DIR` and `WPS_DIR` in the example to match your local installation setup. 
 
-  ```
+```bash
+export PATH="/usr/bin:${PATH}"
+export LD_LIBRARY_PATH="/usr/lib64:${LD_LIBRARY_PATH}"
 
-The offeror should reveal any potential for performance optimization on the target system that provides an optimal task configuration by running As-is and Optimized cases. On CPU nodes, the As-is case will saturate all available cores per node to establish baseline performance and expose potential computational and memory bottlenecks. The optimized case will saturate at least 90% of cores per node and will include configurations exploring strategies to identify opportunities for reducing inter-node communication, data storage, or other systemic issues. On GPU nodes, the As-is case will saturate all GPUs per node to evaluate GPU compute capabilities and memory bandwidth performance. The Optimized case will saturate all GPUs and CPU threads per node, along with optimizations focusing on minimizing data transfers and leveraging GPU-specific memory features, aiming to reveal opportunities for reducing latency caused by interconnect and file IO operations.
+export WRF_DIR=/scratch/<user>/<benchmark_folder>/WRFV4.7.1/
+export WPS_DIR=/scratch/<user>/<benchmark_folder>/WPS-4.6.0/
 
-The Offeror should run 4-6 concurrent job instances of the benchmark on the target system. The harmonic-mean of the runtime from the concurrent jobs will be used for reporting strong-scaling results. This repository includes a script (`script/wrf_stats.py`) to obtain runtimes from individual output files. The application throughput can be computed as following: `throughput = allocation factor * node-class count) / (number of nodes * runtime)`. EKY: Make this a single instance, no mean, define summation of time, do we need 12km? maybe not, keep in as debugging aid but not requirement for performance report
+export PNETCDF=$PNETCDF_DIR 
+export HDF5=$HDF5_DIR
+```
 
-## Run Rules
+### 1.5: Configure WRF Build Options
+Navigate to the WRF directory specified earlier using the `WRF_DIR` variable. Run the `configure` script, which will ask you to specify build options. At the first prompt, select option `35` for `(dm+sm) GNU (gfortran/gcc)` which compiles WRF with support for shared memory (SM) and distributed memory (DM) parallelism. At the second prompt, specify the type of nesting desired by selecting option `1=basic`. Nesting allows for finer resolution within a defined area.
 
-* The Offeror can use any WRFv4.6.x and WPSv4.6.x version, with later gnu or intel compilers and libraries, and change the provided configure scripts as needed. EKY: don't restrict compilers
-* The smaller benchmark (`CONUS-12km`) might not scale across compute units within a node, which limits demonstration of future hardware capabilities. In such a case, the offeror may use the larger benchmark (`CONUS-2.5km`) for a single-node test with an accompanying justification for the change in the Text response if the data fits within the available GPU memory and there is sufficient memory bandwidth.
-* Any optimizations would be allowed in the code, build and task configuration as long as the offeror would provide a high-level description of the optimization techniques used and their impact on performance in the Text response.
+```bash
+cd ${WRF_DIR}
+./configure
+```
 
-## Benchmark test results to report and files to return
+First prompt:
+```bash
+Enter selection [1-83] : 35
+```
 
-* For scaling and throughput reporting, the harmonic mean of the wallclock time (`Timing for main`) reported in `rsl.out.0000` files should be entered into the Spreadsheet (`report/wrf_benchmark.csv`) response.
-* The Text response should include descriptions of optimizations and justification if run outputs vary from Reference outputs provided.
-* The file response should include namelist.input, configure.wrf, rsl.error.0000 and rsl.out.0000, and diffout_tag files
+Second prompt:
+```bash
+Compile for nesting? (1=basic, 2=preset moves, 3=vortex following) [default 1]:1
+```
+
+### 1.6: Compile WRF
+Compile WRF with parallel processing to reduce build time. The `-j` flag specifies the number of cores to use during compilation; select up to 20 cores (you may use fewer if resources are limited). Upon successful compilation, you should see a summary of executables created in the `main` directory (e.g., `wrf.exe`, `real.exe`).
+
+```bash
+./compile -j 16 em_real
+```
+
+where the summary of executables upon compilation should look similar to:
+
+```bash
+build started:   Wed Nov 12 15:14:18 MST 2025
+build completed: Wed Nov 12 15:17:30 MST 2025
+ >                  Executables successfully built                  
+ 
+-rwxrwxr-x 1 <user> <user> 39826880 Nov 12 15:17 main/ndown.exe
+-rwxrwxr-x 1 <user> <user> 36185816 Nov 12 15:17 main/real.exe
+-rwxrwxr-x 1 <user> <user> 35632920 Nov 12 15:17 main/tc.exe
+-rwxrwxr-x 1 <user> <user> 45807024 Nov 12 15:17 main/wrf.exe
+```
+
+### 1.7: Configure WPS Build Options
+Move to the WPS directory specified in the `WPS_DIR` variable. Similar to the WRF configuration, we begin by running the `configure` script first. Select option `3` at the prompt, which is suitable for `Linux x86_64, gfortran (dmpar)` setups. This configuration prepares WPS for parallel processing.
+
+```bash
+cd ${WPS_DIR}
+./configure
+```
+
+First prompt:
+```bash
+Enter selection [1-44] : 3
+```
+
+### 1.8: Modify and Save WPS Configuration
+After running the `configure` script, locate the file `configure.wps` in the WPS directory. Open this file using a text editor and search for the `WRF_LIB` variable on line 44. Modify the last line of this assignment to include the `-fopenmp` flag as shown below, which enables OpenMP support during compilation. This step ensures compatibility between WRF and WPS.
+
+```bash
+WRF_LIB         =       -L$(WRF_DIR)/external/io_grib1 -lio_grib1 \
+                        -L$(WRF_DIR)/external/io_grib_share -lio_grib_share \
+                        -L$(WRF_DIR)/external/io_int -lwrfio_int \
+                        -L$(WRF_DIR)/external/io_netcdf -lwrfio_nf \
+                        -L$(NETCDF)/lib -lnetcdff -lnetcdf -fopenmp
+```
+
+Save the file and exit the editor.
+
+### 1.9: Compile WPS
+Run the WPS compile process to generate the necessary executables. If successful, the `compile` script will create the executables `geogrid.exe`, `ungrib.exe`, and `metgrid.exe`.
+
+```bash
+./compile
+```
+
+---
+
+## Step 2: Submitting Benchmarking Jobs
+
+### 2.1: Create Copies of Run Directories 
+Create multiple versions of the run directory to accommodate different benchmarking cases. For example, suffix `_n02` and `_n04` denote runs on 2 nodes and 4 nodes respectively. Naming these directories helps distinguish settings and save independent results for different benchmarking scenarios.
+
+```bash
+cp -r ${WRF_DIR}/run/ ${WRF_DIR}/conus2.5km-mpi-02
+cp -r ${WRF_DIR}/run/ ${WRF_DIR}/conus2.5km-mpi-04
+...
+```
+
+### 2.2: Download and Extract Benchmark Data
+Download the 2.5-km CONUS benchmark dataset (~34GB). These files include the inputs, supporting scripts, and truth values required to perform the benchmarking. Unpack the files after download to expose the necessary files for your test cases.
+
+```bash
+wget https://www2.mmm.ucar.edu/wrf/users/benchmark/v44/v4.4_bench_conus2.5km.tar.gz
+tar -xvzf v4.4_bench_conus2.5km.tar.gz
+cd v4.4_bench_conus2.5km
+```
+
+### 2.3: Modify Benchmark File for Parallel NetCDF
+We will make a slight modification to the provided `namelist.input` file to utilize the parallel netcdf functionality we compiled the WRF executable with. From within the `v4.4_bench_conus2.5km` directory, open the `namelist.input` file for writing in an editor of your choice. Modify the input file on lines 24 and 25 to use a parallel writing strategy by changing the value of the `io_form_history` and `io_form_restart` variables from `2` to `11` as shown below.
+
+```bash
+io_form_history                     = 11,
+io_form_restart                     = 11,
+```
+
+Save and close the file once changes are applied.
+
+### 2.4: Copy Benchmark Files to Run Directories
+Copy all required input files from the benchmark directory to each of the created run directories (`conus2.5km-mpi-02`, `conus2.5km-mpi-04`, etc.). This step ensures the WRF executable in each directory has access to the correct data inputs.
+
+```bash
+cp *.dat *.input *_d01 ${WRF_DIR}/conus2.5km-mpi-02
+cp *.dat *.input *_d01 ${WRF_DIR}/conus2.5km-mpi-04
+...
+```
+
+### 2.5: Create Job Submission Script
+Within each run directory, create a submission script named `submit_job.sbatch`. This script provides the configuration needed to run WRF using Slurm. Below is the example for a 2-node, pure-MPI case (i.e., one thread per MPI task, `OMP_NUM_THREADS=1`), which utilizes 92% of the cores on each node. You can update the `--nodes`, `num_cores`, and `OMP_NUM_THREADS` values for additional configurations. Save the file to the respective run directory, e.g., `${WRF_DIR}/conus2.5km-mpi-02/submit_job.sbatch`.
+
+```bash
+#!/bin/bash
+#SBATCH --account=hpcapps
+#SBATCH --time=4:00:00
+#SBATCH --nodes=2
+#SBATCH --exclusive
+#SBATCH --mem=0
+
+module purge
+module load PrgEnv-gnu/8.5.0
+module load netcdf/4.9.3-cray-mpich-gcc
+module load jasper/1.900.1-cray-mpich-gcc
+
+export OMP_NUM_THREADS=1
+
+srun -n 192 --cpu-bind=rank_ldom ./wrf.exe
+```
+
+### 2.6: Submit the Benchmark Job
+Submit the job using Slurm with the `sbatch` command.
+
+```bash
+sbatch submit_job.sbatch
+```
+
+---
+
+## Step 3: Measuring and Recording Performance
+
+Once benchmarking jobs finish successfully, the configured run directories will contain outputs and diagnostic files. Use these files to measure and analyze performance metrics for each test case.
+
+### 3.1: Run the Timing Script
+
+For each of the run directories created above, we will examine the timings reported in the `rsl.error.0000` file. This human-readable file contains lots of valuable information, but we will focus primarily on the execution time. A parsing script, `get_timing.py`, is supplied here and can be executed like:
+
+```bash
+python get_timing.py ${WRF_DIR}/conus2.5km-mpi-02/rsl.error.0000
+```
+
+This script combs through the rsl.error.0000 file and extracts the timing results per each step of the algorithm, delineating the steps where file writing was performed since this adds an appreciable amount of time. The output of running this script on an `rsl.error.0000` file looks like:
+
+```bash
+====Timings for ../WRFV4.7.1/conus2.5km-mpi-02/rsl.error.0000====
+Total Total Time: 3768.14 seconds
+Total Compute Time: 3680.77 seconds (97.7% of total)
+Total Write Time: 87.37 seconds (2.3% of total)
+```
+
+### 3.2: Report the Timing Results
+
+Report the "Total Time", "Write Time", and total number of MPI tasks in the reporting spreadsheet. For "Optimized" cases, additionally include the number of threads per task.
+
+---
+
+## Run Definitions and Requiresments
+
