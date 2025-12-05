@@ -1,6 +1,6 @@
 # [DRAFT] ESIF-HPC-4 Benchmark Suite 
 
-Contains benchmarks to be run for NREL's ESIF-HPC-4 procurement.
+Contains benchmarks to be run for NLR's ESIF-HPC-4 procurement.
 
 The purpose of the "draft release" on 5/29/2025 is so that we can make our RFP benchmarking plans transparent to all vendors ahead of the RFP. Our hope is that this early draft release will give vendors additional time to work with our team on the benchmarks, especially as we have a few "in-house" codes represented in the suite that may be unfamiliar to vendors.
 
@@ -20,14 +20,12 @@ Important Notes:
 **"Class A" Applications:**
 | Application | Standard | Accelerated | Optimized | Baseline |
 |:-----------:|:--------:|:-----------:|:---------:|:-----:|
-| [VASP](https://github.com/NREL/ESIFHPC4/tree/main/VASP)        | Yes      | Yes         | Optional  | Yes   |
+| [VASP](https://github.com/NREL/ESIFHPC4/tree/main/VASP)        | Optional      | Yes         | Optional  | Yes   |
 | [WRF](https://github.com/NREL/ESIFHPC4/tree/main/WRF)         | Yes      | No        | Optional  | Yes   |
-| [MLPerf-DeepCAM*](https://github.com/NREL/ESIFHPC4/tree/main/AI-ML/app-level-benchmark)| Yes      | Yes         | Optional  | Yes   |
-| [AMR-Wind](https://github.com/NREL/ESIFHPC4/tree/main/AMR-Wind)    | Yes      | Yes         | Optional  | Yes   |
+| [MLPerf-DeepCAM](https://github.com/NREL/ESIFHPC4/tree/main/AI-ML/app-level-benchmark)| Optional      | Yes         | Optional  | Yes   |
+| [AMR-Wind](https://github.com/NREL/ESIFHPC4/tree/main/AMR-Wind)    | Optional      | Yes         | Optional  | Yes   |
 | [LAMMPS](https://github.com/NREL/ESIFHPC4/tree/main/LAMMPS)      | Yes      | Yes         | Optional  | Yes   |
-| [BerkeleyGW](https://github.com/NREL/ESIFHPC4/tree/main/BerkeleyGW)  | Yes      | Yes         | Optional        | Yes   |
-
-\* MLPerf-DeepCAM can be chosen to run *either* standard or accelerated, though accelerated is strongly preferred.
+| [BerkeleyGW](https://github.com/NREL/ESIFHPC4/tree/main/BerkeleyGW)  | Optional      | Yes         | Optional        | Yes   |
 
 **"Class B" Applications - functionality only**
 | Application | Standard | Accelerated | Optimized | Baseline |
@@ -43,9 +41,9 @@ Important Notes:
 | [IOR](https://github.com/NREL/ESIFHPC4/tree/main/IOR)         | Yes      | No          | Optional  | Yes   |
 | [mdtest](https://github.com/NREL/ESIFHPC4/tree/main/mdtest)      | Yes      | No          | Optional  | Yes   |
 | [GPU-GPU collective](https://github.com/NREL/ESIFHPC4/tree/main/AI-ML/microbenchmark)| No | Yes         | Optional  | Yes   |
-| FIO***         | Yes      | No          | Optional  | Yes   |
+| FIO*         | Yes      | No          | Optional  | Yes   |
 
-\*** benchmark still in early development; not yet in repo.
+\* benchmark still in early development; not yet in repo.
 
 ## Draft definitions for baseline(as-is), ported, and optimized runs
 
@@ -58,11 +56,7 @@ We have established the following draft definitions for baseline, ported, and op
 ## Planned Changes
 We have planned/upcoming changes to the suite that have not yet been integrated but are currently in development. We list any major not-yet-integrated changes here. Please note that this list is subject to change, and we make no guarantee that these changes are reflected in the finalized benchmark suite.
 
-- AI/ML: We plan to change the AI application-level benchmark from MLPerf's 3DUnet to MLPerf's DeepCAM benchmark.
-- WRF: We plan to remove the AceCAST/GPU portion of WRF, along with any requests for simultaneous/concurrent runs on test hardware.
-- VASP: Bench 1 will now focus only on the HSE calculation, with the supercell increased from 16 atoms to 128 atoms. Bench 2 will be a vasp_gam single-kpoint GGA calculation with 1149 atoms, increased from 519 atoms.
-- LAMMPS: We are developing an "extra large" size input that should better utilize future hardware.
-- AMR-Wind: We plan to remove any requests for simultaneous/concurrent runs on test hardware.
+- VASP: Bench 1 will now focus only on the HSE calculation (removing the GGA and GW components), with the supercell increased from 16 atoms to 128 atoms. Bench 2 will be a vasp_gam single-kpoint GGA calculation with 1149 atoms, increased from 519 atoms.
 
 ## Changelog
 
@@ -74,3 +68,10 @@ We have planned/upcoming changes to the suite that have not yet been integrated 
 ### July 29, 2025
 - Removed Q-Chem from the suite
 - Moved BerkeleyGW from "Class B" to "Class A"
+
+### December 5, 2025
+- Changed the AI application-level benchmark from MLPerf's 3DUnet to MLPerf's DeepCAM benchmark.
+- Removed the AceCAST/GPU portion of WRF, along with any requests for simultaneous/concurrent runs on test hardware.
+- Removed 12 km input case from WRF
+- Overhauled AMR-Wind benchmark, simplifying and clarifying build instructions, inputs, and run requirements, and removed any requests for simultaneous/concurrent runs on test hardware for AMR-Wind
+- Added "extra large" size input to LAMMPS that should better utilize future hardware; removed any requirement to run "small" and "large" LAMMPS input sizes.
