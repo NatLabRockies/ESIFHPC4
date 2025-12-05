@@ -1,7 +1,12 @@
 import argparse
 import glob
 
-from tabulate import tabulate
+try:
+    from tabulate import tabulate
+except ModuleNotFoundError:
+    print("Could not find the 'tabulate' package") 
+    print("To fix this error, run 'pip install tabulate' in this environment")
+    raise 
 
 
 def get_command_line_args():
