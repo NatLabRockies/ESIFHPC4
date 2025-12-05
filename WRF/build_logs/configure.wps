@@ -32,7 +32,7 @@ PERL			=	perl
 
 RANLIB			=	echo
 
-WRF_DIR = /nopt/nrel/apps/cpu_stack/software/wrf/gnu/WRF-4.6.1
+WRF_DIR = /scratch/eyoung/wrf_build_test/WRFV4.7.1/
 
 WRF_INCLUDE     =       -I$(WRF_DIR)/external/io_netcdf \
                         -I$(WRF_DIR)/external/io_grib_share \
