@@ -137,7 +137,7 @@ DM_CC           =       mpicc -cc=$(SCC)
 FC              =       time $(DM_FC)
 CC              =       $(DM_CC) -DFSEEKO64_OK 
 LD              =       $(FC)
-RWORDSIZE       =       $(NATIVE_RWORDSIZE)
+RWORDSIZE       =       4
 PROMOTION       =       #-fdefault-real-8
 ARCH_LOCAL      =       -DNONSTANDARD_SYSTEM_SUBR  -DWRF_USE_CLM $(NETCDF4_IO_OPTS)
 # to validate WRF correctness on aarch64 against x86_64; compile with x86 this alternate ARCH_LOCAL option; able to achieve identical output model on ubuntu 18.04 with gcc 10.2 (on graviton and intel processors)
@@ -166,15 +166,17 @@ M4              =      m4 -G
 RANLIB          =      ranlib
 RLFLAGS		=	
 CC_TOOLS        =      $(SCC) 
-NETCDFPAR_BUILD	=      echo SKIPPING
+
 
 ###########################################################
 ######################
 # POSTAMBLE
 
 FGREP = fgrep -iq
+### Used throughout the build system to inform promotion to double precision
+DOUBLE_PRECISION = 
 
-ARCHFLAGS       =    $(COREDEFS) -DIWORDSIZE=$(IWORDSIZE) -DDWORDSIZE=$(DWORDSIZE) -DRWORDSIZE=$(RWORDSIZE) -DLWORDSIZE=$(LWORDSIZE) \
+ARCHFLAGS       =    $(COREDEFS) -DIWORDSIZE=$(IWORDSIZE) -DDWORDSIZE=$(DWORDSIZE) -DRWORDSIZE=$(RWORDSIZE) -DLWORDSIZE=$(LWORDSIZE)  \
                      $(ARCH_LOCAL) \
                      $(DA_ARCHFLAGS) \
                       -DDM_PARALLEL \
@@ -241,6 +243,8 @@ WRFPLUSPATH     =
 RTTOVPATH       =    
 PNETCDFPATH     =    /nopt/nrel/apps/cpu_stack/libraries-craympich/pnetcdf/pnetcdf-1.14.0
 ADIOS2PATH      =    
+NETCDFPAR_BUILD	=    echo SKIPPING
+
 
 bundled:  io_only 
 external: io_only $(WRF_SRC_ROOT_DIR)/external/RSL_LITE/librsl_lite.a gen_comms_rsllite module_dm_rsllite $(ESMF_TARGET)
