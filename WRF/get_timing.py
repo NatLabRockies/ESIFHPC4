@@ -4,9 +4,9 @@ import glob
 try:
     from tabulate import tabulate
 except ModuleNotFoundError:
-    print("Could not find the 'tabulate' package") 
+    print("Could not find the 'tabulate' package")
     print("To fix this error, run 'pip install tabulate' in this environment")
-    raise 
+    raise
 
 
 def get_command_line_args():
