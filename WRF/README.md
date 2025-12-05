@@ -218,13 +218,13 @@ python get_timing.py --rsl_file=${WRF_DIR}/conus2.5km-mpi-02/rsl.error.0000 --rs
 This script combs through the rsl.error.0000 file(s) specified with the `--rsl_file` flag and extracts the timing results per each step of the algorithm, delineating the steps where file writing was performed since this adds an appreciable amount of time. The output of running this script on multiple `rsl.error.0000` files looks like:
 
 ```
-  MPI Tasks    Threads    Iterations    Write Time (s)    Total Time
------------  ---------  ------------  ----------------  ------------
-         96          1          1440              71.0        7210.9
-        192          1          1440              87.4        3768.1
-        384          1          1440              64.7        1903.9
-        768          1          1440              84.1        1054.7
-       1536          1          1440              85.2         574.1
+  MPI Tasks    Threads    Iterations    Write Time (s)    Total Time (s)
+-----------  ---------  ------------  ----------------  ----------------
+         96          1          1440              71.0            7210.9
+        192          1          1440              87.4            3768.1
+        384          1          1440              64.7            1903.9
+        768          1          1440              84.1            1054.7
+       1536          1          1440              85.2             574.1
 ```
 
 ### 3.2: Report the Timing Results

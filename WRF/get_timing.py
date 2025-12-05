@@ -24,7 +24,7 @@ def print_table(data):
         "Threads",
         "Iterations",
         "Write Time (s)",
-        "Total Time",
+        "Total Time (s)",
     ]
 
     print(tabulate(data, headers=header, floatfmt=".1f", stralign="right"))
