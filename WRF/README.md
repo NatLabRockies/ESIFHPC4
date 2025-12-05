@@ -2,8 +2,10 @@
 
 Weather Research and Forecasting (WRF) benchmarking and building instructions. This document is organized as follows:
 
-1. [Step 1: Building WRF](#step-1-building-wrf)
-
+1. [Step 1: Building WRF](#step-1-building-wrf): This describes the process required to build the WRF executable from source code.
+2. [Step 2: Submitting Benchmarking Jobs](#step-2-submitting-benchmarking-jobs): This described how to access the benchmarking job and modify it to test our WRF installation.
+3. [Step 3: Measuring and Recording Performance](#step-3-measuring-and-recording-performance): This section defines what metrics will be recorded and how to calculate them.
+4. [Run Definitions and Requiresments](#run-definitions-and-requiresments): We outline what results to include in the response and give examples for comparison.
 
 ---
 
@@ -230,3 +232,4 @@ Report the "Total Time", "Write Time", and total number of MPI tasks in the repo
 
 ## Run Definitions and Requiresments
 
+![Example timings for the 2.5km benchmark obtained from the Kestrel HPC](conus_2.5km/kestrel_benchmarking_results.png)
