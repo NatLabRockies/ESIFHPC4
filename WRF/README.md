@@ -5,7 +5,7 @@ Weather Research and Forecasting (WRF) benchmarking and building instructions. T
 1. [Step 1: Building WRF](#step-1-building-wrf): This describes the process required to build the WRF executable from source code.
 2. [Step 2: Submitting Benchmarking Jobs](#step-2-submitting-benchmarking-jobs): This described how to access the benchmarking job and modify it to test our WRF installation.
 3. [Step 3: Measuring and Recording Performance](#step-3-measuring-and-recording-performance): This section defines what metrics will be recorded and how to calculate them.
-4. [Run Definitions and Requiresments](#run-definitions-and-requiresments): We outline what results to include in the response and give examples for comparison.
+4. [Run Definitions and Requirements](#run-definitions-and-requirements): We outline what results to include in the response and give examples for comparison.
 
 ---
 
@@ -212,16 +212,19 @@ Once benchmarking jobs finish successfully, the configured run directories will 
 For each of the run directories created above, we will examine the timings reported in the `rsl.error.0000` file. This human-readable file contains lots of valuable information, but we will focus primarily on the execution time. A parsing script, `get_timing.py`, is supplied here and can be executed like:
 
 ```bash
-python get_timing.py ${WRF_DIR}/conus2.5km-mpi-02/rsl.error.0000
+python get_timing.py --rsl_file=${WRF_DIR}/conus2.5km-mpi-02/rsl.error.0000 --rsl_file=${WRF_DIR}/conus2.5km-mpi-04/rsl.error.0000
 ```
 
-This script combs through the rsl.error.0000 file and extracts the timing results per each step of the algorithm, delineating the steps where file writing was performed since this adds an appreciable amount of time. The output of running this script on an `rsl.error.0000` file looks like:
+This script combs through the rsl.error.0000 file(s) specified with the `--rsl_file` flag and extracts the timing results per each step of the algorithm, delineating the steps where file writing was performed since this adds an appreciable amount of time. The output of running this script on multiple `rsl.error.0000` files looks like:
 
-```bash
-====Timings for ../WRFV4.7.1/conus2.5km-mpi-02/rsl.error.0000====
-Total Total Time: 3768.14 seconds
-Total Compute Time: 3680.77 seconds (97.7% of total)
-Total Write Time: 87.37 seconds (2.3% of total)
+```
+  MPI Tasks    Threads    Iterations    Write Time (s)    Total Time
+-----------  ---------  ------------  ----------------  ------------
+         96          1          1440              71.0        7210.9
+        192          1          1440              87.4        3768.1
+        384          1          1440              64.7        1903.9
+        768          1          1440              84.1        1054.7
+       1536          1          1440              85.2         574.1
 ```
 
 ### 3.2: Report the Timing Results
@@ -230,6 +233,7 @@ Report the "Total Time", "Write Time", and total number of MPI tasks in the repo
 
 ---
 
-## Run Definitions and Requiresments
+## Run Definitions and Requirements
 
 ![Example timings for the 2.5km benchmark obtained from the Kestrel HPC](conus_2.5km/kestrel_benchmarking_results.png)
+*The results for the two sets of required benchmarks obtained on the Kestrel HPC. The solid blue line corresponds to the "Total Time" column in the table in Section 3.1*
