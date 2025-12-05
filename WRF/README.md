@@ -1,6 +1,9 @@
 # WRF Benchmarking
 
-Weather Research and Forecasting (WRF) benchmarking and building instructions.
+Weather Research and Forecasting (WRF) benchmarking and building instructions. This document is organized as follows:
+
+1. [Step 1: Building WRF](#step-1:-building-wrf)
+
 
 ---
 
