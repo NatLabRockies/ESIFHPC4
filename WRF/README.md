@@ -215,7 +215,18 @@ For each of the run directories created above, we will examine the timings repor
 python get_timing.py --rsl_file=${WRF_DIR}/conus2.5km-mpi-02/rsl.error.0000 --rsl_file=${WRF_DIR}/conus2.5km-mpi-04/rsl.error.0000
 ```
 
-This script combs through the rsl.error.0000 file(s) specified with the `--rsl_file` flag and extracts the timing results per each step of the algorithm, delineating the steps where file writing was performed since this adds an appreciable amount of time. The output of running this script on multiple `rsl.error.0000` files looks like:
+This script combs through the rsl.error.0000 file(s) specified with the `--rsl_file` flag and extracts the timing results per each step of the algorithm, delineating the steps where file writing was performed since this adds an appreciable amount of time.
+
+---
+
+## Run Definitions and Requirements
+
+
+Benchmarking WRF requires reporting these timing results from two sets of runs each comprised of 5 test cases for a total of 10 runs. The first set of runs uses pure MPI parallelism (i.e., one OpenMP thread per MPI task) and tests strong scaling performance across 1, 2, 4, 8, and 16 nodes. The Offeror may adjust the total number of MPI tasks, but note that in each case, *at least 80% of the available cores per every node must be utilized.* The second set of runs uses hybrid OpenMP + MPI parallelism (i.e., 4 threads per MPI task) and tests strong scaling performance across the same 1, 2, 4, 8, and 16 node jobs. Note that since each MPI task uses 4 threads, the requirement for the total number of MPI tasks per every node is reduced to 20%.
+
+For these required cases, report the number of MPI tasks, number of threads, number of iterations calculation, total write time, and total time in the reporting spreadsheet (the `get_timing.py` script provides all these outputs). Optionally, the Offeror may include a set of "Optimized" cases that use different OpenMP:MPI ratios, node saturations, `namelist.input` specifications, and building instructions provided the details are provided as explained in the definition of "Optimized".
+
+For clarity and comparison, we include the results of carrying out the required benchmarks on the Kestrel HPC below. The output of running the `get_timing.py` script on the 5 `rsl.error.0000` files for the pure MPI tests is:
 
 ```
   MPI Tasks    Threads    Iterations    Write Time (s)    Total Time (s)
@@ -227,13 +238,19 @@ This script combs through the rsl.error.0000 file(s) specified with the `--rsl_f
        1536          1          1440              85.2             574.1
 ```
 
-### 3.2: Report the Timing Results
+The output of running the `get_timing.py` script on the 5 `rsl.error.0000` files for the hybrid OpenMP + MPI tests is:
 
-Report the "Total Time", "Write Time", and total number of MPI tasks in the reporting spreadsheet. For "Optimized" cases, additionally include the number of threads per task.
+```
+  MPI Tasks    Threads    Iterations    Write Time (s)    Total Time (s)
+-----------  ---------  ------------  ----------------  ----------------
+         24          4          1440              49.9            6809.0
+         48          4          1440              53.6            3526.0
+         96          4          1440              38.7            1747.9
+        192          4          1440              40.9             888.3
+        384          4          1440              46.5             480.4
+```
 
----
-
-## Run Definitions and Requirements
+Visualizing these outputs provides a clearer picture of reasonable scaling performance up to 16 nodes.
 
 ![Example timings for the 2.5km benchmark obtained from the Kestrel HPC](conus_2.5km/kestrel_benchmarking_results.png)
-*The results for the two sets of required benchmarks obtained on the Kestrel HPC. The solid blue line corresponds to the "Total Time" column in the table in Section 3.1*
+*The results for the two sets of required benchmarks obtained on the Kestrel HPC. The plotted values correspond to the "Total Time" columns in the tables above*
