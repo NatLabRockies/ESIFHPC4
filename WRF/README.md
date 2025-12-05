@@ -137,7 +137,7 @@ Run the WPS compile process to generate the necessary executables. If successful
 ## Step 2: Submitting Benchmarking Jobs
 
 ### 2.1: Create Copies of Run Directories 
-Create multiple versions of the run directory to accommodate different benchmarking cases. For example, suffix `_n02` and `_n04` denote runs on 2 nodes and 4 nodes respectively. Naming these directories helps distinguish settings and save independent results for different benchmarking scenarios.
+Create multiple versions of the run directory to accommodate different benchmarking cases. For example, suffix `mpi-02` and `mpi-04` denote pure MPI runs on 2 nodes and 4 nodes respectively. Naming these directories helps distinguish settings and save independent results for different benchmarking scenarios.
 
 ```bash
 cp -r ${WRF_DIR}/run/ ${WRF_DIR}/conus2.5km-mpi-02
@@ -174,7 +174,7 @@ cp *.dat *.input *_d01 ${WRF_DIR}/conus2.5km-mpi-04
 ```
 
 ### 2.5: Create Job Submission Script
-Within each run directory, create a submission script named `submit_job.sbatch`. This script provides the configuration needed to run WRF using Slurm. Below is the example for a 2-node, pure-MPI case (i.e., one thread per MPI task, `OMP_NUM_THREADS=1`), which utilizes 92% of the cores on each node. You can update the `--nodes`, `num_cores`, and `OMP_NUM_THREADS` values for additional configurations. Save the file to the respective run directory, e.g., `${WRF_DIR}/conus2.5km-mpi-02/submit_job.sbatch`.
+Within each run directory, create a submission script named `submit_job.sbatch`. This script provides the configuration needed to run WRF using Slurm. Below is the example for a 2-node, pure-MPI case (i.e., one thread per MPI task, `OMP_NUM_THREADS=1`), which utilizes 92% of the cores on each node. You can update the `--nodes`, `num_cores`, and `OMP_NUM_THREADS` values for additional configurations as described in [Run Definitions and Requirements](#run-definitions-and-requirements). Save the file to the respective run directory, e.g., `${WRF_DIR}/conus2.5km-mpi-02/submit_job.sbatch`.
 
 ```bash
 #!/bin/bash
