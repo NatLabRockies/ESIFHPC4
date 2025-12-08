@@ -44,10 +44,9 @@ export TMPDIR=${TMPDIR:-/tmp}
 
 
 
-# Let Slingshot handle NCCL optimizations automatically
-# NCCL flags removed for Slingshot compatibility
+# set ranks
 totalranks=$(( ${SLURM_NNODES} * ${SLURM_NTASKS_PER_NODE} ))
-cpus_per_task=$(( ${SLURM_CPUS_ON_NODE} / ${rankspernode} ))
+cpus_per_task=$(( ${SLURM_CPUS_ON_NODE} / ${SLURM_NTASKS_PER_NODE} ))
 
 # number of data loader workers
 # Rule of thumb: 2-4 workers per GPU, but not more than available CPU cores
