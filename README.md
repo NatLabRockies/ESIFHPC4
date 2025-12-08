@@ -61,6 +61,16 @@ We have planned/upcoming changes to the suite that have not yet been integrated 
 
 ## Changelog
 
+### December 8, 2025
+- VASP: Bench 1 will now focus only on the HSE calculation (removing the GGA and GW components), with the supercell increased from 16 atoms to 128 atoms. Bench 2 will be a vasp_gam single-kpoint GGA calculation with 1149 atoms, increased from 519 atoms.
+
+### December 5, 2025
+- Changed the AI application-level benchmark from MLPerf's 3DUnet to MLPerf's DeepCAM benchmark.
+- Removed the AceCAST/GPU portion of WRF, along with any requests for simultaneous/concurrent runs on test hardware.
+- Removed 12 km input case from WRF
+- Overhauled AMR-Wind benchmark, simplifying and clarifying build instructions, inputs, and run requirements, and removed any requests for simultaneous/concurrent runs on test hardware for AMR-Wind
+- Added "extra large" size input to LAMMPS that should better utilize future hardware; removed any requirement to run "small" and "large" LAMMPS input sizes.
+
 ### September 22, 2025
 - Removed HPGMG from the suite
 - Added "planned changes" section to README
@@ -70,12 +80,4 @@ We have planned/upcoming changes to the suite that have not yet been integrated 
 - Removed Q-Chem from the suite
 - Moved BerkeleyGW from "Class B" to "Class A"
 
-### December 5, 2025
-- Changed the AI application-level benchmark from MLPerf's 3DUnet to MLPerf's DeepCAM benchmark.
-- Removed the AceCAST/GPU portion of WRF, along with any requests for simultaneous/concurrent runs on test hardware.
-- Removed 12 km input case from WRF
-- Overhauled AMR-Wind benchmark, simplifying and clarifying build instructions, inputs, and run requirements, and removed any requests for simultaneous/concurrent runs on test hardware for AMR-Wind
-- Added "extra large" size input to LAMMPS that should better utilize future hardware; removed any requirement to run "small" and "large" LAMMPS input sizes.
 
-### December 8, 2025
-- VASP: Bench 1 will now focus only on the HSE calculation (removing the GGA and GW components), with the supercell increased from 16 atoms to 128 atoms. Bench 2 will be a vasp_gam single-kpoint GGA calculation with 1149 atoms, increased from 519 atoms.
