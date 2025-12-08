@@ -1,0 +1,22 @@
+# general:
+  SYSTEM   = CuInSe 
+  ISTART   = 1
+  ENCUT    = 600
+  ISMEAR   = 0
+  SIGMA    = 0.01
+  LMAXMIX  = 4
+  PREC     = accurate
+  KPAR     = 1 
+
+# HSE
+  LHFCALC  = .TRUE.
+  PRECFOCK = Normal
+  AEXX     = 0.25
+  HFSCREEN = 0.2
+  ALGO     = Normal
+  TIME     = 0.4
+  NKRED    = 2
+ 
+# electron:
+  NELMIN   = 3
+  EDIFF    = 1E-5      

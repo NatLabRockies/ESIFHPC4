@@ -1,0 +1,25 @@
+# general:
+  SYSTEM   = CuInSe 
+  ISTART   = 1
+  ENCUT    = 300
+  ISMEAR   = 0
+  SIGMA    = 0.01
+  LMAXMIX  = 4
+  ADDGRID = .TRUE.
+  PREC = accurate
+  LORBIT = 11
+
+# GW
+  LMAXFOCKAE = 4
+  ALGO       = EVGW0      # algorithm to setup response function
+  ENCUTFOCK = 0
+  NELM     = 1        # number of electronic SC steps
+  LWAVE    = .TRUE.
+  NKRED  = 5
+  NBANDS   = 640  # original 832
+  NOMEGA   = 128   # original 64
+  
+  LSPECTRAL = .TRUE.
+  ENCUTLF = 80    # original 160; plane wave cutoff in local-field corrections
+  ENCUTGW = 80    # original 160; plane wave cutoff in response function chi
+  LOPTICS = .TRUE.

@@ -1,0 +1,29 @@
+# general:
+  SYSTEM   = CuInSe 
+  ISTART   = 1
+  ENCUT    = 300
+  ISMEAR   = 0
+  SIGMA    = 0.01
+  LMAXMIX  = 4
+  ADDGRID = .TRUE.
+  PREC = accurate
+  NPAR   =   26
+  KPAR   =   8
+
+# HSE
+  LHFCALC = .TRUE.
+  PRECFOCK = Normal
+  AEXX = 0.25
+  HFSCREEN = 0.2
+  ALGO = Damped
+  TIME = 0.4
+  NKRED = 5
+ 
+# electron:
+  NELMIN  = 3
+  EDIFF = 1E-5       # total energy difference between two electronic SC steps
+
+# optical
+  LORBIT = 11
+  NBANDS = 640       # original 832
+  LOPTICS = .TRUE.
