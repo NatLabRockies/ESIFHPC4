@@ -2,14 +2,14 @@
 
 Contains benchmarks to be run for NLR's ESIF-HPC-4 procurement.
 
-The purpose of the "draft release" on 5/29/2025 is so that we can make our RFP benchmarking plans transparent to all vendors ahead of the RFP. Our hope is that this early draft release will give vendors additional time to work with our team on the benchmarks, especially as we have a few "in-house" codes represented in the suite that may be unfamiliar to vendors.
+The purpose of this draft release is so that we can make our RFP benchmarking plans transparent to all vendors ahead of the RFP. Our hope is that this early draft release will give vendors additional time to work with our team on the benchmarks, especially as we have a few "in-house" codes represented in the suite that may be unfamiliar to vendors.
 
 This early draft release does not represent or guarantee any final form of the suite.
 
 Important Notes:
 - This is an in-progress draft release.
 	- Different benchmarks in the suite are at various states of "in-progress"
-	- Most benchmarks do not have finalized inputs or run requirements as of 5/29/2025
+	- Most benchmarks do not have finalized inputs or run requirements
  - Please see the [Planned Changes](#planned-changes) section of this README for changes that we are planning to make/are in development, but have not yet integrated into this repo.
 - Benchmarks are divided into "Class A" and "Class B". 
 	- "Class A" - Performance-required benchmarks: set of benchmarks for which specific performance targets must be met or exceeded. 
@@ -26,6 +26,8 @@ Important Notes:
 | [AMR-Wind](https://github.com/NREL/ESIFHPC4/tree/main/AMR-Wind)    | Optional      | Yes         | Optional  | Yes   |
 | [LAMMPS](https://github.com/NREL/ESIFHPC4/tree/main/LAMMPS)      | Yes      | Yes         | Optional  | Yes   |
 | [BerkeleyGW](https://github.com/NREL/ESIFHPC4/tree/main/BerkeleyGW)  | Optional      | Yes         | Optional        | Yes   |
+
+Please note that while specific benchmark READMEs may include instructions and reference results for both CPU-only and accelerated hardware, for all application benchmarks except for LAMMPS, results are requested from only one of CPU-only *or* accelerated hardware, as designated in the above table. Results from the non-requested hardware type may be optionally provided.
 
 **"Class B" Applications - functionality only**
 | Application | Standard | Accelerated | Optimized | Baseline |
@@ -60,6 +62,9 @@ We have planned/upcoming changes to the suite that have not yet been integrated 
 - The Sienna benchmark will be pared down into two functionality runs only.
 
 ## Changelog
+
+### December 10, 2025
+- Better clarified that most application benchmarks now request results for one of CPU-only or accelerated nodes, rather than both, though both may be optionally provided.
 
 ### December 8, 2025
 - VASP: Bench 1 will now focus only on the HSE calculation (removing the GGA and GW components), with the supercell increased from 16 atoms to 128 atoms. Bench 2 will be a vasp_gam single-kpoint GGA calculation with 1149 atoms, increased from 519 atoms.
