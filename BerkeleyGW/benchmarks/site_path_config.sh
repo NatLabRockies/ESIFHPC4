@@ -19,6 +19,7 @@ if [[ -z "${E4_BGW}" ]]; then
 fi
 
 #libraries... you may need to add FFTW, or Scalapack/ELPA, or others
+#may not be necessary if a module is loaded instead
 HDF_LIBPATH=
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HDF_LIBPATH
 

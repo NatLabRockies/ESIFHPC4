@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 ###############################################################################
 #general settings to modify to show new data for Offeror
 data_filename = 'results-summary.xlsx'
-benchmarkers = ['NREL','example_benchmarker']
+benchmarkers = ['NLR','example_benchmarker']
 node_categories = ['Standard','Accelerated']
 
 ###############################################################################
@@ -47,13 +47,13 @@ for node_category in node_categories:
             xvals = size_data['CPU or GPU Nodes Used']
             yvals = size_data['Epsilon Benchmark Time (seconds)']
             
-            #change line settings to provide contrast with NREL baseline results
+            #change line settings to provide contrast with NLR baseline results
             alpha = 0.9
             markersize = 10
             linewidth = 4
             linestyle = '-'
             dashes = (1,0)
-            if benchmarker == 'NREL':
+            if benchmarker == 'NLR':
                 alpha = 0.5
                 markersize = 8
                 linewidth = 3
@@ -63,7 +63,7 @@ for node_category in node_categories:
                                markersize=markersize, marker='o', linewidth=linewidth, 
                                zorder=10, clip_on=False, alpha=alpha, 
                                linestyle=linestyle, dashes=dashes)
-            if benchmarker == 'NREL':
+            if benchmarker == 'NLR':
                 #only store lines/labels for the legend once
                 lines.append(my_line)
                 labels.append(benchmark_size)
