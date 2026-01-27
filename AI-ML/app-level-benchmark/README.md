@@ -2,9 +2,11 @@
 
 ## Purpose and Description
 
-The purpose of this benchmark is to capture a 'typical scientific AI' workload performed by researchers at NLR, in which image segmentation tasks are common for various scientific purposes. As such, we employ a [DeepCAM model training implementation from MLCommons](https://github.com/mlcommons/hpc/tree/main/deepcam) to segment climate data from HDF5-formatted files. 
+The purpose of this benchmark is to capture a 'typical scientific AI' workload performed by researchers at NLR, in which image segmentation tasks are common for various scientific purposes. As such, we employ a [DeepCAM model training implementation from MLCommons](https://github.com/mlcommons/hpc_results_v3.0), which segments long-term weather data from a large number of relatively small files. Due to the fact that NLR's current flagship HPC system, Kestrel, uses [NVIDIA accelerator hardware](https://www.nrel.gov/hpc/kestrel-system-configuration), note that our reference implementation is based on the NVIDIA submission to [MLCommons HPC Results v3.0](https://github.com/mlcommons/hpc_results_v3.0/tree/main/NVIDIA/benchmarks/deepcam/implementations/pytorch).
 
 ## How to build
+
+### Step 1: PyTorch environment
 
 Submitters are welcome to install PyTorch and the dependencies for DeepCAM into any reproducible environment (e.g., Python/conda virtual environments, containers, etc.). The instructions here describe a typical approach installing Python 3.12 within a baremetal `conda` environment as an example.
 
@@ -25,7 +27,7 @@ Next, activate the environment and choose **one** of the following approaches ba
 conda activate $ENV_NAME
 
 # Approach 1: NVIDIA CUDA-compatible torch
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu130
 
 # Approach 2: AMD ROCm-compatible torch
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.3
@@ -39,22 +41,55 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 
 *Any version of PyTorch that might be optimized for a targeted hardware architecture is acceptable for this benchmark, as long as the distribution is widely available and its results can be reproduced on any system hosting the hardware in question.*
 
-Finally, install the DeepCAM Python package dependencies from pip and/or conda:
+### Step 2: DeepCAM
+
+Install the DeepCAM Python package dependencies from pip and/or conda on inside the PyTorch environment from step 1:
 
 ```
 conda activate $ENV_NAME
-echo "
-apex
-h5py
-warmup-scheduler @ git+https://github.com/ildoonet/pytorch-gradual-warmup-lr
-mlperf-logging @ git+https://github.com/mlperf/logging.git
-" > deepcam-ref-requirements.txt
-pip install -r deepcam-ref-requirements.txt
+
+# 
+echo "h5py
+basemap
+wandb
+sympy
+filelock
+fsspec
+jinja2
+networkx
+mlperf-logging
+git+https://github.com/NVIDIA/mlperf-common.git
+nvidia-ml-py
+cupy
+" > deepcam-requirements.txt
+pip install -r deepcam-requirements.txt
+
+# DALI
+pip install --extra-index-url https://pypi.nvidia.com --upgrade nvidia-dali-cuda130
+
+# mpi4py
+mpicc=`which mpicc` pip install mpi4py --no-cache-dir
+
+# io_helpers - from NVIDIA DeepCAM MLCommons HPC v3.0 submission folder
+cd deepcam-mlcommons-hpcv3/io_helpers
+python setup.py clean
+python setup.py install
+
+# APEX
+if [ ! -d apex ]; then
+     git clone https://github.com/NVIDIA/apex
+fi
+cd apex
+APEX_CPP_EXT=1 APEX_CUDA_EXT=1 pip install -v --no-build-isolation --disable-pip-version-check .
 ```
 
-### Download and preprocess training data
+The training scripts for DeepCAM do not require any special installation once the above environment is created. For convenience, this repository contains a lightly modified version of [the NVIDIA submission to MLCommons HPC Results v3.0](https://github.com/mlcommons/hpc_results_v3.0/tree/main/NVIDIA/benchmarks/deepcam/implementations/pytorch) (`./deepcam-mlcommons-hpcv3`) to enable DeepCAM to run with newer versions (>=2.3.0) of PyTorch (specifically, by updating `MultiStepLRWarmup` in `schedulers.py` to reflect the newer API). As demonstrated in the chunk above, the `io_helpers` package can also be installed from the submitted NVIDIA implementation folder.
 
-Input training data can be downloaded via Globus using the [endpoint linked here](https://app.globus.org/file-manager?origin_id=0b226e2c-4de0-11ea-971a-021304b0cca7&origin_path=%2F). Note that the training data requires roughly 10TB of storage and contains HDF5-formatted files for training, validation, and test splits.
+### Step 3: Download and preprocess training data
+
+Input training data can be downloaded via Globus using the [endpoint linked here](https://app.globus.org/file-manager?origin_id=0b226e2c-4de0-11ea-971a-021304b0cca7&origin_path=%2F). Note that the training data requires roughly 10TB of storage and contains HDF5-formatted files for training, validation, and test splits. 
+
+Before a training run following MLCommons HPC Results v3.0, note that the HDF5-formatted input data must be preprocessed into numpy format. Please see [`preprocess-deepcam-data.sh`](./preprocess-deepcam-data.sh) for instructions on how to preprocess the input data accordingly.
 
 ### Kestrel build example
 
@@ -74,40 +109,21 @@ Once the training dataset has been prepared and the PyTorch environment has been
 
 There are three types of tests possible for this benchmark: *baseline*, *ported*, and *optimized*. Please see the ESIFHPC4 repo's [top-level README](../../README.md#draft-definitions-for-baselineas-is-ported-and-optimized-runs) for the constraints associated with each type of run.
 
+To run the DeepCAM benchmark, modify/rename the provided `run_and_time_kestrel.sh` script and `config_kestrel.sh` file appropriately based on guidance below. Note that this script assumes access to a Slurm scheduler and is launched as a job via `sbatch submit_kestrel.sh`. **If an alternative job scheduler is instead preferred, submitters are welcome to modify the launcher line `srun --overlap -u -N ${SLURM_NNODES} -n ${SLURM_NTASKS} -c ${SLURM_CPUS_PER_TASK} --cpu_bind=cores --gres=gpu:${SLURM_GPUS_ON_NODE}` as needed.** Lines under `# Load DeepCAM environment` will need to be modified to reflect the submitter's specific DeepCAM environment setup.
+
 ### Baseline submissions
 
-For *baseline* submissions, please use the following default runtime parameters, which is what we deploy on Kestrel. You will need to set the placeholder variables appropriately.
+For *baseline* submissions, please use the following default runtime parameters set in [`config_kestrel.sh`](./config_kestrel.sh), which is what we deploy on Kestrel. You will need to set the variables marked under `# user inputs` appropriately (e.g., input/output locations for the run). 
 
-Training scripts for *baseline* submissions must be forked from the [DeepCAM model training implementation hosted by MLCommons](https://github.com/mlcommons/hpc/tree/main/deepcam). Using additional Python packages (i.e., anything other than what is required for PyTorch and the DeepCAM training scripts) is *not* allowed for baseline submissions.
+Training scripts for *baseline* submissions must be forked from a [DeepCAM model training implementation hosted by MLCommons HPC Results v3.0](https://github.com/mlcommons/hpc_results_v3.0/tree/main). Using additional Python packages (i.e., anything other than what is required for PyTorch and the DeepCAM training scripts) is *not* allowed for baseline submissions.
 
-**For baseline submissions, submitters are welcome to modify the `--wireup_method` runtime option as necessary.**
+The following environment variables set in [`config_kestrel.sh`](./config_kestrel.sh) **can** be freely modified as necessary for *baseline* submissions (and are marked with `# CAN CHANGE FOR BASELINE`):
 
-```
-# Local batch size
-LOCAL_BATCH_SIZE=8
-# Number of data loader workers
-workers_per_gpu=4
-
-# Run training
-srun --overlap -u -N ${SLURM_NNODES} -n ${totalranks} -c ${cpus_per_task} --cpu_bind=cores --gres=gpu:$SLURM_GPUS_ON_NODE \
-     python train.py \
-     --wireup_method "nccl-slurm-pmi" \
-     --run_tag ${run_tag} \
-     --data_dir_prefix ${data_dir_prefix} \
-     --output_dir ${output_dir} \
-     --max_inter_threads ${workers_per_gpu} \
-     --model_prefix "classifier" \
-     --optimizer "AdamW" \
-     --start_lr ${START_LR} \
-     --lr_schedule type="multistep",milestones="1200",decay_rate="0.5" \
-     --lr_warmup_steps 0 \
-     --lr_warmup_factor $(( ${SLURM_NNODES} / $LOCAL_BATCH_SIZE )) \
-     --weight_decay 1e-2 \
-     --logging_frequency 0 \
-     --save_frequency 400 \
-     --max_epochs 200 \
-     --local_batch_size $LOCAL_BATCH_SIZE |& tee -a ${output_dir}/train.out
-```
+| Variable           | Description                    | Default Kestrel value  |
+| :--                | :--                            | :--            |
+| `STAGE_DIR_PREFIX` | Path to data staging directory | Stages input data to this directory (e.g., one on a faster filesystem or local node SSD.) If this variable is not set, then data staging does not occur (default). |
+| `WIREUP_METHOD`    | Method for distributed process communication | Options are 'nccl-slurm' (default), 'nccl-openmpi', 'nccl-file', 'mpi', or 'dummy' |
+| `DGXNGPU`          | Number of accelerators per node | `4` |
 
 ### Ported submissions
 
@@ -117,18 +133,35 @@ For *ported* submissions, the *baseline* parameters must be used, though trainin
 
 *Optimized* submissions are encouraged (though optional). For *optimized* submissions, the parameters used above, "mutable" hyperparameters (see below), and the code itself are allowed to be modified to best optimize performance and demonstrate hardware capabilities. We require that any of these changes are reported and reproduceable.
 
-"Mutable" hyperparameters are allowed to be changed for optimized submissions. These hyperparameters include: `--optimizer`, `--start_lr`, `--lr_schedule`, `--lr_warmup_steps`, `--lr_warmup_factor`, and `--weight_decay`. Additionally, the `--max_inter_threads` option is allowed to be changed for optimized submissions. By contrast, "fixed" hyperparameters are *not* allowed to be changed from the baseline options; these include: `--save_frequency`, `--gradient_accumulation_frequency`, `--logging_frequency` and `--batchnorm_group_size`.
+"Mutable" hyperparameters are allowed to be changed in [`config_kestrel.sh`](./config_kestrel.sh) for optimized submissions. These hyperparameters include: 
+
+| Variable           | Description                               | Default Kestrel value  |
+| :--                | :--                                       | :--                    |
+| `LOCAL_BATCH_SIZE` | Per-accelerator batch size                | `8`                    |
+| `OPTIMIZER`        | Learning rate optimizer                   | `MixedPrecisionLAMB`   |
+| `START_LR`         | Starting learning rate                    | `0.001`                |
+| `LR_SCHEDULE_TYPE` | Learning rate scheduler type              | `cosine_annealing`     |
+| `LR_WARMUP_STEPS`  | Number of LR warmup steps                 | `0`                    |
+| `LR_WARMUP_FACTOR` | Learning rate multiplier for warmup stage | `1`                    |
+| `WEIGHT_DECAY`     | Strength of L2 regularization             | `0.2`                  | 
+| `MAX_THREADS`      | Number of data loading threads            | `4`                    |
+
+By contrast, "fixed" hyperparameters are *not* allowed to be changed from the baseline options; these include `LOGGING_FREQUENCY` and `BATCHNORM_GROUP_SIZE`.
 
 ## Benchmark test results to report and files to return
 
-Noting the time required (in minutes) to reach 82% validation accuracy satisfies this benchmark. For each submission, we request the following information (using unoptimized Kestrel reference data as an example):
+Noting the time required (in minutes) to reach 82% validation accuracy satisfies this benchmark. 
 
-| Run Type  | Nodes used | Accelerators per node | Local Batch Size | LR Scheduler | Start LR | Optimizer   | Time Required* (minutes) | Epochs Required* |
-| :---      | :---       | :---                  | :---             | :---         | :---     | :---        | :---                     | :--              |
-| baseline  | 4          | 4                     | 8                | multistep    | 1e-3     | AdamW       | 276                      | 26               |
-| optimized | *N*        | *N*                   | *N*              | *scheduler*  | *N*      | *optimizer* | *N*                      | *N*              |
+For each submission, we request the following information (using unoptimized Kestrel reference data as an example):
+
+| Run Type  | Nodes used | Accelerators per node | Local Batch Size | LR Scheduler | Start LR | Optimizer          | Time Required* (minutes) | Epochs Required* |
+| :---      | :---       | :---                  | :---             | :---         | :---     | :---               | :---                     | :--              |
+| baseline  | 4          | 4                     | 8                | multistep    | 0.001    | MixedPrecisionLAMB | 83                       | 9                |
+| optimized | *N*        | *N*                   | *N*              | *scheduler*  | *N*      | *optimizer*        | *N*                      | *N*              |
 
 \* Time or epochs required to reach 82% evaluation accuracy target.
+
+**We will provide a convenience wrapper script to extract the data requested to be reported from a DeepCAM submission at a later date.**
 
 ## References and useful links
 
