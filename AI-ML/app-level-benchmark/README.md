@@ -154,10 +154,10 @@ Noting the time required (in minutes) to reach 82% validation accuracy satisfies
 
 For each submission, we request the following information (using unoptimized Kestrel reference data as an example):
 
-| Run Type  | Nodes used | Accelerators per node | Local Batch Size | LR Scheduler | Start LR | Optimizer          | Time Required* (minutes) | Epochs Required* |
-| :---      | :---       | :---                  | :---             | :---         | :---     | :---               | :---                     | :--              |
-| baseline  | 4          | 4                     | 8                | multistep    | 0.001    | MixedPrecisionLAMB | 83                       | 9                |
-| optimized | *N*        | *N*                   | *N*              | *scheduler*  | *N*      | *optimizer*        | *N*                      | *N*              |
+| Run Type  | Nodes used | Accelerators per node | Local Batch Size | LR Scheduler     | Start LR | Optimizer          | Time Required* (minutes) | Epochs Required* |
+| :---      | :---       | :---                  | :---             | :---             | :---     | :---               | :---                     | :--              |
+| baseline  | 4          | 4                     | 8                | cosine_annealing | 0.001    | MixedPrecisionLAMB | 83                       | 9                |
+| optimized | *N*        | *N*                   | *N*              | *scheduler*      | *N*      | *optimizer*        | *N*                      | *N*              |
 
 \* Time or epochs required to reach 82% evaluation accuracy target.
 
