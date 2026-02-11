@@ -1,41 +1,33 @@
 #!/bin/bash
 #SBATCH --job-name=mdtest
 #SBATCH --time=01:00:00
-#SBATCH --nodes=1
+#SBATCH --nodes=16
 
-export SCRATCH=/scratch/$USER/${SLURM_JOB_NAME:?}
-if [ -d $SCRATCH ]
-then
-   rm -rf $SCRATCH
-fi
-mkdir $SCRATCH; cd $SCRATCH
 
 mdtest=/path/to/mdtest
 
-# Examples for tests 1-3 on a single node, 4 ranks
+exponent=20
 
 # It is important to note that the total number of ranks must be a power of 2.
 
-# example test 1 (change ranks as needed)
-exponent=20
-ranks=4
-I=$((2**exponent/ranks))
+# example Test A
+for ranks in 1 2 4 8 16 32; do
 z=0
-n=$((2**exponent/ranks))
-srun --nodes=1 --ntasks=$ranks --distribution=block $mdtest -a=POSIX -C -T -r -n=$n -I=$I -z=$z -d `pwd`
+n=$(( 2**exponent / (ranks * SLURM_NNODES) ))
+srun -N 16 --ntasks-per-node=$ranks $mdtest -a=POSIX -F -C -T -N 1 -r -n=$n -z=0 -d=`pwd`
+done
 
-# example test 2 (change ranks as needed)
-exponent=20
-ranks=4
+
+# example Test B
+for ranks in 1 4 8 16 32 64; do
 I=16
+n=$(( 2**exponent / (ranks * SLURM_NNODES) ))
+srun -N 16 --ntasks-per-node=$ranks $mdtest -a=POSIX -F -C -T -N 1 -r -n=$n -z=0 -I=$I -d=`pwd`
+done
+
+# example Test C
+for ranks in 1 4 8 16 32 64; do
 z=0
-n=$((2**exponent/ranks))
-srun --nodes=1 --ntasks=$ranks --distribution=block $mdtest -a=POSIX -C -T -r -n=$n -I=$I -z=$z -d `pwd`
-
-# example test 1 (change ranks as needed)
-exponent=20
-ranks=4
-I=16
-z=8
-n=$((2**exponent/ranks))
-srun --nodes=1 --ntasks=$ranks --distribution=block $mdtest -a=POSIX -C -T -r -n=$n -I=$I -z=$z -d `pwd`
+n=$(( 2**exponent / (ranks * SLURM_NNODES) ))
+srun -N 16 --ntasks-per-node=$ranks $mdtest -a=POSIX -F -C -T -N 1 -r -n=$n -z=0 -u -d=`pwd`
+done
