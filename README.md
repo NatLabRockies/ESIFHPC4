@@ -66,7 +66,8 @@ We have planned/upcoming changes to the suite that have not yet been integrated 
 ## Changelog
 
 ### Feb 11, 2026
-Updated the definitions of "Class A" and "Class B". 
+- Updated the definitions of "Class A" and "Class B", and moved VASP, AMR-Wind, and BerkeleyGW from Class A to Class B.
+- Added planned change info for VASP Bench1
 
 ### December 10, 2025
 - Better clarified that most application benchmarks now request results for one of CPU-only or accelerated nodes, rather than both, though both may be optionally provided.
