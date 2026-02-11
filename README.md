@@ -12,27 +12,28 @@ Important Notes:
 	- Most benchmarks do not have finalized inputs or run requirements
  - Please see the [Planned Changes](#planned-changes) section of this README for changes that we are planning to make/are in development, but have not yet integrated into this repo.
 - Benchmarks are divided into "Class A" and "Class B". 
-	- "Class A" - Performance-required benchmarks: set of benchmarks for which specific performance targets must be met or exceeded. 
-	- "Class B" - Functionality benchmarks: set of benchmarks intended to demonstrate and baseline the functionality, scalability, and software readiness of specific workloads or system features, but no specific performance level will be required. 
+	- "Class A" - Benchmarks that will be included in the figure of merit
+	- "Class B" - Benchmarks that will not be included in the figure of merit, but that are intended to demonstrate and baseline the functionality, scalability, and software readiness of specific workloads or system features. In some cases, a performance level on-par with the reference system may be required.
 - The official version of the benchmark suite will be provided with the RFP.
 - Until the official release, we may add or subtract benchmarks, change run requirements, etc.
 
 **"Class A" Applications:**
 | Application | Standard | Accelerated | Optimized | Baseline |
 |:-----------:|:--------:|:-----------:|:---------:|:-----:|
-| [VASP](https://github.com/NREL/ESIFHPC4/tree/main/VASP)        | Optional      | Yes         | Optional  | Yes   |
-| [WRF](https://github.com/NREL/ESIFHPC4/tree/main/WRF)         | Yes      | No        | Optional  | Yes   |
+| [VASP](https://github.com/NREL/ESIFHPC4/tree/main/VASP)        | Yes      | Yes         | Optional  | Yes   |
 | [MLPerf-DeepCAM](https://github.com/NREL/ESIFHPC4/tree/main/AI-ML/app-level-benchmark)| Optional      | Yes         | Optional  | Yes   |
-| [AMR-Wind](https://github.com/NREL/ESIFHPC4/tree/main/AMR-Wind)    | Optional      | Yes         | Optional  | Yes   |
 | [LAMMPS](https://github.com/NREL/ESIFHPC4/tree/main/LAMMPS)      | Yes      | Yes         | Optional  | Yes   |
-| [BerkeleyGW](https://github.com/NREL/ESIFHPC4/tree/main/BerkeleyGW)  | Optional      | Yes         | Optional        | Yes   |
 
-Please note that while specific benchmark READMEs may include instructions and reference results for both CPU-only and accelerated hardware, for all application benchmarks except for LAMMPS, results are requested from only one of CPU-only *or* accelerated hardware, as designated in the above table. Results from the non-requested hardware type may be optionally provided.
 
-**"Class B" Applications - functionality only**
+**"Class B" Applications:**
 | Application | Standard | Accelerated | Optimized | Baseline |
 |:-----------:|:--------:|:-----------:|:---------:|:-----:|
 | [Sienna](https://github.com/NREL/ESIFHPC4/tree/main/Sienna-Ops)      | Yes      | No          | No        | Yes   |
+| [AMR-Wind](https://github.com/NREL/ESIFHPC4/tree/main/AMR-Wind)    | Optional      | Yes         | Optional  | Yes   |
+| [BerkeleyGW](https://github.com/NREL/ESIFHPC4/tree/main/BerkeleyGW)  | Optional      | Yes         | Optional        | Yes   |
+| [WRF](https://github.com/NREL/ESIFHPC4/tree/main/WRF)         | Yes      | No        | Optional  | Yes   |
+
+Please note that while specific benchmark READMEs may include instructions and reference results for both CPU-only and accelerated hardware, for all Class B applications, results are requested from only one of CPU-only *or* accelerated hardware, as designated in the above table. Results from the non-requested hardware type may be optionally provided.
 
 **Microbenchmarks:**
 | Application | Standard | Accelerated | Optimized | Baseline |
@@ -60,8 +61,13 @@ We have established the following draft definitions for baseline, ported, and op
 We have planned/upcoming changes to the suite that have not yet been integrated but are currently in development. We list any major not-yet-integrated changes here. Please note that this list is subject to change, and we make no guarantee that these changes are reflected in the finalized benchmark suite.
 
 - The Sienna benchmark will be pared down into two functionality runs only.
+- The VASP Bench1 benchmark will be modified to reduce its runtime, most likely via reduction of the k-point grid and/or lowering the planewave cutoff energy `ENCUT`.
 
 ## Changelog
+
+### Feb 11, 2026
+- Updated the definitions of "Class A" and "Class B", and moved VASP, AMR-Wind, and BerkeleyGW from Class A to Class B.
+- Added planned change info for VASP Bench1
 
 ### December 10, 2025
 - Better clarified that most application benchmarks now request results for one of CPU-only or accelerated nodes, rather than both, though both may be optionally provided.
