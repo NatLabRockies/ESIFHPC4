@@ -61,9 +61,11 @@ We have established the following draft definitions for baseline, ported, and op
 We have planned/upcoming changes to the suite that have not yet been integrated but are currently in development. We list any major not-yet-integrated changes here. Please note that this list is subject to change, and we make no guarantee that these changes are reflected in the finalized benchmark suite.
 
 - The Sienna benchmark will be pared down into two functionality runs only.
-- The VASP Bench1 benchmark will be modified to reduce its runtime, most likely via reduction of the k-point grid and/or lowering the planewave cutoff energy `ENCUT`.
 
 ## Changelog
+
+### Feb 13, 2026
+- Modified VASP Bench1 benchmark by reducing the k-point grid size
 
 ### Feb 11, 2026
 - Updated the definitions of "Class A" and "Class B", and moved VASP, AMR-Wind, and BerkeleyGW from Class A to Class B.
