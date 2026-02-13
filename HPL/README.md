@@ -7,7 +7,24 @@ HPL solves a random dense linear system in double precision arithmetic on distri
 
 HPL is licensed per the COPYRIGHT notice in the hpl-2.3 folder.
 
-## How to build
+## Build methods
+HPL can be obtained in a number of ways.  These include:
+* Using open source compilers and libraries and "configure"
+* Using predefined make include files, or edits of such
+* Downloading optimized binaries or containers
+
+## How to build using all open source components
+We assume we have gcc, openmpi, and openblas compiled against these two and we have modules for each. We then:
+* Download the source, unpack it, and enter the directory
+* Load our modules
+* Set LDFLAGS to point to our openblas library directory
+* ./configure
+* make
+
+This procedure is shown in the file test-run/simple.
+
+
+## How to build using predefined config files
 
 The source code of Netlib can be accessed here, [HPL](https://www.netlib.org/benchmark/hpl/hpl-2.3.tar.gz). Build instructions are in the INSTALL file (top directory) and are summarized below: 
 1. Download and extract the source file: `$ gunzip hpl-2.3.tgz; tar -xvf hpl-2.3`.
