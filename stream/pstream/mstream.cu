@@ -201,7 +201,7 @@ int main(int argc, char** argv)
     // int NGPUS; cudaGetDeviceCount(&NGPUS);
 #ifndef SERIAL
     mpi_err=MPI_Bcast(&SGPU,1,MPI_INT,0,MPI_COMM_WORLD);
-    mpi_err=MPI_Bcast(&SI,1,MPI_INT,0,MPI_COMM_WORLD);
+    mpi_err=MPI_Bcast(&SI,1,MPI_C_BOOL,0,MPI_COMM_WORLD);
     mpi_err=MPI_Bcast(&N,1,MPI_LONG,0,MPI_COMM_WORLD);
     mpi_err=MPI_Bcast(&blockSize,1,MPI_INT,0,MPI_COMM_WORLD);
 #endif

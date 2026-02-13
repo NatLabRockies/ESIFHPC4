@@ -1,6 +1,11 @@
 STREAM
 ===
 
+## How to Build
+
+An example Makefile is provided in src/. In addition, an example `test.sh` script is included
+that builds and runs the benchmark.  See details below. 
+
 ## Licensing
 STREAM is licensed per http://www.cs.virginia.edu/stream/FTP/Code/LICENSE.txt.
 
@@ -23,7 +28,7 @@ This change was made to prevent a format overflow.
 3. The array size and repeat count are optionally read from the command line.
 
 
-## How to Build
+## How to Build (Details)
 
 An example Makefile is provided in src/. In addition, an example `test.sh` script is included
 that builds and runs the benchmark.
