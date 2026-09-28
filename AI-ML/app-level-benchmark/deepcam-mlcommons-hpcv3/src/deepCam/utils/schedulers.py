@@ -175,11 +175,11 @@ class CosineAnnealingLRWarmup(_LRScheduler):
         self.device = device
         if major_torch_version <= 2:
             if minor_torch_version <= 3:
-                super(MultiStepLRWarmup, self).__init__(optimizer, last_epoch, verbose)
+                super(CosineAnnealingLRWarmup, self).__init__(optimizer, last_epoch, verbose)
             else:
-                super(MultiStepLRWarmup, self).__init__(optimizer, last_epoch=last_epoch)
+                super(CosineAnnealingLRWarmup, self).__init__(optimizer, last_epoch=last_epoch)
         else:
-            super(MultiStepLRWarmup, self).__init__(optimizer, last_epoch=last_epoch)
+            super(CosineAnnealingLRWarmup, self).__init__(optimizer, last_epoch=last_epoch)
         self.last_epoch_gpu = torch.tensor(self.last_epoch, dtype=torch.int64, device=self.device)
         self.opt_params_on_gpu = isinstance(self.optimizer.param_groups[0]["lr"], torch.Tensor)
         # make sure the param groups have a step tensor:
