@@ -103,7 +103,11 @@ A summary of NLR's accelerated node results is shown below. These results were g
 |   Large   |      64      |    512   |   100  |    41.950   |    96.0   |           2.384          |          0.4195         |
 
 ## What Must be Returned
-In addition to the performance benchmark LAMMPS output log files, LAMMPS output log files from the two validation runs should also be included in the File Response. Below is a summary list of the minimum set of requested runs:
+LAMMPS output logs containing the standard LAMMPS output, timestep logs, and final timing reports for any jobs in the reporting sheet (both for validation and new hardware performance testing) should be included in the File Response. As part of the file response, include all the build environment, source, and make files used to build on the target platform, input files and run scripts. 
+
+Benchmark 'Test' (in the Offeror Run Type column) results returned by the Offeror should include in the reporting spreadsheet the number of time steps the job takes (Nsteps), the final Loop Time (LoopTime(s)), the % CPU usage (%CPUusage), the Performance in timesteps/s (Performance(timesteps/s)), and the Performance in s/timestep (Performance(s/timestep); calculated as simply the inverse of Performance in timestep/s). The loop time can be found from the LAMMPS output file after the lsat timestep from the line starting with "Loop time". The Performance values can be found from the LAMMPS output file after the Loop Time line from the line starting with "Performance:". The % CPU usage values can be found from the LAMMPS output file after the Performance summary line from the line containing "CPU use". The hardware configuration (i.e. the number of elements from each pool of computational resources) and category of response (Baseline [as-is], Ported, Optimized) needed to achieve the estimated timings must also be provided (Node Class, Code, Benchmark Size, Number of Nodes, Number of Devices (if applicable), and Number of MPI Tasks).
+
+Below is a summary list of the minimum set of requested runs:
 
 For Validation:
 * Medium benchmark single run, standard nodes
@@ -114,4 +118,6 @@ For Performance:
 * Medium benchmark scaling series, accelerated nodes
 * Large benchmark scaling series, standard nodes
 * Large benchmark scaling series, accelerated nodes
+
+For 'Projection' results on future hardware, the Offeror should enter any relevant hardware values relevant to reporting performance (e.g., node counts and/or number of devices), along with the Performance(timesteps/s) and Performance(s/timestep) columns. The projected LoopTime(s) (i.e., including I/O time) and %CPUusage values for these benchmarks are optional to return by the Offeror. 
 
