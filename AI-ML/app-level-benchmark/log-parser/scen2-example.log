@@ -1,0 +1,822 @@
+============================================================
+ReFrame Universal Job Information
+    Job ID     : 13501297
+    Job name   : rfm_BaremetalDeepCAM_ddbed595
+    Num. tasks : 16
+    Num. nodes : 4
+    Nodelist   : x3108c0s33b0n0,x3110c0s33b0n0,x3110c0s41b0n0,x3114c0s5b0n0
+============================================================
+Using params --wireup_method nccl-slurm --run_tag 13501297 --experiment_id 1 --data_dir_prefix /scratch/mselensk/deepcam_numpy_preprocessed14Jan26/ --output_dir /scratch/mselensk/DeepCAM-testing/results/13501297 --model_prefix segmentation --optimizer MixedPrecisionLAMB --start_lr 0.001 --lr_schedule type=multistep,milestones=8192,decay_rate=0.1 --lr_warmup_steps 0 --lr_warmup_factor 1. --weight_decay 0.01 --logging_frequency 0 --save_frequency 0 --min_epochs 0 --max_epochs 50 --data_num_threads 4 --seed 1 --batchnorm_group_size 1 --shuffle_mode global --data_format dali-numpy --data_oversampling_factor 1 --precision_mode amp --enable_nhwc --local_batch_size 8 --local_batch_size_validation 8 --disable_tuning --enable_graph --disable_comm_overlap --training_instance_size 16
+Launching with: srun --overlap -u -N 4 -n 16 -c 32 --gres=gpu:4
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Warning, APEX GBN not detected
+Starting NCCL wireup for instance 0 with method nccl-slurm
+Completed NCCL wireup for instance 0
+:::MLLOG {"namespace": "", "time_ms": 1776715851936, "event_type": "INTERVAL_START", "key": "init_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 106}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851937, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 107}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851937, "event_type": "POINT_IN_TIME", "key": "submission_benchmark", "value": "deepcam", "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 111}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851937, "event_type": "POINT_IN_TIME", "key": "submission_org", "value": "SUBMISSION_ORG_PLACEHOLDER", "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 111}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851937, "event_type": "POINT_IN_TIME", "key": "submission_division", "value": "closed", "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 111}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851937, "event_type": "POINT_IN_TIME", "key": "submission_status", "value": "onprem", "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 111}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851938, "event_type": "POINT_IN_TIME", "key": "submission_platform", "value": "4xSUBMISSION_PLATFORM_PLACEHOLDER", "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 111}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851938, "event_type": "POINT_IN_TIME", "key": "seed", "value": 1, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 115}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851997, "event_type": "POINT_IN_TIME", "key": "number_of_ranks", "value": 16, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 243}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851997, "event_type": "POINT_IN_TIME", "key": "number_of_nodes", "value": 4, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 244}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851997, "event_type": "POINT_IN_TIME", "key": "accelerators_per_node", "value": 4, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 245}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851998, "event_type": "POINT_IN_TIME", "key": "instance_id", "value": 0, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 247}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851998, "event_type": "POINT_IN_TIME", "key": "checkpoint", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 249}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851998, "event_type": "POINT_IN_TIME", "key": "global_batch_size", "value": 128, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 250}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851998, "event_type": "POINT_IN_TIME", "key": "batchnorm_group_size", "value": 1, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 251}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851998, "event_type": "POINT_IN_TIME", "key": "batchnorm_group_stride", "value": 1, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 252}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851999, "event_type": "POINT_IN_TIME", "key": "gradient_accumulation_frequency", "value": 1, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 253}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851999, "event_type": "POINT_IN_TIME", "key": "data_format", "value": "dali-numpy", "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 255}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851999, "event_type": "POINT_IN_TIME", "key": "shuffle_mode", "value": "global", "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 256}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851999, "event_type": "POINT_IN_TIME", "key": "data_oversampling_factor", "value": 1, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 257}}
+:::MLLOG {"namespace": "", "time_ms": 1776715851999, "event_type": "POINT_IN_TIME", "key": "stage_dir_prefix", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 259}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852000, "event_type": "POINT_IN_TIME", "key": "stage_mode", "value": "node", "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 260}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852000, "event_type": "POINT_IN_TIME", "key": "stage_batch_size", "value": -1, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 261}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852000, "event_type": "POINT_IN_TIME", "key": "stage_verify", "value": false, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 262}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852000, "event_type": "POINT_IN_TIME", "key": "stage_full_data_per_node", "value": false, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 263}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852000, "event_type": "POINT_IN_TIME", "key": "stage_use_direct_io", "value": false, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 264}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852000, "event_type": "POINT_IN_TIME", "key": "stage_max_num_files", "value": -1, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 265}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852001, "event_type": "POINT_IN_TIME", "key": "precision_mode", "value": "amp", "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 267}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852001, "event_type": "POINT_IN_TIME", "key": "enable_nhwc", "value": true, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 268}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852001, "event_type": "POINT_IN_TIME", "key": "enable_graph", "value": true, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 269}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852001, "event_type": "POINT_IN_TIME", "key": "enable_jit", "value": false, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 270}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852001, "event_type": "POINT_IN_TIME", "key": "disable_comm_overlap", "value": true, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 271}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852002, "event_type": "POINT_IN_TIME", "key": "enable_gds", "value": false, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 272}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852002, "event_type": "POINT_IN_TIME", "key": "enable_gds_staging", "value": false, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 273}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852002, "event_type": "POINT_IN_TIME", "key": "enable_mmap", "value": false, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 274}}
+:::MLLOG {"namespace": "", "time_ms": 1776715852002, "event_type": "POINT_IN_TIME", "key": "enable_odirect", "value": false, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 275}}
+Constructing DeepLabv3+ model...
+Number of output channels: 3
+Output stride: 16
+Number of Input Channels: 16
+:::MLLOG {"namespace": "", "time_ms": 1776715872265, "event_type": "POINT_IN_TIME", "key": "opt_name", "value": "LAMB", "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/utils/optimizer_helpers.py", "lineno": 148}}
+:::MLLOG {"namespace": "", "time_ms": 1776715872338, "event_type": "POINT_IN_TIME", "key": "opt_lr", "value": 0.0010000000474974513, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/utils/optimizer_helpers.py", "lineno": 155}}
+:::MLLOG {"namespace": "", "time_ms": 1776715872345, "event_type": "POINT_IN_TIME", "key": "opt_step", "value": 0, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/utils/optimizer_helpers.py", "lineno": 155}}
+:::MLLOG {"namespace": "", "time_ms": 1776715872345, "event_type": "POINT_IN_TIME", "key": "opt_bias_correction", "value": true, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/utils/optimizer_helpers.py", "lineno": 155}}
+:::MLLOG {"namespace": "", "time_ms": 1776715872345, "event_type": "POINT_IN_TIME", "key": "opt_betas", "value": [0.9, 0.999], "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/utils/optimizer_helpers.py", "lineno": 155}}
+:::MLLOG {"namespace": "", "time_ms": 1776715872345, "event_type": "POINT_IN_TIME", "key": "opt_eps", "value": 1e-06, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/utils/optimizer_helpers.py", "lineno": 155}}
+:::MLLOG {"namespace": "", "time_ms": 1776715872345, "event_type": "POINT_IN_TIME", "key": "opt_weight_decay", "value": 0.01, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/utils/optimizer_helpers.py", "lineno": 155}}
+:::MLLOG {"namespace": "", "time_ms": 1776715872345, "event_type": "POINT_IN_TIME", "key": "opt_grad_averaging", "value": true, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/utils/optimizer_helpers.py", "lineno": 155}}
+:::MLLOG {"namespace": "", "time_ms": 1776715872346, "event_type": "POINT_IN_TIME", "key": "opt_max_grad_norm", "value": 1.0, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/utils/optimizer_helpers.py", "lineno": 155}}
+:::MLLOG {"namespace": "", "time_ms": 1776715872935, "event_type": "POINT_IN_TIME", "key": "scheduler_type", "value": "multistep", "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/utils/optimizer_helpers.py", "lineno": 94}}
+:::MLLOG {"namespace": "", "time_ms": 1776715872935, "event_type": "POINT_IN_TIME", "key": "scheduler_milestones", "value": [8192], "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/utils/optimizer_helpers.py", "lineno": 94}}
+:::MLLOG {"namespace": "", "time_ms": 1776715872935, "event_type": "POINT_IN_TIME", "key": "scheduler_decay_rate", "value": 0.1, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/utils/optimizer_helpers.py", "lineno": 94}}
+:::MLLOG {"namespace": "", "time_ms": 1776715872935, "event_type": "POINT_IN_TIME", "key": "scheduler_lr_warmup_steps", "value": 0, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/utils/optimizer_helpers.py", "lineno": 94}}
+:::MLLOG {"namespace": "", "time_ms": 1776715872935, "event_type": "POINT_IN_TIME", "key": "scheduler_lr_warmup_factor", "value": 1.0, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/utils/optimizer_helpers.py", "lineno": 94}}
+DeepLabv3_plus(
+  (xception_features): Xception(
+    (relu): ReLU()
+    (conv1): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (bn1): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): ReLU()
+    )
+    (conv2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): ReLU()
+    )
+    (block1): Block(
+      (skip): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      (skipbn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=64, bias=False)
+          (pointwise): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=128, bias=False)
+          (pointwise): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=128, bias=False)
+          (pointwise): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+      )
+    )
+    (block2): Block(
+      (skip): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      (skipbn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=128, bias=False)
+          (pointwise): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=256, bias=False)
+          (pointwise): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=256, bias=False)
+          (pointwise): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+      )
+    )
+    (block3): Block(
+      (skip): Conv2d(256, 728, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      (skipbn): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=256, bias=False)
+          (pointwise): Conv2d(256, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+        (3): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (4): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+      )
+    )
+    (block4): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block5): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block6): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block7): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block8): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block9): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block10): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block11): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block12): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block13): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block14): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block15): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block16): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block17): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block18): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block19): Block(
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (5): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (block20): Block(
+      (skip): Conv2d(728, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (skipbn): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+      (rep): Sequential(
+        (0): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 728, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): BatchNorm2d(728, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+        (2): SeparableConv2d_same(
+          (conv1): Conv2d(728, 728, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=728, bias=False)
+          (pointwise): Conv2d(728, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+        (3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (4): SeparableConv2d_same(
+          (conv1): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1024, bias=False)
+          (pointwise): Conv2d(1024, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+      )
+    )
+    (conv3): SeparableConv2d_same(
+      (conv1): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), groups=1024, bias=False)
+      (pointwise): Conv2d(1024, 1536, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (bn3): Sequential(
+      (0): BatchNorm2d(1536, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): ReLU()
+    )
+    (conv4): SeparableConv2d_same(
+      (conv1): Conv2d(1536, 1536, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), groups=1536, bias=False)
+      (pointwise): Conv2d(1536, 1536, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (bn4): Sequential(
+      (0): BatchNorm2d(1536, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): ReLU()
+    )
+    (conv5): SeparableConv2d_same(
+      (conv1): Conv2d(1536, 1536, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), groups=1536, bias=False)
+      (pointwise): Conv2d(1536, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (bn5): Sequential(
+      (0): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): ReLU()
+    )
+  )
+  (bottleneck): Bottleneck(
+    (aspp1): ASPP_module(
+      (atrous_convolution): Conv2d(2048, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn): Sequential(
+        (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): ReLU()
+      )
+    )
+    (aspp2): ASPP_module(
+      (atrous_convolution): Conv2d(2048, 256, kernel_size=(3, 3), stride=(1, 1), padding=(6, 6), dilation=(6, 6), bias=False)
+      (bn): Sequential(
+        (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): ReLU()
+      )
+    )
+    (aspp3): ASPP_module(
+      (atrous_convolution): Conv2d(2048, 256, kernel_size=(3, 3), stride=(1, 1), padding=(12, 12), dilation=(12, 12), bias=False)
+      (bn): Sequential(
+        (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): ReLU()
+      )
+    )
+    (aspp4): ASPP_module(
+      (atrous_convolution): Conv2d(2048, 256, kernel_size=(3, 3), stride=(1, 1), padding=(18, 18), dilation=(18, 18), bias=False)
+      (bn): Sequential(
+        (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): ReLU()
+      )
+    )
+    (global_avg_pool): GlobalAveragePool(
+      (global_average_pool): Sequential(
+        (0): AdaptiveAvgPool2d(output_size=(1, 1))
+        (1): Conv2d(2048, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (2): TrainableAffine()
+        (3): ReLU()
+      )
+    )
+    (tiling): Tiling()
+    (conv): Conv2d(1280, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): ReLU()
+    )
+  )
+  (conv2): Conv2d(128, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  (bn2): Sequential(
+    (0): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (1): ReLU()
+  )
+  (upsample): DeconvUpsampler(
+    (deconv1): Sequential(
+      (0): ConvTranspose2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1), bias=False)
+      (1): Sequential(
+        (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): ReLU()
+      )
+      (2): ConvTranspose2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1), bias=False)
+      (3): Sequential(
+        (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): ReLU()
+      )
+    )
+    (conv1): Sequential(
+      (0): Conv2d(304, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): Sequential(
+        (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): ReLU()
+      )
+      (2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (3): Sequential(
+        (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): ReLU()
+      )
+      (4): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    )
+    (deconv2): Sequential(
+      (0): ConvTranspose2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1), bias=False)
+      (1): Sequential(
+        (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): ReLU()
+      )
+    )
+    (last_deconv): Sequential(
+      (0): ConvTranspose2d(256, 3, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1), bias=False)
+    )
+  )
+)
+Number of trainable parameters: 56454720
+Creating Dataloaders
+:::MLLOG {"namespace": "", "time_ms": 1776715875737, "event_type": "POINT_IN_TIME", "key": "train_samples", "value": 121266, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 417}}
+:::MLLOG {"namespace": "", "time_ms": 1776715875737, "event_type": "POINT_IN_TIME", "key": "eval_samples", "value": 15158, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 418}}
+Creating Trainer
+Creating Validator
+Compiling Trainer
+Compiling Validator
+Warmup Trainer
+Warmup Validator
+Capturing Trainer
+:::MLLOG {"namespace": "", "time_ms": 1776715883543, "event_type": "INTERVAL_END", "key": "init_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 472}}
+:::MLLOG {"namespace": "", "time_ms": 1776715883544, "event_type": "INTERVAL_START", "key": "run_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 472}}
+:::MLLOG {"namespace": "", "time_ms": 1776715883544, "event_type": "INTERVAL_START", "key": "epoch_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 484, "epoch_num": 1, "step_num": 0}}
+:::MLLOG {"namespace": "", "time_ms": 1776716424898, "event_type": "POINT_IN_TIME", "key": "learning_rate", "value": 0.0010000000474974513, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 672, "epoch_num": 1, "step_num": 947}}
+:::MLLOG {"namespace": "", "time_ms": 1776716424899, "event_type": "POINT_IN_TIME", "key": "train_accuracy", "value": 0.672498345375061, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 673, "epoch_num": 1, "step_num": 947}}
+:::MLLOG {"namespace": "", "time_ms": 1776716424899, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 0.018015671521425247, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 674, "epoch_num": 1, "step_num": 947}}
+:::MLLOG {"namespace": "", "time_ms": 1776716424899, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 223.92124128787106}, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 675, "epoch": 1, "step": 947}}
+:::MLLOG {"namespace": "", "time_ms": 1776716424918, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 342, "epoch_num": 1}}
+:::MLLOG {"namespace": "", "time_ms": 1776716498560, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.6500328183174133, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 348, "epoch_num": 1, "step_num": 947}}
+:::MLLOG {"namespace": "", "time_ms": 1776716498560, "event_type": "POINT_IN_TIME", "key": "eval_loss", "value": 0.018598590046167374, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 349, "epoch_num": 1, "step_num": 947}}
+:::MLLOG {"namespace": "", "time_ms": 1776716498560, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 361, "epoch_num": 1}}
+:::MLLOG {"namespace": "", "time_ms": 1776716498560, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 511, "epoch_num": 1, "step_num": 947}}
+:::MLLOG {"namespace": "", "time_ms": 1776716498561, "event_type": "INTERVAL_START", "key": "epoch_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 484, "epoch_num": 2, "step_num": 947}}
+:::MLLOG {"namespace": "", "time_ms": 1776716992573, "event_type": "POINT_IN_TIME", "key": "learning_rate", "value": 0.0010000000474974513, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 672, "epoch_num": 2, "step_num": 1894}}
+:::MLLOG {"namespace": "", "time_ms": 1776716992574, "event_type": "POINT_IN_TIME", "key": "train_accuracy", "value": 0.7207043170928955, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 673, "epoch_num": 2, "step_num": 1894}}
+:::MLLOG {"namespace": "", "time_ms": 1776716992574, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 0.01427491009235382, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 674, "epoch_num": 2, "step_num": 1894}}
+:::MLLOG {"namespace": "", "time_ms": 1776716992574, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 245.37063580979142}, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 675, "epoch": 2, "step": 1894}}
+:::MLLOG {"namespace": "", "time_ms": 1776716992576, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 342, "epoch_num": 2}}
+:::MLLOG {"namespace": "", "time_ms": 1776717050527, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.7017812132835388, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 348, "epoch_num": 2, "step_num": 1894}}
+:::MLLOG {"namespace": "", "time_ms": 1776717050528, "event_type": "POINT_IN_TIME", "key": "eval_loss", "value": 0.014631788246333599, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 349, "epoch_num": 2, "step_num": 1894}}
+:::MLLOG {"namespace": "", "time_ms": 1776717050528, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 361, "epoch_num": 2}}
+:::MLLOG {"namespace": "", "time_ms": 1776717050528, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 511, "epoch_num": 2, "step_num": 1894}}
+:::MLLOG {"namespace": "", "time_ms": 1776717050528, "event_type": "INTERVAL_START", "key": "epoch_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 484, "epoch_num": 3, "step_num": 1894}}
+:::MLLOG {"namespace": "", "time_ms": 1776717534004, "event_type": "POINT_IN_TIME", "key": "learning_rate", "value": 0.0010000000474974513, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 672, "epoch_num": 3, "step_num": 2841}}
+:::MLLOG {"namespace": "", "time_ms": 1776717534005, "event_type": "POINT_IN_TIME", "key": "train_accuracy", "value": 0.7446613907814026, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 673, "epoch_num": 3, "step_num": 2841}}
+:::MLLOG {"namespace": "", "time_ms": 1776717534005, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 0.011332245543599129, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 674, "epoch_num": 3, "step_num": 2841}}
+:::MLLOG {"namespace": "", "time_ms": 1776717534005, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 250.71801234063827}, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 675, "epoch": 3, "step": 2841}}
+:::MLLOG {"namespace": "", "time_ms": 1776717534007, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 342, "epoch_num": 3}}
+:::MLLOG {"namespace": "", "time_ms": 1776717595367, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.706764280796051, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 348, "epoch_num": 3, "step_num": 2841}}
+:::MLLOG {"namespace": "", "time_ms": 1776717595368, "event_type": "POINT_IN_TIME", "key": "eval_loss", "value": 0.014499646611511707, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 349, "epoch_num": 3, "step_num": 2841}}
+:::MLLOG {"namespace": "", "time_ms": 1776717595368, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 361, "epoch_num": 3}}
+:::MLLOG {"namespace": "", "time_ms": 1776717595368, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 511, "epoch_num": 3, "step_num": 2841}}
+:::MLLOG {"namespace": "", "time_ms": 1776717595368, "event_type": "INTERVAL_START", "key": "epoch_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 484, "epoch_num": 4, "step_num": 2841}}
+:::MLLOG {"namespace": "", "time_ms": 1776718065670, "event_type": "POINT_IN_TIME", "key": "learning_rate", "value": 0.0010000000474974513, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 672, "epoch_num": 4, "step_num": 3788}}
+:::MLLOG {"namespace": "", "time_ms": 1776718065671, "event_type": "POINT_IN_TIME", "key": "train_accuracy", "value": 0.7896981239318848, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 673, "epoch_num": 4, "step_num": 3788}}
+:::MLLOG {"namespace": "", "time_ms": 1776718065671, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 0.010517694056034088, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 674, "epoch_num": 4, "step_num": 3788}}
+:::MLLOG {"namespace": "", "time_ms": 1776718065671, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 257.7409673895528}, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 675, "epoch": 4, "step": 3788}}
+:::MLLOG {"namespace": "", "time_ms": 1776718065673, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 342, "epoch_num": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1776718118639, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.758918821811676, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 348, "epoch_num": 4, "step_num": 3788}}
+:::MLLOG {"namespace": "", "time_ms": 1776718118639, "event_type": "POINT_IN_TIME", "key": "eval_loss", "value": 0.01217501051723957, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 349, "epoch_num": 4, "step_num": 3788}}
+:::MLLOG {"namespace": "", "time_ms": 1776718118639, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 361, "epoch_num": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1776718118639, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 511, "epoch_num": 4, "step_num": 3788}}
+:::MLLOG {"namespace": "", "time_ms": 1776718118640, "event_type": "INTERVAL_START", "key": "epoch_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 484, "epoch_num": 5, "step_num": 3788}}
+:::MLLOG {"namespace": "", "time_ms": 1776718591587, "event_type": "POINT_IN_TIME", "key": "learning_rate", "value": 0.0010000000474974513, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 672, "epoch_num": 5, "step_num": 4735}}
+:::MLLOG {"namespace": "", "time_ms": 1776718591588, "event_type": "POINT_IN_TIME", "key": "train_accuracy", "value": 0.7842384576797485, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 673, "epoch_num": 5, "step_num": 4735}}
+:::MLLOG {"namespace": "", "time_ms": 1776718591588, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 0.009166966192424297, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 674, "epoch_num": 5, "step_num": 4735}}
+:::MLLOG {"namespace": "", "time_ms": 1776718591588, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 256.2992176708213}, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 675, "epoch": 5, "step": 4735}}
+:::MLLOG {"namespace": "", "time_ms": 1776718591590, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 342, "epoch_num": 5}}
+:::MLLOG {"namespace": "", "time_ms": 1776718646227, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.7775814533233643, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 348, "epoch_num": 5, "step_num": 4735}}
+:::MLLOG {"namespace": "", "time_ms": 1776718646227, "event_type": "POINT_IN_TIME", "key": "eval_loss", "value": 0.011354095302522182, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 349, "epoch_num": 5, "step_num": 4735}}
+:::MLLOG {"namespace": "", "time_ms": 1776718646228, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 361, "epoch_num": 5}}
+:::MLLOG {"namespace": "", "time_ms": 1776718646228, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 511, "epoch_num": 5, "step_num": 4735}}
+:::MLLOG {"namespace": "", "time_ms": 1776718646228, "event_type": "INTERVAL_START", "key": "epoch_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 484, "epoch_num": 6, "step_num": 4735}}
+:::MLLOG {"namespace": "", "time_ms": 1776719108494, "event_type": "POINT_IN_TIME", "key": "learning_rate", "value": 0.0010000000474974513, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 672, "epoch_num": 6, "step_num": 5682}}
+:::MLLOG {"namespace": "", "time_ms": 1776719108494, "event_type": "POINT_IN_TIME", "key": "train_accuracy", "value": 0.7995430827140808, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 673, "epoch_num": 6, "step_num": 5682}}
+:::MLLOG {"namespace": "", "time_ms": 1776719108495, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 0.008732633665204048, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 674, "epoch_num": 6, "step_num": 5682}}
+:::MLLOG {"namespace": "", "time_ms": 1776719108495, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 262.2217316571901}, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 675, "epoch": 6, "step": 5682}}
+:::MLLOG {"namespace": "", "time_ms": 1776719108497, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 342, "epoch_num": 6}}
+:::MLLOG {"namespace": "", "time_ms": 1776719166793, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.7744663953781128, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 348, "epoch_num": 6, "step_num": 5682}}
+:::MLLOG {"namespace": "", "time_ms": 1776719166793, "event_type": "POINT_IN_TIME", "key": "eval_loss", "value": 0.011234475299715996, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 349, "epoch_num": 6, "step_num": 5682}}
+:::MLLOG {"namespace": "", "time_ms": 1776719166793, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 361, "epoch_num": 6}}
+:::MLLOG {"namespace": "", "time_ms": 1776719166794, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 511, "epoch_num": 6, "step_num": 5682}}
+:::MLLOG {"namespace": "", "time_ms": 1776719166794, "event_type": "INTERVAL_START", "key": "epoch_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 484, "epoch_num": 7, "step_num": 5682}}
+:::MLLOG {"namespace": "", "time_ms": 1776719623624, "event_type": "POINT_IN_TIME", "key": "learning_rate", "value": 0.0010000000474974513, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 672, "epoch_num": 7, "step_num": 6629}}
+:::MLLOG {"namespace": "", "time_ms": 1776719623625, "event_type": "POINT_IN_TIME", "key": "train_accuracy", "value": 0.8163467049598694, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 673, "epoch_num": 7, "step_num": 6629}}
+:::MLLOG {"namespace": "", "time_ms": 1776719623625, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 0.00790970679372549, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 674, "epoch_num": 7, "step_num": 6629}}
+:::MLLOG {"namespace": "", "time_ms": 1776719623625, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 265.3416745436993}, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 675, "epoch": 7, "step": 6629}}
+:::MLLOG {"namespace": "", "time_ms": 1776719623627, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 342, "epoch_num": 7}}
+:::MLLOG {"namespace": "", "time_ms": 1776719679496, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.7885258793830872, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 348, "epoch_num": 7, "step_num": 6629}}
+:::MLLOG {"namespace": "", "time_ms": 1776719679530, "event_type": "POINT_IN_TIME", "key": "eval_loss", "value": 0.010720759630203247, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 349, "epoch_num": 7, "step_num": 6629}}
+:::MLLOG {"namespace": "", "time_ms": 1776719679530, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 361, "epoch_num": 7}}
+:::MLLOG {"namespace": "", "time_ms": 1776719679530, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 511, "epoch_num": 7, "step_num": 6629}}
+:::MLLOG {"namespace": "", "time_ms": 1776719679531, "event_type": "INTERVAL_START", "key": "epoch_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 484, "epoch_num": 8, "step_num": 6629}}
+:::MLLOG {"namespace": "", "time_ms": 1776720141927, "event_type": "POINT_IN_TIME", "key": "learning_rate", "value": 0.0010000000474974513, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 672, "epoch_num": 8, "step_num": 7576}}
+:::MLLOG {"namespace": "", "time_ms": 1776720142095, "event_type": "POINT_IN_TIME", "key": "train_accuracy", "value": 0.8189239501953125, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 673, "epoch_num": 8, "step_num": 7576}}
+:::MLLOG {"namespace": "", "time_ms": 1776720142095, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 0.007566184736788273, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 674, "epoch_num": 8, "step_num": 7576}}
+:::MLLOG {"namespace": "", "time_ms": 1776720142096, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 262.16240393028795}, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 675, "epoch": 8, "step": 7576}}
+:::MLLOG {"namespace": "", "time_ms": 1776720142097, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 342, "epoch_num": 8}}
+:::MLLOG {"namespace": "", "time_ms": 1776720196909, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.7867114543914795, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 348, "epoch_num": 8, "step_num": 7576}}
+:::MLLOG {"namespace": "", "time_ms": 1776720196909, "event_type": "POINT_IN_TIME", "key": "eval_loss", "value": 0.010539754293859005, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 349, "epoch_num": 8, "step_num": 7576}}
+:::MLLOG {"namespace": "", "time_ms": 1776720196909, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 361, "epoch_num": 8}}
+:::MLLOG {"namespace": "", "time_ms": 1776720196909, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 511, "epoch_num": 8, "step_num": 7576}}
+:::MLLOG {"namespace": "", "time_ms": 1776720196910, "event_type": "INTERVAL_START", "key": "epoch_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 484, "epoch_num": 9, "step_num": 7576}}
+:::MLLOG {"namespace": "", "time_ms": 1776720672704, "event_type": "POINT_IN_TIME", "key": "learning_rate", "value": 0.00010000000474974513, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 672, "epoch_num": 9, "step_num": 8523}}
+:::MLLOG {"namespace": "", "time_ms": 1776720672705, "event_type": "POINT_IN_TIME", "key": "train_accuracy", "value": 0.8548315763473511, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 673, "epoch_num": 9, "step_num": 8523}}
+:::MLLOG {"namespace": "", "time_ms": 1776720672705, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 0.005382061470299959, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 674, "epoch_num": 9, "step_num": 8523}}
+:::MLLOG {"namespace": "", "time_ms": 1776720672705, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 254.7662598198564}, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/trainer.py", "lineno": 675, "epoch": 9, "step": 8523}}
+:::MLLOG {"namespace": "", "time_ms": 1776720672707, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 342, "epoch_num": 9}}
+:::MLLOG {"namespace": "", "time_ms": 1776720726784, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.8307501077651978, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 348, "epoch_num": 9, "step_num": 8523}}
+:::MLLOG {"namespace": "", "time_ms": 1776720726784, "event_type": "POINT_IN_TIME", "key": "eval_loss", "value": 0.00975657906383276, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 349, "epoch_num": 9, "step_num": 8523}}
+:::MLLOG {"namespace": "", "time_ms": 1776720726784, "event_type": "POINT_IN_TIME", "key": "target_accuracy_reached", "value": 0.82, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 358, "epoch_num": 9, "step_num": 8523}}
+:::MLLOG {"namespace": "", "time_ms": 1776720726784, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/driver/validation.py", "lineno": 361, "epoch_num": 9}}
+:::MLLOG {"namespace": "", "time_ms": 1776720726784, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 511, "epoch_num": 9, "step_num": 8523}}
+:::MLLOG {"namespace": "", "time_ms": 1776720726849, "event_type": "INTERVAL_END", "key": "run_stop", "value": null, "metadata": {"file": "/kfs3/scratch/mselensk/reframe-universal/runs/deepcam/stage_2026-04-20T135615-365/kestrel/gpu-h100s/clean-slate/BaremetalDeepCAM_ddbed595/deepcam-mlcommons-hpcv3/src/deepCam/./train_instance_oo.py", "lineno": 531, "status": "success", "epoch": 9}}
