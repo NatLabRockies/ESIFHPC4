@@ -2,13 +2,13 @@
 
 ## Purpose and Description
 
-The purpose of this benchmark is to capture a 'typical scientific AI' workload performed by researchers at NLR, in which image segmentation tasks are common for various scientific purposes. As such, we employ a [DeepCAM model training implementation from MLCommons](https://github.com/mlcommons/hpc_results_v3.0), which segments long-term weather data from a large number of relatively small files. Due to the fact that NLR's current flagship HPC system, Kestrel, uses [NVIDIA accelerator hardware](https://www.nrel.gov/hpc/kestrel-system-configuration), note that our reference implementation is based on the NVIDIA submission to [MLCommons HPC Results v3.0](https://github.com/mlcommons/hpc_results_v3.0/tree/main/NVIDIA/benchmarks/deepcam/implementations/pytorch).
+The purpose of this benchmark is to capture a 'typical scientific AI' workload performed by researchers at NLR, in which image segmentation tasks are common for various scientific purposes. As such, we employ a [DeepCAM model training benchmark based on the implementation from MLCommons](https://github.com/mlcommons/hpc_results_v3.0), which segments long-term weather data from a large number of relatively small files. Due to the fact that NLR's current flagship HPC system, Kestrel, uses [NVIDIA accelerator hardware](https://www.nlr.gov/hpc/kestrel-system-configuration), note that our reference implementation is adapted from the NVIDIA submission to [MLCommons HPC Results v3.0](https://github.com/mlcommons/hpc_results_v3.0/tree/main/NVIDIA/benchmarks/deepcam/implementations/pytorch). Although the ESIF-HPC-4 benchmark for DeepCAM is inspired by MLCommons, note that we distinguish our specific run rules from those required by MLPerf submissions as detailed below.
 
 ## How to build
 
 ### Step 1: PyTorch environment
 
-Submitters are welcome to install PyTorch and the dependencies for DeepCAM into any reproducible environment (e.g., Python/conda virtual environments, containers, etc.). The instructions here describe a typical approach installing Python 3.12 within a baremetal `conda` environment as an example.
+Submitters are welcome to install PyTorch and the dependencies for DeepCAM into any reproducible environment (e.g., Python/conda virtual environments, containers, etc.). The instructions here describe a typical approach installing Python 3.12 within a baremetal `conda` environment as an example, but NLR does not require a specific type of environment management tool to satisfy the run rules for this benchmark.
 
 First, create a conda environment:
 
@@ -45,7 +45,7 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 
 Install the DeepCAM Python package dependencies from pip and/or conda on inside the PyTorch environment from step 1. For an example, see the Slurm script [`prep-env-kestrel.sh`](prep-env-kestrel.sh) for reference instructions on how we created the appropriate PyTorch environment to run the DeepCAM benchmark. Note that on Kestrel, we explicitly compile PyTorch against a system module for NCCL that is configured to work with the HPE Slingshot network (`nccl/2.23.4_cuda124`) rather than using a precompiled version from pip. This step may not be necessary depending on the Offeror's hardware and network configuration.
 
-The training scripts for DeepCAM do not require any special installation once the above environment is created. For convenience, this repository contains a lightly modified version of [the NVIDIA submission to MLCommons HPC Results v3.0](https://github.com/mlcommons/hpc_results_v3.0/tree/main/NVIDIA/benchmarks/deepcam/implementations/pytorch) (in `deepcam-mlcommons-hpcv3/`) to enable DeepCAM to run with newer versions (>=2.3.0) of PyTorch (specifically, by updating the calls to `MultiStepLRWarmup` and `CosineAnnealingLRWarmup` in `schedulers.py` to reflect the newer API). Training scripts for DeepCAM submissions must be either forked from a [DeepCAM model training implementation hosted by MLCommons HPC Results v3.0](https://github.com/mlcommons/hpc_results_v3.0/tree/main) or obtained from the `deepcam-mlcommons-hpcv3` folder in this repository. As demonstrated in [`prep-env-kestrel.sh`](prep-env-kestrel.sh), the `io_helpers` package can also be installed from the submitted NVIDIA implementation folder.
+The training scripts for DeepCAM do not require any special installation once the above environment is created. For convenience, this repository contains a modified version of [the NVIDIA submission to MLCommons HPC Results v3.0](https://github.com/mlcommons/hpc_results_v3.0/tree/main/NVIDIA/benchmarks/deepcam/implementations/pytorch) (in `deepcam-mlcommons-hpcv3/`) to enable DeepCAM to run with newer versions (>=2.3.0) of PyTorch (specifically, by updating the calls to `MultiStepLRWarmup` and `CosineAnnealingLRWarmup` in `schedulers.py` to reflect the newer API). Training scripts for DeepCAM submissions must be either forked from a [DeepCAM model training implementation hosted by MLCommons HPC Results v3.0](https://github.com/mlcommons/hpc_results_v3.0/tree/main) or obtained from the `deepcam-mlcommons-hpcv3` folder in this repository. As demonstrated in [`prep-env-kestrel.sh`](prep-env-kestrel.sh), the `io_helpers` package can also be installed from the submitted NVIDIA implementation folder.
 
 Note: The specific packages mentioned in [`prep-env-kestrel.sh`](prep-env-kestrel.sh) may change depending on the type of accelerator being tested. As per our [general baseline run rules](../../README.md#draft-definitions-for-baselineas-is-ported-and-optimized-runs), the Offeror may freely substitute publicly available packages/libraries (and their subsequent calls in the training code itself) as necessary for baseline submissions.
 
@@ -155,7 +155,30 @@ For *ported* submissions, the *baseline* parameters must be used, though trainin
 
 #### Optimized Scenario 1
 
-*Optimized* submissions are encouraged (though optional) as part of Scenario 1. The same environmental variables set in [*baseline* Scenario 1](#baseline-scenario-1) must be used in an *optimized* Scenario 1 submission, although the code itself is allowed to be modified to best optimize performance and demonstrate hardware capabilities. We require that any of these changes are reported and reproduceable. **Note that only results from Scenario 2 will be considered for the overall throughput metric.**
+*Optimized* submissions are encouraged (though optional) as part of Scenario 1. In an *optimized* Scenario 1 submission, the code itself is allowed to be modified to best optimize performance and demonstrate hardware capabilities. Submitters are also welcome to increase the `LOCAL_BATCH_SIZE` as part of an *optimized* Scenario 1 run. We require that any of these changes are reported and reproduceable. **Note that only results from Scenario 2 will be considered for the overall throughput metric.**
+
+The following environment variables set in [`config_scenario1.sh`](./config_scenario1.sh) **can** be freely modified as necessary for *optimized* Scenario 1 submissions:
+
+| Variable           | Description                              | Default Kestrel value  |
+| :--                | :--                                      | :--                    |
+| `STAGE_DIR_PREFIX` | Path to data staging directory           | Stages input data to this directory (e.g., one on a faster filesystem or local node SSD). If this variable is not set, then data staging does not occur (default). |
+| `WIREUP_METHOD`    | Method for distributed process communication | Options are 'nccl-slurm' (default), 'nccl-openmpi', 'nccl-file', 'mpi', or 'dummy' |
+| `DGXNGPU`          | Number of accelerators per node          | `4`                    |
+| `MAX_THREADS`      | Number of data loading threads per node  | `4`                    |
+| `LOCAL_BATCH_SIZE` | Per-accelerator batch size               | `12`                   |
+
+The following environment variables set in [`config_scenario1.sh`](./config_scenario1.sh) **must be set** for *optimized* **Scenario 1** submissions:
+
+| Variable                 | Description                                                         | Required value           |
+| :--                      | :--                                                                 | :--                      |
+| `LOGGING_FREQUENCY`      | Whether to gather logs per-step (`1`) or per-epoch (`0`)            | `1`                      |
+| `MAX_EPOCHS`             | Number of epochs at which training ends, regardless of convergence. | `3`                      |
+| `START_LR`               | Starting learning rate                                              | `0.001`                  |
+| `LR_SCHEDULE_TYPE`       | Learning rate scheduler type                                        | `multistep`              |
+| `LR_MILESTONES`          | Training milestone at which to modify LR (for multistep scheduler)  | `8192`                   |
+| `LR_WARMUP_STEPS`        | Number of LR warmup steps                                           | `0`                      |
+| `OPTIMIZER`              | Learning rate optimizer                                             | `MixedPrecisionLAMB`     |
+| `WEIGHT_DECAY`           | Strength of L2 regularization                                       | `0.01`                   |
 
 #### Optimized Scenario 2
 
@@ -176,36 +199,36 @@ Noting the median time required per training step (in seconds) across 3 epochs s
 
 For each run following Scenario 1 rules, we request the following information in the table below (using unoptimized Kestrel reference data as an example): 
 
-| Run Type  | Scenario | Nodes used | Accelerators per node | Total Accelerators | Local Batch Size | Data staged     | Median time per training step (seconds)  | Mean time per training step (seconds) | Standard deviation time per training step (seconds)  |
-| :---      | :---     | :---       | :---                  | :---               | :---             | :---            | :---                                     | :--                                   | :--                                                  |
-| baseline  | 1        | 1          | 4                     | 4                  | 12               | False           | 0.732                                    | 0.809                                 | 3.638                                                |
-| baseline  | 1        | 4          | 4                     | 16                 | 12               | False           | 0.749                                    | 0.881                                 | 2.431                                                |
-| baseline  | 1        | 8          | 4                     | 32                 | 12               | False           | 0.756                                    | 0.889                                 | 1.732                                                |
-| optimized | 1        | *N*        | *X*                   | :---               | *Y*              | *<True/False>*  | *T*                                      | *T*                                   | *T*                                                  |
-| optimized | 1        | *4N*       | *X*                   | :---               | *Y*              | *<True/False>*  | *T*                                      | *T*                                   | *T*                                                  |
-| optimized | 1        | *8N*       | *X*                   | :---               | *Y*              | *<True/False>*  | *T*                                      | *T*                                   | *T*                                                  |
+| Run Type  | Scenario | Nodes used | Accelerators per node | Total Accelerators | Local Batch Size | Data staged     | Median time per training step (seconds)  |
+| :---      | :---     | :---       | :---                  | :---               | :---             | :---            | :---                                     |
+| baseline  | 1        | 1          | 4                     | 4                  | 12               | False           | 0.732                                    |
+| baseline  | 1        | 4          | 4                     | 16                 | 12               | False           | 0.749                                    |
+| baseline  | 1        | 8          | 4                     | 32                 | 12               | False           | 0.756                                    |
+| optimized | 1        | *N*        | *X*                   | :---               | *Y*              | *<True/False>*  | *T*                                      |
+| optimized | 1        | *4N*       | *X*                   | :---               | *Y*              | *<True/False>*  | *T*                                      |
+| optimized | 1        | *8N*       | *X*                   | :---               | *Y*              | *<True/False>*  | *T*                                      |
 
 
 ### Scenario 2 submissions
 
-Noting the time required (in minutes) to reach 82% validation accuracy satisfies this submission. As with Scenario 1, this time should **solely** reflect the time spent during training itself. In other words, this excludes the time required for model initiation and the time spent staging data to local disks for faster I/O. 
+Noting the time required (in minutes) to reach 82% validation accuracy satisfies this submission and is considered the benchmark's figure of merit (FOM). As with Scenario 1, this time should **solely** reflect the time spent during training itself. In other words, this excludes the time required for model initiation and the time spent staging data to local disks for faster I/O, if applicable. 
 
-For each run following Scenario 2 rules, we request the following information (using unoptimized Kestrel reference data as an example). Note that `Nodes used`, `Accelerators per node`, `Total Accelerators`, and `Local Batch Size` may change depending on the system used for benchmarking:
+For each run following Scenario 2 rules, we request the following information (using unoptimized Kesåtrel reference data as an example). Note that `Nodes used`, `Accelerators per node`, `Total Accelerators`, and `Local Batch Size` may change depending on the system used for benchmarking:
 
-| Run Type  | Scenario | Nodes used | Accelerators per node | Total Accelerators | Local Batch Size | Data staged    | LR Scheduler     | Start LR  | Optimizer   | Median timing per epoch (seconds) | Total Time Required* (seconds) | Target Accuracy Reached | Epochs Required* |
-| :---      | :---     | :---       | :---                  | :---               | :---             | :---           | :---             | :---      | :---        | :---                              | :---                           | :--                     | :--              |
-| baseline  | 2        | 4          | 4                     | 16                 | 8                | False          | multistep        | 0.001     | LAMB        | 490.59                            | 4564.233                       | 0.82                    | 9                |
-| baseline  | 2        | 4          | 4                     | 16                 | 8                | False          | multistep        | 0.001     | LAMB        | 527.59                            | 4843.240                       | 0.82                    | 9                |
-| baseline  | 2        | 4          | 4                     | 16                 | 8                | False          | multistep        | 0.001     | LAMB        | <>                                | <>                             | 0.82                    | 9                |
-| baseline  | 2        | 8          | 4                     | 32                 | 4                | False          | multistep        | 0.001     | LAMB        | 298.84                            | 2600.539                       | 0.82                    | 9                |
-| baseline  | 2        | 8          | 4                     | 32                 | 4                | False          | multistep        | 0.001     | LAMB        | 254.64                            | 2324.072                       | 0.82                    | 9                |
-| baseline  | 2        | 8          | 4                     | 32                 | 4                | False          | multistep        | 0.001     | LAMB        | 298.84                            | 2600.391                       | 0.82                    | 9                |
-| baseline  | 2        | 16         | 4                     | 64                 | 2                | False          | multistep        | 0.001     | LAMB        | 141.17                            | 1283.236                       | 0.82                    | 9                |
-| baseline  | 2        | 16         | 4                     | 64                 | 2                | False          | multistep        | 0.001     | LAMB        | 148.23                            | 1367.09                        | 0.82                    | 9                |
-| baseline  | 2        | 16         | 4                     | 64                 | 2                | False          | multistep        | 0.001     | LAMB        | 140.80                            | 1276.21                        | 0.82                    | 9                |
-| optimized | 2        | *M*        | *X*                   | *X\*M*             | *Y*              | *<True/False>* | *scheduler*      | *Z*       | *optimizer* | *T*                               | *T*                            | 0.82                    | *E*              |
+| Run Type  | Scenario | Nodes used | Accelerators per node | Total Accelerators | Local Batch Size | Data staged    | LR Scheduler     | Start LR  | Optimizer   | Total Time Required* (seconds) | Target Accuracy Reached | Epochs Required* |
+| :---      | :---     | :---       | :---                  | :---               | :---             | :---           | :---             | :---      | :---        | :---                           | :--                     | :--              |
+| baseline  | 2        | 4          | 4                     | 16                 | 8                | False          | multistep        | 0.001     | LAMB        | 4564.233                       | 0.82                    | 9                |
+| baseline  | 2        | 4          | 4                     | 16                 | 8                | False          | multistep        | 0.001     | LAMB        | 4843.240                       | 0.82                    | 9                |
+| baseline  | 2        | 4          | 4                     | 16                 | 8                | False          | multistep        | 0.001     | LAMB        | <>                             | 0.82                    | 9                |
+| baseline  | 2        | 8          | 4                     | 32                 | 4                | False          | multistep        | 0.001     | LAMB        | 2600.539                       | 0.82                    | 9                |
+| baseline  | 2        | 8          | 4                     | 32                 | 4                | False          | multistep        | 0.001     | LAMB        | 2324.072                       | 0.82                    | 9                |
+| baseline  | 2        | 8          | 4                     | 32                 | 4                | False          | multistep        | 0.001     | LAMB        | 2600.391                       | 0.82                    | 9                |
+| baseline  | 2        | 16         | 4                     | 64                 | 2                | False          | multistep        | 0.001     | LAMB        | 1283.236                       | 0.82                    | 9                |
+| baseline  | 2        | 16         | 4                     | 64                 | 2                | False          | multistep        | 0.001     | LAMB        | 1367.09                        | 0.82                    | 9                |
+| baseline  | 2        | 16         | 4                     | 64                 | 2                | False          | multistep        | 0.001     | LAMB        | 1276.21                        | 0.82                    | 9                |
+| optimized | 2        | *M*        | *X*                   | *X\*M*             | *Y*              | *<True/False>* | *scheduler*      | *Z*       | *optimizer* | *T*                            | 0.82                    | *E*              |
 
-\* Time or epochs required to reach 82% evaluation accuracy target. The time does not include any data staging performed before model training.
+\* Time or epochs required to reach 82% evaluation accuracy target. The "Total Time Required" does not include model initialization or the time spent pre-staging any data before training.
 
 ## References and useful links
 
