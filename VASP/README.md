@@ -14,8 +14,9 @@ https://www.vasp.at/info/faq/purchase_vasp/
 
 ## Other Requirements
 
-- Benchmarks must be run with version 6.5.X.
+- Benchmarks must be run with at least version 6.5.X because we have found numerical differences in the results for Benchmark 2 with earlier versions of VASP. 
 - Requirements for building VASP 6.X.X can be found here: https://www.vasp.at/wiki/index.php/Installing_VASP.6.X.X
+- Offerors may use a compiler toolchain of their choice provided benchmark validation criteria are met.
 - At the time of writing this, the only accelerated port of vasp is OpenACC. More details on the required software stack can be found here: https://www.vasp.at/wiki/index.php/OpenACC_GPU_port_of_VASP#Software_stack 
 
 ## How to build
@@ -70,7 +71,7 @@ In addition to content enumerated in the General Instructions, please return fil
 
 ## Additional Run Rules
 
-Parallelization parameters (`KPAR`, `NCORE`, `NSIM`) can have a significant impact on performance. The Offeror is allowed to vary these parameters to determine the optimal settings. 
+Parallelization parameters can have a significant impact on performance. The Offeror is allowed to vary the following parameters to determine the optimal settings: `KPAR`, `NCORE`, `NSIM`, and `NBLOCK_FOCK`. No other parameters can be changed because they can alter the numerical results of the calculation. 
 *Note:* Because Benchmark 2 is a Gamma-point-only calculation, `KPAR` should be set to 1.
 
 While fully converged runs are required for final reporting, shorter runs may be desired during performance tuning (e.g. of parallelization parameters or other testing). In such cases, the maximum number of SCF iterations may be reduced (e.g., to 5 by setting `NELM = 5` in the INCAR file) to reduce time-to-solution during testing. Note that the input `NELMIN = 3` enforces a minimum of 3 SCF steps. **Important: the results from these truncated runs will not be suitable for validation.**
@@ -81,7 +82,7 @@ To check if a calculation has converged, search for "aborting loop because EDIFF
 
 1. **Required Files:** The Offeror will provide `OUTCAR` and `VASP.xml` for each calculation. These files will be used to verify that the Offeror followed the prescribed instructions and did not modify any calculation settings beyond those explicitly permitted (i.e., `NCORE` for bench 1 and bench 2 and `KPAR` for bench 1).
 2. **Validation Method:** Validation will consist of comparing the reported final electronic energy (TOTEN) and, for bench 1, the band gap (fundamental gap) from the submitted OUTCAR files against the corresponding reference values.
-3. **Acceptance Criteria:** A converged calculation will be considered valid if the final energy and, when relevant, the band gap agree with the reference values within a tolerance of 1E-3 eV.
+3. **Acceptance Criteria:** A converged calculation will be considered valid if the final energy and, when relevant, the band gap agree with the reference values within a tolerance of 1E-3 eV. We have tested our benchmarks on different architectures and have found that this tolerance is suitable for our benchmarks, which are quite numerically challenging due to their size.
 4. **Reference Data:** The reference data will be provided to the Offeror for comparison purposes but may not be modified without prior written authorization. The reference directory may be transferred to another system if needed for convenience.
 
 Below is a summary of the results that can be found in the `NLR-results` folder for each benchmark:
