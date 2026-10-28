@@ -58,7 +58,7 @@ Any run must utilize all available accelerators on each node. For all configurat
 
 ## Benchmark Test Results to Report and Files to Return
 
-**File response:** We request the raw data associated with each CCL run be provided, demonstrating the bandwidth and latency for each message size. An example logfile is provided [below](#logfile-example-from-kestrel-reference-run-using-nccl). Additionally, any environment variables, fabric settings, and/or CCL configuration settings necessary to reproduce the results should be provided. The offeror should distinguish between parameters which may be set by an unprivileged user from those which would be globally set by system adminstrators.
+**File response:** We request the raw data associated with each CCL run be provided, demonstrating the bandwidth and latency for each message size. An example logfile is provided [below](#logfile-example-from-kestrel-reference-run-using-nccl). Additionally, any environment variables, fabric settings, and/or CCL configuration settings necessary to reproduce the results should be provided. The offeror should distinguish between parameters which may be set by an unprivileged user from those which would be globally set by system adminstrators. We specifically request that submitters note whether they invoked GPU Remote Direct Memory Access (RDMA; e.g., by setting `NCCL_NET_GDR_LEVEL=PHB`). It is **always optional** to invoke GPU RDMA as part of a submission for this benchmark.
 
 **Spreadsheet response:** We request the out-of-place and in-place bandwidth and latencies, as well as high-level information about the system the benchmark was run on, to be reported in a spreadsheet (template [below](#spreadsheet-template)) for the following message sizes (in bytes):
 
@@ -73,12 +73,12 @@ Below are AllReduce results from Kestrel when running [`all_reduce_perf`](https:
 
 #### Spreadsheet Template 
 
-|System|Replicate|Collective Operation|Min byte size|Max byte size|Increment factor|Number of devices|Number of nodes|NICs per node| Message size (B)|Out-of-Place Time (uS)|Out-of-Place Algorithmic Bandwidth (GB/s)|Out-of-Place Bus Bandwidth (GB/s)|In-Place Time (uS)|In-Place Algorithmic Bandwidth (GB/s)|In-Place Bus Bandwidth (GB/s)|
-|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
-|Reference (Kestrel)|1|AllReduce|8B|4G|2|64|16|2|8|59.83|0.00|50.15|462.2|0.00|0.00|
-|Reference (Kestrel)|1|AllReduce|8B|4G|2|64|16|2|524288|835.3|0.63|1.24|462.2|1.13|2.23|
-|Reference (Kestrel)|1|AllReduce|8B|4G|2|64|16|2|33554432|2973.4|11.29|22.22|2636.4|12.73|25.06|
-|Reference (Kestrel)|1|AllReduce|8B|4G|2|64|16|2|4294967296|184959|23.22|45.72|185005|23.22|45.71|
+|System|Replicate|Collective Operation|RDMA invoked|Min byte size|Max byte size|Increment factor|Number of devices|Number of nodes|NICs per node| Message size (B)|Out-of-Place Time (uS)|Out-of-Place Algorithmic Bandwidth (GB/s)|Out-of-Place Bus Bandwidth (GB/s)|In-Place Time (uS)|In-Place Algorithmic Bandwidth (GB/s)|In-Place Bus Bandwidth (GB/s)|
+|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
+|Reference (Kestrel)|1|AllReduce|No|8B|4G|2|64|16|2|8|59.83|0.00|50.15|462.2|0.00|0.00|
+|Reference (Kestrel)|1|AllReduce|No|8B|4G|2|64|16|2|524288|835.3|0.63|1.24|462.2|1.13|2.23|
+|Reference (Kestrel)|1|AllReduce|No|8B|4G|2|64|16|2|33554432|2973.4|11.29|22.22|2636.4|12.73|25.06|
+|Reference (Kestrel)|1|AllReduce|No|8B|4G|2|64|16|2|4294967296|184959|23.22|45.72|185005|23.22|45.71|
 
 #### Logfile Example from Kestrel Reference Run Using NCCL
 
