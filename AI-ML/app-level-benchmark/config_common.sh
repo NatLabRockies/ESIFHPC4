@@ -5,7 +5,6 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++ #
 ####### Start of Variables that CAN be modified #####
-export LOCAL_VALIDATION_BATCH_SIZE=${LOCAL_VALIDATION_BATCH_SIZE:-$LOCAL_BATCH_SIZE} # Per-accelerator evaluation batch size (same as training size by default)
 # data staging
 export STAGE_BATCH_SIZE=${STAGE_BATCH_SIZE:-$LOCAL_BATCH_SIZE} # Per-accelerator data staging batch size (same as training size by default)
 export STAGE_MODE="global"
