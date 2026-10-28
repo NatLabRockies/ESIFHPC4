@@ -3,6 +3,23 @@
 # These are common variables for each training scenario. This file should generally not need to be modified,
 # except under certain circumstances such as modifying SLURM_* and/or SRUN_* variables if a non-Slurm scheduler is used.
 
+# +++++++++++++++++++++++++++++++++++++++++++++++++ #
+####### Start of Variables that CAN be modified #####
+# data staging
+export STAGE_BATCH_SIZE=${STAGE_BATCH_SIZE:-$LOCAL_BATCH_SIZE} # Per-accelerator data staging batch size (same as training size by default)
+export STAGE_MODE="global"
+export STAGE_VERIFY=0
+export STAGE_FULL_DATA_PER_NODE=0 
+export STAGE_USE_DIRECT_IO=0 # note: leads to a segfault on Kestrel when =1
+export STAGE_NUM_READ_WORKERS=6    
+export STAGE_NUM_WRITE_WORKERS=12 
+# scheduler arguments
+export ADDITIONAL_SRUN_ARGS="--no-kill"
+# data parameters
+export DATA_FORMAT=${DATA_FORMAT:-"dali-numpy"} # this can be modified as part of a 'ported' submission
+####### End of Variables that CAN be modified #######
+# +++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 # create output directory
 mkdir -p ${OUTPUT_DIR}
 
@@ -11,27 +28,17 @@ export LR_T_MAX=9000
 export LR_ETA_MIN=0.0
 export LR_WARMUP_FACTOR=1.
 
-# data parameters
+# immutable data parameters
 export SHUFFLE_MODE="global"
-export DATA_FORMAT=${DATA_FORMAT:-"dali-numpy"}
 export PRECISION_MODE=${PRECISION_MODE:-"amp"}
-export LOCAL_VALIDATION_BATCH_SIZE=8
 
 # staging parameters
 if [ ! -z $STAGE_DIR_PREFIX ]; then
   mkdir -p $STAGE_DIR_PREFIX
 fi
-export STAGE_BATCH_SIZE=8
-export STAGE_MODE="global"
-export STAGE_VERIFY=0
-export STAGE_FULL_DATA_PER_NODE=0
-export STAGE_USE_DIRECT_IO=0 # note: leads to a segfault on Kestrel when =1
-export STAGE_NUM_READ_WORKERS=6   # can be freely tuned as necessary
-export STAGE_NUM_WRITE_WORKERS=12 # can be freely tuned as necessary
 
 # this is for some global parameters:
 export ADDITIONAL_ARGS="--disable_tuning --enable_graph --disable_comm_overlap"
-export ADDITIONAL_SRUN_ARGS="--no-kill"
 
 # direct io settings
 export DALI_ODIRECT_ALIGNMENT=4096

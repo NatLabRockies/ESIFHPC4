@@ -25,6 +25,7 @@ if [[ $LR_SCHEDULE_TYPE == 'multistep' ]]; then
     export LR_MILESTONES=${LR_MILESTONES:-8192} # Default for global batch size 128
     export LR_DECAY_RATE="0.1"
 fi
+export LOCAL_VALIDATION_BATCH_SIZE=${LOCAL_VALIDATION_BATCH_SIZE:-$LOCAL_BATCH_SIZE} # Per-accelerator evaluation batch size (same as training size)
 ####
 
 # common configuration settings
