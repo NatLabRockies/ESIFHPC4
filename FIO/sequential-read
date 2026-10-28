@@ -1,0 +1,14 @@
+[global]
+ioengine=libaio
+direct=1
+runtime=600
+group_reporting
+invalidate=1
+direct=1
+directory=$DIRECTORY
+
+[SeqRead]
+rw=read
+size=1G
+bs=8k
+numjobs=8
