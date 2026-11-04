@@ -122,9 +122,9 @@ The `benchmarks` directory contains three benchmark sizes:
 
 Each benchmark simulates a silicon divacancy defect embedded in a series of progressively larger supercells. The Small, Medium, and Large benchmarks are provided to facilitate testing and profiling across a wide range of numbers of resources.
 
-**Only benchmark runs for the Large size are required for the response.**
+**Only benchmark runs for the Large size are requested for the response.**
 
-The offeror should return results for a strong scaling series of N, 2N, and 4N jobs, where N is the smallest number of nodes that the Large benchmark can fit on. 
+The offeror are requested to return results for a strong scaling series of N, 1.5*N, and 2N jobs, where N is the smallest number of nodes that the Large benchmark can fit on. The offeror may provide results for larger node counts as well. 
 
 ## 2.1 Download wave-function data
 
