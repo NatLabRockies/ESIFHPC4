@@ -94,12 +94,7 @@ Below are AllReduce results from Kestrel when running [`all_reduce_perf`](https:
 
 #### Spreadsheet Template 
 
-|Run Type|System|RDMA invoked|CPU cores per rank|Min byte size|Max byte size|Increment factor|Number of devices|Number of nodes|NICs per node| Message size (B)|Median Out-of-Place Time (uS)|Median Out-of-Place Algorithmic Bandwidth (GB/s)|Median Out-of-Place Bus Bandwidth (GB/s)|Median In-Place Time (uS)|Median In-Place Algorithmic Bandwidth (GB/s)|Median In-Place Bus Bandwidth (GB/s)|Number of Replicates|
-|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
-|Baseline|Reference (Kestrel)|No|32|8B|4G|2|64|16|2|8|59.83|0.00|50.15|462.2|0.00|0.00|1|
-|Baseline|Reference (Kestrel)|No|32|8B|4G|2|64|16|2|524288|835.3|0.63|1.24|462.2|1.13|2.23|1|
-|Baseline|Reference (Kestrel)|No|32|8B|4G|2|64|16|2|33554432|2973.4|11.29|22.22|2636.4|12.73|25.06|1|
-|Baseline|Reference (Kestrel)|No|32|8B|4G|2|64|16|2|4294967296|184959|23.22|45.72|185005|23.22|45.71|1|
+See [spreadsheet-template.md](./spreadsheet-template.md) for example Kestrel data that is appropriately formatted for this benchmark response. Note that this template can also be generated from the embedded [log parsing utility](./log-parser/README.md) using the provided example files.
 
 #### Logfile Example from Kestrel Reference Run Using NCCL
 
