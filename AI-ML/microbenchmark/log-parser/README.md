@@ -110,5 +110,6 @@ We can then use the `aggregate_logs.py` script to calculate the median bandwidth
 python aggregate_logs.py \
     parsed/ \
     --glob "*.csv" \
+    --devices-per-node 4 \
     --csv report.csv
 ```
