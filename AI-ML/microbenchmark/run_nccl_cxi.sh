@@ -9,9 +9,16 @@
 #SBATCH --job-name=nccl_cxi_baremetal
 #SBATCH -o %j-%x.out
 
-module load cuda/12.4
+# Load dependencies
+GCC_VERSION=14.2.0
+CUDA_VERSION=13.2
+LIBFABRIC_VERSION="shs-12.0.2"
+ml gcc/$GCC_VERSION cuda/$CUDA_VERSION
+ml shs-libfabric/${LIBFABRIC_VERSION} # enables GDRCopy support. sets LIBFABRIC_HOME
+# hwloc is only needed for newer versions of the AWS OFI plugin
+ml hwloc
 
-export NCCL_HOME=`pwd`/install
+export NCCL_HOME=`pwd`/install # change to path where nccl is installed from build_nccl_cxi.sh
 export MPICH_GPU_SUPPORT_ENABLED=0
 export MPICH_OFI_CXI_COUNTER_REPORT=2
 
@@ -22,8 +29,14 @@ export NCCL_CROSS_NIC=1
 export NCCL_DEBUG=INFO
 export NCCL_SOCKET_IFNAME=hsn
 export NCCL_NET="AWS Libfabric"
-export NCCL_NET_GDR_LEVEL=PHB
 
+# This invokes RDMA:
+# export NCCL_NET_GDR_LEVEL=PHB
+# This does not invoke GPU RDMA:
+export NCCL_NET_GDR_LEVEL=LOC
+
+
+# Run microbenchmark
 echo "NCCL_HOME is set to $NCCL_HOME"
 echo ========== RUNNING NCCL TESTS ==========
 srun $PWD/nccl-tests/build/all_reduce_perf -b 8 -e 4G -f 2 -d double
