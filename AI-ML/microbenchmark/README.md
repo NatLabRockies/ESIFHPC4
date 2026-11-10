@@ -46,7 +46,7 @@ In total, four tests (each consisting of 5 replicates) are required for this ben
 
 **Baseline/Ported Submissions**
 
-*Baseline* and *ported* submissions should run a CCL AllReduce on 1, 2, 15% of nodes proposed by the offeror, and (if applicable) *N* nodes required to achieve maximum out-of-place bus bandwidth across the system at the largest message size requested for the benchmark (4294967296). For this submission type, it is required to fix 1 rank per accelerator, and 1 CPU core per rank.
+*Baseline* and *ported* submissions should run a CCL AllReduce on 1, 2, 15% of nodes proposed by the offeror, and the minimal number *N* nodes required to achieve maximum out-of-place bus bandwidth across the system at the largest message size requested for the benchmark (4294967296). For this submission type, it is required to fix 1 rank per accelerator, and 1 CPU core per rank.
 
 | Test          | Nodes Used  | Ranks Used        | CPU Cores per Rank | RDMA invoked | Number of Replicate Runs |
 | :--           |:--          |:--                | :--                | :--          | :--                      |
@@ -57,7 +57,7 @@ In total, four tests (each consisting of 5 replicates) are required for this ben
 
 **Optimized Submissions**
 
-*Optimized* submissions should run a CCL AllReduce on 1, 2, 15% of nodes proposed by the offeror, and *n* nodes required to achieve maximum out-of-place bus bandwidth across the system at the largest message size requested for the benchmark (4294967296). For this submission type, it is required to fix 1 rank per accelerator, though submitters are welcome to freely choose *N* CPU cores per rank.
+*Optimized* submissions should run a CCL AllReduce on 1, 2, 15% of nodes proposed by the offeror, and the minimal number *N* nodes required to achieve maximum out-of-place bus bandwidth across the system at the largest message size requested for the benchmark (4294967296). For this submission type, it is required to fix 1 rank per accelerator, though submitters are welcome to freely choose *N* CPU cores per rank.
 
 | Test          | Nodes Used  | Ranks Used        | CPU Cores per Rank | RDMA invoked | Number of Replicate Runs |
 | :--           |:--          |:--                | :--                | :--          | :--                      |

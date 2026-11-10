@@ -159,13 +159,25 @@ def main():
     # ---------------------------------------------------------------------
     if args.output:
         plot_df = agg.copy()
+        # Define grouping columns for plotting
+        group_cols = ["Run Type", "RDMA invoked", "CPU cores per rank", "Number of nodes"]
+        missing_plot_cols = [c for c in group_cols if c not in plot_df.columns]
+        if missing_plot_cols:
+            print(f"[error] Missing expected columns for plotting: {missing_plot_cols}")
+        else:
+            # Create a combined column for grouping lines and legend entries with explicit labels
+            plot_df["Plot Group"] = plot_df.apply(
+                lambda r: f"Run Type={r['Run Type']}, RDMA invoked={r['RDMA invoked']}, CPU cores per rank={r['CPU cores per rank']}, Number of nodes={r['Number of nodes']}",
+                axis=1,
+            )
         fig = px.line(
             plot_df,
             x="Message size (B)",
             y="Median Out-of-Place Bus Bandwidth (GB/s)",
-            color="Run Type",
+            color="Plot Group",
             markers=True,
             title=args.title or f"Median NCCL Out‑of‑Place Bus BW – {os.path.basename(args.folder)}",
+            labels={"Plot Group": "Configuration"},
         )
         try:
             fig.write_html(args.output)
