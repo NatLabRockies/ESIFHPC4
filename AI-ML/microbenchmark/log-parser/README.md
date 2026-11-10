@@ -111,5 +111,8 @@ python aggregate_logs.py \
     parsed/ \
     --glob "*.csv" \
     --devices-per-node 4 \
-    --csv report.csv
+    --csv report.csv \
+    --output report.html
 ```
+
+The optional `--output` argument produces an interactive visualization that summarizes the median out-of-place bus bandwidth across message sizes based on the grouping described above.

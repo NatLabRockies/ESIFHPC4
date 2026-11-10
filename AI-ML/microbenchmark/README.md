@@ -69,7 +69,7 @@ In total, four tests (each consisting of 5 replicates) are required for this ben
 
 - \*For optimized submissions only, the offeror is allowed to freely choose the number of CPU cores per rank.
 - \*\*15% of nodes proposed by offeror.
-- \*\*\**N* refers to the number of nodes that achieves maximum out-of-place bus bandwidth across the system.
+- \*\*\**N* refers to the number of nodes that achieves maximum out-of-place bus bandwidth across the system at the maximum message size (4294967296). On Kestrel, *N*=4.
 
 ### Run Rules
 
