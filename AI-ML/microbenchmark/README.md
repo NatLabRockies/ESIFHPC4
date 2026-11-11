@@ -30,7 +30,7 @@ If an open-source implementation of CCL tests is not available, then the offeror
 
 ### Tests
 
-Two types of runs are requested to satisfy this benchmark: single-node and multi-node. In total, the requirements from 3 individual CCL configurations are described below. For each configuration, we ask for 5 replicate runs, for a total of 15 AllReduce runs.
+Two types of runs are requested to satisfy this benchmark: single-node and multi-node. In total, the requirements from four individual CCL configurations are described below. For each configuration, we ask for 5 replicate runs, for a total of 20 AllReduce runs. The final reporting table will reflect an aggregation of [the median timings and bandwidth values for the desired message sizes](#benchmark-test-results-to-report-and-files-to-return).
 
 #### Single-node
 
@@ -38,19 +38,38 @@ To demonstrate intra-node CCL performance, each collective should be run across 
 
 #### Multi-node
 
-To demonstrate inter-node CCL performance, each collective should be run in two multi-node jobs, one using 2 nodes and another using 15% of nodes proposed by the offerer (see table below for details).
+To demonstrate inter-node CCL performance, each collective should be run in three sets of multi-node jobs: 1. using 2 nodes, 2. using 15% of nodes proposed by the offerer, and 3. requesting the number of nodes *N* expected to saturate network bandwidth (see table below for details).
 
 #### Summary of Requested Tests
 
-In total, three tests (each consisting of 5 replicates) are required for this benchmark:
+In total, four tests (each consisting of 5 replicates) are required for this benchmark:
 
-| Test          | Nodes Used  | Ranks Used        | Number of Replicate Runs |
-|:--            |:--          |:--                | :--                      |
-| AllReduce     | 1           | 1 per accelerator | 5                        |
-| AllReduce     | 2           | 1 per accelerator | 5                        |
-| AllReduce     | 15%**       | 1 per accelerator | 5                        |
+**Baseline/Ported Submissions**
 
-**15% of nodes proposed by offeror. If this number exceeds the total number of nodes on the system used for benchmarking, then running the CCL benchmark on all available accelerated test nodes satisfies this requirement.
+*Baseline* and *ported* submissions should run a CCL AllReduce on 1, 2, 15% of nodes proposed by the offeror, and the minimal number *N* nodes required to achieve maximum out-of-place bus bandwidth across the system at the largest message size requested for the benchmark (4294967296). For this submission type, it is required to fix 1 rank per accelerator, and 1 CPU core per rank.
+
+| Test          | Nodes Used  | Ranks Used        | CPU Cores per Rank | RDMA invoked | Number of Replicate Runs |
+| :--           |:--          |:--                | :--                | :--          | :--                      |
+| AllReduce     | 1           | 1 per accelerator | 1                  | If possible  | 5                        |
+| AllReduce     | 2           | 1 per accelerator | 1                  | If possible  | 5                        |
+| AllReduce     | 15%\*\*     | 1 per accelerator | 1                  | If possible  | 5                        |
+| AllReduce     | *N*\*\*\*   | 1 per accelerator | 1                  | If possible  | 5                        |
+
+**Optimized Submissions**
+
+*Optimized* submissions should run a CCL AllReduce on 1, 2, 15% of nodes proposed by the offeror, and the minimal number *N* nodes required to achieve maximum out-of-place bus bandwidth across the system at the largest message size requested for the benchmark (4294967296). For this submission type, it is required to fix 1 rank per accelerator, though submitters are welcome to freely choose *N* CPU cores per rank.
+
+| Test          | Nodes Used  | Ranks Used        | CPU Cores per Rank | RDMA invoked | Number of Replicate Runs |
+| :--           |:--          |:--                | :--                | :--          | :--                      |
+| AllReduce     | 1           | 1 per accelerator | *n*\*              | If possible  | 5                        |
+| AllReduce     | 2           | 1 per accelerator | *n*\*              | If possible  | 5                        |
+| AllReduce     | 15%\*\*     | 1 per accelerator | *n*\*              | If possible  | 5                        |
+| AllReduce     | *N*\*\*\*   | 1 per accelerator | *n*\*              | If possible  | 5                        |
+
+
+- \*For optimized submissions only, the offeror is allowed to freely choose the number of CPU cores per rank.
+- \*\*15% of nodes proposed by offeror.
+- \*\*\**N* refers to the number of nodes that achieves maximum out-of-place bus bandwidth across the system at the maximum message size (4294967296). On Kestrel, *N*=4.
 
 ### Run Rules
 
@@ -58,14 +77,16 @@ Any run must utilize all available accelerators on each node. For all configurat
 
 ## Benchmark Test Results to Report and Files to Return
 
-**File response:** We request the raw data associated with each CCL run be provided, demonstrating the bandwidth and latency for each message size. An example logfile is provided [below](#logfile-example-from-kestrel-reference-run-using-nccl). Additionally, any environment variables, fabric settings, and/or CCL configuration settings necessary to reproduce the results should be provided. The offeror should distinguish between parameters which may be set by an unprivileged user from those which would be globally set by system adminstrators.
+**File response:** We request the raw data (including the command used to launch the CCL operation, the log file, and the run's submission script) associated with each CCL run be provided, demonstrating the bandwidth and latency for each message size. An example logfile is provided [below](#logfile-example-from-kestrel-reference-run-using-nccl). Additionally, any environment variables, fabric settings, and/or CCL configuration settings necessary to reproduce the results should be provided. The offeror should distinguish between parameters which may be set by an unprivileged user from those which would be globally set by system adminstrators. We specifically request that submitters who are offering accelerators capable of Remote Direct Memory Access (RDMA) should note whether they invoked GPU RDMA (e.g., by setting a variable such as `NCCL_NET_GDR_LEVEL=PHB`).
 
-**Spreadsheet response:** We request the out-of-place and in-place bandwidth and latencies, as well as high-level information about the system the benchmark was run on, to be reported in a spreadsheet (template [below](#spreadsheet-template)) for the following message sizes (in bytes):
+**Spreadsheet response:** We request the median out-of-place and in-place bandwidth and timings from five replicate runs of each case [described above](#summary-of-requested-tests), as well as high-level information about the system the benchmark was run on, to be reported in a spreadsheet (template [below](#spreadsheet-template)) for the following message sizes (in bytes):
 
 - 8
 - 524288
 - 33554432
 - 4294967296
+
+**Results parsing script**: To facilitate reporting requirements, we provide a script as an example to parse and summarize NCCL AllReduce performance data in the necessary format. This script may have to be adapted by the offerer as necessary. Please refer to [`log-parser/README.md`](./log-parser/README.md) for more information on how to use this script.
 
 ### AllReduce Reference
 
@@ -73,12 +94,7 @@ Below are AllReduce results from Kestrel when running [`all_reduce_perf`](https:
 
 #### Spreadsheet Template 
 
-|System|Replicate|Collective Operation|Min byte size|Max byte size|Increment factor|Number of devices|Number of nodes|NICs per node| Message size (B)|Out-of-Place Time (uS)|Out-of-Place Algorithmic Bandwidth (GB/s)|Out-of-Place Bus Bandwidth (GB/s)|In-Place Time (uS)|In-Place Algorithmic Bandwidth (GB/s)|In-Place Bus Bandwidth (GB/s)|
-|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
-|Reference (Kestrel)|1|AllReduce|8B|4G|2|64|16|2|8|59.83|0.00|50.15|462.2|0.00|0.00|
-|Reference (Kestrel)|1|AllReduce|8B|4G|2|64|16|2|524288|835.3|0.63|1.24|462.2|1.13|2.23|
-|Reference (Kestrel)|1|AllReduce|8B|4G|2|64|16|2|33554432|2973.4|11.29|22.22|2636.4|12.73|25.06|
-|Reference (Kestrel)|1|AllReduce|8B|4G|2|64|16|2|4294967296|184959|23.22|45.72|185005|23.22|45.71|
+See [spreadsheet-template.md](./spreadsheet-template.md) for example Kestrel data that is appropriately formatted for this benchmark response. Note that this template can also be generated from the embedded [log parsing utility](./log-parser/README.md) using the provided example files.
 
 #### Logfile Example from Kestrel Reference Run Using NCCL
 
