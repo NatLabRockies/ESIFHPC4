@@ -35,7 +35,7 @@ VASP is run by simply calling the appropriate parallel launcher (e.g. `srun`, `m
 
 We have included a sample Slurm submission script `job.slurm` for each benchmark within the `NLR-results` folders, however, other systems using Slurm may need different `#SBATCH` parameters. 
 
-The benchmarks should be run with the Linux `time` command as illustrated in the sample submission scripts and this is the time that must be reported.
+The benchmarks should be run with the Linux `time` command as illustrated in the sample submission scripts. The "real" time reported from this command is the time that must be reported.
 
 The benchmark results must be validated against the results supplied in the `NLR-results` folder, see validation section below. 
 
@@ -65,7 +65,7 @@ The benchmark results must be validated against the results supplied in the `NLR
 
 ### Reporting
 
-For every run, the spreadsheet response should include run times from the Linux `time` command as illustrated in the provided example run script `job.slurm`, converted to seconds. The "mpi-ranks" reported should reflect the number of physical cores hosting independent threads of execution, and the "threads" reported should be equal to the number of execution threads, where applicable.
+For every run, the spreadsheet response should include "real" run times from the Linux `time` command as illustrated in the provided example run script `job.slurm`, converted to seconds. The "mpi-ranks" reported should reflect the number of physical cores hosting independent threads of execution, and the "threads" reported should be equal to the number of execution threads, where applicable.
 
 In addition to content enumerated in the General Instructions, please return files `OUTCAR` and `vasprun.xml` for every run, as well as all validation output and the submission script used to generate all of the output, as part of the File response.
 
