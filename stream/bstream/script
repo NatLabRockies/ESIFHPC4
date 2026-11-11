@@ -1,0 +1,44 @@
+#!/bin/bash
+#SBATCH --time=2:00:00
+#SBATCH --partition=debug
+#SBATCH --nodes=1
+#SBATCH --exclusive
+
+# get the source in a new directory adn go there
+git clone https://github.com/UoB-HPC/BabelStream.git $SLURM_JOB_ID
+cd $SLURM_JOB_ID
+
+# save run information
+cat $0 > script
+printenv > env
+
+
+# select compiler to use gcc then intel
+for dogcc in 0 1 ; do
+    if ((dogcc ==  0))  ; then
+      ml gcc/15.2.0 
+      cmake -Bbuild -H. -DMODEL=omp -DCMAKE_CXX_COMPILER=g++ 
+      export COMP=gcc
+    else
+      ml oneapi
+      cmake -Bbuild -H. -DMODEL=omp -DCMAKE_CXX_COMPILER=icpx 
+      export COMP=intel
+    fi
+    cmake --build build 
+# run for various sizes and thread counts    
+    for SIZE in 10000000 100000000 1000000000 2000000000 4000000000 9200000000 ; do 
+    #for SIZE in 10000000 100000000 1000000000  ; do 
+      for T in 4 8  `seq 13 13 104` ; do 
+      #for T in   `seq 52 13 104` ; do 
+       export OMP_NUM_THREADS=$T
+       echo OMP_NUM_THREADS $OMP_NUM_THREADS  >> babel.$COMP
+       if [ -f "./hello" ] ;  then ./hello > hello.$T.$SIZE ; fi
+       build/omp-stream  --silence-errors -s $SIZE -n 10 >> babel.$COMP
+     done 
+    done
+# save the executable and delete the build directory
+    mv build/omp-stream omp-stream.$COMP
+    rm -rf build
+done
+
+

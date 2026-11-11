@@ -30,6 +30,8 @@ Build procedures for the reference implementations are described in the source d
 
 Additional information on Test 1 may be found in `stream/stream.org/README.md` of this repository, including build and run instructions, reporting instructions, and example scripts for our provided reference implementations. The script `post.py` found at `stream/stream.org/testrun1/post.py` may be used to process the output files and report results. Instructions on using `post.py` are found in `stream/stream.org/README.md`.
 
+The directory `bstream` contains a script which NRL has used to download, compile and run babelstream using gcc and Intel compilers with various sizes and thread counts.  The directory also contains a version of the post processing script `post.py` which works with output from the run script.
+
 For baseline submissions, the following test configurations should be reported:
 
 Run configurations using the following memory size requirements:
@@ -44,6 +46,8 @@ Results for all of Copy, Scale, Add, and Triad should be returned.
 These results should be returned for all offered CPU node types, including the host CPU of accelerated nodes.
 
 For baseline results, CPU Stream source code must either come from `stream/stream.org` within this repository, or directly from https://www.cs.virginia.edu/stream/, or  https://github.com/uob-hpc/babelstream. Note that our `stream/stream.org` contains minor source code modifications to `stream.f` to enable larger array sizes and fix a format statement. Any source code changes made to https://www.cs.virginia.edu/stream/ source (i.e., similar format/array size fixes), these changes must be reported. The offeror must use the STREAM kernels as implemented in the source code and not compile the source so that it utilizes external kernel implementations.
+
+  
 
 For optional optimized submissions, any core count/thread count may be used and any vendor-optimized kernel or stream implementation may be used, while using the above memory size requirements.
 
