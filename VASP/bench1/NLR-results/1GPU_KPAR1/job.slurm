@@ -1,5 +1,4 @@
 #!/bin/bash
-#SBATCH --reservation=esif4bench
 #SBATCH --account=hpcapps
 #SBATCH --nodes=1
 #SBATCH --gpus=1
@@ -13,6 +12,12 @@ export MPICH_GPU_SUPPORT_ENABLED=1
 
 module load vasp/6.5.1
 module list &> mlist
+
+export OMP_PROC_BIND=spread
+export OMP_PLACES=cores
+export OMP_STACKSIZE=1G
+ulimit -s unlimited
+export I_MPI_FABRICS=shm:ofi
 
 #HSE
 time srun vasp_std |& tee hse.out

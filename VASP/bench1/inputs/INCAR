@@ -18,5 +18,5 @@
   NKRED    = 2
  
 # electron:
-  NELMIN   = 3
+  NELMIN   = 30
   EDIFF    = 1E-5      

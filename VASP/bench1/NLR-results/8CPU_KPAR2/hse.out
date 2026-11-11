@@ -1,0 +1,63 @@
+ running  768 mpi-ranks, with    1 threads/rank, on    8 nodes
+ distrk:  each k-point on  384 cores,    2 groups
+ distr:  one band on    2 cores,  192 groups
+ vasp.6.5.1 10Mar25 (build May 12 2026 17:36:21) complex                        
+  
+ POSCAR found type information on POSCAR CuInSe
+ POSCAR found :  3 types and     128 ions
+ Reading from existing POTCAR
+ scaLAPACK will be used
+ Reading from existing POTCAR
+ -----------------------------------------------------------------------------
+|                                                                             |
+|               ----> ADVICE to this user running VASP <----                  |
+|                                                                             |
+|     You have a (more or less) 'large supercell' and for larger cells it     |
+|     might be more efficient to use real-space projection operators.         |
+|     Therefore, try LREAL= Auto in the INCAR file.                           |
+|     Mind: If you want to do very accurate calculations, keep the            |
+|     reciprocal projection scheme (i.e. LREAL=.FALSE.).                      |
+|                                                                             |
+ -----------------------------------------------------------------------------
+
+ LDA part: xc-table for (Slater+PW92), standard interpolation
+ POSCAR, INCAR and KPOINTS ok, starting setup
+ FFT: planning ... GRIDC
+ FFT: planning ... GRID_SOFT
+ FFT: planning ... GRID
+ WAVECAR not read
+ WARNING: random wavefunctions but no delay for mixing, default for NELMDL
+ entering main loop
+       N       E                     dE             d eps       ncg     rms          rms(c)
+DAV:   1    -0.711443924590E+05   -0.71144E+05   -0.57676E+05  9216   0.191E+03
+DAV:   2    -0.808428600173E+05   -0.96985E+04   -0.92244E+04  9216   0.459E+02
+DAV:   3    -0.821298244504E+05   -0.12870E+04   -0.12621E+04 11520   0.162E+02
+DAV:   4    -0.821908386490E+05   -0.61014E+02   -0.60889E+02 11136   0.370E+01
+DAV:   5    -0.677351887676E+03    0.81513E+05   -0.53731E+02 11904   0.742E+01    0.202E+01
+DAV:   6    -0.668018080131E+03    0.93338E+01   -0.46162E+01 14592   0.156E+01    0.122E+01
+DAV:   7    -0.666283137787E+03    0.17349E+01   -0.18277E+01 13248   0.141E+01    0.595E+00
+DAV:   8    -0.666567770220E+03   -0.28463E+00   -0.53048E+00 12672   0.358E+00    0.395E+00
+DAV:   9    -0.666418331414E+03    0.14944E+00   -0.22023E-01 12672   0.136E+00    0.252E+00
+DAV:  10    -0.666360570318E+03    0.57761E-01   -0.15627E-01 12096   0.806E-01    0.139E+00
+DAV:  11    -0.666353403692E+03    0.71666E-02   -0.28689E-02 11904   0.226E-01    0.818E-01
+DAV:  12    -0.666353359216E+03    0.44476E-04   -0.74620E-03 12864   0.125E-01    0.491E-01
+DAV:  13    -0.666354452845E+03   -0.10936E-02   -0.18714E-03 14016   0.714E-02    0.301E-01
+DAV:  14    -0.666355501417E+03   -0.10486E-02   -0.95479E-04 13824   0.404E-02    0.187E-01
+DAV:  15    -0.666356222214E+03   -0.72080E-03   -0.35206E-04 11328   0.223E-02    0.118E-01
+DAV:  16    -0.666356649568E+03   -0.42735E-03   -0.15832E-04 11520   0.143E-02    0.753E-02
+DAV:  17    -0.666356885661E+03   -0.23609E-03   -0.69853E-05 11136   0.928E-03    0.483E-02
+DAV:  18    -0.666357010267E+03   -0.12461E-03   -0.33834E-05 11136   0.670E-03    0.313E-02
+DAV:  19    -0.666357075898E+03   -0.65631E-04   -0.16239E-05  9408   0.495E-03    0.203E-02
+DAV:  20    -0.666357109692E+03   -0.33794E-04   -0.82132E-06  8064   0.424E-03    0.134E-02
+DAV:  21    -0.666357127159E+03   -0.17467E-04   -0.50536E-06  7296   0.466E-03    0.885E-03
+DAV:  22    -0.666357136172E+03   -0.90130E-05   -0.31914E-06  7680   0.495E-03    0.598E-03
+DAV:  23    -0.666357140869E+03   -0.46977E-05   -0.22484E-06  6912   0.454E-03    0.403E-03
+DAV:  24    -0.666357143226E+03   -0.23566E-05   -0.14600E-06  7488   0.393E-03    0.279E-03
+DAV:  25    -0.666357144473E+03   -0.12468E-05   -0.91907E-07  7104   0.335E-03    0.192E-03
+DAV:  26    -0.666357145064E+03   -0.59149E-06   -0.56041E-07  7488   0.274E-03    0.135E-03
+DAV:  27    -0.666357145383E+03   -0.31892E-06   -0.34086E-07  7104   0.219E-03    0.950E-04
+DAV:  28    -0.666357145515E+03   -0.13149E-06   -0.20186E-07  7488   0.173E-03    0.680E-04
+DAV:  29    -0.666357145586E+03   -0.71785E-07   -0.11760E-07  7296   0.135E-03    0.483E-04
+DAV:  30    -0.666357145602E+03   -0.15993E-07   -0.67443E-08  7488   0.105E-03
+   1 F= -.66635715E+03 E0= -.66635715E+03  d E =-.629927E-13
+ writing wavefunctions
