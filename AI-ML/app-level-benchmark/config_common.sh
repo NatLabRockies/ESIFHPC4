@@ -14,11 +14,25 @@ export STAGE_USE_DIRECT_IO=0 # note: leads to a segfault on Kestrel when =1
 export STAGE_NUM_READ_WORKERS=6    
 export STAGE_NUM_WRITE_WORKERS=12 
 # scheduler arguments
-export ADDITIONAL_SRUN_ARGS="--no-kill"
+export ADDITIONAL_SRUN_ARGS="--no-kill" # possibly unnecessary - TEST
 # data parameters
-export DATA_FORMAT=${DATA_FORMAT:-"dali-numpy"} # this can be modified as part of a 'ported' submission
+export DATA_FORMAT=${DATA_FORMAT:-"dali-numpy"} # this can only be modified as part of a 'ported' submission
+# node count parameter
+export DGXNNODES=$SLURM_NNODES # can change if not using a Slurm scheduler
 ####### End of Variables that CAN be modified #######
 # +++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+export START_LR=${START_LR:-0.001} # Starting learning rate. Roughly 10X lower than target end LR.
+export LR_SCHEDULE_TYPE=${LR_SCHEDULE_TYPE:-"multistep"} # Learning rate scheduler type
+export LR_WARMUP_STEPS=${LR_WARMUP_STEPS:-0} # Not necessary to set for 'Scenario 1'
+export OPTIMIZER=${OPTIMIZER:-"MixedPrecisionLAMB"} # Learning rate optimizer
+export WEIGHT_DECAY=${WEIGHT_DECAY:-0.01} # L2 regularization factor
+# These variables are only required if LR_SCHEDULE_TYPE="multistep":
+if [[ $LR_SCHEDULE_TYPE == 'multistep' ]]; then
+    export LR_MILESTONES=${LR_MILESTONES:-8192} # Default for global batch size 128
+    export LR_DECAY_RATE="0.1"
+fi
+export LOCAL_VALIDATION_BATCH_SIZE=${LOCAL_VALIDATION_BATCH_SIZE:-$LOCAL_BATCH_SIZE} # Per-accelerator evaluation batch size (same as training size)
 
 # create output directory
 mkdir -p ${OUTPUT_DIR}
@@ -37,9 +51,6 @@ if [ ! -z $STAGE_DIR_PREFIX ]; then
   mkdir -p $STAGE_DIR_PREFIX
 fi
 
-# this is for some global parameters:
-export ADDITIONAL_ARGS="--disable_tuning --enable_graph --disable_comm_overlap"
-
 # direct io settings
 export DALI_ODIRECT_ALIGNMENT=4096
 export DALI_ODIRECT_LEN_ALIGNMENT=4096
@@ -49,7 +60,6 @@ export RUN_TAG=${RUN_TAG:-${SLURM_JOB_ID}}
 export ENABLE_IB_BINDING=0
 
 # system parameters
-export DGXNNODES=$SLURM_NNODES
 export TOTALGPUS=$(( ${DGXNNODES} * ${DGXNGPU} ))
 export WALLTIME=01:00:00
 

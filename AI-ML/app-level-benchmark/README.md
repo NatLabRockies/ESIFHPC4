@@ -71,7 +71,7 @@ There are three types of submissions possible for this benchmark: *baseline*, *p
 
 The ESIF-HPC-4 DeepCAM benchmark encompasses **two** types of scenarios:
 
-- **Scenario 1.** The *local* (i.e., per-device) batch size is fixed to `12`. In this scenario, the reported metric is the average time required per training step over 3 epochs. "Weak scaling" is intended to be measured in this scenario; this test should span *N*, *4N*, and *8N* nodes (in which *N* may equal 1) accordingly. We ask for 3 replicates for each node size, for a total of 9 runs. Model convergence is **not** required in Scenario 1. This scenario requires enabling verbose, per-step logging via the environment variable `LOGGING_FREQUENCY` - see [below](#baseline-scenario-1).
+- **Scenario 1.** The *local* (i.e., per-device) batch size is fixed to `20`. In this scenario, the reported metric is the average time required per training step over 3 epochs. "Weak scaling" is intended to be measured in this scenario; this test should span *N*, *4N*, and *8N* nodes (in which *N* may equal 1) accordingly. We ask for 3 replicates for each node size, for a total of 9 runs. Model convergence is **not** required in Scenario 1. This scenario requires enabling verbose, per-step logging via the environment variable `LOGGING_FREQUENCY` - see [below](#baseline-scenario-1).
 - **Scenario 2.** The *global* batch size is fixed to `128`, with no specific requirement on the local batch size accordingly. In this scenario, the reported metric is the time required to reach an evaluation accuracy of 82%. This test should span *M*, *2M*, and *4M* nodes (in which *M* may equal 1; *N* and *M* may vary between Scenario 1 and Scenario 2). We ask for 3 replicates for each size of run, for a total of 9 runs. **Results from Scenario 2 are what will be considered as part of the overall throughput metric.**
 
 **Summary of tests**
@@ -101,10 +101,11 @@ The following environment variables set in [`config_scenario1.sh`](./config_scen
 
 | Variable           | Description                              | Default Kestrel value  |
 | :--                | :--                                      | :--                    |
-| `STAGE_DIR_PREFIX` | Path to data staging directory           | Stages input data to this directory (e.g., one on a faster filesystem or local node SSD). If this variable is not set, then data staging does not occur (default). |
+| `STAGE_DIR_PREFIX` | Path to data staging directory           | Stages input data to this directory (e.g., one on a faster filesystem or local node NVMe). If this variable is not set, then data staging does not occur (default). It is **strongly** recommended that this variable is set. |
 | `WIREUP_METHOD`    | Method for distributed process communication | Options are 'nccl-slurm' (default), 'nccl-openmpi', 'nccl-file', 'mpi', or 'dummy' |
 | `DGXNGPU`          | Number of accelerators per node          | `4`                    |
 | `MAX_THREADS`      | Number of data loading threads per node  | `4`                    |
+| `ADDITIONAL_ARGS`  | Additional DeepCAM arguments. Arguments other than the defaults cannot be added, but they can be removed as desired. | `--disable_tuning --enable_graph --disable_comm_overlap` |
 
 
 The following environment variables set in [`config_scenario1.sh`](./config_scenario1.sh) **must be set** for *baseline* **Scenario 1** submissions:
@@ -113,14 +114,7 @@ The following environment variables set in [`config_scenario1.sh`](./config_scen
 | :--                      | :--                                                                 | :--                      |
 | `LOGGING_FREQUENCY`      | Whether to gather logs per-step (`1`) or per-epoch (`0`)            | `1`                      |
 | `MAX_EPOCHS`             | Number of epochs at which training ends, regardless of convergence. | `3`                      |
-| `LOCAL_BATCH_SIZE`       | Per-accelerator batch size                                          | `12`                     |
-| `START_LR`               | Starting learning rate                                              | `0.001`                  |
-| `LR_SCHEDULE_TYPE`       | Learning rate scheduler type                                        | `multistep`              |
-| `LR_MILESTONES`          | Training milestone at which to modify LR (for multistep scheduler)  | `8192`                   |
-| `LR_WARMUP_STEPS`        | Number of LR warmup steps                                           | `0`                      |
-| `OPTIMIZER`              | Learning rate optimizer                                             | `MixedPrecisionLAMB`     |
-| `WEIGHT_DECAY`           | Strength of L2 regularization                                       | `0.01`                   |
-
+| `LOCAL_BATCH_SIZE`       | Per-accelerator batch size                                          | `20`                     |
 
 #### Baseline Scenario 2
 
@@ -128,11 +122,13 @@ The following environment variables set in [`config_scenario2.sh`](./config_scen
 
 | Variable           | Description                              | Default Kestrel value  |
 | :--                | :--                                      | :--                    |
-| `STAGE_DIR_PREFIX` | Path to data staging directory           | Stages input data to this directory (e.g., one on a faster filesystem or local node SSD). If this variable is not set, then data staging does not occur (default). |
+| `STAGE_DIR_PREFIX` | Path to data staging directory           | Stages input data to this directory (e.g., one on a faster filesystem or local node SSD). If this variable is not set, then data staging does not occur (default). It is **strongly** recommended that this variable is set. |
 | `WIREUP_METHOD`    | Method for distributed process communication | Options are 'nccl-slurm' (default), 'nccl-openmpi', 'nccl-file', 'mpi', or 'dummy' |
 | `DGXNGPU`          | Number of accelerators per node          | `4`                    |
 | `MAX_THREADS`      | Number of data loading threads per node  | `4`                    |
 | `LOCAL_BATCH_SIZE` | Per-accelerator batch size               | Depends on number of GPUs used (`DGXNGPU`\*`Number of nodes`\*`LOCAL_BATCH_SIZE` must equal `128`). |
+| `ADDITIONAL_ARGS`  | Additional DeepCAM arguments. Arguments other than the defaults cannot be added, but they can be removed as desired. | `--disable_tuning --enable_graph --disable_comm_overlap` |
+
 
 The following environment variables set in [`config_scenario2.sh`](./config_scenario2.sh) **must be set** for *baseline* Scenario 2 submissions:
 
@@ -165,7 +161,7 @@ The following environment variables set in [`config_scenario1.sh`](./config_scen
 | `WIREUP_METHOD`    | Method for distributed process communication | Options are 'nccl-slurm' (default), 'nccl-openmpi', 'nccl-file', 'mpi', or 'dummy' |
 | `DGXNGPU`          | Number of accelerators per node          | `4`                    |
 | `MAX_THREADS`      | Number of data loading threads per node  | `4`                    |
-| `LOCAL_BATCH_SIZE` | Per-accelerator batch size               | `12`                   |
+| `LOCAL_BATCH_SIZE` | Per-accelerator batch size               | `20`                   |
 
 The following environment variables set in [`config_scenario1.sh`](./config_scenario1.sh) **must be set** for *optimized* **Scenario 1** submissions:
 
@@ -173,6 +169,17 @@ The following environment variables set in [`config_scenario1.sh`](./config_scen
 | :--                      | :--                                                                 | :--                      |
 | `LOGGING_FREQUENCY`      | Whether to gather logs per-step (`1`) or per-epoch (`0`)            | `1`                      |
 | `MAX_EPOCHS`             | Number of epochs at which training ends, regardless of convergence. | `3`                      |
+
+#### Optimized Scenario 2
+
+*Optimized* submissions are encouraged (though optional) as part of Scenario 2. For *optimized* Scenario 2 submissions, the required parameters used for [*baseline* Scenario 2 submissions](#baseline-scenario-2), all other parameters other than `LOGGING_FREQUENCY` and `MAX_EPOCHS` (refer to [`config_scenario2.sh`](./config_scenario2.sh)), and the training code itself are allowed to be modified to best optimize performance and demonstrate hardware capabilities. We require that any of these changes are reported and reproduceable. **Note that only results from Scenario 2 will be considered for the overall throughput metric.**
+
+### Common training variables
+
+For transparency, we report the following variables that control the training process here. These variables **cannot** be modified as part of any valid submission, and can be found near the top of [config_common.sh](./config_common.sh).
+
+| Variable                 | Description                                                         | Required value           |
+| :--                      | :--                                                                 | :--                      |
 | `START_LR`               | Starting learning rate                                              | `0.001`                  |
 | `LR_SCHEDULE_TYPE`       | Learning rate scheduler type                                        | `multistep`              |
 | `LR_MILESTONES`          | Training milestone at which to modify LR (for multistep scheduler)  | `8192`                   |
@@ -180,10 +187,11 @@ The following environment variables set in [`config_scenario1.sh`](./config_scen
 | `OPTIMIZER`              | Learning rate optimizer                                             | `MixedPrecisionLAMB`     |
 | `WEIGHT_DECAY`           | Strength of L2 regularization                                       | `0.01`                   |
 
-#### Optimized Scenario 2
+### General performance recommendations
 
-*Optimized* submissions are encouraged (though optional) as part of Scenario 2. For *optimized* Scenario 2 submissions, the required parameters used for [*baseline* Scenario 2 submissions](#baseline-scenario-2), all other hyperparameters (see in [`config_scenario2.sh`](./config_scenario2.sh)), and the training code itself are allowed to be modified to best optimize performance and demonstrate hardware capabilities. We require that any of these changes are reported and reproduceable. **Note that only results from Scenario 2 will be considered for the overall throughput metric.**
-
+- **Pre-stage training data**: Although it is not required, submitters are **strongly encouraged** to set `STAGE_DIR_PREFIX` to a filesystem location that does not introduce network contention for I/O operations (such as local NVMes) for both *baseline/ported* and *optimized* submissions. When compared to reading training data from a shared filesystem, this can provide significant reductions in the median time per training step (Scenario 1) and total time required (Scenario 2) metrics used to evaluate DeepCAM performance without modifying any other part of the workflow.
+- **Port alternative data loaders**: For *ported* submissions that are unable to use CUDA, submitters are encouraged to modify and/or add to the training code (e.g., [here](./deepcam-mlcommons-hpcv3/src/deepCam/data)) to enable the use of accelerator-specific data loader libraries.
+- **Tune "additional DeepCAM arguments"**: The `ADDITIONAL_ARGS` variable sets `--disable_tuning --enable_graph --disable_comm_overlap` by default. Although more variables cannot be added to this list, these may be removed as desired for all submission types. In particular, removing `--disable_comm_overlap` may be especially advantageous if `STAGE_DIR_PREFIX` is not set.
 
 ## Benchmark test results to report and files to return
 
@@ -195,7 +203,7 @@ Please follow the README in the `log-parser` folder for instructions on how to v
 
 ### Scenario 1 submissions
 
-Noting the median time required per training step (in seconds) across 3 epochs satisfies this submission. This time should **solely** reflect the time spent during training itself. In other words, this excludes the time required for model initiation and the time spent staging data to local disks for faster I/O. 
+Noting the median time required per training step (in seconds) across 3 epochs satisfies this submission. This time should **solely** reflect the time spent during training itself. In other words, this excludes the time required for model initiation and the time spent staging data to local storage for faster I/O. 
 
 For each run following Scenario 1 rules, we request the following information in the table below (using unoptimized Kestrel reference data as an example): 
 
@@ -211,7 +219,7 @@ For each run following Scenario 1 rules, we request the following information in
 
 ### Scenario 2 submissions
 
-Noting the time required (in minutes) to reach 82% validation accuracy satisfies this submission and is considered the benchmark's figure of merit (FOM). As with Scenario 1, this time should **solely** reflect the time spent during training itself. In other words, this excludes the time required for model initiation and the time spent staging data to local disks for faster I/O, if applicable. 
+Noting the time required (in minutes) to reach 82% validation accuracy satisfies this submission and is considered the benchmark's figure of merit (FOM). As with Scenario 1, this time should **solely** reflect the time spent during training itself. In other words, this excludes the time required for model initiation and the time spent staging data to local storage for faster I/O. 
 
 For each run following Scenario 2 rules, we request the following information (using unoptimized Kesåtrel reference data as an example). Note that `Nodes used`, `Accelerators per node`, `Total Accelerators`, and `Local Batch Size` may change depending on the system used for benchmarking:
 
