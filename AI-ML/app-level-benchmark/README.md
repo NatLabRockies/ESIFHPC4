@@ -8,7 +8,7 @@ The purpose of this benchmark is to capture a 'typical scientific AI' workload p
 
 ### Step 1: PyTorch environment
 
-Submitters are welcome to install PyTorch and the dependencies for DeepCAM into any reproducible environment (e.g., Python/conda virtual environments, containers, etc.). The instructions here describe a typical approach installing Python 3.12 within a baremetal `conda` environment as an example, but NLR does not require a specific type of environment management tool to satisfy the run rules for this benchmark.
+Offerors are welcome to install PyTorch and the dependencies for DeepCAM into any reproducible environment (e.g., Python/conda virtual environments, containers, etc.). The instructions here describe a typical approach installing Python 3.12 within a baremetal `conda` environment as an example, but NLR does not require a specific type of environment management tool to satisfy the run rules for this benchmark.
 
 First, create a conda environment:
 
@@ -53,13 +53,13 @@ Note: The specific packages mentioned in [`prep-env-kestrel.sh`](prep-env-kestre
 
 Input training data can be downloaded via Globus using the [endpoint linked here](https://app.globus.org/file-manager?origin_id=0b226e2c-4de0-11ea-971a-021304b0cca7&origin_path=%2F). Note that the training data requires roughly 10TB of storage and contains HDF5-formatted files for training, validation, and test splits. Instructions for installing a Globus Connect Personal endpoint can be found [here](https://docs.globus.org/globus-connect-personal/install/linux/).
 
-Before training can occur, submitters must convert the HDF5-formatted input data into numpy format, following guidance from MLCommons HPC Results v3.0. Please see [`preprocess-deepcam-data.sh`](./preprocess-deepcam-data.sh) for instructions on how to preprocess the input data accordingly.
+Before training can occur, offerors must convert the HDF5-formatted input data into numpy format, following guidance from MLCommons HPC Results v3.0. Please see [`preprocess-deepcam-data.sh`](./preprocess-deepcam-data.sh) for instructions on how to preprocess the input data accordingly.
 
 ## Run Definitions and Requirements
 
 ## How to run
 
-Once the training dataset has been prepared and the PyTorch environment has been set up, submitters may adapt from [`run_and_time_kestrel.sh`](./run_and_time_kestrel.sh) as an example for how to run the model. We require that submitters scale this benchmark across multiple nodes while using all available accelerators per node. Specifically, we require a submission using *N* nodes\*, 4*N* nodes, and 8*N* nodes to demonstrate multi-node scaling. 
+Once the training dataset has been prepared and the PyTorch environment has been set up, offerors may adapt from [`run_and_time_kestrel.sh`](./run_and_time_kestrel.sh) as an example for how to run the model. We require that offerors scale this benchmark across multiple nodes while using all available accelerators per node. Specifically, we require a submission using *N* nodes\*, 4*N* nodes, and 8*N* nodes to demonstrate multi-node scaling. 
 
 \* *N* = The smallest possible number of nodes that can fit a DeepCAM training run. *N* is allowed to equal 1.
 
@@ -87,7 +87,7 @@ The ESIF-HPC-4 DeepCAM benchmark encompasses **two** types of scenarios:
 
 For convenience, we provide configuration file templates for Scenario 1 ([`config_scenario1.sh`](./config_scenario1.sh)) and Scenario 2 ([`config_scenario2.sh`](./config_scenario2.sh)). Environment variables that are either allowed to be freely changed or are required to be fixed for a [baseline submission](#baseline-submissions) are grouped accordingly in each file.
 
-To run the DeepCAM benchmark, modify the provided `run_and_time_kestrel.sh` script and the appropriate config file based on the guidance below. Note that this script assumes access to a Slurm scheduler and is launched as a job via `sbatch -N <number_of_nodes> [submit_kestrel.sh](./submit_kestrel.sh)`. **If an alternative job scheduler is instead preferred, submitters are welcome to modify the launcher line `srun --overlap -u -N ${SLURM_NNODES} -n ${SLURM_NTASKS} -c ${SLURM_CPUS_PER_TASK} --cpu_bind=cores --gres=gpu:${SLURM_GPUS_ON_NODE}` as needed.** Lines under `# Load DeepCAM environment` will need to be modified to reflect the submitter's specific DeepCAM environment setup. Further, note that the appropriate config file will have to be sourced based on the scenario intended to be run.
+To run the DeepCAM benchmark, modify the provided `run_and_time_kestrel.sh` script and the appropriate config file based on the guidance below. Note that this script assumes access to a Slurm scheduler and is launched as a job via `sbatch -N <number_of_nodes> [submit_kestrel.sh](./submit_kestrel.sh)`. **If an alternative job scheduler is instead preferred, offerors are welcome to modify the launcher line `srun --overlap -u -N ${SLURM_NNODES} -n ${SLURM_NTASKS} -c ${SLURM_CPUS_PER_TASK} --cpu_bind=cores --gres=gpu:${SLURM_GPUS_ON_NODE}` as needed.** Lines under `# Load DeepCAM environment` will need to be modified to reflect the offeror's specific DeepCAM environment setup. Further, note that the appropriate config file will have to be sourced based on the scenario intended to be run.
 
 ### Baseline submissions
 
@@ -151,7 +151,7 @@ For *ported* submissions, the *baseline* parameters must be used, though trainin
 
 #### Optimized Scenario 1
 
-*Optimized* submissions are encouraged (though optional) as part of Scenario 1. In an *optimized* Scenario 1 submission, the code itself is allowed to be modified to best optimize performance and demonstrate hardware capabilities. Submitters are also welcome to increase the `LOCAL_BATCH_SIZE` as part of an *optimized* Scenario 1 run. We require that any of these changes are reported and reproduceable. **Note that only results from Scenario 2 will be considered for the overall throughput metric.**
+*Optimized* submissions are encouraged (though optional) as part of Scenario 1. In an *optimized* Scenario 1 submission, the code itself is allowed to be modified to best optimize performance and demonstrate hardware capabilities. Offerors are also welcome to increase the `LOCAL_BATCH_SIZE` as part of an *optimized* Scenario 1 run. We require that any of these changes are reported and reproduceable. **Note that only results from Scenario 2 will be considered for the overall throughput metric.**
 
 The following environment variables set in [`config_scenario1.sh`](./config_scenario1.sh) **can** be freely modified as necessary for *optimized* Scenario 1 submissions:
 
@@ -189,8 +189,8 @@ For transparency, we report the following variables that control the training pr
 
 ### General performance recommendations
 
-- **Pre-stage training data**: Although it is not required, submitters are **strongly encouraged** to set `STAGE_DIR_PREFIX` to a filesystem location that does not introduce network contention for I/O operations (such as local NVMes) for both *baseline/ported* and *optimized* submissions. When compared to reading training data from a shared filesystem, this can provide significant reductions in the median time per training step (Scenario 1) and total time required (Scenario 2) metrics used to evaluate DeepCAM performance without modifying any other part of the workflow.
-- **Port alternative data loaders**: For *ported* submissions that are unable to use CUDA, submitters are encouraged to modify and/or add to the training code (e.g., [here](./deepcam-mlcommons-hpcv3/src/deepCam/data)) to enable the use of accelerator-specific data loader libraries.
+- **Pre-stage training data**: Although it is not required, offerors are **strongly encouraged** to set `STAGE_DIR_PREFIX` to a filesystem location that does not introduce network contention for I/O operations (such as local NVMes) for both *baseline/ported* and *optimized* submissions. When compared to reading training data from a shared filesystem, this can provide significant reductions in the median time per training step (Scenario 1) and total time required (Scenario 2) metrics used to evaluate DeepCAM performance without modifying any other part of the workflow.
+- **Port alternative data loaders**: For *ported* submissions that are unable to use CUDA, offerors are encouraged to modify and/or add to the training code (e.g., [here](./deepcam-mlcommons-hpcv3/src/deepCam/data)) to enable the use of accelerator-specific data loader libraries.
 - **Tune "additional DeepCAM arguments"**: The `ADDITIONAL_ARGS` variable sets `--disable_tuning --enable_graph --disable_comm_overlap` by default. Although more variables cannot be added to this list, these may be removed as desired for all submission types. In particular, removing `--disable_comm_overlap` may be especially advantageous if `STAGE_DIR_PREFIX` is not set.
 
 ## Benchmark test results to report and files to return
