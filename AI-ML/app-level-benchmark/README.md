@@ -189,9 +189,9 @@ For transparency, we report the following variables that control the training pr
 
 ### General performance recommendations
 
-- **Pre-stage training data**: Although it is not required, offerors are **strongly encouraged** to set `STAGE_DIR_PREFIX` to a filesystem location that does not introduce network contention for I/O operations (such as local NVMes) for both *baseline/ported* and *optimized* submissions. When compared to reading training data from a shared filesystem, this can provide significant reductions in the median time per training step (Scenario 1) and total time required (Scenario 2) metrics used to evaluate DeepCAM performance without modifying any other part of the workflow.
+- **Pre-stage training data**: Although it is not required, offerors may set `STAGE_DIR_PREFIX` to a filesystem location that does not introduce network contention for I/O operations (such as local NVMes) for both *baseline/ported* and *optimized* submissions. When compared to reading training data from a shared filesystem, this may result in performance improvements without modifying any other part of the workflow.
 - **Port alternative data loaders**: For *ported* submissions that are unable to use CUDA, offerors are encouraged to modify and/or add to the training code (e.g., [here](./deepcam-mlcommons-hpcv3/src/deepCam/data)) to enable the use of accelerator-specific data loader libraries.
-- **Tune "additional DeepCAM arguments"**: The `ADDITIONAL_ARGS` variable sets `--disable_tuning --enable_graph --disable_comm_overlap` by default. Although more variables cannot be added to this list, these may be removed as desired for all submission types. In particular, removing `--disable_comm_overlap` may be especially advantageous if `STAGE_DIR_PREFIX` is not set.
+- **Tune "additional DeepCAM arguments"**: The `ADDITIONAL_ARGS` variable (found in the scenario-specific config files) sets `--disable_tuning --enable_graph --disable_comm_overlap` by default. Although more variables cannot be added to this list, these may be removed as desired for all submission types.
 
 ## Benchmark test results to report and files to return
 
