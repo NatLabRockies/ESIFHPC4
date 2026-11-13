@@ -17,7 +17,7 @@ Run `python log-parser/parse-mllog.py --help` for more information.
 This parses a Scenario 1 baseline submission into the parsed-outputs folder:
 
 ```
-python parse-mllog.py --logfile 12764258-deepcam_training.out --output_folder parsed-outputs --scenario 1 --submission_type baseline
+python parse-mllog.py --logfile scen1-example.log --output_folder test-scen --scenario 1 --submission_type baseline
 ```
 
 ### Scenario 2 example
@@ -25,7 +25,7 @@ python parse-mllog.py --logfile 12764258-deepcam_training.out --output_folder pa
 This parses a Scenario 2 baseline submission into the parsed-outputs folder:
 
 ```
-python log-parser/parse-mllog.py --logfile 13501297-rfm_job.out --output_folder test-parse2 --scenario 2 --submission_type baseline
+python parse-mllog.py --logfile scen2-example.log --output_folder test-scen --scenario 2 --submission_type baseline
 ```
 
 ### Workflow
@@ -34,5 +34,5 @@ The intention is that submitters run the Python script on one logfile at a time,
 
 ```
 cd </path/to/parsed/files>
-bash aggregate-deepcam-results.sh
+bash /path/to/aggregate-deepcam-results.sh
 ```

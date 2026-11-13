@@ -15,11 +15,13 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument("-l", "--logfile", type=str, help="Path to MLCommons log file. File must contain lines starting with ':::MLLOG'")
 parser.add_argument("-o", "--output_folder", type=str, help="Path to output folder for summary CSVs and visualizations.")
+parser.add_argument("-c", "--system", type=str, help="Type of system on which benchmark was run. Can be one of 'reference' (i.e., Kestrel), 'test', or 'offered'.")
 parser.add_argument("-t", "--submission_type", type=str, help="Type of benchmark submission according to ESIF-HPC-4 run rules. Can be one of 'baseline', 'ported', or 'optimized'.")
 parser.add_argument("-s", "--scenario", type=int, help="ESIF-HPC-4 runtime scenario for the DeepCAM benchmark. Options: 1=Measuring time per train step. 2=Measuring time to target evaluation accuracy.")
 args = parser.parse_args()
 log_file        = args.logfile
 output_basepath = args.output_folder
+system          = args.system
 submission_type = args.submission_type
 scenario        = args.scenario
 
@@ -180,7 +182,8 @@ num_nodes = extract_global_vars(df, 'number_of_nodes')
 accs_per_node = extract_global_vars(df, 'accelerators_per_node')
 total_accs = num_nodes * accs_per_node
 local_batch_size = extract_global_vars(df, 'global_batch_size') / total_accs
-data_staged = True if extract_global_vars(df, 'stage_dir_prefix') is not None else False
+data_staged_val = extract_global_vars(df, 'stage_dir_prefix')
+data_staged = False if pd.isna(data_staged_val) else True
 
 # Output Summary Table
 if scenario == 1:
@@ -210,6 +213,7 @@ if scenario == 1:
       'min_sec_per_step'    : 'min'
     })
     output_df = pd.DataFrame({
+        'system'                : [system],
         'run_type'              : [submission_type], 
         'scenario'              : [scenario], 
         'nodes_used'            : [num_nodes], 
@@ -217,9 +221,7 @@ if scenario == 1:
         'total_accelerators'    : [num_nodes * accs_per_node],
         'local_batch_size'      : [local_batch_size], 
         'data_staged'           : [data_staged], 
-        'median_time_per_training_step_secs' : [round(step_timing_summary['median_sec_per_step'],3)],
-        'mean_time_per_training_step_secs'   : [round(step_timing_summary['mean_sec_per_step'],3)],
-        'stdv_time_per_training_step_secs'   : [round(step_timing_summary['stdv_sec_per_step'],3)],
+        'median_time_per_training_step_secs' : [round(step_timing_summary['median_sec_per_step'],3)]
     })
 elif scenario == 2:
     scheduler_type = extract_global_vars(df, 'scheduler_type')
@@ -231,6 +233,7 @@ elif scenario == 2:
     if target_acc < 0.82:
         KeyError("Invalid run! Target evaluation accuracy of 82% was not reached. This is required for a valid scenario 2 submission.")
     output_df = pd.DataFrame({
+        'system'                : [system],
         'run_type'              : [submission_type], 
         'scenario'              : [scenario], 
         'nodes_used'            : [num_nodes], 
@@ -241,7 +244,6 @@ elif scenario == 2:
         'lr_scheduler'          : [scheduler_type],
         'start_lr'              : [start_lr], 
         'optimizer'             : [opt_name], 
-        'median_time_per_training_epoch_secs' : [median_train_time], 
         'total_time_required_secs' : [total_train_time], 
         'target_acc_reached'    : [target_acc], 
         'epochs_required'       : [max(epoch_df['epoch'])]
