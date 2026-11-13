@@ -1,0 +1,13 @@
+[global]
+ioengine=libaio
+directory=$DIRECTORY
+group_reporting
+invalidate=1
+direct=1
+runtime=600
+
+[SeqWrite]
+rw=write
+size=2G
+bs=32k
+numjobs=4
