@@ -15,11 +15,13 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument("-l", "--logfile", type=str, help="Path to MLCommons log file. File must contain lines starting with ':::MLLOG'")
 parser.add_argument("-o", "--output_folder", type=str, help="Path to output folder for summary CSVs and visualizations.")
+parser.add_argument("-c", "--system", type=str, help="Type of system on which benchmark was run. Can be one of 'reference' (i.e., Kestrel), 'test', or 'offered'.")
 parser.add_argument("-t", "--submission_type", type=str, help="Type of benchmark submission according to ESIF-HPC-4 run rules. Can be one of 'baseline', 'ported', or 'optimized'.")
 parser.add_argument("-s", "--scenario", type=int, help="ESIF-HPC-4 runtime scenario for the DeepCAM benchmark. Options: 1=Measuring time per train step. 2=Measuring time to target evaluation accuracy.")
 args = parser.parse_args()
 log_file        = args.logfile
 output_basepath = args.output_folder
+system          = args.system
 submission_type = args.submission_type
 scenario        = args.scenario
 
@@ -211,6 +213,7 @@ if scenario == 1:
       'min_sec_per_step'    : 'min'
     })
     output_df = pd.DataFrame({
+        'system'                : [system],
         'run_type'              : [submission_type], 
         'scenario'              : [scenario], 
         'nodes_used'            : [num_nodes], 
@@ -230,6 +233,7 @@ elif scenario == 2:
     if target_acc < 0.82:
         KeyError("Invalid run! Target evaluation accuracy of 82% was not reached. This is required for a valid scenario 2 submission.")
     output_df = pd.DataFrame({
+        'system'                : [system],
         'run_type'              : [submission_type], 
         'scenario'              : [scenario], 
         'nodes_used'            : [num_nodes], 

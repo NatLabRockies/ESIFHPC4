@@ -205,38 +205,49 @@ Please follow the README in the `log-parser` folder for instructions on how to v
 
 Noting the median time required per training step (in seconds) across 3 epochs satisfies this submission. This time should **solely** reflect the time spent during training itself. In other words, this excludes the time required for model initiation and the time spent staging data to local storage for faster I/O. 
 
-For each run following Scenario 1 rules, we request the following information in the table below (using unoptimized Kestrel reference data as an example): 
+For each run following Scenario 1 rules, we request the following information in the table below using Kestrel reference data as an example (**note: this table will be updated shortly with data representing Local Batch Size=20**): 
 
-| Run Type  | Scenario | Nodes used | Accelerators per node | Total Accelerators | Local Batch Size | Data staged     | Median time per training step (seconds)  |
-| :---      | :---     | :---       | :---                  | :---               | :---             | :---            | :---                                     |
-| baseline  | 1        | 1          | 4                     | 4                  | 12               | False           | 0.732                                    |
-| baseline  | 1        | 4          | 4                     | 16                 | 12               | False           | 0.749                                    |
-| baseline  | 1        | 8          | 4                     | 32                 | 12               | False           | 0.756                                    |
-| optimized | 1        | *N*        | *X*                   | :---               | *Y*              | *<True/False>*  | *T*                                      |
-| optimized | 1        | *4N*       | *X*                   | :---               | *Y*              | *<True/False>*  | *T*                                      |
-| optimized | 1        | *8N*       | *X*                   | :---               | *Y*              | *<True/False>*  | *T*                                      |
+| System    | Run Type  | Scenario | Nodes used | Accelerators per node | Total Accelerators | Local Batch Size | Data staged     | Median time per training step (seconds)  |
+| :---      | :---      | :---     | :---       | :---                  | :---               | :---             | :---            | :---                                     |
+| Reference | Baseline  | 1        | 1          | 4                     | 4                  | 12               | False           | 0.732                                    |
+| Reference | Baseline  | 1        | 4          | 4                     | 16                 | 12               | False           | 0.749                                    |
+| Reference | Baseline  | 1        | 8          | 4                     | 32                 | 12               | False           | 0.756                                    |
+| Test      | Baseline  | 1        | *N*        | *X*                   | :---               | *Y*              | *<True/False>*  | *T*                                      |
+| Test      | Baseline  | 1        | *4N*       | *X*                   | :---               | *Y*              | *<True/False>*  | *T*                                      |
+| Test      | Baseline  | 1        | *8N*       | *X*                   | :---               | *Y*              | *<True/False>*  | *T*                                      |
 
 
 ### Scenario 2 submissions
 
 Noting the time required (in minutes) to reach 82% validation accuracy satisfies this submission and is considered the benchmark's figure of merit (FOM). As with Scenario 1, this time should **solely** reflect the time spent during training itself. In other words, this excludes the time required for model initiation and the time spent staging data to local storage for faster I/O. 
 
-For each run following Scenario 2 rules, we request the following information (using unoptimized Kesåtrel reference data as an example). Note that `Nodes used`, `Accelerators per node`, `Total Accelerators`, and `Local Batch Size` may change depending on the system used for benchmarking:
+For each run following Scenario 2 rules, we request the following information using Kestrel reference data as an example. Note that `Nodes used`, `Accelerators per node`, `Total Accelerators`, and `Local Batch Size` may change depending on the system used for benchmarking:
 
-| Run Type  | Scenario | Nodes used | Accelerators per node | Total Accelerators | Local Batch Size | Data staged    | LR Scheduler     | Start LR  | Optimizer   | Total Time Required* (seconds) | Target Accuracy Reached | Epochs Required* |
-| :---      | :---     | :---       | :---                  | :---               | :---             | :---           | :---             | :---      | :---        | :---                           | :--                     | :--              |
-| baseline  | 2        | 4          | 4                     | 16                 | 8                | False          | multistep        | 0.001     | LAMB        | 4564.233                       | 0.82                    | 9                |
-| baseline  | 2        | 4          | 4                     | 16                 | 8                | False          | multistep        | 0.001     | LAMB        | 4843.240                       | 0.82                    | 9                |
-| baseline  | 2        | 4          | 4                     | 16                 | 8                | False          | multistep        | 0.001     | LAMB        | <>                             | 0.82                    | 9                |
-| baseline  | 2        | 8          | 4                     | 32                 | 4                | False          | multistep        | 0.001     | LAMB        | 2600.539                       | 0.82                    | 9                |
-| baseline  | 2        | 8          | 4                     | 32                 | 4                | False          | multistep        | 0.001     | LAMB        | 2324.072                       | 0.82                    | 9                |
-| baseline  | 2        | 8          | 4                     | 32                 | 4                | False          | multistep        | 0.001     | LAMB        | 2600.391                       | 0.82                    | 9                |
-| baseline  | 2        | 16         | 4                     | 64                 | 2                | False          | multistep        | 0.001     | LAMB        | 1283.236                       | 0.82                    | 9                |
-| baseline  | 2        | 16         | 4                     | 64                 | 2                | False          | multistep        | 0.001     | LAMB        | 1367.09                        | 0.82                    | 9                |
-| baseline  | 2        | 16         | 4                     | 64                 | 2                | False          | multistep        | 0.001     | LAMB        | 1276.21                        | 0.82                    | 9                |
-| optimized | 2        | *M*        | *X*                   | *X\*M*             | *Y*              | *<True/False>* | *scheduler*      | *Z*       | *optimizer* | *T*                            | 0.82                    | *E*              |
+| System | Run Type | Scenario | Nodes used | Accelerators per node | Total Accelerators | Local Batch Size | Data staged | LR Scheduler | Start LR | Optimizer | Total Time Required* (seconds) | Target Accuracy Reached | Epochs Required* |
+|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
+| Reference | Baseline | 2 | 4   | 4 | 16 | 8 | False | multistep | 0.001 | LAMB | 4564.229 | 0.82 | 9 |
+| Reference | Baseline | 2 | 4   | 4 | 16 | 8 | False | multistep | 0.001 | LAMB | 8042.243 | 0.82 | 9 |
+| Reference | Baseline | 2 | 4   | 4 | 16 | 8 | False | multistep | 0.001 | LAMB | 4843.236 | 0.82 | 9 |
+| Reference | Baseline | 2 | 4   | 4 | 16 | 8 | True | multistep | 0.001 | LAMB | 3143.765 | 0.82 | 9 |
+| Reference | Baseline | 2 | 4   | 4 | 16 | 8 | True | multistep | 0.001 | LAMB | 3092.863 | 0.82 | 9 |
+| Reference | Baseline | 2 | 4   | 4 | 16 | 8 | True | multistep | 0.001 | LAMB | 3057.994 | 0.82 | 9 |
+| Reference | Baseline | 2 | 8   | 4 | 32 | 4 | False | multistep | 0.001 | LAMB | 2324.067 | 0.82 | 9 |
+| Reference | Baseline | 2 | 8   | 4 | 32 | 4 | False | multistep | 0.001 | LAMB | 2635.339 | 0.82 | 9 |
+| Reference | Baseline | 2 | 8   | 4 | 32 | 4 | False | multistep | 0.001 | LAMB | 2683.529 | 0.82 | 9 |
+| Reference | Baseline | 2 | 8   | 4 | 32 | 4 | True | multistep | 0.001 | LAMB | 1469.122 | 0.82 | 9 |
+| Reference | Baseline | 2 | 8   | 4 | 32 | 4 | True | multistep | 0.001 | LAMB | 1477.042 | 0.82 | 9 |
+| Reference | Baseline | 2 | 8   | 4 | 32 | 4 | True | multistep | 0.001 | LAMB | 1451.949 | 0.82 | 9 |
+| Reference | Baseline | 2 | 16  | 4 | 64 | 2 | False | multistep | 0.001 | LAMB | 1276.208 | 0.82 | 9 |
+| Reference | Baseline | 2 | 16  | 4 | 64 | 2 | False | multistep | 0.001 | LAMB | 1442.712 | 0.82 | 9 |
+| Reference | Baseline | 2 | 16  | 4 | 64 | 2 | False | multistep | 0.001 | LAMB | 1367.085 | 0.82 | 9 |
+| Reference | Baseline | 2 | 16  | 4 | 64 | 2 | True | multistep | 0.001 | LAMB | 722.822 | 0.82 | 9 |
+| Reference | Baseline | 2 | 16  | 4 | 64 | 2 | True | multistep | 0.001 | LAMB | 712.139 | 0.82 | 9 |
+| Reference | Baseline | 2 | 16  | 4 | 64 | 2 | True | multistep | 0.001 | LAMB | 741.098 | 0.82 | 9 |
+| Test      | Baseline | 2 | *M* | *X*| *X\*M* | *Y* | *<True/False>* | multistep | 0.001 | LAMB | *T* | 0.82 | *E* |
 
 \* Time or epochs required to reach 82% evaluation accuracy target. The "Total Time Required" does not include model initialization or the time spent pre-staging any data before training.
+
+It is **not** required to submit equivalent sets of runs with and without data staging. The table above includes both sets of baseline results for the sake of transparency regarding the performance of Scenario 2 on Kestrel.
 
 ## References and useful links
 
