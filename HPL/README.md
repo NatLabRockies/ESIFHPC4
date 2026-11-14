@@ -69,6 +69,7 @@ Testing will include single-node and multi-node configurations.
 **CPU-only tests:**
 For CPU-only nodes, the following scaling series from 1, 2, 4, 8, 16, 32, and 64 nodes should be submitted as part of the baseline results:
 - One CPU core per MPI task, with at least 80% of CPU cores per node utilized
+
     
 Optimized CPU-only submissions may use any binding scheme, number of MPI tasks, number of threads, etc.
 
@@ -79,7 +80,7 @@ For accelerated nodes, the following two scaling series should be submitted as p
 
 ## Run Rules
 
-- The problem size must fit at least 80% of aggregate memory
+- The problem size must fit at least 80% of CPU or GPU memory
 - Publicly available, optimized HPL versions or binaries are permitted for baseline submissions.
 - FP64 must be used for all baseline results. Precision must be reported for both baseline and optimized results.
 
