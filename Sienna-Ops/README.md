@@ -110,7 +110,7 @@ Note: The argument after `run_benchmarks.sh` specifies how many threads Julia sh
 
 ## Benchmark test results to report and files to return
 
-The `run_RTS_UC-ED.jl` script will create simulation results and plots in `RTS-store` and `RTS-plots` dirs, respectively. Each run `k`, of the script will create a new dir `rts-test<k>`, inside `RTS-store` and `RTS-plots` dirs (or `cleanup.sh` to remove previous run results). These directories with at least one successful run `rts-test` are to be returned. To check for correctness (successful functionality test):
+The `run_RTS_UC-ED.jl` script will create simulation results and plots in `RTS-store` and `RTS-plots` dirs, respectively. Each run `k`, of the script will create a new dir `rts-test<k>`, inside `RTS-store` and `RTS-plots` dirs (or `cleanup.sh` to remove previous run results). These directories with at least one successful run `rts-test` are to be returned, as are the numerical timing values for `Systems loaded`, `Build`, `Execute`, and `Total` printed either at the end of an interactive run (see below) or, e.g., in the file `rts_RTS_UC-ED.out` produced when using `run_benchmarks.sh`. To check for correctness (successful functionality test):
 1.  Script `run_RTS_UC-ED.jl` finishes without errors and at the end of an interactive session, you see:
 <img src="images/interactive_sim_end.png" alt="Plot of results" width="700"/>
 
