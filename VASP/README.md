@@ -14,8 +14,9 @@ https://www.vasp.at/info/faq/purchase_vasp/
 
 ## Other Requirements
 
-- Benchmarks must be run with version 6.5.X.
+- Benchmarks must be run with at least version 6.5.X because we have found numerical differences in the results for Benchmark 2 with earlier versions of VASP. 
 - Requirements for building VASP 6.X.X can be found here: https://www.vasp.at/wiki/index.php/Installing_VASP.6.X.X
+- Offerors may use a compiler toolchain of their choice provided benchmark validation criteria are met.
 - At the time of writing this, the only accelerated port of vasp is OpenACC. More details on the required software stack can be found here: https://www.vasp.at/wiki/index.php/OpenACC_GPU_port_of_VASP#Software_stack 
 
 ## How to build
@@ -34,7 +35,7 @@ VASP is run by simply calling the appropriate parallel launcher (e.g. `srun`, `m
 
 We have included a sample Slurm submission script `job.slurm` for each benchmark within the `NLR-results` folders, however, other systems using Slurm may need different `#SBATCH` parameters. 
 
-The benchmarks should be run with the Linux `time` command as illustrated in the sample submission scripts and this is the time that must be reported.
+The benchmarks should be run with the Linux `time` command as illustrated in the sample submission scripts. The "real" time reported from this command is the time that must be reported.
 
 The benchmark results must be validated against the results supplied in the `NLR-results` folder, see validation section below. 
 
@@ -48,13 +49,13 @@ The benchmark results must be validated against the results supplied in the `NLR
 * *Optional: Results with optimized code may aditionally be reported.*
 
 ### Node classes
-* Required: Results must be reported for accelerated nodes and optionally for standard nodes.
+* Required: Results must be reported for accelerated nodes and standard nodes.
 
 ### Node counts
 * Required: For each of the above, report results on the smallest possible hardware configuration (e.g., one compute node or one device) and 2x this configuration. If possible, we are also interested in 4x this configuration.
 
 ### OpenMP usage
-* Required: For each of the above, always report performance without OpenMP (pure MPI). 
+* Required: For each of the above, always report performance without OpenMP. 
 * *Optional: Runs using OpenMP may also be reported.*
 
 ### Process/thread placement
@@ -64,25 +65,24 @@ The benchmark results must be validated against the results supplied in the `NLR
 
 ### Reporting
 
-For every run, the spreadsheet response should include run times from the Linux `time` command as illustrated in the provided example run script, converted to seconds. The "mpi-ranks" reported should reflect the number of physical cores hosting independent threads of execution, and the "threads" reported should be equal to the number of execution threads, where applicable.
+For every run, the spreadsheet response should include "real" run times from the Linux `time` command as illustrated in the provided example run script `job.slurm`, converted to seconds. The "mpi-ranks" reported should reflect the number of physical cores hosting independent threads of execution, and the "threads" reported should be equal to the number of execution threads, where applicable.
 
-In addition to content enumerated in the General Instructions, please return files `OUTCAR` and `vasprun.xml` for every run, as well as all validation output, as part of the File response.
+In addition to content enumerated in the General Instructions, please return files `OUTCAR` and `vasprun.xml` for every run, as well as all validation output and the submission script used to generate all of the output, as part of the File response.
 
 ## Additional Run Rules
 
-Parallelization parameters (`KPAR`, `NCORE`, `NSIM`) can have a significant impact on performance. The Offeror is allowed to vary these parameters to determine the optimal settings. 
+Parallelization parameters can have a significant impact on performance. The Offeror is allowed to vary the following parameters to determine the optimal settings: `KPAR`, `NCORE`, `NSIM`, and `NBLOCK_FOCK`. No other parameters can be changed because they can alter the numerical results of the calculation. 
 *Note:* Because Benchmark 2 is a Gamma-point-only calculation, `KPAR` should be set to 1.
 
-While fully converged runs are required for final reporting, shorter runs may be desired during performance tuning (e.g. of parallelization parameters or other testing). In such cases, the maximum number of SCF iterations may be reduced (e.g., to 5 by setting `NELM = 5` in the INCAR file) to reduce time-to-solution during testing. Note that the input `NELMIN = 3` enforces a minimum of 3 SCF steps. **Important: the results from these truncated runs will not be suitable for validation.**
+While fully converged runs are required for final reporting, shorter runs may be desired during performance tuning (e.g. of parallelization parameters or other testing). In such cases, the maximum number of SCF iterations may be reduced (e.g., to 5 by setting `NELM = 5` in the INCAR file) to reduce time-to-solution during testing. Note that the input `NELMIN = 3` enforces a minimum of 3 SCF steps. **Important: the results from these truncated runs will not be suitable for validation.** 
 
-To check if a calculation has converged, search for "aborting loop because EDIFF is reached" in the OUTCAR. 
+To check if a calculation has converged, search for "aborting loop because EDIFF is reached" in the OUTCAR. We have enforced a standard number of iterations for each benchmark (30 for bench 1, 50 for bench 2) that is more than the typical number of steps needed to reach convergence from our test runs. This is done by setting NELMIN. You will see that the final steps of the calculation show energy differences that are smaller than the energy convergence criterion because of this. This was done to ensure that all vendors run calculations of the same length and shorter run times are not achieved due to numerical artifacts that do not necesssarily represent architectural superiority. 
 
 ## Validation
 
-1. **Required Files:** The Offeror will provide `OUTCAR` and `VASP.xml` for each calculation. These files will be used to verify that the Offeror followed the prescribed instructions and did not modify any calculation settings beyond those explicitly permitted (i.e., `NCORE` for bench 1 and bench 2 and `KPAR` for bench 1).
+1. **Required Files:** The Offeror will provide `OUTCAR`,`vasprun.xml`, and the submission script for each calculation. These files will be used to verify that the Offeror followed the prescribed instructions and did not modify any calculation settings beyond those explicitly permitted (i.e., `NCORE` for bench 1 and bench 2 and `KPAR` for bench 1).
 2. **Validation Method:** Validation will consist of comparing the reported final electronic energy (TOTEN) and, for bench 1, the band gap (fundamental gap) from the submitted OUTCAR files against the corresponding reference values.
-3. **Acceptance Criteria:** A converged calculation will be considered valid if the final energy and, when relevant, the band gap agree with the reference values within a tolerance of 1E-3 eV.
-4. **Reference Data:** The reference data will be provided to the Offeror for comparison purposes but may not be modified without prior written authorization. The reference directory may be transferred to another system if needed for convenience.
+3. **Acceptance Criteria:** A converged calculation will be considered valid if the final energy and, when relevant, the band gap agree with the reference values within a tolerance of 1E-3 eV. We have tested our benchmarks on different architectures and have found that this tolerance is suitable for our benchmarks, which are quite numerically challenging due to their size.
 
 Below is a summary of the results that can be found in the `NLR-results` folder for each benchmark:
 | Property            | Bench 1 (eV) | Bench 2 (eV) |
