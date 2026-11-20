@@ -1,5 +1,13 @@
 #!/bin/bash -l
+
+#SBATCH -o %x.o%j
+#SBATCH -A hpcapps
+#SBATCH -t 30
+
 set -ex
+module load cpe-stack
+module load PrgEnv-intel
+module load craype-x86-spr
 git clone --depth=1 --shallow-submodules --recursive https://github.com/Kynema/kynema-sgf.git
 cmake -B kynema-sgf-build \
 	-DCMAKE_CXX_COMPILER:STRING=CC \

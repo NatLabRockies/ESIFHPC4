@@ -1,5 +1,16 @@
 #!/bin/bash -l
+
+#SBATCH -o %x.o%j
+#SBATCH -A hpcapps
+#SBATCH -t 30
+#SBATCH --partition=gpu-h100s
+#SBATCH --gpus-per-node=1
+#SBATCH --ntasks-per-node=64
+#SBATCH --mem=128GB
+
 set -ex
+module load cpe-stack
+module load PrgEnv-gnu
 module load cuda
 #GCC 12 can't handle the default zen4 target so we use zen3
 module load craype-x86-milan
@@ -11,8 +22,8 @@ cmake -B kynema-sgf-build \
 	-DKYNEMA_SGF_ENABLE_TESTS:BOOL=ON \
 	-DKYNEMA_SGF_ENABLE_TINY_PROFILE:BOOL=ON \
         -DKYNEMA_SGF_ENABLE_FCOMPARE:BOOL=ON \
-	-DMPI_HOME:STRING=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3 \
-	-DMPI_CXX_COMPILER:STRING=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/bin/mpicxx \
-	-DMPI_C_COMPILER:STRING=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/bin/mpicc \
+	-DMPI_HOME:STRING=/opt/cray/pe/mpich/8.1.32/ofi/gnu/11.2 \
+	-DMPI_CXX_COMPILER:STRING=/opt/cray/pe/mpich/8.1.32/ofi/gnu/11.2/bin/mpicxx \
+	-DMPI_C_COMPILER:STRING=/opt/cray/pe/mpich/8.1.32/ofi/gnu/11.2/bin/mpicc \
 	kynema-sgf
 nice cmake --build kynema-sgf-build --parallel 8

@@ -110,7 +110,7 @@ srun -N${SLURM_JOB_NUM_NODES} -n${TOTAL_RANKS} --ntasks-per-node=4 --gpus-per-no
 EOL
 
 # Submit build script
-BUILD_ID=$(sbatch --parsable -J kynema-sgf-benchmark-build-gpu-verify -N 1 build-kynema-sgf-benchmark-gpu-verify.sh)
+BUILD_ID=$(sbatch --parsable -J kynema-sgf-build-gpu-verify -N 1 build-kynema-sgf-benchmark-gpu-verify.sh)
 
 # Submit run script
 sbatch --parsable --dependency=afterok:${BUILD_ID} -J kynema-sgf-benchmark-gpu-verify-4 -N 4 run-kynema-sgf-benchmark-gpu-verify.sh

@@ -95,7 +95,7 @@ srun -N${SLURM_JOB_NUM_NODES} -n${TOTAL_RANKS} --ntasks-per-node=72 --distributi
 EOL
 
 # Submit build script
-BUILD_ID=$(sbatch --parsable -J kynema-sgf-benchmark-build-cpu -N 1 build-kynema-sgf-benchmark-cpu.sh)
+BUILD_ID=$(sbatch --parsable -J kynema-sgf-build-cpu -N 1 build-kynema-sgf-benchmark-cpu.sh)
 
 # Submit run script
 sbatch --parsable --dependency=afterok:${BUILD_ID} -J kynema-sgf-benchmark-cpu-1 -N 1 run-kynema-sgf-benchmark-cpu.sh; for i in {1..7}; do sbatch --parsable --dependency=afterok:${BUILD_ID} -J kynema-sgf-benchmark-cpu-$((2**i)) -N $((2**i)) -p hbw run-kynema-sgf-benchmark-cpu.sh; done

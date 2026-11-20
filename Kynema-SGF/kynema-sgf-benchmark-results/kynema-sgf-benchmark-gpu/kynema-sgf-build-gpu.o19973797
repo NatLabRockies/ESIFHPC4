@@ -1,0 +1,627 @@
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "cray-python"
+   Try: "module spider cray-python" to see how to load the module(s).
+
+
+
++ module load cpe-stack
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_sh_dbg=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod's output
+Shell debugging restarted
++ unset __lmod_sh_dbg
++ return 0
++ module load PrgEnv-gnu
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_sh_dbg=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod's output
+Shell debugging restarted
++ unset __lmod_sh_dbg
++ return 0
++ module load cuda
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_sh_dbg=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod's output
+Shell debugging restarted
++ unset __lmod_sh_dbg
++ return 0
++ module load craype-x86-milan
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_sh_dbg=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod's output
+Shell debugging restarted
++ unset __lmod_sh_dbg
++ return 0
++ git clone --depth=1 --shallow-submodules --recursive https://github.com/Kynema/kynema-sgf.git
+Cloning into 'kynema-sgf'...
+Submodule 'submods/AMReX-Hydro' (https://github.com/AMReX-Fluids/AMReX-Hydro.git) registered for path 'submods/AMReX-Hydro'
+Submodule 'submods/Waves2AMR' (https://github.com/Kynema/Waves2AMR.git) registered for path 'submods/Waves2AMR'
+Submodule 'submods/amrex' (https://github.com/AMReX-Codes/amrex.git) registered for path 'submods/amrex'
+Submodule 'submods/doxygen-awesome-css' (https://github.com/jothepro/doxygen-awesome-css.git) registered for path 'submods/doxygen-awesome-css'
+Submodule 'test/googletest' (https://github.com/google/googletest.git) registered for path 'submods/googletest'
+Cloning into '/kfs3/scratch/jrood/kynema-sgf-benchmark/kynema-sgf-benchmark-gpu/kynema-sgf/submods/AMReX-Hydro'...
+Cloning into '/kfs3/scratch/jrood/kynema-sgf-benchmark/kynema-sgf-benchmark-gpu/kynema-sgf/submods/Waves2AMR'...
+Cloning into '/kfs3/scratch/jrood/kynema-sgf-benchmark/kynema-sgf-benchmark-gpu/kynema-sgf/submods/amrex'...
+Cloning into '/kfs3/scratch/jrood/kynema-sgf-benchmark/kynema-sgf-benchmark-gpu/kynema-sgf/submods/doxygen-awesome-css'...
+Cloning into '/kfs3/scratch/jrood/kynema-sgf-benchmark/kynema-sgf-benchmark-gpu/kynema-sgf/submods/googletest'...
+From https://github.com/AMReX-Fluids/AMReX-Hydro
+ * branch            fa061e74cf7337e9756d477d0baa3512e05fe768 -> FETCH_HEAD
+Submodule path 'submods/AMReX-Hydro': checked out 'fa061e74cf7337e9756d477d0baa3512e05fe768'
+From https://github.com/Kynema/Waves2AMR
+ * branch            3391cd3620e225700e64b2544e4959e43823c2ea -> FETCH_HEAD
+Submodule path 'submods/Waves2AMR': checked out '3391cd3620e225700e64b2544e4959e43823c2ea'
+From https://github.com/AMReX-Codes/amrex
+ * branch            1fa9e82374c4a979640a4909510a08f8ebbe2f9c -> FETCH_HEAD
+Submodule path 'submods/amrex': checked out '1fa9e82374c4a979640a4909510a08f8ebbe2f9c'
+From https://github.com/jothepro/doxygen-awesome-css
+ * branch            af1d9030b3ffa7b483fa9997a7272fb12af6af4c -> FETCH_HEAD
+Submodule path 'submods/doxygen-awesome-css': checked out 'af1d9030b3ffa7b483fa9997a7272fb12af6af4c'
+From https://github.com/google/googletest
+ * branch            52204f78f94d7512df1f0f3bea1d47437a2c3a58 -> FETCH_HEAD
+Submodule path 'submods/googletest': checked out '52204f78f94d7512df1f0f3bea1d47437a2c3a58'
++ cmake -B kynema-sgf-build -DKYNEMA_SGF_ENABLE_MPI:BOOL=ON -DKYNEMA_SGF_ENABLE_CUDA:BOOL=ON -DCMAKE_CUDA_ARCHITECTURES:STRING=90 -DKYNEMA_SGF_ENABLE_TESTS:BOOL=ON -DKYNEMA_SGF_ENABLE_TINY_PROFILE:BOOL=ON -DMPI_HOME:STRING=/opt/cray/pe/mpich/8.1.32/ofi/gnu/11.2 -DMPI_CXX_COMPILER:STRING=/opt/cray/pe/mpich/8.1.32/ofi/gnu/11.2/bin/mpicxx -DMPI_C_COMPILER:STRING=/opt/cray/pe/mpich/8.1.32/ofi/gnu/11.2/bin/mpicc kynema-sgf
+-- The CXX compiler identification is GNU 13.3.1
+-- The C compiler identification is GNU 13.3.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /opt/rh/gcc-toolset-13/root/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /opt/rh/gcc-toolset-13/root/usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- The CUDA compiler identification is NVIDIA 12.8.93
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /nopt/nlr/apps/kestrel-gpu/cuda/12.8.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- CMake version: 3.26.5
+-- AMReX installation directory: /usr/local
+-- Building AMReX with AMReX_SPACEDIM = 3
+-- Configuring AMReX with the following options enabled: 
+--    AMReX_PRECISION = DOUBLE
+--    AMReX_GPU_BACKEND = CUDA
+--    AMReX_GPU_MAX_THREADS = 256
+--    AMReX_MPI
+--    AMReX_LINEAR_SOLVERS
+--    AMReX_LINEAR_SOLVERS_INCFLO
+--    AMReX_LINEAR_SOLVERS_EM
+--    AMReX_PARTICLES
+--    AMReX_PARTICLES_PRECISION = DOUBLE
+--    AMReX_PIC
+--    AMReX_INLINE_LIMIT = 43210
+--    AMReX_TINY_PROFILE
+-- Enabled CUDA options:
+--    CUDA architectures: 90
+--    AMReX_CUDA_FASTMATH
+--    AMReX_CUDA_MAXREGCOUNT = 255
+--    AMReX_CUDA_WARN_CAPTURE_THIS
+--    AMReX_CUDA_SHOW_LINENUMBERS
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found MPI_CXX: /opt/cray/pe/mpich/8.1.32/ofi/gnu/11.2/lib/libmpi_gnu_112.so (found version "3.1") 
+-- Found MPI: TRUE (found version "3.1") found components: CXX 
+-- Found CUDAToolkit: /nopt/nlr/apps/kestrel-gpu/cuda/12.8.1/include (found version "12.8.93") 
+-- AMReX configuration summary: 
+--    Build type               = Release
+--    Install directory        = /usr/local
+--    C++ compiler             = /opt/rh/gcc-toolset-13/root/usr/bin/c++
+--    CUDA compiler            = /nopt/nlr/apps/kestrel-gpu/cuda/12.8.1/bin/nvcc
+--    C++ defines              = -DAMREX_SPACEDIM=3
+--    C++ flags                = -O3 -DNDEBUG  -Werror=return-type -fno-math-errno -finline-limit=43210
+--    CUDA flags               = -O3 -DNDEBUG  --expt-relaxed-constexpr --expt-extended-lambda -Xcudafe --diag_suppress=esa_on_defaulted_function_ignored -Xcudafe --diag_suppress=implicit_return_from_non_void_function -maxrregcount=255 -Xcudafe --display_error_number --Wext-lambda-captures-this --use_fast_math --generate-line-info --display-error-number --diag-error 20092 -Xcompiler=-fno-math-errno
+--    C++ include paths        = -I/scratch/jrood/kynema-sgf-benchmark/kynema-sgf-benchmark-gpu/kynema-sgf/submods/amrex/Src/Base -I/scratch/jrood/kynema-sgf-benchmark/kynema-sgf-benchmark-gpu/kynema-sgf/submods/amrex/Src/Base/Parser -I/scratch/jrood/kynema-sgf-benchmark/kynema-sgf-benchmark-gpu/kynema-sgf/submods/amrex/Src/Boundary -I/scratch/jrood/kynema-sgf-benchmark/kynema-sgf-benchmark-gpu/kynema-sgf/submods/amrex/Src/AmrCore -I/scratch/jrood/kynema-sgf-benchmark/kynema-sgf-benchmark-gpu/kynema-sgf/submods/amrex/Src/LinearSolvers -I/scratch/jrood/kynema-sgf-benchmark/kynema-sgf-benchmark-gpu/kynema-sgf/submods/amrex/Src/LinearSolvers/MLMG -I/scratch/jrood/kynema-sgf-benchmark/kynema-sgf-benchmark-gpu/kynema-sgf/submods/amrex/Src/LinearSolvers/OpenBC -I/scratch/jrood/kynema-sgf-benchmark/kynema-sgf-benchmark-gpu/kynema-sgf/submods/amrex/Src/Particle -I/opt/cray/pe/mpich/8.1.32/ofi/gnu/11.2/include -I/nopt/nlr/apps/kestrel-gpu/cuda/12.8.1/include
+--    Link line                = /opt/cray/pe/mpich/8.1.32/ofi/gnu/11.2/lib/libmpi_gnu_112.so
+-- CMake version: 3.26.5
+-- Build type set by user to 'Release'.
+-- Kynema-SGF Information:
+-- CMAKE_SYSTEM_NAME = Linux
+-- CMAKE_CXX_COMPILER_ID = GNU
+-- CMAKE_CXX_COMPILER_VERSION = 13.3.1
+-- CMAKE_BUILD_TYPE = Release
+-- Found Git: /usr/bin/git (found version "2.47.3") 
+-- Configuring done (9.3s)
+-- Generating done (0.9s)
+-- Build files have been written to: /scratch/jrood/kynema-sgf-benchmark/kynema-sgf-benchmark-gpu/kynema-sgf-build
++ nice cmake --build kynema-sgf-build --parallel 8
+[  0%] Building CXX object src/CMakeFiles/buildInfokynema_sgf_obj.dir/__/kynema_sgf_obj/AMReX_buildInfo.cpp.o
+[  0%] Building CXX object submods/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[  0%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX.cpp.o
+[  0%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_error_fi.cpp.o
+[  0%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_PODVector.cpp.o
+[  1%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_parmparse_fi.cpp.o
+[  1%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_ParmParse.cpp.o
+[  1%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_Version.cpp.o
+[  1%] Linking CXX static library libbuildInfokynema_sgf_obj.a
+[  1%] Built target buildInfokynema_sgf_obj
+[  1%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_String.cpp.o
+[  2%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_Utility.cpp.o
+[  2%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_FileSystem.cpp.o
+[  2%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_Random.cpp.o
+[  2%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_DistributionMapping.cpp.o
+[  3%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_ParallelDescriptor.cpp.o
+[  3%] Linking CXX static library ../../../lib/libgtest.a
+[  3%] Built target gtest
+[  3%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_OpenMP.cpp.o
+[  3%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_ForkJoin.cpp.o
+[  3%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_ParallelContext.cpp.o
+[  3%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_VisMF.cpp.o
+[  4%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_AsyncOut.cpp.o
+[  4%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_BackgroundThread.cpp.o
+[  4%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_Arena.cpp.o
+[  4%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_BArena.cpp.o
+[  4%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_CArena.cpp.o
+[  4%] Building CXX object submods/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
+[  5%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_PArena.cpp.o
+[  5%] Linking CXX static library ../../../lib/libgmock.a
+[  5%] Built target gmock
+[  5%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_SArena.cpp.o
+[  5%] Building CXX object submods/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+[  6%] Linking CXX static library ../../../lib/libgtest_main.a
+[  6%] Built target gtest_main
+[  6%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_BLBackTrace.cpp.o
+[  6%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_CrtReport.cpp.o
+[  7%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_NFiles.cpp.o
+[  7%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_parstream.cpp.o
+[  7%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_FabConv.cpp.o
+[  7%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_FPC.cpp.o
+[  7%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_VectorIO.cpp.o
+[  8%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_IntConv.cpp.o
+[  8%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_Box.cpp.o
+[  9%] Building CXX object submods/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
+[  9%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_IndexType.cpp.o
+[  9%] Linking CXX static library ../../../lib/libgmock_main.a
+[  9%] Built target gmock_main
+[  9%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_Orientation.cpp.o
+[  9%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_Periodicity.cpp.o
+[ 10%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_RealBox.cpp.o
+[ 10%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_BoxList.cpp.o
+[ 10%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_BoxArray.cpp.o
+[ 10%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_BoxDomain.cpp.o
+[ 11%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_FArrayBox.cpp.o
+[ 11%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_IArrayBox.cpp.o
+[ 11%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_BaseFab.cpp.o
+[ 11%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_MultiFab.cpp.o
+[ 11%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_MFCopyDescriptor.cpp.o
+[ 12%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_iMultiFab.cpp.o
+[ 12%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_FabArrayBase.cpp.o
+[ 12%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_MFIter.cpp.o
+[ 12%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_CoordSys.cpp.o
+[ 12%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_Geometry.cpp.o
+[ 13%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_MultiFabUtil.cpp.o
+[ 13%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_BCRec.cpp.o
+[ 13%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_PhysBCFunct.cpp.o
+[ 13%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_BCUtil.cpp.o
+[ 14%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_FilCC_C.cpp.o
+[ 14%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_FilFC_C.cpp.o
+[ 14%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_FilND_C.cpp.o
+[ 14%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_NonLocalBC.cpp.o
+[ 14%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_PlotFileUtil.cpp.o
+[ 15%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_PlotFileDataImpl.cpp.o
+[ 15%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_GpuControl.cpp.o
+[ 15%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_GpuDevice.cpp.o
+[ 15%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_GpuUtility.cpp.o
+[ 15%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_GpuElixir.cpp.o
+[ 16%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_Machine.cpp.o
+[ 16%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_MemPool.cpp.o
+[ 16%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/Parser/AMReX_Parser.cpp.o
+[ 16%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/Parser/AMReX_Parser_Exe.cpp.o
+[ 16%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/Parser/AMReX_Parser_Y.cpp.o
+[ 17%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/Parser/amrex_parser.lex.cpp.o
+[ 17%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/Parser/amrex_parser.tab.cpp.o
+[ 17%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/Parser/AMReX_IParser.cpp.o
+[ 17%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/Parser/AMReX_IParser_Exe.cpp.o
+[ 18%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/Parser/AMReX_IParser_Y.cpp.o
+[ 18%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/Parser/amrex_iparser.lex.cpp.o
+[ 18%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/Parser/amrex_iparser.tab.cpp.o
+[ 18%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_BLProfiler.cpp.o
+[ 18%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_TinyProfiler.cpp.o
+[ 19%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Base/AMReX_MPMD.cpp.o
+[ 19%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Boundary/AMReX_Mask.cpp.o
+[ 19%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Boundary/AMReX_MultiMask.cpp.o
+[ 19%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Boundary/AMReX_LO_BCTYPES.cpp.o
+[ 19%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Boundary/AMReX_EdgeFluxRegister.cpp.o
+[ 20%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/AmrCore/AMReX_AmrCore.cpp.o
+[ 20%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/AmrCore/AMReX_Cluster.cpp.o
+[ 20%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/AmrCore/AMReX_ErrorList.cpp.o
+[ 20%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/AmrCore/AMReX_FillPatchUtil.cpp.o
+[ 21%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/AmrCore/AMReX_FluxRegister.cpp.o
+[ 21%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/AmrCore/AMReX_InterpBase.cpp.o
+[ 21%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/AmrCore/AMReX_MFInterpolater.cpp.o
+[ 21%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/AmrCore/AMReX_Interpolater.cpp.o
+[ 21%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/AmrCore/AMReX_TagBox.cpp.o
+[ 22%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/AmrCore/AMReX_AmrMesh.cpp.o
+[ 22%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/AmrCore/AMReX_AmrMeshGridding.cpp.o
+[ 22%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/AmrCore/AMReX_InterpFaceRegister.cpp.o
+[ 22%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLMG.cpp.o
+[ 22%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLAlgMG.cpp.o
+[ 23%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLNodeLinOp.cpp.o
+[ 23%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/AMReX_CrossProj.cpp.o
+[ 23%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/AMReX_AlgPartition.cpp.o
+[ 23%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLTerrainPoisson.cpp.o
+[ 24%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLCurlCurl.cpp.o
+[ 24%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLEBNodeFDLaplacian.cpp.o
+[ 24%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLNodeTensorLaplacian.cpp.o
+[ 24%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLNodeABecLaplacian.cpp.o
+[ 24%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLNodeLaplacian.cpp.o
+[ 25%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLNodeLaplacian_sync.cpp.o
+[ 25%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLNodeLaplacian_sten.cpp.o
+[ 25%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLNodeLaplacian_misc.cpp.o
+[ 25%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLNodeLaplacian_matrix.cpp.o
+[ 25%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLTensorOp.cpp.o
+[ 26%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/MLMG/AMReX_MLTensorOp_grad.cpp.o
+[ 26%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/LinearSolvers/OpenBC/AMReX_OpenBC.cpp.o
+[ 26%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Particle/AMReX_TracerParticles.cpp.o
+[ 26%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Particle/AMReX_ParticleMPIUtil.cpp.o
+[ 27%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Particle/AMReX_ParticleUtil.cpp.o
+[ 27%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Particle/AMReX_ParticleBufferMap.cpp.o
+[ 27%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Particle/AMReX_ParticleCommunication.cpp.o
+[ 27%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Particle/AMReX_ParticleHeader.cpp.o
+[ 27%] Building CUDA object submods/amrex/Src/CMakeFiles/amrex_3d.dir/Particle/AMReX_ParticleContainerBase.cpp.o
+[ 28%] Linking CUDA static library libamrex_3d.a
+[ 28%] Built target amrex_3d
+[ 28%] Building CUDA object submods/AMReX-Hydro/CMakeFiles/amrex_hydro.dir/Utils/hydro_utils.cpp.o
+[ 28%] Building CUDA object submods/AMReX-Hydro/CMakeFiles/amrex_hydro.dir/Utils/hydro_extrap_vel_to_faces.cpp.o
+[ 28%] Building CUDA object submods/AMReX-Hydro/CMakeFiles/amrex_hydro.dir/Utils/hydro_enforce_inout_solvability.cpp.o
+[ 28%] Building CUDA object submods/AMReX-Hydro/CMakeFiles/amrex_hydro.dir/Utils/hydro_compute_edgestate_and_flux.cpp.o
+[ 28%] Building CUDA object submods/AMReX-Hydro/CMakeFiles/amrex_hydro.dir/MOL/hydro_mol_extrap_vel_to_faces_box.cpp.o
+[ 28%] Building CUDA object submods/AMReX-Hydro/CMakeFiles/amrex_hydro.dir/Godunov/hydro_godunov_edge_state_3D.cpp.o
+[ 29%] Building CUDA object submods/AMReX-Hydro/CMakeFiles/amrex_hydro.dir/MOL/hydro_mol_edge_state.cpp.o
+[ 29%] Building CUDA object submods/AMReX-Hydro/CMakeFiles/amrex_hydro.dir/MOL/hydro_mol_extrap_vel_to_faces.cpp.o
+[ 29%] Building CUDA object submods/AMReX-Hydro/CMakeFiles/amrex_hydro.dir/Godunov/hydro_godunov_extrap_vel_to_faces_3D.cpp.o
+[ 30%] Building CUDA object submods/AMReX-Hydro/CMakeFiles/amrex_hydro.dir/Godunov/hydro_godunov_plm.cpp.o
+[ 30%] Building CUDA object submods/AMReX-Hydro/CMakeFiles/amrex_hydro.dir/BDS/hydro_bds_edge_state_3D.cpp.o
+[ 30%] Building CUDA object submods/AMReX-Hydro/CMakeFiles/amrex_hydro.dir/Projections/hydro_MacProjector.cpp.o
+[ 30%] Building CUDA object submods/AMReX-Hydro/CMakeFiles/amrex_hydro.dir/Projections/hydro_NodalProjector.cpp.o
+[ 30%] Built target amrex_hydro
+[ 31%] Linking CUDA static library libamrex_hydro_api.a
+[ 32%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/incflo_advance.cpp.o
+[ 32%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/incflo.cpp.o
+[ 32%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/incflo_regrid.cpp.o
+[ 33%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/helics.cpp.o
+[ 33%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/incflo_compute_dt.cpp.o
+[ 33%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/CFDSim.cpp.o
+[ 33%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/core/SimTime.cpp.o
+[ 33%] Built target amrex_hydro_api
+[ 33%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/core/Field.cpp.o
+[ 33%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/core/IntField.cpp.o
+[ 34%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/core/FieldRepo.cpp.o
+[ 34%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/core/ScratchField.cpp.o
+[ 34%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/core/IntScratchField.cpp.o
+[ 34%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/core/ViewField.cpp.o
+[ 34%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/core/MLMGOptions.cpp.o
+[ 35%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/core/MeshMap.cpp.o
+[ 35%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/core/vs/quaternion.cpp.o
+[ 35%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/boundary_conditions/BCInterface.cpp.o
+[ 35%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/boundary_conditions/FixedGradientBC.cpp.o
+[ 35%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/boundary_conditions/scalar_bcs.cpp.o
+[ 36%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/boundary_conditions/wall_models/WallFunction.cpp.o
+[ 36%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/boundary_conditions/field_boundary_fill/OceanWavesFillInflow.cpp.o
+[ 36%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/boundary_conditions/field_boundary_fill/OceanWavesBoundary.cpp.o
+[ 36%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/boundary_conditions/field_boundary_fill/PlaneFillInflow.cpp.o
+[ 37%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/boundary_conditions/field_boundary_fill/BoundaryPlane.cpp.o
+[ 37%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/boundary_conditions/field_boundary_fill/FillFlather.cpp.o
+[ 37%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/boundary_conditions/field_boundary_fill/Flather.cpp.o
+[ 37%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/boundary_conditions/field_boundary_fill/FillMPL.cpp.o
+[ 37%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/boundary_conditions/field_boundary_fill/ModulatedPowerLaw.cpp.o
+[ 38%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/convection/incflo_mol_fluxes.cpp.o
+[ 38%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/diffusion/incflo_diffusion.cpp.o
+[ 38%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/projection/incflo_apply_nodal_projection.cpp.o
+[ 38%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/setup/init.cpp.o
+[ 38%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/diagnostics.cpp.o
+[ 39%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/io.cpp.o
+[ 39%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/bc_ops.cpp.o
+[ 39%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/console_io.cpp.o
+[ 39%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/index_operations.cpp.o
+[ 40%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/ghost_fill.cpp.o
+[ 40%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/io_utils.cpp.o
+[ 40%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/IOManager.cpp.o
+[ 40%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/FieldPlaneAveraging.cpp.o
+[ 40%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/SecondMomentAveraging.cpp.o
+[ 41%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/ThirdMomentAveraging.cpp.o
+[ 41%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/PostProcessing.cpp.o
+[ 41%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/DerivedQuantity.cpp.o
+[ 41%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/DerivedQtyDefs.cpp.o
+[ 41%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/MultiLevelVector.cpp.o
+[ 42%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/tagging/RefinementCriteria.cpp.o
+[ 42%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/tagging/CartBoxRefinement.cpp.o
+[ 42%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/tagging/FieldRefinement.cpp.o
+[ 42%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/tagging/GradientMagRefinement.cpp.o
+[ 42%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/tagging/CurvatureRefinement.cpp.o
+[ 43%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/tagging/QCriterionRefinement.cpp.o
+[ 43%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/tagging/VorticityMagRefinement.cpp.o
+[ 43%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/tagging/OversetRefinement.cpp.o
+[ 43%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/tagging/GeometryRefinement.cpp.o
+[ 44%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/tagging/ActuatorRefinement.cpp.o
+[ 44%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/tagging/BoxRefiner.cpp.o
+[ 44%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/tagging/CylinderRefiner.cpp.o
+[ 44%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/tagging/UDFRefiner.cpp.o
+[ 44%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/sampling/Sampling.cpp.o
+[ 45%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/sampling/SamplingContainer.cpp.o
+[ 45%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/sampling/SamplingUtils.cpp.o
+[ 45%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/sampling/LineSampler.cpp.o
+[ 45%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/sampling/LidarSampler.cpp.o
+[ 45%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/sampling/RadarSampler.cpp.o
+[ 46%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/sampling/DTUSpinnerSampler.cpp.o
+[ 46%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/sampling/PlaneSampler.cpp.o
+[ 46%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/sampling/MovingPlaneSampler.cpp.o
+[ 46%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/sampling/ProbeSampler.cpp.o
+[ 47%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/sampling/FreeSurfaceSampler.cpp.o
+[ 47%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/sampling/VolumeSampler.cpp.o
+[ 47%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/sampling/MovingVolumeSampler.cpp.o
+[ 47%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/subvolume/Subvolume.cpp.o
+[ 47%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/subvolume/RectangularSubvolume.cpp.o
+[ 48%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/averaging/TimeAveraging.cpp.o
+[ 48%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/averaging/ReAveraging.cpp.o
+[ 48%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/averaging/ReynoldsStress.cpp.o
+[ 48%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/output_quantities/Enstrophy.cpp.o
+[ 48%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/output_quantities/FieldNorms.cpp.o
+[ 49%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/output_quantities/KineticEnergy.cpp.o
+[ 49%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/output_quantities/WaveEnergy.cpp.o
+[ 49%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/utilities/output_quantities/RANSConvergence.cpp.o
+[ 49%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/actuator_utils.cpp.o
+[ 50%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/Actuator.cpp.o
+[ 50%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/ActuatorContainer.cpp.o
+[ 50%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/FLLC.cpp.o
+[ 50%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/aero/AirfoilTable.cpp.o
+[ 50%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/motion/TimeTable.cpp.o
+[ 51%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/motion/RigidBodyMotion.cpp.o
+[ 51%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/motion/RotorMotion.cpp.o
+[ 51%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/wing/wing_ops.cpp.o
+[ 51%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/wing/FlatPlate.cpp.o
+[ 51%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/wing/FixedWing.cpp.o
+[ 52%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/sector/ActuatorSector.cpp.o
+[ 52%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/sector/actuator_sector_ops.cpp.o
+[ 52%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/drone/Drone.cpp.o
+[ 52%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/drone/drone_ops.cpp.o
+[ 53%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/turbine/turbine_utils.cpp.o
+[ 53%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/disk/ActuatorDisk.cpp.o
+[ 53%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/disk/disk_ops.cpp.o
+[ 53%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/disk/Joukowsky_ops.cpp.o
+[ 53%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/actuator/disk/uniform_ct_ops.cpp.o
+[ 54%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/wind_energy/ABL.cpp.o
+[ 54%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/wind_energy/ABLStats.cpp.o
+[ 54%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/wind_energy/ABLFieldInit.cpp.o
+[ 54%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/wind_energy/ABLFieldInitFile.cpp.o
+[ 54%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/wind_energy/ABLWallFunction.cpp.o
+[ 55%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/wind_energy/MOData.cpp.o
+[ 55%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/wind_energy/ABLMesoscaleForcing.cpp.o
+[ 55%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/wind_energy/ABLMesoscaleInput.cpp.o
+[ 55%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/wind_energy/ABLAnelastic.cpp.o
+[ 55%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/PDEBase.cpp.o
+[ 56%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/DiffusionOps.cpp.o
+[ 56%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/icns_advection.cpp.o
+[ 56%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/icns.cpp.o
+[ 56%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/ABLForcing.cpp.o
+[ 57%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/GeostrophicForcing.cpp.o
+[ 57%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/HurricaneForcing.cpp.o
+[ 57%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/BoussinesqBuoyancy.cpp.o
+[ 57%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/DensityBuoyancy.cpp.o
+[ 57%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/GravityForcing.cpp.o
+[ 58%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/CoriolisForcing.cpp.o
+[ 58%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/BodyForce.cpp.o
+[ 58%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/ABLMeanBoussinesq.cpp.o
+[ 58%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/ActuatorForcing.cpp.o
+[ 58%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/SynthTurbForcing.cpp.o
+[ 59%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/ABLMesoForcingMom.cpp.o
+[ 59%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/BurggrafFlowForcing.cpp.o
+[ 59%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/RayleighDamping.cpp.o
+[ 59%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/NonLinearSGSTerm.cpp.o
+[ 60%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/DragForcing.cpp.o
+[ 60%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/ForestForcing.cpp.o
+[ 60%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/icns/source_terms/VelocityFreeAtmosphereForcing.cpp.o
+[ 60%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/temperature/temperature.cpp.o
+[ 60%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/temperature/source_terms/ABLMesoForcingTemp.cpp.o
+[ 61%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/temperature/source_terms/BodyForce.cpp.o
+[ 61%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/temperature/source_terms/HurricaneTempForcing.cpp.o
+[ 61%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/temperature/source_terms/DragTempForcing.cpp.o
+[ 61%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/temperature/source_terms/TemperatureFreeAtmosphereForcing.cpp.o
+[ 61%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/temperature/source_terms/PerturbationForcing.cpp.o
+[ 62%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/density/density.cpp.o
+[ 62%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/tke/TKE.cpp.o
+[ 62%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/tke/source_terms/KsgsM84Src.cpp.o
+[ 62%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/tke/source_terms/KwSSTSrc.cpp.o
+[ 63%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/tke/source_terms/KransAxell.cpp.o
+[ 63%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/sdr/SDR.cpp.o
+[ 63%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/sdr/source_terms/SDRSrc.cpp.o
+[ 63%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/levelset/levelset.cpp.o
+[ 63%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/vof/SplitAdvection.cpp.o
+[ 64%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/vof/vof.cpp.o
+[ 64%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/equation_systems/passive_scalar/passive_scalar.cpp.o
+[ 64%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/turbulence/LaminarModel.cpp.o
+[ 64%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/turbulence/turb_utils.cpp.o
+[ 64%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/turbulence/LES/Smagorinsky.cpp.o
+[ 65%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/turbulence/LES/OneEqKsgs.cpp.o
+[ 65%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/turbulence/LES/AMD.cpp.o
+[ 65%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/turbulence/LES/AMDNoTherm.cpp.o
+[ 65%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/turbulence/LES/Kosovic.cpp.o
+[ 66%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/turbulence/RANS/KOmegaSST.cpp.o
+[ 66%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/turbulence/RANS/KOmegaSSTIDDES.cpp.o
+[ 66%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/turbulence/RANS/KLAxell.cpp.o
+[ 66%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/BoussinesqBubble.cpp.o
+[ 66%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/BoussinesqBubbleFieldInit.cpp.o
+[ 67%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/ChannelFlow.cpp.o
+[ 67%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/RayleighTaylor.cpp.o
+[ 67%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/RayleighTaylorFieldInit.cpp.o
+[ 67%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/TaylorGreenVortex.cpp.o
+[ 67%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/FreeStream.cpp.o
+[ 68%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/ConvectingTaylorVortex.cpp.o
+[ 68%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/EkmanSpiral.cpp.o
+[ 68%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/SyntheticTurbulence.cpp.o
+[ 68%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/HybridRANSLESABL.cpp.o
+[ 69%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/VortexRing.cpp.o
+[ 69%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/ScalarAdvection.cpp.o
+[ 69%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/VortexDipole.cpp.o
+[ 69%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/BurggrafFlow.cpp.o
+[ 69%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/TerrainDrag.cpp.o
+[ 70%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/ActuatorSourceTagging.cpp.o
+[ 70%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/Intermittency.cpp.o
+[ 70%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/ForestDrag.cpp.o
+[ 70%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/multiphase/MultiPhase.cpp.o
+[ 70%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/multiphase/VortexPatch.cpp.o
+[ 71%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/multiphase/VortexPatchScalarVel.cpp.o
+[ 71%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/multiphase/ZalesakDisk.cpp.o
+[ 71%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/multiphase/ZalesakDiskScalarVel.cpp.o
+[ 71%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/multiphase/DamBreak.cpp.o
+[ 71%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/multiphase/SloshingTank.cpp.o
+[ 72%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/multiphase/RainDrop.cpp.o
+[ 72%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/multiphase/BreakingWaves.cpp.o
+[ 72%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/multiphase/ChannelBuilder.cpp.o
+[ 72%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/multiphase/FreeSurfaceDamping.cpp.o
+[ 73%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/udfs/UDF.cpp.o
+[ 73%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/udfs/LinearProfile.cpp.o
+[ 73%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/udfs/PowerLawProfile.cpp.o
+[ 73%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/udfs/BurggrafLid.cpp.o
+[ 73%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/udfs/Rankine.cpp.o
+[ 74%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/udfs/CustomVelocity.cpp.o
+[ 74%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/udfs/CustomScalar.cpp.o
+[ 74%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/physics/udfs/TwoLayer.cpp.o
+[ 74%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/overset/TiogaInterface.cpp.o
+[ 74%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/overset/OversetOps.cpp.o
+[ 75%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/overset/overset_ops_routines.cpp.o
+[ 75%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/immersed_boundary/IB.cpp.o
+[ 75%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/immersed_boundary/bluff_body/bluff_body_ops.cpp.o
+[ 75%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/immersed_boundary/bluff_body/Box.cpp.o
+[ 76%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/immersed_boundary/bluff_body/Cylinder.cpp.o
+[ 76%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/immersed_boundary/bluff_body/Sphere.cpp.o
+[ 76%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/mesh_mapping_models/ChannelFlowMap.cpp.o
+[ 76%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/mesh_mapping_models/ConstantMap.cpp.o
+[ 76%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/ocean_waves/OceanWaves.cpp.o
+[ 77%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/ocean_waves/relaxation_zones/relaxation_zones_ops.cpp.o
+[ 77%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/ocean_waves/relaxation_zones/LinearWaves.cpp.o
+[ 77%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/ocean_waves/relaxation_zones/StokesWaves.cpp.o
+[ 77%] Building CUDA object CMakeFiles/kynema_sgf_obj.dir/src/ocean_waves/relaxation_zones/W2AWaves.cpp.o
+[ 77%] Built target kynema_sgf_obj
+[ 77%] Building CUDA object CMakeFiles/kynema_sgf.dir/src/main.cpp.o
+[ 77%] Building CUDA object tools/utilities/CheckpointToCSV/CMakeFiles/CheckpointToCSV.dir/CheckpointToCSV.cpp.o
+[ 77%] Building CUDA object tools/utilities/refine-chkpt/CMakeFiles/kynema_sgf_refine_chkpt.dir/RefineCheckpt.cpp.o
+[ 79%] Building CUDA object tools/utilities/PlotfileToCSV/CMakeFiles/PlotfileToCSV.dir/PlotfileToCSV.cpp.o
+[ 79%] Linking CXX static library libkynema_sgf_api.a
+[ 79%] Building CUDA object tools/utilities/CheckpointToCSV/CMakeFiles/CheckpointToCSV.dir/CheckpointFileUtil.cpp.o
+[ 79%] Building CUDA object tools/utilities/coarsen-chkpt/CMakeFiles/kynema_sgf_coarsen_chkpt.dir/CoarsenCheckpt.cpp.o
+[ 79%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utest_main.cpp.o
+[ 79%] Built target kynema_sgf_api
+[ 80%] Building CUDA object tools/utilities/refine-chkpt/CMakeFiles/kynema_sgf_refine_chkpt.dir/refine_chkpt.cpp.o
+[ 81%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/test_config.cpp.o
+[ 81%] Linking CUDA device code CMakeFiles/PlotfileToCSV.dir/cmake_device_link.o
+[ 81%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/ks_test_utils/pp_utils.cpp.o
+[ 81%] Linking CUDA device code CMakeFiles/CheckpointToCSV.dir/cmake_device_link.o
+[ 81%] Linking CXX executable PlotfileToCSV
+[ 81%] Linking CXX executable CheckpointToCSV
+[ 81%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/ks_test_utils/AmrTestMesh.cpp.o
+[ 81%] Built target PlotfileToCSV
+[ 81%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/ks_test_utils/MeshTest.cpp.o
+[ 81%] Built target CheckpointToCSV
+[ 81%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/core/physics_test_utils.cpp.o
+[ 81%] Linking CUDA device code CMakeFiles/kynema_sgf.dir/cmake_device_link.o
+[ 81%] Linking CXX executable kynema_sgf
+[ 81%] Built target kynema_sgf
+[ 81%] Building CUDA object tools/utilities/coarsen-chkpt/CMakeFiles/kynema_sgf_coarsen_chkpt.dir/coarsen_chkpt.cpp.o
+[ 82%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/core/test_simtime.cpp.o
+[ 82%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/core/test_field.cpp.o
+[ 82%] Linking CUDA device code CMakeFiles/kynema_sgf_refine_chkpt.dir/cmake_device_link.o
+[ 82%] Linking CXX executable kynema_sgf_refine_chkpt
+[ 82%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/core/test_field_ops.cpp.o
+[ 82%] Built target kynema_sgf_refine_chkpt
+[ 82%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/core/test_field_fillpatch_ops.cpp.o
+[ 82%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/core/test_physics.cpp.o
+[ 83%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/core/test_auxiliary_fill.cpp.o
+[ 83%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/core/vs/test_vspace.cpp.o
+[ 83%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/actuator/test_actuator_sampling.cpp.o
+[ 83%] Linking CUDA device code CMakeFiles/kynema_sgf_coarsen_chkpt.dir/cmake_device_link.o
+[ 83%] Linking CXX executable kynema_sgf_coarsen_chkpt
+[ 83%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/actuator/test_actuator_flat_plate.cpp.o
+[ 84%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/actuator/test_actuator_fixed_wing.cpp.o
+[ 84%] Built target kynema_sgf_coarsen_chkpt
+[ 84%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/actuator/test_airfoil.cpp.o
+[ 84%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/actuator/test_actuator_free_functions.cpp.o
+[ 84%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/actuator/test_actuator_sector.cpp.o
+[ 84%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/actuator/test_actuator_motion.cpp.o
+[ 85%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/actuator/test_drone.cpp.o
+[ 85%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/actuator/test_disk_uniform_ct.cpp.o
+[ 85%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/actuator/test_FLLC.cpp.o
+[ 85%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/actuator/test_actuator_joukowsky_disk.cpp.o
+[ 85%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/actuator/test_disk_functions.cpp.o
+[ 86%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/actuator/test_turbine_disk_source.cpp.o
+[ 86%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/wind_energy/abl_test_utils.cpp.o
+[ 86%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/wind_energy/test_abl_init.cpp.o
+[ 86%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/wind_energy/test_abl_src.cpp.o
+[ 86%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/wind_energy/test_abl_stats.cpp.o
+[ 87%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/wind_energy/test_abl_bc.cpp.o
+[ 87%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/wind_energy/test_abl_src_timetable.cpp.o
+[ 87%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/wind_energy/test_abl_terrain.cpp.o
+[ 87%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/wind_energy/test_abl_forest.cpp.o
+[ 88%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/offshore_wind/abloffshore_test_utils.cpp.o
+[ 88%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/offshore_wind/test_abloffshore_src.cpp.o
+[ 88%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_refinement.cpp.o
+[ 88%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_plane_averaging.cpp.o
+[ 88%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_field_plane_averaging.cpp.o
+[ 89%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_field_plane_averaging_fine.cpp.o
+[ 89%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_second_moment.cpp.o
+[ 89%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_third_moment.cpp.o
+[ 89%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_sampling.cpp.o
+[ 89%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_linear_interpolation.cpp.o
+[ 90%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_integrals.cpp.o
+[ 90%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_free_surface.cpp.o
+[ 90%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_wave_energy.cpp.o
+[ 90%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_diagnostics.cpp.o
+[ 91%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_multilevelvector.cpp.o
+[ 91%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_field_norms.cpp.o
+[ 91%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_tensor_ops.cpp.o
+[ 91%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_post_processing_time.cpp.o
+[ 91%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_time_averaging.cpp.o
+[ 92%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_subvolume.cpp.o
+[ 92%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/utilities/test_rans_convergence.cpp.o
+[ 92%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/equation_systems/test_pde.cpp.o
+[ 92%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/equation_systems/test_icns_cstdens.cpp.o
+[ 92%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/equation_systems/test_icns_gravityforcing.cpp.o
+[ 93%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/equation_systems/test_icns_init.cpp.o
+[ 93%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/equation_systems/test_explicit_diffusion_rk2.cpp.o
+[ 93%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/turbulence/test_turbulence_init.cpp.o
+[ 93%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/turbulence/test_turbulence_LES.cpp.o
+[ 94%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/turbulence/test_turbulence_RANS.cpp.o
+[ 94%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/turbulence/test_turbulence_LES_bc.cpp.o
+[ 94%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/turbulence/test_turbulence_kosovic.cpp.o
+[ 94%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/fvm/test_fvm_filtering.cpp.o
+[ 94%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/fvm/test_fvm_curvature.cpp.o
+[ 95%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/fvm/test_fvm_operators.cpp.o
+[ 95%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/fvm/test_fvm_ops.cpp.o
+[ 95%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/multiphase/test_channel_builder.cpp.o
+[ 95%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/multiphase/test_vof_plic.cpp.o
+[ 95%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/multiphase/test_vof_cons.cpp.o
+[ 96%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/multiphase/test_vof_tools.cpp.o
+[ 96%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/multiphase/test_momflux.cpp.o
+[ 96%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/multiphase/test_vof_BCs.cpp.o
+[ 96%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/multiphase/test_mflux_schemes.cpp.o
+[ 97%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/multiphase/test_reference_fields.cpp.o
+[ 97%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/multiphase/test_vof_overset_ops.cpp.o
+[ 97%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/ocean_waves/test_wave_utils.cpp.o
+[ 97%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/ocean_waves/test_relaxation_zones.cpp.o
+[ 97%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/ocean_waves/test_wave_theories.cpp.o
+[ 98%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/projection/test_pressure_offset.cpp.o
+[ 98%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/boundary_conditions/test_log_law.cpp.o
+[ 98%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/boundary_conditions/test_mosd.cpp.o
+[ 98%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/boundary_conditions/test_flather.cpp.o
+[ 98%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/boundary_conditions/test_mass_inflow_outflow.cpp.o
+[ 99%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/boundary_conditions/test_bc_interface.cpp.o
+[ 99%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/boundary_conditions/test_ghost_layer_fill.cpp.o
+[ 99%] Building CUDA object CMakeFiles/kynema_sgf_unit_tests.dir/unit_tests/eos_models/test_eos.cpp.o
+[ 99%] Linking CUDA device code CMakeFiles/kynema_sgf_unit_tests.dir/cmake_device_link.o
+[100%] Linking CXX executable kynema_sgf_unit_tests
+[100%] Built target kynema_sgf_unit_tests
