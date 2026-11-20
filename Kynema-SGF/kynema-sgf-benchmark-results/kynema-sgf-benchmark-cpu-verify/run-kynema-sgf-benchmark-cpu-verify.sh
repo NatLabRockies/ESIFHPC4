@@ -6,6 +6,9 @@
 
 set -ex
 
+module load cpe-stack
+module load PrgEnv-intel
+module load craype-x86-spr
 export FI_MR_CACHE_MONITOR=memhooks
 export FI_CXI_RX_MATCH_MODE=software
 export MPICH_SMP_SINGLE_COPY_MODE=NONE

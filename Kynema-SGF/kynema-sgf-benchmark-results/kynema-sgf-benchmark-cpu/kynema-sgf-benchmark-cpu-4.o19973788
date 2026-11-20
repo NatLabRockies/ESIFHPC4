@@ -1,0 +1,876 @@
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "cray-python"
+   Try: "module spider cray-python" to see how to load the module(s).
+
+
+
++ module load cpe-stack
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_sh_dbg=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod's output
+Shell debugging restarted
++ unset __lmod_sh_dbg
++ return 0
++ module load PrgEnv-intel
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_sh_dbg=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod's output
+Shell debugging restarted
++ unset __lmod_sh_dbg
++ return 0
++ module load craype-x86-spr
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_sh_dbg=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod's output
+Shell debugging restarted
++ unset __lmod_sh_dbg
++ return 0
++ export FI_MR_CACHE_MONITOR=memhooks
++ FI_MR_CACHE_MONITOR=memhooks
++ export FI_CXI_RX_MATCH_MODE=software
++ FI_CXI_RX_MATCH_MODE=software
++ export MPICH_SMP_SINGLE_COPY_MODE=NONE
++ MPICH_SMP_SINGLE_COPY_MODE=NONE
++ export MPICH_OFI_NIC_POLICY=NUMA
++ MPICH_OFI_NIC_POLICY=NUMA
++ FIXED_ARGS='nodal_proj.bottom_atol=-1 mac_proj.bottom_atol=-1 time.fixed_dt=0.5 time.max_step=20 ABL.stats_output_frequency=-1 time.plot_interval=-1 time.checkpoint_interval=-1 amrex.abort_on_out_of_gpu_memory=1 amrex.the_arena_is_managed=0 amr.blocking_factor=16 amr.max_grid_size=128 amrex.use_profiler_syncs=0 amrex.async_out=0 amr.max_level=1 tagging.labels=g1 tagging.g1.type=GeometryRefinement tagging.g1.shapes=b1 tagging.g1.b1.type=box tagging.g1.b1.origin=0.0 0.0 384.0 tagging.g1.b1.xaxis=1.0e8 0.0 384.0 tagging.g1.b1.yaxis=0.0 1.0e8 384.0 tagging.g1.b1.zaxis=0.0 0.0 256.0'
++ TOTAL_RANKS=288
++ cd kynema-sgf-build/test/test_files/abl_godunov
++ srun -N4 -n288 --ntasks-per-node=72 --distribution=block:block --cpu_bind=rank_ldom ../../../kynema_sgf abl_godunov.inp nodal_proj.bottom_atol=-1 mac_proj.bottom_atol=-1 time.fixed_dt=0.5 time.max_step=20 ABL.stats_output_frequency=-1 time.plot_interval=-1 time.checkpoint_interval=-1 amrex.abort_on_out_of_gpu_memory=1 amrex.the_arena_is_managed=0 amr.blocking_factor=16 amr.max_grid_size=128 amrex.use_profiler_syncs=0 amrex.async_out=0 amr.max_level=1 tagging.labels=g1 tagging.g1.type=GeometryRefinement tagging.g1.shapes=b1 tagging.g1.b1.type=box tagging.g1.b1.origin=0.0 0.0 384.0 tagging.g1.b1.xaxis=1.0e8 0.0 384.0 tagging.g1.b1.yaxis=0.0 1.0e8 384.0 tagging.g1.b1.zaxis=0.0 0.0 256.0 amr.n_cell=512 512 64 geometry.prob_hi=8192.0 8192.0 1024.0
+==============================================================================
+                Kynema-SGF (https://github.com/kynema/kynema-sgf)
+
+  Kynema-SGF version :: cc11c49-CLEAN
+  Kynema-SGF Git SHA :: cc11c499895d77efe1956bb7ba6dd5177022f236-CLEAN
+  AMReX version    :: 26.11
+
+  Exec. time       :: Tue Nov 17 08:06:47 2026
+  Build time       :: Nov 17 2026 07:35:31
+  C++ compiler     :: IntelLLVM 2025.3.2
+
+  MPI              :: ON    (Num. ranks = 288)
+  GPU              :: OFF
+  OpenMP           :: OFF
+
+  No additional third-party libraries enabled
+
+           This software is released under the BSD 3-clause license.           
+ See https://github.com/Kynema/kynema-sgf/blob/development/LICENSE for details. 
+------------------------------------------------------------------------------
+
+Initializing AMReX (26.11)...
+MPI initialized with 288 MPI processes
+MPI initialized with thread support level 0
+AMReX (26.11) initialized
+Initializing Kynema-SGF ...
+Initializing boundary conditions for velocity_mueff
+Initializing boundary conditions for velocity
+Initializing boundary conditions for density
+Initializing boundary conditions for p
+Initializing boundary conditions for velocity_src_term
+Initializing boundary conditions for gp
+Creating PDESystem instance: ICNS-Godunov
+Creating TransportModel instance: ConstTransport
+ABLWallFunction: log_law_height not specified for ABL physics. Assuming log_law_height = first cell height
+ABLWallFunction: Neither surface_temp_flux nor surface_temp_rate specified for ABL physics. Assuming Neutral Stratification
+Initializing boundary conditions for temperature_mueff
+Initializing boundary conditions for temperature
+Initializing boundary conditions for temperature_src_term
+Creating PDESystem instance: Temperature-Godunov
+Creating ABLStatsBase instance: precursor
+Creating Physics instance: ABL
+Initializing boundary conditions for mu_turb
+Creating TurbulenceModel instance: Smagorinsky-ConstTransport
+Creating RefinementCriteria instance: GeometryRefinement
+Creating GeometryType instance: box
+Initializing I/O manager
+Creating mesh... done
+Grid summary: 
+  Level 0   512 grids  16777216 cells  100 % of domain
+            smallest grid: 32 x 32 x 32  biggest grid: 32 x 32 x 32
+  Level 1   512 grids  67108864 cells  50 % of domain
+            smallest grid: 64 x 64 x 32  biggest grid: 64 x 64 x 32
+  Total     1024 grids  83886080 cells
+
+Cell aspect ratio (dy/dx  dx/dz  dy/dz): 1  1  1
+
+WARNING: legacy input argument stats_output_frequency was specified; please update to stats_output_interval.
+Shear Stress model: moeng
+Heat Flux model: moeng
+Creating MomentumSource instance: BoussinesqBuoyancy
+Creating MomentumSource instance: CoriolisForcing
+Creating MomentumSource instance: ABLForcing
+Begin initial projection
+  Nodal_projection               0       9.739619263e-17       9.739619263e-17
+Completed initial projection
+
+Begin initial pressure iterations. Num. iters = 3
+dt: 0.5
+CFL: 0.383023 (conv: 0.383023 diff: 0 src: 0 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                11        0.004481194688       2.304883037e-14
+  temperature_solve              1        1.22739948e-07       6.212985681e-11
+  velocity_solve                 3        0.008781862088       5.826450433e-13
+  Nodal_projection              10        0.008941405766       2.453764324e-14
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       1.936296041e-06       1.737050487e-15
+  temperature_solve              1        1.22739948e-07       6.212985681e-11
+  velocity_solve                 3        0.008781862194       5.817568649e-13
+  Nodal_projection               5       1.164440671e-07       1.020658022e-14
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       1.928574559e-06       1.744528518e-15
+  temperature_solve              1        1.22739948e-07       6.212985681e-11
+  velocity_solve                 3        0.008781862192       5.817568649e-13
+  Nodal_projection               4       7.469065693e-08       1.949525379e-14
+Completed initial pressure iterations
+
+Initialization successful. Time elapsed = 7.654429635
+
+Begin simulation: 
+  Run until 22000 sec. or 20 timesteps
+  Fixed timestepping with dt = 0.5; max. CFL from inputs = 0.95
+
+==============================================================================
+Step: 1 dt: 0.5 Time: 0 to 0.5
+CFL: 0.383095 (conv: 0.383023 diff: 0 src: 0.00526082 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       1.928749862e-06       1.744120671e-15
+  temperature_solve              1        1.22739948e-07       6.212985681e-11
+  velocity_solve                 3        0.008781862192       5.826450433e-13
+  Nodal_projection              10        0.008941406018       2.453510892e-14
+
+WallClockTime in Evolve() for step 1: Pre: 0.00647 Solve: 2.568 Post: 0.0508 Total: 2.625
+Cumulative WallClockTime in Evolve(): 2.625
+
+==============================================================================
+Step: 2 dt: 0.5 Time: 0.5 to 1
+CFL: 0.383118 (conv: 0.383046 diff: 0 src: 0.00526079 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       2.409633347e-06       1.875085094e-15
+  temperature_solve              1       1.371402618e-07       6.940581443e-11
+  velocity_solve                 3        0.008727558081       5.790923296e-13
+  Nodal_projection              10        0.008941405602        2.45359424e-14
+
+WallClockTime in Evolve() for step 2: Pre: 0.00612 Solve: 2.568 Post: 0.0488 Total: 2.623
+Cumulative WallClockTime in Evolve(): 5.248
+
+==============================================================================
+Step: 3 dt: 0.5 Time: 1 to 1.5
+CFL: 0.383088 (conv: 0.383055 diff: 0 src: 0.00357758 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       2.868718253e-06       2.029832719e-15
+  temperature_solve              1       1.515235226e-07       7.673861546e-11
+  velocity_solve                 3        0.008673173694        5.75539616e-13
+  Nodal_projection              10        0.008941405166       2.458928514e-14
+
+WallClockTime in Evolve() for step 3: Pre: 0.0061 Solve: 2.567 Post: 0.0484 Total: 2.622
+Cumulative WallClockTime in Evolve(): 7.87
+
+==============================================================================
+Step: 4 dt: 0.5 Time: 1.5 to 2
+CFL: 0.383097 (conv: 0.383063 diff: 0 src: 0.00357607 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       3.698595217e-06       2.179921452e-15
+  temperature_solve              1       1.658814881e-07       8.401457308e-11
+  velocity_solve                 3        0.008619019489       5.728750807e-13
+  Nodal_projection              10         0.00894140475       2.453331998e-14
+
+WallClockTime in Evolve() for step 4: Pre: 0.00615 Solve: 2.568 Post: 0.049 Total: 2.623
+Cumulative WallClockTime in Evolve(): 10.49
+
+==============================================================================
+Step: 5 dt: 0.5 Time: 2 to 2.5
+CFL: 0.383105 (conv: 0.383072 diff: 0 src: 0.0035745 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       4.829846464e-06       2.329634525e-15
+  temperature_solve              1       1.802065412e-07       9.123368727e-11
+  velocity_solve                 3        0.008565099129        5.69322367e-13
+  Nodal_projection              10        0.008941404354       2.453462103e-14
+
+WallClockTime in Evolve() for step 5: Pre: 0.00598 Solve: 2.567 Post: 0.0491 Total: 2.622
+Cumulative WallClockTime in Evolve(): 13.11
+
+==============================================================================
+Step: 6 dt: 0.5 Time: 2.5 to 3
+CFL: 0.383114 (conv: 0.38308 diff: 0 src: 0.00357335 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       8.955262369e-06         2.4767921e-15
+  temperature_solve              1       1.944917472e-07       9.845280147e-11
+  velocity_solve                 3        0.008511416218       5.666578318e-13
+  Nodal_projection              10        0.008941403976       2.453548161e-14
+
+WallClockTime in Evolve() for step 6: Pre: 0.00635 Solve: 2.564 Post: 0.0488 Total: 2.619
+Cumulative WallClockTime in Evolve(): 15.73
+
+==============================================================================
+Step: 7 dt: 0.5 Time: 3 to 3.5
+CFL: 0.383122 (conv: 0.383089 diff: 0 src: 0.003572 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       8.490776991e-06       2.622729101e-15
+  temperature_solve              1       2.087865028e-07       1.057287591e-10
+  velocity_solve                 3        0.008457974256       5.631051181e-13
+  Nodal_projection              10        0.008941403618       2.453203249e-14
+
+WallClockTime in Evolve() for step 7: Pre: 0.00611 Solve: 2.564 Post: 0.0483 Total: 2.619
+Cumulative WallClockTime in Evolve(): 18.35
+
+==============================================================================
+Step: 8 dt: 0.5 Time: 3.5 to 4
+CFL: 0.383131 (conv: 0.383097 diff: 0 src: 0.00357052 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       7.369508769e-06       2.772808093e-15
+  temperature_solve              1       2.230559062e-07       1.129478733e-10
+  velocity_solve                 3        0.008404793091       5.595524044e-13
+  Nodal_projection              10         0.00894140328       2.453332676e-14
+
+WallClockTime in Evolve() for step 8: Pre: 0.00631 Solve: 2.564 Post: 0.0485 Total: 2.619
+Cumulative WallClockTime in Evolve(): 20.97
+
+==============================================================================
+Step: 9 dt: 0.5 Time: 4 to 4.5
+CFL: 0.383139 (conv: 0.383106 diff: 0 src: 0.0035694 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       8.286647059e-06       2.929061107e-15
+  temperature_solve              1       2.372844392e-07       1.201669875e-10
+  velocity_solve                 3        0.008351879097       5.559996907e-13
+  Nodal_projection              10        0.008941402961       2.453462103e-14
+
+WallClockTime in Evolve() for step 9: Pre: 0.00613 Solve: 2.566 Post: 0.0487 Total: 2.62
+Cumulative WallClockTime in Evolve(): 23.59
+
+==============================================================================
+Step: 10 dt: 0.5 Time: 4.5 to 5
+CFL: 0.383148 (conv: 0.383114 diff: 0 src: 0.00356805 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       9.348199202e-06       3.082105561e-15
+  temperature_solve              1       2.514647122e-07       1.273292582e-10
+  velocity_solve                 3        0.008299231782       5.533351555e-13
+  Nodal_projection              10        0.008941402662       2.453375366e-14
+
+WallClockTime in Evolve() for step 10: Pre: 0.00604 Solve: 2.564 Post: 0.0483 Total: 2.618
+Cumulative WallClockTime in Evolve(): 26.21
+
+==============================================================================
+Step: 11 dt: 0.5 Time: 5 to 5.5
+CFL: 0.383156 (conv: 0.383123 diff: 0 src: 0.00356671 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       1.008811914e-05       3.228583816e-15
+  temperature_solve              1        2.65589108e-07        1.34491529e-10
+  velocity_solve                 3        0.008246904015       5.497824418e-13
+  Nodal_projection              10        0.008941402381        2.45342009e-14
+
+WallClockTime in Evolve() for step 11: Pre: 0.0062 Solve: 2.565 Post: 0.0479 Total: 2.619
+Cumulative WallClockTime in Evolve(): 28.83
+
+==============================================================================
+Step: 12 dt: 0.5 Time: 5.5 to 6
+CFL: 0.383164 (conv: 0.383131 diff: 0 src: 0.00356555 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       1.097285549e-05       3.389993567e-15
+  temperature_solve              1        2.79681899e-07       1.415969564e-10
+  velocity_solve                 3        0.008194824352       5.471179065e-13
+  Nodal_projection              10         0.00894140212        2.45328863e-14
+
+WallClockTime in Evolve() for step 12: Pre: 0.00618 Solve: 2.563 Post: 0.0478 Total: 2.617
+Cumulative WallClockTime in Evolve(): 31.45
+
+==============================================================================
+Step: 13 dt: 0.5 Time: 6 to 6.5
+CFL: 0.383173 (conv: 0.38314 diff: 0 src: 0.00356423 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       1.185080387e-05       3.554217162e-15
+  temperature_solve              1       2.937974273e-07       1.487592272e-10
+  velocity_solve                 3        0.008142995881       5.426770144e-13
+  Nodal_projection              10        0.008941401878       2.453376722e-14
+
+WallClockTime in Evolve() for step 13: Pre: 0.00612 Solve: 2.561 Post: 0.049 Total: 2.616
+Cumulative WallClockTime in Evolve(): 34.06
+
+==============================================================================
+Step: 14 dt: 0.5 Time: 6.5 to 7
+CFL: 0.383181 (conv: 0.383148 diff: 0 src: 0.00356302 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       1.933949881e-05        3.72690431e-15
+  temperature_solve              1       3.078677651e-07       1.558646545e-10
+  velocity_solve                 3        0.008091421593       5.400124792e-13
+  Nodal_projection              10        0.008941401656       2.453463458e-14
+
+WallClockTime in Evolve() for step 14: Pre: 0.00619 Solve: 2.563 Post: 0.0481 Total: 2.617
+Cumulative WallClockTime in Evolve(): 36.68
+
+==============================================================================
+Step: 15 dt: 0.5 Time: 7 to 7.5
+CFL: 0.38319 (conv: 0.383157 diff: 0 src: 0.00356182 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       1.356894248e-05       3.887596625e-15
+  temperature_solve              1       3.218745519e-07       1.629132385e-10
+  velocity_solve                 3        0.008040104364       5.364597655e-13
+  Nodal_projection              10        0.008941401453       2.458753687e-14
+
+WallClockTime in Evolve() for step 15: Pre: 0.00605 Solve: 2.567 Post: 0.0488 Total: 2.622
+Cumulative WallClockTime in Evolve(): 39.3
+
+==============================================================================
+Step: 16 dt: 0.5 Time: 7.5 to 8
+CFL: 0.383198 (conv: 0.383165 diff: 0 src: 0.00356064 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       1.441211742e-05       4.039054586e-15
+  temperature_solve              1       3.358103413e-07       1.699618224e-10
+  velocity_solve                 3        0.007989061073       5.329070518e-13
+  Nodal_projection              10        0.008941401269       2.453550194e-14
+
+WallClockTime in Evolve() for step 16: Pre: 0.00606 Solve: 2.565 Post: 0.0476 Total: 2.619
+Cumulative WallClockTime in Evolve(): 41.92
+
+==============================================================================
+Step: 17 dt: 0.5 Time: 8 to 8.5
+CFL: 0.383207 (conv: 0.383174 diff: 0 src: 0.00355942 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       1.524932053e-05       4.199426722e-15
+  temperature_solve              1       3.496929821e-07       1.770104063e-10
+  velocity_solve                 3        0.007938288725       5.293543381e-13
+  Nodal_projection              10        0.008941401104       2.458927837e-14
+
+WallClockTime in Evolve() for step 17: Pre: 0.00608 Solve: 2.562 Post: 0.0485 Total: 2.617
+Cumulative WallClockTime in Evolve(): 44.54
+
+==============================================================================
+Step: 18 dt: 0.5 Time: 8.5 to 9
+CFL: 0.383215 (conv: 0.383182 diff: 0 src: 0.00355817 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       1.607157258e-05       4.361819879e-15
+  temperature_solve              1       3.635639132e-07       1.840589903e-10
+  velocity_solve                 3        0.007887779374       5.266898029e-13
+  Nodal_projection              10        0.008941400958       2.453419412e-14
+
+WallClockTime in Evolve() for step 18: Pre: 0.00601 Solve: 2.565 Post: 0.0482 Total: 2.619
+Cumulative WallClockTime in Evolve(): 47.16
+
+==============================================================================
+Step: 19 dt: 0.5 Time: 9 to 9.5
+CFL: 0.383224 (conv: 0.383191 diff: 0 src: 0.00355715 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8       1.696535761e-05       4.530245604e-15
+  temperature_solve              1       3.774097763e-07       1.910507308e-10
+  velocity_solve                 3        0.007837535557       5.231370892e-13
+  Nodal_projection              10        0.008941400831       2.453551549e-14
+
+WallClockTime in Evolve() for step 19: Pre: 0.00612 Solve: 2.564 Post: 0.0477 Total: 2.618
+Cumulative WallClockTime in Evolve(): 49.77
+
+==============================================================================
+Step: 20 dt: 0.5 Time: 9.5 to 10
+CFL: 0.383232 (conv: 0.383199 diff: 0 src: 0.00355593 )
+
+Godunov:
+  System                     Iters      Initial residual        Final residual
+  ----------------------------------------------------------------------------
+  MAC_projection                 8        1.76848783e-05       4.695420417e-15
+  temperature_solve              1       3.912145417e-07       1.980424713e-10
+  velocity_solve                 3        0.007787559702       5.195843755e-13
+  Nodal_projection              10        0.008941400723       2.453331998e-14
+
+WallClockTime in Evolve() for step 20: Pre: 0.00601 Solve: 2.563 Post: 0.0484 Total: 2.618
+Cumulative WallClockTime in Evolve(): 52.39
+
+==============================================================================
+
+Time spent in InitData():    7.656318923
+Time spent in Evolve():      52.39051271
+
+
+TinyProfiler total time across processes [min...avg...max]: 60.04 ... 60.04 ... 60.05
+
+-------------------------------------------------------------------------------------------------------------------
+Name                                                                NCalls  Excl. Min  Excl. Avg  Excl. Max   Max %
+-------------------------------------------------------------------------------------------------------------------
+FillBoundary_finish()                                                28781      1.557      6.257      15.44  25.71%
+FabArray::ParallelCopy_finish()                                      12008      1.682      5.488      13.81  22.99%
+MLNodeLaplacian::Fsmooth()                                            5256      3.841      5.548      6.357  10.59%
+MLABecLaplacian::Fsmooth()                                            4416      2.221      4.543      5.886   9.80%
+kynema-sgf::ICNS-Godunov::compute_advection_term                        23        3.2      4.934        5.8   9.66%
+amrex::Copy()                                                         3954      1.888      3.394      4.178   6.96%
+FillBoundary_nowait()                                                28781      1.126      2.336      3.325   5.54%
+MLABecLaplacian::Fapply()                                             1150       1.35        2.5      2.953   4.92%
+kynema-sgf::ICNS-Godunov::pre_advection_actions                         23      1.583      2.431      2.852   4.75%
+MLTensorOp::apply()                                                    828      1.435      2.156       2.67   4.45%
+FabArray::setVal()                                                    9848       1.26      2.065      2.565   4.27%
+FabArray::Xpay()                                                      4894     0.8772      1.798      2.341   3.90%
+amrex::Add()                                                          2727     0.8031      1.794      2.275   3.79%
+kynema-sgf::Temperature-Godunov::compute_advection_term                 23     0.9706      1.559      1.826   3.04%
+MLMG::ResNormInf()                                                     932     0.1983     0.6488      1.703   2.84%
+MLPoisson::Fsmooth()                                                  8976     0.5845     0.9531      1.228   2.05%
+amrex::average_down                                                   2775     0.5278     0.9254      1.144   1.90%
+MLNodeLaplacian::Fapply()                                             2115     0.3994     0.8548      1.133   1.89%
+MLNodeLaplacian::reflux()                                              331     0.3719     0.6401     0.7541   1.26%
+kynema-sgf::ICNS-Godunov::compute_source_term                           46     0.3585      0.588     0.7376   1.23%
+MLABecLaplacian::FFlux()                                             25514     0.3326     0.5244     0.6507   1.08%
+MLPoisson::Fapply()                                                   1800     0.1922     0.4789     0.6294   1.05%
+MLCellLinOp::applyBC()                                               16965     0.2421     0.4352     0.6287   1.05%
+FabArray::ParallelCopy_nowait()                                      12008     0.3674      0.483     0.6281   1.05%
+MLMG::interpCorrection_1                                               498     0.2095     0.4534     0.6197   1.03%
+average_down_faces                                                    1725     0.2369     0.4608     0.6081   1.01%
+kynema-sgf::PlaneAveraging::compute_averages                           105     0.5226     0.5507     0.5892   0.98%
+kynema-sgf::diffusion::average_velocity_eta_to_faces                   230     0.1962     0.3282     0.3968   0.66%
+MLCellLinOp::reflux()                                                  577     0.1789     0.3001     0.3572   0.59%
+MultiFab::Multiply()                                                   414     0.1235     0.2993     0.3548   0.59%
+MLNodeLinOp::applyBC()                                                6933      0.132     0.2353     0.3037   0.51%
+MLMG::oneIter()                                                        498     0.1093     0.1685     0.2932   0.49%
+MLMG::computeResidual()                                                498    0.07969     0.2107     0.2742   0.46%
+kynema-sgf::ICNS-Godunov::compute_predictor_rhs                         23     0.1435      0.217     0.2562   0.43%
+MLLinOp::makeSubCommunicator()                                          27    0.01349    0.09165     0.2517   0.42%
+MLCellLinOp::updateSolBC()                                             417     0.1127     0.1985     0.2338   0.39%
+FabArray::norminf()                                                    476    0.05945     0.1422     0.2231   0.37%
+MLMG::MLResNormInf()                                                   341    0.02326    0.06392     0.1997   0.33%
+FabArray::mult()                                                       322    0.04182     0.1328      0.184   0.31%
+NodalProjector::project                                                 24    0.08981     0.1394     0.1835   0.31%
+kynema-sgf::SecondMomentAveraging::compute_average                      60     0.1081     0.1368      0.167   0.28%
+FabArray::Saxpy()                                                      230    0.07629     0.1321     0.1644   0.27%
+MLMG::prepareForSolve()                                                 93     0.0905     0.1201     0.1575   0.26%
+MLPoisson::FFlux()                                                   25685    0.05646     0.1138     0.1535   0.26%
+kynema-sgf::ICNS::multiply_rho                                          46    0.05308     0.1155     0.1479   0.25%
+kynema-sgf::incflo::compute_dt                                          21      0.126     0.1315     0.1423   0.24%
+MLCellLinOp::updateCorBC()                                             279    0.06917     0.1223     0.1412   0.24%
+MLMG::solve()                                                           93    0.01049    0.04761     0.1367   0.23%
+kynema-sgf::ICNS-Godunov::linsys_solve                                  23    0.04452     0.0998     0.1301   0.22%
+kynema-sgf::VelPlaneAveraging::compute_hvelmag_averages                 42     0.1165     0.1175     0.1188   0.20%
+kynema-sgf::incflo::ApplyProjection                                     24     0.0339    0.08682     0.1143   0.19%
+kynema-sgf::ThirdMomentAveraging::compute_average                       20     0.1049     0.1063     0.1073   0.18%
+kynema-sgf::Temperature-Godunov::compute_predictor_rhs                  23      0.056    0.08684     0.1039   0.17%
+kynema-sgf::fvm::gradient                                               20    0.03744    0.06065     0.1038   0.17%
+MultiFab::Divide()                                                     138    0.04913    0.08252    0.09955   0.17%
+MLNodeLaplacian::compRHS()                                              24    0.04255    0.06952    0.09299   0.15%
+MLMG::addInterpCorrection()                                           2490    0.02578    0.05577    0.07543   0.13%
+CellConservativeLinear::interp()                                        51          0    0.03474    0.07364   0.12%
+FabArray::sum()                                                        256    0.01015    0.03484    0.07347   0.12%
+FabArrayBase::getCPC()                                               12282    0.04922    0.06177     0.0718   0.12%
+PhysBCFunct::()                                                       1145    0.03348    0.05998    0.07095   0.12%
+kynema-sgf::fvm::strainrate                                             23    0.03286    0.05396    0.06735   0.11%
+MLCellLinOp::compFlux()                                                 46     0.0288    0.04877    0.05936   0.10%
+FabArray::plus()                                                       501    0.03543     0.0453    0.05384   0.09%
+kynema-sgf::ICNS::advection_mac_project                                 23    0.02422    0.04388    0.05326   0.09%
+MLCellLinOp::prepareForSolve()                                         116    0.01665    0.03491    0.05191   0.09%
+FabArray::LinComb()                                                     46    0.02051     0.0427    0.04986   0.08%
+kynema-sgf::Temperature-Godunov::linsys_solve                           23     0.0185      0.037    0.04853   0.08%
+kynema-sgf::ABLStats::compute_zi                                        20   0.002756   0.007832    0.04681   0.08%
+MLNodeLaplacian::interpolation()                                      1095    0.02177    0.03889    0.04611   0.08%
+MLMG::computeResWithCrseSolFineCor()                                   498    0.01267    0.03458    0.04434   0.07%
+MLMG::computeMLResidual()                                              341    0.01846     0.0322    0.04362   0.07%
+FabArray::norminf(mask)                                                298    0.01074    0.02957    0.04268   0.07%
+MLNodeLaplacian::restriction()                                        1095    0.01444    0.02555    0.03126   0.05%
+kynema-sgf::Smagorinsky-ConstTransport::update_turbulent_viscosity      23   0.009637    0.02152    0.02821   0.05%
+MLNodeLinOp::buildMasks()                                               24    0.01327    0.02022    0.02623   0.04%
+MLMG::MLRhsNormInf()                                                    93   0.009089    0.01499    0.01849   0.03%
+kynema-sgf::main()                                                       1   0.003624    0.01252    0.01661   0.03%
+MLMG::apply()                                                           69   0.006783    0.01175     0.0154   0.03%
+FabArray::FillBoundary()                                             16153     0.0081    0.01136    0.01484   0.02%
+kynema-sgf::incflo::MakeNewLevelFromScratch()                            2   0.001695   0.006989    0.01429   0.02%
+MLCGSolver::bicgstab                                                     1          0  3.538e-05    0.01019   0.02%
+FabArray::ParallelCopy()                                              7700   0.005987   0.007845    0.01012   0.02%
+kynema-sgf::setup_operator                                             115   0.004571   0.006659   0.009523   0.02%
+AmrMesh::MakeNewGrids()                                                  2   0.004083   0.006084   0.008687   0.01%
+MLCellLinOp::smooth()                                                 3348    0.00502   0.006751   0.008558   0.01%
+FillPatchTwoLevels (Array<MF*>)                                         44   0.002599   0.004353   0.008507   0.01%
+MLABecLaplacian::averageDownCoeffs()                                   115   0.003802   0.005366   0.007602   0.01%
+kynema-sgf::incflo::init_kynema_sgf_modules                              1    0.00359    0.00499   0.006514   0.01%
+MLNodeLaplacian::define()                                               24   0.002823   0.004848   0.006196   0.01%
+MLMG::actualBottomSolve()                                              498  0.0002456  0.0003517   0.005573   0.01%
+FillPatchTwoLevels                                                     147  0.0009992   0.002153   0.005416   0.01%
+MLCellLinOp::apply()                                                  2950   0.002518   0.003653   0.005148   0.01%
+MLMG::mgVcycle()                                                      1494    0.00279   0.003758   0.005123   0.01%
+FAbArray::OverrideSync()                                              5694    0.00235   0.003608   0.004788   0.01%
+MLCellLinOp::solutionResidual()                                        994   0.001854   0.003238   0.004469   0.01%
+MLMG::mgVcycle_bottom                                                 1494   0.001892   0.003293   0.004161   0.01%
+OverrideSync_nowait()                                                 5694   0.001947   0.003016    0.00409   0.01%
+MLLinOp::defineCoarseMGLevels()                                         29   0.002207   0.002987   0.003903   0.01%
+kynema-sgf::incflo::ApplyPredictor                                      23   0.002078   0.002734   0.003751   0.01%
+kynema-sgf::FieldRepo::make_new_level_from_scratch                       2   0.000669   0.002062   0.003681   0.01%
+FabArray::FillBoundaryAndSync()                                       6933   0.002094   0.002787    0.00357   0.01%
+kynema-sgf::incflo::init_mesh                                            1  0.0002964   0.001373    0.00344   0.01%
+MLCellLinOp::correctionResidual()                                     1953   0.001648   0.002461   0.003345   0.01%
+MLMG::miniCycle()                                                      996    0.00117   0.002302   0.003169   0.01%
+MLMG::mgVcycle_down::0                                                 498  0.0009609   0.001676   0.003082   0.01%
+FillBoundaryAndSync_nowait()                                          6933   0.001557   0.002156   0.003022   0.01%
+MLMG::computeResWithCrseCorFineCor()                                   498   0.001111   0.002259   0.002988   0.00%
+FillBoundaryAndSync_finish()                                          6933   0.001267   0.001656   0.002283   0.00%
+MLLinOp::defineGrids()                                                  29  0.0004797   0.001121   0.002103   0.00%
+FillPatchSingleLevel                                                   969  0.0007411   0.001289   0.002003   0.00%
+kynema-sgf::ABLStats::post_advance_work                                 20  0.0001858  0.0009379    0.00198   0.00%
+MLMG:computeResOfCorrection()                                         2490   0.001117   0.001572   0.001949   0.00%
+MLABecLaplacian::define()                                                4   0.000367  0.0008413   0.001832   0.00%
+MultiFab::Copy()                                                       450  0.0008819   0.001193   0.001556   0.00%
+OverrideSync_finish()                                                 5694    0.00111   0.001288   0.001552   0.00%
+MLMG::getFluxes()                                                       46  0.0002507  0.0007438     0.0015   0.00%
+kynema-sgf::Field::fillpatch                                           147  0.0007151  0.0009847   0.001461   0.00%
+kynema-sgf::Field::fillpatch array                                      44  0.0003322  0.0006944   0.001217   0.00%
+kynema-sgf::ICNS-Godunov::compute_diffusion_term                        46  0.0007526   0.000895   0.001053   0.00%
+MLABecLaplacian::prepareForSolve()                                     115  0.0003579  0.0006704   0.001017   0.00%
+kynema-sgf::FPlaneAveraging::operator                                  105  0.0001044  0.0002041  0.0009889   0.00%
+MLMG::mgVcycle_down::1                                                 498  0.0005208  0.0007599  0.0009582   0.00%
+kynema-sgf::Temperature-Godunov::compute_diffusion_term                 23  0.0004163  0.0006423  0.0009324   0.00%
+MLMG::mgVcycle_down::2                                                 498  0.0004904  0.0006672  0.0008823   0.00%
+kynema-sgf::incflo::prepare_for_time_integration                         1  2.131e-05   0.000286  0.0008659   0.00%
+kynema-sgf::incflo::Evolve()                                             1  0.0003539   0.000414  0.0008411   0.00%
+MLLinOp::define()                                                       29   4.53e-05  0.0002884  0.0007948   0.00%
+kynema-sgf::VelPlaneAveraging::operator                                 42  5.758e-05  0.0001748  0.0007352   0.00%
+kynema-sgf::incflo::InitialProjection()                                  1   2.08e-05  0.0001094  0.0007277   0.00%
+kynema-sgf::incflo::advance                                             20  0.0004111  0.0005351  0.0006701   0.00%
+kynema-sgf::set_acoeffs                                                115  0.0002486  0.0004202  0.0005915   0.00%
+MLMG::mgVcycle_down::4                                                 498  0.0003041   0.000382  0.0005545   0.00%
+kynema-sgf::Field::setVal 1                                             94  0.0002738  0.0004046  0.0005208   0.00%
+MLMG::mgVcycle_down::3                                                 498  0.0002689  0.0003214  0.0004855   0.00%
+MLMG::mgVcycle_up::0                                                   498  0.0002332  0.0003639  0.0004499   0.00%
+kynema-sgf::Field::advance_states                                       81  0.0002377  0.0003216  0.0004493   0.00%
+kynema-sgf::Temperature-Godunov::compute_source_term                    46  0.0002909  0.0003609  0.0004458   0.00%
+MLMG::mgVcycle_up::4                                                   498  0.0002517  0.0003104   0.000444   0.00%
+MultiFab::Add()                                                         92  0.0001237  0.0002918  0.0003866   0.00%
+MLMG::mgVcycle_up::2                                                   498  0.0002347  0.0002754  0.0003415   0.00%
+MLMG::mgVcycle_up::1                                                   498  0.0002127  0.0002468  0.0002871   0.00%
+kynema-sgf::incflo::post_advance_work                                   20  8.814e-05  0.0001167   0.000284   0.00%
+MLMG::mgVcycle_up::3                                                   498  0.0001632  0.0001904  0.0002677   0.00%
+amrex::average_down_w_geom                                              72  0.0001421  0.0001903  0.0002576   0.00%
+FillPatchInterp(Fab)                                                   147  7.682e-05  0.0001494  0.0002535   0.00%
+kynema-sgf::Temperature-Godunov::compute_mueff                          23  7.817e-05  0.0001274  0.0001787   0.00%
+kynema-sgf::ICNS-Godunov::compute_mueff                                 23  6.893e-05  0.0001031   0.000148   0.00%
+NodalProjector::computeRHS                                              24  5.059e-05  7.496e-05  0.0001436   0.00%
+FabArray::ParallelCopyToGhost()                                        132  3.859e-05  5.293e-05  9.639e-05   0.00%
+kynema-sgf::ABLStats::calc_averages                                     21  3.705e-05  4.888e-05  7.867e-05   0.00%
+kynema-sgf::incflo::InitialIterations()                                  1  3.124e-05  4.677e-05  7.202e-05   0.00%
+kynema-sgf::incflo::InitData()                                           1  2.843e-06  5.228e-06  1.567e-05   0.00%
+MLPoisson::define()                                                      1  2.203e-06    3.8e-06  7.551e-06   0.00%
+Other                                                                46006    0.07331     0.1506     0.2673   0.45%
+-------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------
+Name                                                                NCalls  Incl. Min  Incl. Avg  Incl. Max   Max %
+-------------------------------------------------------------------------------------------------------------------
+kynema-sgf::main()                                                       1      60.04      60.04      60.05 100.00%
+kynema-sgf::incflo::ApplyPredictor                                      23      57.91      57.95      57.97  96.53%
+kynema-sgf::incflo::Evolve()                                             1      52.39      52.39       52.4  87.26%
+kynema-sgf::incflo::advance                                             20      51.25      51.28      51.31  85.44%
+MLMG::solve()                                                           93      37.48      37.69      38.07  63.39%
+MLMG::oneIter()                                                        498      29.22      29.75      29.91  49.80%
+MLMG::mgVcycle()                                                      1494      16.94       17.5      18.32  30.51%
+kynema-sgf::ICNS-Godunov::linsys_solve                                  23      16.84      16.89      16.98  28.27%
+FillBoundary_finish()                                                28781      1.557      6.257      15.44  25.71%
+kynema-sgf::incflo::ApplyProjection                                     24      14.97         15      15.02  25.00%
+NodalProjector::project                                                 24      14.12      14.15      14.17  23.59%
+FabArray::ParallelCopy_finish()                                      12008      1.682      5.488      13.81  22.99%
+MLMG::miniCycle()                                                      996      12.14      12.71      13.53  22.53%
+MLMG::mgVcycle_bottom                                                 1494      12.13       12.7      13.53  22.53%
+FabArray::ParallelCopy()                                              7700      2.013      5.422      13.21  22.00%
+FabArray::FillBoundary()                                             16153      3.305      6.225      11.72  19.51%
+MLCellLinOp::applyBC()                                               16965      3.064      5.502      10.28  17.11%
+kynema-sgf::ICNS-Godunov::pre_advection_actions                         23      9.357       9.36      9.365  15.59%
+MLCellLinOp::smooth()                                                 3348      7.953      8.404      9.094  15.14%
+kynema-sgf::incflo::InitData()                                           1      7.628      7.637      7.652  12.74%
+kynema-sgf::ICNS::advection_mac_project                                 23      6.369      6.792      7.639  12.72%
+kynema-sgf::incflo::prepare_for_time_integration                         1      7.374      7.382      7.386  12.30%
+MLNodeLaplacian::Fsmooth()                                            5256      5.711      6.782       7.33  12.21%
+kynema-sgf::incflo::InitialIterations()                                  1      7.255       7.26      7.264  12.10%
+MLMG::computeResWithCrseSolFineCor()                                   498      5.575      5.937      6.841  11.39%
+kynema-sgf::ICNS-Godunov::compute_advection_term                        23      6.515      6.607      6.694  11.15%
+MLABecLaplacian::Fsmooth()                                            4416      2.221      4.543      5.886   9.80%
+MLTensorOp::apply()                                                    828      4.438      5.401      5.884   9.80%
+MLCellLinOp::solutionResidual()                                        994      4.147      4.929      5.548   9.24%
+MLCellLinOp::apply()                                                  2950        4.1      4.567      5.157   8.59%
+MLCellLinOp::correctionResidual()                                     1953      2.587      3.944      4.605   7.67%
+amrex::Copy()                                                         3954      1.888      3.394      4.178   6.96%
+MLMG::apply()                                                           69      2.934      3.358      4.174   6.95%
+kynema-sgf::ICNS-Godunov::compute_diffusion_term                        46      3.385       3.64      4.105   6.84%
+MLCellLinOp::reflux()                                                  577      1.987       2.58      3.892   6.48%
+FAbArray::OverrideSync()                                              5694     0.2125      1.369        3.7   6.16%
+OverrideSync_finish()                                                 5694    0.04534      1.228      3.633   6.05%
+amrex::average_down                                                   2775      1.451      1.959      3.453   5.75%
+MLMG::computeResWithCrseCorFineCor()                                   498      2.173      3.027       3.39   5.65%
+FillBoundary_nowait()                                                28781      1.149      2.365      3.361   5.60%
+MLABecLaplacian::Fapply()                                             1150       1.35        2.5      2.953   4.92%
+MLMG::computeMLResidual()                                              341       2.52       2.69      2.881   4.80%
+MLABecLaplacian::prepareForSolve()                                     115     0.6093      1.398       2.88   4.80%
+MLMG::computeResidual()                                                498      1.318      2.401      2.861   4.76%
+MLABecLaplacian::averageDownCoeffs()                                   115     0.5686      1.334        2.8   4.66%
+FabArray::setVal()                                                    9848       1.26      2.065      2.565   4.27%
+FabArray::Xpay()                                                      4894     0.8772      1.798      2.341   3.90%
+amrex::Add()                                                          2727     0.8031      1.794      2.275   3.79%
+MLNodeLinOp::applyBC()                                                6933      1.081      1.289      2.221   3.70%
+MLMG::mgVcycle_down::0                                                 498      1.823      2.049      2.173   3.62%
+FabArray::FillBoundaryAndSync()                                       6933     0.8182      1.054      2.085   3.47%
+MLMG::prepareForSolve()                                                 93      1.633      1.789      2.082   3.47%
+kynema-sgf::Temperature-Godunov::linsys_solve                           23       1.96      1.993      2.048   3.41%
+kynema-sgf::Temperature-Godunov::compute_advection_term                 23      1.834      1.856      1.879   3.13%
+MLNodeLaplacian::reflux()                                              331      1.121      1.345      1.821   3.03%
+MLMG::ResNormInf()                                                     932     0.3258     0.7787      1.787   2.98%
+FillBoundaryAndSync_finish()                                          6933     0.2107     0.5882      1.681   2.80%
+MLMG::mgVcycle_up::0                                                   498      1.361      1.529      1.619   2.70%
+kynema-sgf::setup_operator                                             115     0.7877      1.317      1.573   2.62%
+MLPoisson::Fsmooth()                                                  8976     0.5845     0.9531      1.228   2.05%
+MLNodeLaplacian::Fapply()                                             2115     0.3994     0.8548      1.133   1.89%
+MLMG::interpCorrection_1                                               498     0.4034     0.8282      1.095   1.82%
+FillPatchSingleLevel                                                   969     0.5835      0.764      1.056   1.76%
+kynema-sgf::incflo::post_advance_work                                   20     0.9574     0.9852      1.021   1.70%
+kynema-sgf::ABLStats::post_advance_work                                 20     0.9573     0.9851      1.021   1.70%
+MLCellLinOp::updateSolBC()                                             417     0.3329     0.5216       1.02   1.70%
+kynema-sgf::ICNS-Godunov::compute_source_term                           46      0.463     0.7673     0.9434   1.57%
+kynema-sgf::Field::fillpatch                                           147     0.6709     0.7752     0.8897   1.48%
+MLCellLinOp::updateCorBC()                                             279     0.2193     0.3831     0.7453   1.24%
+FillPatchTwoLevels                                                     147     0.4026     0.5504     0.7452   1.24%
+kynema-sgf::ABLStats::calc_averages                                     21     0.6528     0.6803     0.7161   1.19%
+FabArray::ParallelCopy_nowait()                                      12008     0.4284     0.5508     0.7057   1.18%
+MultiFab::Copy()                                                       450     0.3878     0.5995      0.694   1.16%
+FillBoundaryAndSync_nowait()                                          6933     0.2441      0.463     0.6653   1.11%
+kynema-sgf::Temperature-Godunov::compute_diffusion_term                 23     0.5135     0.5585     0.6552   1.09%
+MLABecLaplacian::FFlux()                                             25514     0.3326     0.5244     0.6507   1.08%
+MLMG::mgVcycle_down::1                                                 498     0.3181     0.4247     0.6403   1.07%
+average_down_faces                                                    1725     0.2382     0.4638     0.6327   1.05%
+MLPoisson::Fapply()                                                   1800     0.1922     0.4789     0.6294   1.05%
+kynema-sgf::FPlaneAveraging::operator                                  105     0.5332     0.5601     0.5958   0.99%
+kynema-sgf::PlaneAveraging::compute_averages                           105     0.5302     0.5577     0.5935   0.99%
+MLMG:computeResOfCorrection()                                         2490      0.322     0.4785     0.5711   0.95%
+kynema-sgf::VelPlaneAveraging::operator                                 42     0.3894     0.4168     0.4526   0.75%
+MLMG::addInterpCorrection()                                           2490     0.1306     0.3719     0.4218   0.70%
+kynema-sgf::diffusion::average_velocity_eta_to_faces                   230     0.1974     0.3298     0.3987   0.66%
+MLMG::mgVcycle_up::2                                                   498    0.09117     0.3233     0.3966   0.66%
+kynema-sgf::Field::fillpatch array                                      44     0.1868     0.2577      0.382   0.64%
+MultiFab::Multiply()                                                   414     0.1235     0.2993     0.3548   0.59%
+amrex::average_down_w_geom                                              72     0.1842     0.2346     0.3322   0.55%
+MLLinOp::define()                                                       29    0.01856    0.09706     0.2575   0.43%
+MLLinOp::defineGrids()                                                  29    0.01806    0.09677     0.2569   0.43%
+kynema-sgf::ICNS-Godunov::compute_predictor_rhs                         23     0.1435     0.2171     0.2562   0.43%
+MLLinOp::defineCoarseMGLevels()                                         29     0.0172    0.09565     0.2561   0.43%
+MLLinOp::makeSubCommunicator()                                          27    0.01349    0.09165     0.2517   0.42%
+MLMG::MLResNormInf()                                                   341    0.09591     0.1433       0.25   0.42%
+MLMG::mgVcycle_up::1                                                   498     0.2118     0.2409     0.2485   0.41%
+kynema-sgf::Field::advance_states                                       81      0.139     0.2083     0.2414   0.40%
+FabArray::norminf()                                                    476    0.05945     0.1422     0.2231   0.37%
+MLMG::mgVcycle_up::3                                                   498   0.003444    0.04181     0.2204   0.37%
+OverrideSync_nowait()                                                 5694    0.05568     0.1368     0.2189   0.36%
+NodalProjector::computeRHS                                              24     0.1805     0.1962     0.2168   0.36%
+MLNodeLaplacian::compRHS()                                              24     0.1804     0.1961     0.2167   0.36%
+MLNodeLaplacian::define()                                               24    0.03027    0.08577     0.1994   0.33%
+FabArray::mult()                                                       322    0.04182     0.1328      0.184   0.31%
+kynema-sgf::SecondMomentAveraging::compute_average                      60      0.109     0.1376     0.1679   0.28%
+FabArray::Saxpy()                                                      230    0.07629     0.1321     0.1644   0.27%
+MLNodeLaplacian::restriction()                                        1095     0.1204     0.1372     0.1595   0.27%
+FillPatchTwoLevels (Array<MF*>)                                         44     0.1402      0.151     0.1593   0.27%
+MLMG::mgVcycle_down::2                                                 498     0.1269     0.1395      0.159   0.26%
+MLPoisson::FFlux()                                                   25685    0.05646     0.1138     0.1535   0.26%
+kynema-sgf::incflo::init_kynema_sgf_modules                              1     0.1509     0.1514     0.1523   0.25%
+kynema-sgf::ICNS::multiply_rho                                          46    0.05308     0.1155     0.1479   0.25%
+MLMG::getFluxes()                                                       46    0.06238     0.1199     0.1425   0.24%
+kynema-sgf::incflo::compute_dt                                          21      0.126     0.1316     0.1424   0.24%
+kynema-sgf::Smagorinsky-ConstTransport::update_turbulent_viscosity      23     0.1159      0.126     0.1416   0.24%
+kynema-sgf::set_acoeffs                                                115    0.06046     0.1097     0.1413   0.24%
+MultiFab::Add()                                                         92    0.04601     0.1087     0.1354   0.23%
+MLMG::mgVcycle_up::4                                                   498   0.004342    0.01147     0.1304   0.22%
+kynema-sgf::ABLStats::compute_zi                                        20    0.06337     0.0935     0.1222   0.20%
+kynema-sgf::VelPlaneAveraging::compute_hvelmag_averages                 42     0.1195       0.12     0.1206   0.20%
+kynema-sgf::incflo::init_mesh                                            1    0.09795     0.1034     0.1173   0.20%
+kynema-sgf::ThirdMomentAveraging::compute_average                       20     0.1049     0.1065     0.1074   0.18%
+kynema-sgf::incflo::InitialProjection()                                  1    0.09782     0.1019     0.1044   0.17%
+kynema-sgf::Temperature-Godunov::compute_predictor_rhs                  23    0.05608    0.08695      0.104   0.17%
+kynema-sgf::fvm::gradient                                               20    0.03744    0.06065     0.1038   0.17%
+MultiFab::Divide()                                                     138    0.04913    0.08252    0.09955   0.17%
+kynema-sgf::Field::setVal 1                                             94    0.04648    0.07751     0.0969   0.16%
+MLCellLinOp::compFlux()                                                 46    0.04463    0.07874    0.09295   0.15%
+MLMG::mgVcycle_down::3                                                 498     0.0061    0.02094    0.08399   0.14%
+MLMG::actualBottomSolve()                                              498  0.0002456  0.0006234    0.08381   0.14%
+FabArrayBase::getCPC()                                               12282    0.05464    0.06857    0.07868   0.13%
+FillPatchInterp(Fab)                                                   147  7.682e-05    0.03602     0.0761   0.13%
+MLCGSolver::bicgstab                                                     1          0  0.0002588    0.07452   0.12%
+kynema-sgf::incflo::MakeNewLevelFromScratch()                            2    0.03632     0.0599    0.07371   0.12%
+CellConservativeLinear::interp()                                        51          0    0.03474    0.07364   0.12%
+FabArray::sum()                                                        256    0.01015    0.03484    0.07347   0.12%
+FabArray::ParallelCopyToGhost()                                        132    0.02048    0.04102     0.0733   0.12%
+MLMG::MLRhsNormInf()                                                    93    0.03545    0.05605    0.07229   0.12%
+PhysBCFunct::()                                                       1145    0.03348    0.05998    0.07095   0.12%
+kynema-sgf::fvm::strainrate                                             23    0.03286    0.05396    0.06735   0.11%
+kynema-sgf::FieldRepo::make_new_level_from_scratch                       2    0.03373    0.05188    0.06228   0.10%
+MLPoisson::define()                                                      1    0.00363    0.02368    0.06203   0.10%
+AmrMesh::MakeNewGrids()                                                  2    0.02295    0.03538    0.06051   0.10%
+MLMG::mgVcycle_down::4                                                 498   0.005208   0.007983    0.05667   0.09%
+kynema-sgf::Temperature-Godunov::compute_mueff                          23    0.02102    0.04369    0.05418   0.09%
+FabArray::plus()                                                       501    0.03543     0.0453    0.05384   0.09%
+MLCellLinOp::prepareForSolve()                                         116    0.01665    0.03491    0.05191   0.09%
+kynema-sgf::ICNS-Godunov::compute_mueff                                 23    0.01931    0.04046    0.05048   0.08%
+kynema-sgf::Temperature-Godunov::compute_source_term                    46    0.02397    0.03878    0.05013   0.08%
+FabArray::LinComb()                                                     46    0.02051     0.0427    0.04986   0.08%
+MLNodeLaplacian::interpolation()                                      1095    0.02177    0.03889    0.04611   0.08%
+MLNodeLinOp::buildMasks()                                               24    0.02541    0.03531    0.04513   0.08%
+MLABecLaplacian::define()                                                4    0.02622    0.03293    0.04374   0.07%
+FabArray::norminf(mask)                                                298    0.01074    0.02957    0.04268   0.07%
+Other                                                                46006     0.1604     0.3313     0.5612   0.93%
+-------------------------------------------------------------------------------------------------------------------
+
+Async Memory Usage:
+---------------------------------------------------------------------------------------------------------------------------------------
+Name                                                     Nalloc  AvgMem min  AvgMem avg  AvgMem max  MaxMem min  MaxMem avg  MaxMem max
+---------------------------------------------------------------------------------------------------------------------------------------
+kynema-sgf::ICNS-Godunov::compute_advection_term          82432    1955 KiB    3316 KiB    3914 KiB      48 MiB      48 MiB      48 MiB
+kynema-sgf::Temperature-Godunov::compute_advection_term  129536     237 KiB     404 KiB     477 KiB      19 MiB      19 MiB      19 MiB
+MLMG::apply()                                            141312     592 KiB     714 KiB     863 KiB    9921 KiB      14 MiB      16 MiB
+MLMG::prepareForSolve()                                   61440    2442   B    4597   B    5582   B    1933 KiB    2938 KiB    3305 KiB
+MLNodeLinOp::buildMasks()                                 51096      88   B     314   B     438   B     578 KiB    1028 KiB    1157 KiB
+MLNodeLaplacian::reflux()                                508416    7843   B    9385   B      12 KiB     850 KiB    1013 KiB    1140 KiB
+MLMG::interpCorrection_1                                 254976    1731   B    7004   B      10 KiB     487 KiB     867 KiB     975 KiB
+MLABecLaplacian::averageDownCoeffs()                     176640    5790   B       9 KiB      17 KiB     408 KiB     725 KiB     816 KiB
+amrex::average_down                                      669072    8924   B      14 KiB      21 KiB     384 KiB     682 KiB     768 KiB
+MLCellLinOp::reflux()                                    997056    1752   B    2623   B    3236   B     313 KiB     313 KiB     313 KiB
+MLTensorOp::apply()                                      476928    6355   B       9 KiB      12 KiB     313 KiB     313 KiB     313 KiB
+MLMG::oneIter()                                          112128     403   B     800   B    1344   B     144 KiB     257 KiB     289 KiB
+kynema-sgf::ICNS::advection_mac_project                   70656     459   B    1751   B    3242   B     136 KiB     241 KiB     272 KiB
+MLCellLinOp::compFlux()                                   39744      56   B     106   B     128   B     104 KiB     104 KiB     104 KiB
+MLCGSolver::bicgstab                                       2490       0   B       0   B      56   B       0   B     344   B      96 KiB
+MLMG::actualBottomSolve()                                   406       0   B       0   B      15   B       0   B      50   B      14 KiB
+average_down_faces                                        81696       0   B       0   B       1   B    1920   B    3413   B    3840   B
+MLMG::addInterpCorrection()                              294816       0   B       6   B       9   B    1536   B    2730   B    3072   B
+MLNodeLaplacian::restriction()                           129648       0   B       0   B       0   B    1000   B    1777   B    2000   B
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Pinned Memory Usage:
+---------------------------------------------------------------------------------------------------------------------------------------
+Name                                                     Nalloc  AvgMem min  AvgMem avg  AvgMem max  MaxMem min  MaxMem avg  MaxMem max
+---------------------------------------------------------------------------------------------------------------------------------------
+The_Pinned_Arena::Initialize()                              288       0   B       9   B      84   B    8192 KiB    8192 KiB    8192 KiB
+kynema-sgf::ThirdMomentAveraging::compute_average         23040      32   B      32   B      32   B      18 KiB      18 KiB      18 KiB
+kynema-sgf::SecondMomentAveraging::compute_average        51840       8   B       8   B      10   B    7680   B    7680   B    7680   B
+kynema-sgf::PlaneAveraging::compute_averages              30240      16   B      16   B      17   B    3072   B    3072   B    3072   B
+kynema-sgf::VelPlaneAveraging::compute_hvelmag_averages   36288       5   B       5   B       5   B    3072   B    3072   B    3072   B
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Comms Memory Usage:
+-----------------------------------------------------------------------------------------------------------------
+Name                               Nalloc  AvgMem min  AvgMem avg  AvgMem max  MaxMem min  MaxMem avg  MaxMem max
+-----------------------------------------------------------------------------------------------------------------
+The_Comms_Arena::Initialize()         288       0   B       0   B       0   B    8192 KiB    8192 KiB    8192 KiB
+FillBoundary_nowait()            12390180      53 KiB      77 KiB     130 KiB    1895 KiB    3107 KiB    3788 KiB
+FabArray::ParallelCopy_nowait()   5100326      25 KiB      71 KiB     172 KiB    1463 KiB    1950 KiB    2687 KiB
+-----------------------------------------------------------------------------------------------------------------
+
+Cpu Memory Usage:
+----------------------------------------------------------------------------------------------------------------------------------------
+Name                                                      Nalloc  AvgMem min  AvgMem avg  AvgMem max  MaxMem min  MaxMem avg  MaxMem max
+----------------------------------------------------------------------------------------------------------------------------------------
+kynema-sgf::FieldRepo::make_new_level_from_scratch         23552      70 MiB     102 MiB     115 MiB      70 MiB     102 MiB     115 MiB
+kynema-sgf::FieldRepo::create_scratch_field                81920      41 MiB      60 MiB      68 MiB      46 MiB      68 MiB      77 MiB
+MLABecLaplacian::define()                                  25224      43 MiB      64 MiB      72 MiB      43 MiB      64 MiB      72 MiB
+kynema-sgf::ICNS-Godunov::compute_advection_term          153088    2568 KiB    5105 KiB    6156 KiB      60 MiB      69 MiB      72 MiB
+MLMG::prepareForSolve()                                   775957      16 MiB      22 MiB      25 MiB      33 MiB      47 MiB      54 MiB
+kynema-sgf::Temperature-Godunov::compute_advection_term   129536     237 KiB     404 KiB     477 KiB      19 MiB      19 MiB      19 MiB
+MLMG::apply()                                             181056     592 KiB     714 KiB     863 KiB    9922 KiB      14 MiB      16 MiB
+MLTensorOp::define()                                        6144    9410 KiB      13 MiB      15 MiB    9440 KiB      13 MiB      15 MiB
+kynema-sgf::ICNS::advection_mac_project                    75776    7939 KiB      11 MiB      12 MiB    8163 KiB      11 MiB      13 MiB
+kynema-sgf::incflo::ApplyProjection                        73728    2003 KiB    2958 KiB    3331 KiB    8157 KiB      11 MiB      13 MiB
+MLCellLinOp::defineAuxData()                              118980    7567 KiB      10 MiB      11 MiB    7602 KiB      10 MiB      11 MiB
+BndryData::define()                                        92160    6136 KiB    9294 KiB      10 MiB    6166 KiB    9337 KiB      10 MiB
+MLCellLinOp::defineBC()                                    33280     773 KiB    1376 KiB    1548 KiB    3987 KiB    7088 KiB    7974 KiB
+kynema-sgf::diffusion::average_velocity_eta_to_faces      353280      29 KiB      96 KiB     123 KiB    3136 KiB    5575 KiB    6272 KiB
+kynema-sgf::FieldRepo::declare_int_field                    2048    1830 KiB    2685 KiB    3021 KiB    1835 KiB    2691 KiB    3027 KiB
+MLCellLinOp::setLevelBC()                                   1024       4   B      22   B      45   B    1157 KiB    2057 KiB    2314 KiB
+MLNodeLaplacian::define()                                  87960     347 KiB     427 KiB     483 KiB    1687 KiB    2031 KiB    2292 KiB
+kynema-sgf::ICNS-Godunov::pre_advection_actions            13248      44 KiB      73 KiB      85 KiB    2011 KiB    2011 KiB    2011 KiB
+FillPatchTwoLevels                                         42924       0   B    2476   B    6160   B       0   B     843 KiB    1693 KiB
+FillPatchTwoLevels (Array<MF*>)                            57816       0   B    1002   B    2159   B       0   B     761 KiB    1559 KiB
+MLNodeLinOp::buildMasks()                                  75696     105 KiB     186 KiB     211 KiB     869 KiB    1093 KiB    1157 KiB
+MLNodeLaplacian::reflux()                                 508416    7856   B    9401   B      12 KiB     851 KiB    1014 KiB    1141 KiB
+kynema-sgf::VelPlaneAveraging::compute_hvelmag_averages    32256     458   B    1143   B    1432   B     512 KiB     910 KiB    1024 KiB
+kynema-sgf::PlaneAveraging::compute_averages               75264    2128   B    4831   B    5905   B     512 KiB     910 KiB    1024 KiB
+MLMG::interpCorrection_1                                  254976    1736   B    7014   B      10 KiB     487 KiB     867 KiB     975 KiB
+MLNodeLaplacian::compRHS()                                 24576     167   B     415   B    1009   B     570 KiB     756 KiB     851 KiB
+MLABecLaplacian::averageDownCoeffs()                      176640    5794   B       9 KiB      17 KiB     408 KiB     725 KiB     816 KiB
+amrex::average_down                                       669072    8935   B      14 KiB      21 KiB     384 KiB     682 KiB     768 KiB
+CellConservativeLinear::interp()                           14746       0   B     324   B     678   B       0   B     322 KiB     653 KiB
+kynema-sgf::ABLStats::compute_zi                            5760      82   B     240   B     555   B     448 KiB     455 KiB     464 KiB
+MLCellLinOp::reflux()                                     997056    1754   B    2627   B    3240   B     313 KiB     313 KiB     313 KiB
+MLTensorOp::apply()                                       476928    6363   B       9 KiB      12 KiB     313 KiB     313 KiB     313 KiB
+MLMG::oneIter()                                           112128     404   B     802   B    1348   B     144 KiB     257 KiB     289 KiB
+OwnerMask()                                                13336      34 KiB      60 KiB      69 KiB     140 KiB     249 KiB     284 KiB
+kynema-sgf::ThirdMomentAveraging::compute_average          10240     107   B     359   B     446   B     128 KiB     227 KiB     256 KiB
+kynema-sgf::SecondMomentAveraging::compute_average         30720     109   B     363   B     448   B     128 KiB     227 KiB     256 KiB
+MLCellLinOp::compFlux()                                    39744      56   B     106   B     128   B     104 KiB     104 KiB     104 KiB
+MLCGSolver::bicgstab                                        2490       0   B       0   B      57   B       0   B     344   B      97 KiB
+AmrMesh::MakeNewGrids()                                     2048       7   B      15   B      20   B      38 KiB      68 KiB      77 KiB
+kynema-sgf::RefineCriteriaManager::tag_cells                1024       0   B       0   B       1   B      32 KiB      56 KiB      64 KiB
+MLMG::actualBottomSolve()                                    406       0   B       0   B      16   B       0   B      50   B      14 KiB
+average_down_faces                                         81696       0   B       0   B       1   B    2048   B    3640   B    4096   B
+MLMG::addInterpCorrection()                               294816       0   B       6   B      10   B    1536   B    2730   B    3072   B
+MLNodeLaplacian::restriction()                            129648       0   B       0   B       0   B    1024   B    1820   B    2048   B
+TagBoxArray::mapPRD                                         1024       0   B       0   B       0   B     256   B     455   B     512   B
+MLCellLinOp::applyBC()                                   4886176       0   B       1   B       2   B     256   B     256   B     256   B
+----------------------------------------------------------------------------------------------------------------------------------------
+
+AMReX (26.11) finalized

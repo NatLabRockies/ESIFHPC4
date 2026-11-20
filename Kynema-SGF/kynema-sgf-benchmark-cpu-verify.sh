@@ -49,7 +49,15 @@ EOL
 # Generate build script
 cat >build-kynema-sgf-benchmark-cpu-verify.sh <<'EOL'
 #!/bin/bash -l
+
+#SBATCH -o %x.o%j
+#SBATCH -A hpcapps
+#SBATCH -t 30
+
 set -ex
+module load cpe-stack
+module load PrgEnv-intel
+module load craype-x86-spr
 git clone --depth=1 --shallow-submodules --recursive https://github.com/Kynema/kynema-sgf.git
 cmake -B kynema-sgf-build \
 	-DCMAKE_CXX_COMPILER:STRING=CC \
@@ -72,6 +80,9 @@ cat >run-kynema-sgf-benchmark-cpu-verify.sh <<'EOL'
 
 set -ex
 
+module load cpe-stack
+module load PrgEnv-intel
+module load craype-x86-spr
 export FI_MR_CACHE_MONITOR=memhooks
 export FI_CXI_RX_MATCH_MODE=software
 export MPICH_SMP_SINGLE_COPY_MODE=NONE
@@ -87,8 +98,8 @@ srun -N${SLURM_JOB_NUM_NODES} -n${TOTAL_RANKS} --ntasks-per-node=72 --distributi
 #srun -N${SLURM_JOB_NUM_NODES} -n${TOTAL_RANKS} --ntasks-per-node=72 --distribution=block:block --cpu_bind=rank_ldom ../../../kynema_sgf abl_godunov.inp ${FIXED_ARGS} amr.n_cell=2048 2048 64 geometry.prob_hi=32768.0 32768.0 1024.0
 EOL
 
-# Build Kynema-SGF
-bash build-kynema-sgf-benchmark-cpu-verify.sh
+# Submit build script
+BUILD_ID=$(sbatch --parsable -J kynema-sgf-build-cpu-verify -N 1 build-kynema-sgf-benchmark-cpu-verify.sh)
 
 # Submit run script
-sbatch -J kynema-sgf-benchmark-cpu-verify-4 -N 4 -p hbw run-kynema-sgf-benchmark-cpu-verify.sh
+sbatch --parsable --dependency=afterok:${BUILD_ID} -J kynema-sgf-benchmark-cpu-verify-4 -N 4 -p hbw run-kynema-sgf-benchmark-cpu-verify.sh

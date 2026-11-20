@@ -51,7 +51,18 @@ EOL
 # Generate build script
 cat >build-kynema-sgf-benchmark-gpu-aware.sh <<'EOL'
 #!/bin/bash -l
+
+#SBATCH -o %x.o%j
+#SBATCH -A hpcapps
+#SBATCH -t 30
+#SBATCH --partition=gpu-h100s
+#SBATCH --gpus-per-node=1
+#SBATCH --ntasks-per-node=64
+#SBATCH --mem=128GB
+
 set -ex
+module load cpe-stack
+module load PrgEnv-gnu
 module load cuda
 #GCC 12 can't handle the default zen4 target so we use zen3
 module load craype-x86-milan
@@ -63,9 +74,9 @@ cmake -B kynema-sgf-build \
 	-DCMAKE_CUDA_ARCHITECTURES:STRING=90 \
 	-DKYNEMA_SGF_ENABLE_TESTS:BOOL=ON \
 	-DKYNEMA_SGF_ENABLE_TINY_PROFILE:BOOL=ON \
-	-DMPI_HOME:STRING=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3\
-       	-DMPI_CXX_COMPILER:STRING=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/bin/mpicxx \
-	-DMPI_C_COMPILER:STRING=/opt/cray/pe/mpich/8.1.28/ofi/gnu/10.3/bin/mpicc \
+	-DMPI_HOME:STRING=/opt/cray/pe/mpich/8.1.32/ofi/gnu/11.2 \
+       	-DMPI_CXX_COMPILER:STRING=/opt/cray/pe/mpich/8.1.32/ofi/gnu/11.2/bin/mpicxx \
+	-DMPI_C_COMPILER:STRING=/opt/cray/pe/mpich/8.1.32/ofi/gnu/11.2/bin/mpicc \
 	-DCMAKE_CXX_COMPILER:STRING=CC \
 	-DCMAKE_C_COMPILER:STRING=cc \
 	kynema-sgf
@@ -86,6 +97,8 @@ cat >run-kynema-sgf-benchmark-gpu-aware.sh <<'EOL'
 
 set -ex
 
+module load cpe-stack
+module load PrgEnv-gnu
 module load cuda
 export MPICH_GPU_SUPPORT_ENABLED=1
 FIXED_ARGS="nodal_proj.bottom_atol=-1 mac_proj.bottom_atol=-1 time.fixed_dt=0.5 time.max_step=20 ABL.stats_output_frequency=-1 time.plot_interval=-1 time.checkpoint_interval=-1 amrex.abort_on_out_of_gpu_memory=1 amrex.the_arena_is_managed=0 amr.blocking_factor=16 amr.max_grid_size=128 amrex.use_profiler_syncs=0 amrex.async_out=0 amr.max_level=1 tagging.labels=g1 tagging.g1.type=GeometryRefinement tagging.g1.shapes=b1 tagging.g1.b1.type=box tagging.g1.b1.origin=0.0 0.0 384.0 tagging.g1.b1.xaxis=1.0e8 0.0 384.0 tagging.g1.b1.yaxis=0.0 1.0e8 384.0 tagging.g1.b1.zaxis=0.0 0.0 256.0 amrex.use_gpu_aware_mpi=1"
@@ -94,8 +107,8 @@ cd kynema-sgf-build/test/test_files/abl_godunov
 srun -N${SLURM_JOB_NUM_NODES} -n${TOTAL_RANKS} --ntasks-per-node=4 --gpus-per-node=4 --gpu-bind=none ../../../kynema_sgf abl_godunov.inp ${FIXED_ARGS} amr.n_cell=1024 1024 64 geometry.prob_hi=16384.0 16384.0 1024.0
 EOL
 
-# Build Kynema-SGF
-bash build-kynema-sgf-benchmark-gpu-aware.sh
+# Submit build script
+BUILD_ID=$(sbatch --parsable -J kynema-sgf-build-gpu-aware -N 1 build-kynema-sgf-benchmark-gpu-aware.sh)
 
-# Submit run script
-sbatch -J kynema-sgf-benchmark-gpu-1 -N 1 run-kynema-sgf-benchmark-gpu-aware.sh; for i in {1..5}; do sbatch -J kynema-sgf-benchmark-gpu-$((2**i)) -N $((2**i)) run-kynema-sgf-benchmark-gpu-aware.sh; done
+# Submit run script, starting at 2 nodes
+for i in {1..5}; do sbatch --parsable --dependency=afterok:${BUILD_ID} -J kynema-sgf-benchmark-gpu-$((2**i)) -N $((2**i)) run-kynema-sgf-benchmark-gpu-aware.sh; done
